@@ -1,25 +1,274 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './App.scss';
+import {
+    MdMenu,
+} from 'react-icons/md';
+import { IconContext } from 'react-icons/lib';
+import moment from 'moment';
+
+import {
+    Chatbox,
+    Leftbox,
+} from './components';
+
+// import { validateData } from './utils/DataValidation';
+
+type mockSlotType = {
+    [transferFrom: string]: string,
+    name: string,
+    phone: string,
+    email: string,
+    amount: string,
+};
+
+type InputOptionType = {
+    name: string;
+    label: string;
+    value: string;
+};
+
+type slotInputType = {
+    inputName: string,
+    inputState: string,
+    inputType: string,
+    inputLabel: string,
+    optionList?: InputOptionType[];
+};
+
+interface conversationState {
+    user?: string;
+    timestamp?: string;
+    message?: string;
+}
+
+const mockConversation = [
+    {
+        user: 'bot',
+        timestamp: '2020-09-09',
+        message: 'Welcome!',
+    },
+    {
+        user: 'user',
+        timestamp: '2020-09-09',
+        message: 'Hey!',
+    },
+    {
+        user: 'bot',
+        timestamp: '2020-09-09',
+        message: 'Are you interested in anything?',
+    },
+    {
+        user: 'user',
+        timestamp: '2020-09-09',
+        message: 'I would like to order a aglio e olio, with a freckle of cinnamon, and the cherry on top!',
+    },
+];
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    const [userSlot, setUserSlot] = React.useState({
+        transferFrom: '',
+        name: '',
+        phone: '',
+        email: '',
+        amount: '',
+    });
+    const [submitted, setSubmitted] = React.useState(false);
+    const [userChatInput, setUserChatInput] = React.useState('');
+    const [conversation, setConversation] = React.useState<conversationState[]>(mockConversation);
+    const [showChatInMobile, setShowChatInMobile] = React.useState(false);
+
+    const slotInput: slotInputType[] = [
+        {
+            inputName: 'transferFrom',
+            inputState: 'transferFrom',
+            inputType: 'dropdown',
+            inputLabel: 'Transfer from',
+            optionList: [
+                {
+                    name: 'Hello',
+                    label: 'Hello',
+                    value: 'Hello',
+                },
+                {
+                    name: 'World',
+                    label: 'World',
+                    value: 'World',
+                },
+                {
+                    name: 'React',
+                    label: 'React',
+                    value: 'React',
+                },
+                {
+                    name: 'Hello',
+                    label: 'Hello',
+                    value: 'Hello',
+                },
+                {
+                    name: 'World',
+                    label: 'World',
+                    value: 'World',
+                },
+                {
+                    name: 'React',
+                    label: 'React',
+                    value: 'React',
+                },
+                {
+                    name: 'Hello',
+                    label: 'Hello',
+                    value: 'Hello',
+                },
+                {
+                    name: 'World',
+                    label: 'World',
+                    value: 'World',
+                },
+                {
+                    name: 'React',
+                    label: 'React',
+                    value: 'React',
+                },
+                {
+                    name: 'Hello',
+                    label: 'Hello',
+                    value: 'Hello',
+                },
+                {
+                    name: 'World',
+                    label: 'World',
+                    value: 'World',
+                },
+                {
+                    name: 'React',
+                    label: 'React',
+                    value: 'React',
+                },
+                {
+                    name: 'Hello',
+                    label: 'Hello',
+                    value: 'Hello',
+                },
+                {
+                    name: 'World',
+                    label: 'World',
+                    value: 'World',
+                },
+                {
+                    name: 'React',
+                    label: 'React',
+                    value: 'React',
+                },
+            ],
+        },
+        {
+            inputName: 'name',
+            inputState: 'name',
+            inputType: 'text',
+            inputLabel: 'Name',
+        },
+        {
+            inputName: 'phone',
+            inputState: 'phone',
+            inputType: 'text',
+            inputLabel: 'Phone',
+        },
+        {
+            inputName: 'email',
+            inputState: 'email',
+            inputType: 'email',
+            inputLabel: 'Email',
+        },
+        {
+            inputName: 'amount',
+            inputState: 'amount',
+            inputType: 'number',
+            inputLabel: 'Amount',
+        },
+    ];
+
+    React.useEffect(() => {
+        // const rootStyle = document.documentElement.style;
+        // rootStyle.setProperty('--sidebar-width', '10px');
+        // console.log(validateData('Hello', 'email'));
+        // setInterval({}, 1000); // refresh every second - Is this a good practice?
+        // console.log(showChatInMobile);
+    }, [showChatInMobile]);
+
+    // Functions for leftbox
+    const handleInputChange = (value: string, stateName: string) => {
+        setUserSlot(() => {return {...userSlot, [stateName]: value}});
+    };
+
+    const handleSubmit = () => {
+        setSubmitted(prevState => { return !prevState});
+    };
+
+    // Functions for chatbox
+    const handleChatInputUpdate = (value: string) => {
+        setUserChatInput(() => value);
+    };
+
+    const handleChatSubmit = () => {
+        if (userChatInput !== '') {
+            const conversationMap = {
+                user: 'User',
+                timestamp: moment().format(),
+                message: userChatInput,
+            };
+            setConversation(prevConversation => { return [...prevConversation, conversationMap] });
+            setUserChatInput('');
+        }
+    };
+
+    const handleChatboxModal = () => {
+        setShowChatInMobile(prevState => { return !prevState });
+    }
+
+    return (
+        <main className="AIVI-Page">
+            <section className="AIVI-Sidebar">
+                <div className="Button Button-Hamburger">
+                    <IconContext.Provider value={{ className: 'Icon-Rotate Icon-Light Icon-Hamburger' }} >
+                        <MdMenu />
+                    </IconContext.Provider>
+                </div>
+            </section>
+            <section className="AIVI-Chatbox">
+                <Chatbox
+                    userInput={userChatInput}
+                    updateInput={handleChatInputUpdate}
+                    submitInput={handleChatSubmit}
+                    conversation={conversation}
+                />
+            </section>
+            <section className="AIVI-Leftbox">
+                <Leftbox
+                    slot={userSlot}
+                    slotInput={slotInput}
+                    submitted={submitted}
+                    updateSubmitted={handleSubmit}
+                    handleInputChange={handleInputChange}
+                />
+            </section>
+            <button
+                className="AIVI-Chatbox-Mobile-Button Button"
+                onClick={handleChatboxModal}
+            >
+                C
+            </button>
+            <section
+                className={`AIVI-Chatbox-Mobile-Model ${showChatInMobile ? `AIVI-Chatbox-Mobile-Show` : `AIVI-Chatbox-Mobile-Hide`}`}
+            >
+                <Chatbox
+                    userInput={userChatInput}
+                    updateInput={handleChatInputUpdate}
+                    submitInput={handleChatSubmit}
+                    conversation={conversation}
+                />
+            </section>
+            
+        </main>
   );
 }
 

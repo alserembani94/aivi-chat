@@ -1,0 +1,645 @@
+// Default root setting
+:root {
+  // Root measurement adjustment
+  font-size: 16px;
+
+  // Dimension adjustment
+  --sidebar-width: 50px;
+  --chatbox-width: 60; // Don't put unit, value in percentage
+  --leftbox-width: 40; // Don't put unit, value in percentage
+  --button-area-height: 65px;
+  --icon-button-dimension: 40px;
+  --dialog-input-height-min: 65px;
+  --dialog-input-height-max: 155px;
+  --avatar-dimension: 90px;
+  --layout-sidebar-adjustment: 0px;
+  --mobile-menu-button-translation: 20px;
+  --mobile-chatbox-button: 50px;
+  --mobile-chatbox-button-translation: 20px;
+
+  // Theme color adjustment
+  --brand-fill: #D53A4C;
+  --brand-fill-test: #D53A4C66;
+  --brand-gradient: linear-gradient(90.54deg, #F25767 0%, #D83445 100%);
+  --light-background: #FFFFFF;
+  --base-background: #E5E5E5;
+  --text-dark: #707C97;
+  --text-light: rgba(112, 124, 151, 0.7);
+  --shadow: rgba(32, 32, 32, 0.08);
+  --breakline: rgba(112, 124, 151, 0.15);
+  --icon-light: white;
+  --icon-dark: rgba(112, 124, 151, 0.5);
+  --input-label: rgba(17, 17, 17, 0.48);
+  --chat-bubble-bot: var(--brand-gradient);
+  --chat-bubble-bot-tail: #F15666;
+  --chat-bubble-user: white;
+  --chat-bubble-user-border: rgba(112, 124, 151, 0.25);
+  --chat-bubble-user-tail: var(--chat-bubble-user-border);
+  --dropdown-hover: #F1F1F1;
+  --dropdown-shadow: 0px 4px 4px rgba(51, 51, 51, 0.15);
+
+  // Theme standardisation
+  --box-shadow: 0 4px 10px var(--shadow);
+  --selected-box-shadow: 0 0 10px var(--brand-fill-test);
+}
+
+* {
+  box-sizing: border-box;
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+  font-family: Proxima Nova, Helvetica, sans-serif;
+  scrollbar-width: 2px;
+  scrollbar-color: var(--brand-fill) transparent;
+  &::-webkit-scrollbar {
+    width: 3px;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--brand-fill);
+    border-radius: 200px;
+  }
+}
+
+input {
+  background: none;
+  outline: none;
+  border: none;
+}
+
+button:focus {
+  outline: none;
+  border: none;
+}
+
+// Adjustment for button styling (global)
+.Button {
+  cursor: pointer;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  &:hover {
+    .Icon-Rotate {
+      transform: rotate(90deg);
+      transition: transform 0.2s ease-in-out;
+    }
+  }
+  &:disabled {
+    background: var(--base-background);
+    box-shadow: none;
+    cursor: default;
+    transition: all 0.2s ease-in-out;
+    // transition-property: background-color, box-shadow, background;
+  }
+  &-FitContent {
+    width: fit-content;
+    height: fit-content;
+    padding: 15px 25px;
+    background-color: var(--brand-fill);
+    color: var(--light-background);
+    box-shadow: 0 4px 10px -3px var(--brand-fill);
+    border-radius: 4px;
+    transition: all 0.2s ease-in-out;
+    transition-property: background-color, box-shadow, opacity;
+    &:hover {
+      opacity: 0.8;
+      transition: opacity 0.2s ease-in-out;
+    }
+  }
+  &-Full {
+    width: 100%;
+    height: 100%;
+    background-color: var(--brand-fill);
+    color: var(--light-background);
+    border-radius: 4px;
+    box-shadow: 0 4px 10px -3px var(--brand-fill);
+    transition: all 0.2s ease-in-out;
+    transition-property: background-color, box-shadow, opacity;
+    &:hover {
+      opacity: 0.8;
+      transition: opacity 0.2s ease-in-out;
+    }
+  }
+  &-Hamburger {
+    background-color: inherit;
+    width: var(--sidebar-width);
+    height: var(--sidebar-width);
+  }
+  // &-Send {
+  //   &:hover {
+  //     .Icon-Send {
+
+  //     }
+  //   }
+  // }
+}
+
+.Icon {
+  &-Rotate {
+    transition: transform 0.2s ease-in-out;
+  }
+  &-Light {
+    color: var(--icon-light);
+  }
+  &-Dark {
+    color: var(--icon-dark);
+  }
+  &-Hamburger {
+    width: 45%;
+    height: 45%;
+  }
+  &-Add, &-Audible, &-Smiley {
+    width: 60%;
+    height: 60%;
+  }
+  &-Down {
+    width: 80%;
+    height: 80%;
+  }
+  &-Close {
+    width: 95%;
+    height: 95%;
+  }
+}
+
+.Input {
+  &Box {
+    &-Container {
+      background-color: var(--light-background);
+      box-shadow: var(--box-shadow);
+      margin-bottom: 20px;
+      padding: 10px 15px;
+      display: flex;
+      flex-direction: column;
+      transition: box-shadow 0.3s ease-in-out;
+      border-radius: 4px;
+      &:last-child {
+        margin-bottom: 0;
+      }
+      input {
+        font-size: 1rem;
+        width: 100%;
+      }
+    }
+    &-Label {
+      font-size: 0.8rem;
+      margin-bottom: 5px;
+      color: var(--input-label);
+    }
+    &-InputArea {
+      display: flex;
+      flex-direction: row;
+    }
+    &-Currency {
+      margin-right: 0.6rem;
+      font-size: 1rem;
+    }
+  }
+  &Dropdown {
+    &-Wrapper {
+      width: 100%;
+      position: relative;
+    }
+    &-Container {
+      position: relative;
+      cursor: pointer;
+      flex-direction: row;
+      align-items: stretch;
+      justify-content: center;
+      z-index: 20;
+    }
+    &-Thumb {
+      width: 100%;
+    }
+    &-Action {
+      width: fit-content;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+    }
+    &-Button {
+      background: transparent;
+      width: 35px;
+      height: 35px;
+    }
+    &-List {
+      position: absolute;
+      display: flex;
+      width: inherit;
+      flex-flow: column wrap;
+      height: fit-content;
+      background: white;
+      top: calc(100% + 10px);
+      border-radius: 4px;
+      box-shadow: var(--dropdown-shadow);
+      overflow: hidden;
+      padding: 5px 0;
+      z-index: 19;
+      max-height: 50vh;
+      overflow: auto;
+      ul {
+        list-style: none;
+      }
+      li {
+        padding: 15px;
+        font-size: 0.9rem;
+        cursor: pointer;
+        &:hover {
+          background-color: var(--dropdown-hover);
+        }
+      }
+      &[data-show='true'] {
+        opacity: 1;
+        transition: all 0.1s ease-in-out;
+      }
+      &[data-show='false'] {
+        pointer-events: none;
+        opacity: 0;
+        top: 0;
+        transition: all 0.1s ease-in-out;
+      }
+    }
+  }
+}
+
+// Remove arrows for input number
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+// @keyframes {
+//   0% {
+//     transform: 
+//   }
+// }
+
+// Adjustment for main layout
+.AIVI {
+  &-Page {
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--base-background);
+    display: flex;
+    flex-flow: row wrap;
+  }
+  
+  &-Sidebar {
+    height: 100%;
+    width: var(--sidebar-width);
+    background-color: var(--brand-fill);
+  }
+
+  &-Chatbox {
+    height: 100%;
+    width: calc(var(--chatbox-width) / 100 * (100% - var(--sidebar-width) + var(--layout-sidebar-adjustment)));
+    padding: 35px;
+    &-Mobile {
+      &-Model {
+        display: none;
+      }
+      &-Button {
+        display: none;
+      }
+    }
+  }
+
+  &-Leftbox {
+    height: 100%;
+    width: calc(var(--leftbox-width) / 100 * (100% - var(--sidebar-width) + var(--layout-sidebar-adjustment)));
+    background-color: var(--light-background);
+    padding: 50px 35px;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: stretch;
+    overflow: hidden;
+  }
+}
+
+// Adjustment for chatbox
+.Chatbox {
+  &-Container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    position: relative;
+  }
+  &-Avatar {
+    width: var(--avatar-dimension);
+    height: var(--avatar-dimension);
+    border-radius: 50%;
+    position: relative;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    background-color: var(--light-background);
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+  &-Box {
+    width: 100%;
+    height: calc(100% - var(--avatar-dimension));
+    background-color: var(--light-background);
+    box-shadow: var(--box-shadow);
+    border-radius: 2px;
+    position: relative;
+    top: calc((var(--avatar-dimension) / 2) * -1);
+    padding: var(--avatar-dimension) 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: space-between;
+  }
+  &-Dialog {
+    height: calc(100% - var(--dialog-input-height) - 15px);
+    margin-bottom: 10px;
+    overflow: auto;
+    padding: 0 20px;
+  }
+  &-Input {
+    height: fit-content;
+    min-height: var(--dialog-input-height-min);
+    max-height: var(--dialog-input-height-max);
+    border-top: 1px solid var(--breakline);
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+
+    &-UploadOptions, &-Send, &-Audible, &-Smiley {
+      width: var(--icon-button-dimension);
+      height: var(--icon-button-dimension);
+      background: var(--brand-gradient);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 10px;
+    }
+    &-Audible, &-Smiley {
+      background: none;
+    }
+    &-Send, &-Audible {
+      margin-right: 0;
+    }
+    &-InputBox {
+      font-size: 1rem;
+      width: calc(100% - (3 * var(--icon-button-dimension)) - 20px);
+      border: none;
+      padding: 10px 15px;
+      border-radius: 2rem;
+      margin-right: 10px;
+      resize: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      white-space: normal;
+      &:focus {
+        box-shadow: 0 0 4px var(--brand-fill-test);
+      }
+    }
+  }
+}
+
+// Adjustment for leftbox
+.Leftbox {
+  &-Content {
+    height: 20px;
+    overflow: auto;
+    height: calc(100% - var(--button-area-height));
+  }
+  &-Button {
+    height: var(--button-area-height);
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &-Title {
+    font-size: 1rem;
+    color: var(--text-dark);
+    margin-bottom: 20px;
+    font-weight: 700;
+  }
+  &-Description {
+    font-size: 0.85rem;
+    line-height: 1.3rem;
+    color: var(--text-dark);
+  }
+  &-Details {
+    font-size: 0.85rem;
+    padding: 20px 10px;
+    max-height: calc(100% - 120px);
+  }
+  &-Submitted {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column wrap;
+    p {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      text-align: center;
+    }
+    img {
+      margin: 30px 0;
+    }
+  }
+}
+
+// Adjustment for dialog
+.Dialog {
+  &-Container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    position: relative;
+    &[data-side='right'] {
+      text-align: right;
+      align-items: flex-end;
+      div {
+        border-radius: 8px 0px 8px 8px;
+        background: var(--chat-bubble-user);
+        border: 1px solid var(--chat-bubble-user-border);
+        color: var(--text-dark);
+        &:before {
+          right: -10px;
+          border-color: var(--chat-bubble-user-tail) transparent transparent transparent;
+          border-width: 10px 10px 0 0;
+        }
+      }
+    }
+    &[data-side='left'] {
+      text-align: left;
+      align-items: flex-start;
+      div {
+        border-radius: 0 8px 8px;
+        background: var(--chat-bubble-bot);
+        color: white;
+        &:before {
+          left: -10px;
+          border-color: transparent var(--chat-bubble-bot-tail) transparent transparent;
+          border-width: 0 10px 10px 0;
+        }
+      }
+    }
+  }
+  &-Bubble {
+    max-width: 80%;
+    // width: 90%;
+    padding: 10px 20px;
+    border-radius: 0 8px 8px;
+    line-height: 1.5rem;
+    margin-bottom: 5px;
+    &:before {
+      content: '';
+      display: flex;
+      // width: 10px;
+      // height: 10px;
+      border-style: solid;
+      position: absolute;
+      // background: burlywood;
+      top: 0px;
+    }
+    p {
+      font-size: 1rem;
+    }
+  }
+  &-Timestamp {
+    font-size: 0.6rem;
+    margin: 0 10px;
+    color: var(--text-light);
+  }
+}
+
+
+
+@media  (max-width: 900px) {
+  :root {
+    // Root measurement adjustment
+    font-size: 14px;
+
+    // Dimension adjustment
+    --sidebar-width: 40px;
+    --chatbox-width: 0; // Don't put unit, value in percentage
+    --leftbox-width: 100; // Don't put unit, value in percentage
+    --button-area-height: 65px;
+    --icon-button-dimension: 40px;
+    --dialog-input-height: 65px;
+    --avatar-dimension: 90px;
+    --layout-sidebar-adjustment: 50px;
+    --mobile-menu-button-translation: 15px;
+
+    // Theme color adjustment
+    --brand-fill: #D53A4C;
+    --brand-fill-test: #D53A4C66;
+    --brand-gradient: linear-gradient(90.54deg, #F25767 0%, #D83445 100%);
+    --light-background: #FFFFFF;
+    --base-background: #E5E5E5;
+    --text-dark: #707C97;
+    --text-light: rgba(112, 124, 151, 0.7);
+    --shadow: rgba(32, 32, 32, 0.08);
+    --breakline: rgba(112, 124, 151, 0.15);
+    --icon-light: white;
+    --icon-dark: rgba(112, 124, 151, 0.5);
+    --input-label: rgba(17, 17, 17, 0.48);
+
+    // Theme standardisation
+    --box-shadow: 0 4px 10px var(--shadow);
+    --selected-box-shadow: 0 0 10px var(--brand-fill-test);
+  }
+
+  .AIVI {
+    &-Sidebar {
+      height: var(--sidebar-width);
+      border-radius: 50%;
+      overflow: hidden;
+      position: absolute;
+      top: var(--mobile-menu-button-translation);
+      left: var(--mobile-menu-button-translation);
+      z-index: 20;
+    }
+    &-Chatbox {
+      display: none;
+      &-Mobile {
+        &-Show {
+          opacity: 1;
+          transition: opacity 0.3s ease-in-out;
+          .Chatbox-Container {
+            top: 0;
+            transition: top 0.3s ease-in-out;
+          }
+        }
+        &-Hide {
+          opacity: 0;
+          transition: opacity 0.3s ease-in-out;
+          pointer-events: none;
+          .Chatbox-Container {
+            top: 100px;
+            transition: top 0.3s ease-in-out;
+          }
+        }
+        &-Model {
+          display: flex;
+          position: absolute;
+          width: 100vw;
+          height: 100vh;
+          background: rgba(217, 217, 217, 0.6);
+          backdrop-filter: blur(3px);
+          z-index: 99;
+          padding: 30px 20px;
+          overflow: hidden;
+        }
+        &-Button {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: var(--brand-gradient);
+          width: var(--mobile-chatbox-button);
+          height: var(--mobile-chatbox-button);
+          color: white;
+          position: absolute;
+          bottom: var(--mobile-chatbox-button-translation);
+          left: var(--mobile-chatbox-button-translation);
+          border-radius: 50%;
+          z-index: 100;
+          // border: 10px solid white;
+        }
+      }
+    }
+    &-Leftbox {
+      padding: 75px 30px;
+    }
+  }
+
+  .Leftbox {
+    &-Submitted {
+      img {
+        width: 200px;
+        height: 200px;
+      }
+    }
+  }
+}
