@@ -1,6 +1,6 @@
 import React from 'react';
-import LeftboxForm from './LeftboxForm';
-import SubmittedView from './SubmittedView';
+import CashFromCardForm from './CashFromCardForm';
+import SubmittedView from '../SubmittedView';
 
 type slotInputType = {
     inputName: string,
@@ -9,7 +9,7 @@ type slotInputType = {
     inputLabel: string,
 };
 
-interface LeftboxProps {
+interface CashFromCardProps {
     slot: {
         [transferFrom: string]: string,
         name: string,
@@ -23,8 +23,8 @@ interface LeftboxProps {
     handleInputChange: (value: string, stateName: string) => void;
 }
 
-const Leftbox: React.FC<LeftboxProps> = ({slot, slotInput, submitted, updateSubmitted, handleInputChange}) => {
-    if (!submitted) return <LeftboxForm
+const CashFromCard: React.FC<CashFromCardProps> = ({slot, slotInput, submitted, updateSubmitted, handleInputChange}) => {
+    if (!submitted) return <CashFromCardForm
                                 slot={slot}
                                 slotInput={slotInput}
                                 updateSubmitted={updateSubmitted}
@@ -33,4 +33,4 @@ const Leftbox: React.FC<LeftboxProps> = ({slot, slotInput, submitted, updateSubm
     else return <SubmittedView updateSubmitted={updateSubmitted} />
 }
 
-export default Leftbox;
+export default CashFromCard;

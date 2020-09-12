@@ -8,7 +8,8 @@ import moment from 'moment';
 
 import {
     Chatbox,
-    Leftbox,
+    CashFromCard,
+    CreditCard,
 } from './components';
 
 // import { validateData } from './utils/DataValidation';
@@ -76,6 +77,8 @@ function App() {
     const [userChatInput, setUserChatInput] = React.useState('');
     const [conversation, setConversation] = React.useState<conversationState[]>(mockConversation);
     const [showChatInMobile, setShowChatInMobile] = React.useState(false);
+    const [renderSection, setRenderSection] = React.useState('Credit Card');
+    const [renderModel, setRenderModel] = React.useState(false);
 
     const slotInput: slotInputType[] = [
         {
@@ -84,66 +87,6 @@ function App() {
             inputType: 'dropdown',
             inputLabel: 'Transfer from',
             optionList: [
-                {
-                    name: 'Hello',
-                    label: 'Hello',
-                    value: 'Hello',
-                },
-                {
-                    name: 'World',
-                    label: 'World',
-                    value: 'World',
-                },
-                {
-                    name: 'React',
-                    label: 'React',
-                    value: 'React',
-                },
-                {
-                    name: 'Hello',
-                    label: 'Hello',
-                    value: 'Hello',
-                },
-                {
-                    name: 'World',
-                    label: 'World',
-                    value: 'World',
-                },
-                {
-                    name: 'React',
-                    label: 'React',
-                    value: 'React',
-                },
-                {
-                    name: 'Hello',
-                    label: 'Hello',
-                    value: 'Hello',
-                },
-                {
-                    name: 'World',
-                    label: 'World',
-                    value: 'World',
-                },
-                {
-                    name: 'React',
-                    label: 'React',
-                    value: 'React',
-                },
-                {
-                    name: 'Hello',
-                    label: 'Hello',
-                    value: 'Hello',
-                },
-                {
-                    name: 'World',
-                    label: 'World',
-                    value: 'World',
-                },
-                {
-                    name: 'React',
-                    label: 'React',
-                    value: 'React',
-                },
                 {
                     name: 'Hello',
                     label: 'Hello',
@@ -187,6 +130,8 @@ function App() {
         },
     ];
 
+    const sections = ['Cash From Card', 'Credit Card'];
+
     React.useEffect(() => {
         // const rootStyle = document.documentElement.style;
         // rootStyle.setProperty('--sidebar-width', '10px');
@@ -225,6 +170,19 @@ function App() {
         setShowChatInMobile(prevState => { return !prevState });
     }
 
+    // FOR DEBUG PURPOSE ONLY
+    // START
+    const handleSectionsMenu = () => {
+        setRenderModel(prevState => { return !prevState });
+    }
+
+    const handleChangeSection = (section: string) => {
+        setRenderSection(() => { return section })
+        setRenderModel(prevState => { return !prevState });
+    }
+    // END
+
+
     return (
         <main className="AIVI-Page">
             <section className="AIVI-Sidebar">
@@ -243,13 +201,21 @@ function App() {
                 />
             </section>
             <section className="AIVI-Leftbox">
-                <Leftbox
-                    slot={userSlot}
-                    slotInput={slotInput}
-                    submitted={submitted}
-                    updateSubmitted={handleSubmit}
-                    handleInputChange={handleInputChange}
-                />
+                {
+                    renderSection === 'Cash From Card'
+                    ? (
+                        <CashFromCard
+                            slot={userSlot}
+                            slotInput={slotInput}
+                            submitted={submitted}
+                            updateSubmitted={handleSubmit}
+                            handleInputChange={handleInputChange}
+                        />
+                    )
+                    : (
+                        <CreditCard />
+                    )
+                }
             </section>
             <button
                 className="AIVI-Chatbox-Mobile-Button Button"
@@ -267,7 +233,19 @@ function App() {
                     conversation={conversation}
                 />
             </section>
-            
+            {/* FOR DEBUG PURPOSE ONLY */}
+            {/* START */}
+            <button className="Temporary-ChangeRender" onClick={handleSectionsMenu}>
+                Change Section
+            </button>
+            <div className="Temporary-Sections" data-visible={renderModel.toString()}>
+                <ul>
+                    {
+                        sections.map((section, index) => <li onClick={() => handleChangeSection(section)} key={index}>{section}</li>)
+                    }
+                </ul>
+            </div>
+            {/* END */}
         </main>
   );
 }

@@ -23,9 +23,12 @@ interface ChatboxProps {
 
 const Chatbox: React.FC<ChatboxProps> = ({userInput, updateInput, submitInput, conversation}) => {
     React.useEffect(() => {
-        const element = document.getElementById('Last-Dialog');
-        element?.scrollIntoView({block: 'end', inline: 'end', behavior: 'smooth'});
+        // Single Element only
+        // const element = document.getElementById('Last-Dialog');
+        // element?.scrollIntoView({block: 'end', inline: 'end', behavior: 'smooth'});
         // element?.scrollIntoView(false);
+        const elements: Element[] = Array.from(document.getElementsByClassName('Last-Dialog'));
+        elements.forEach(element => element.scrollIntoView({block: 'end', inline: 'end', behavior: 'smooth'}));
     }, [conversation]);
 
     const handleUpdate = (text: string) => updateInput(text);
@@ -45,7 +48,7 @@ const Chatbox: React.FC<ChatboxProps> = ({userInput, updateInput, submitInput, c
                             {
                                 conversation.map((conversationItem, index) => (
                                     <div
-                                        className="Dialog-Container"
+                                        className={`Dialog-Container ${index === (conversation.length - 1) ? 'Last-Dialog' : 'Not-Last-Dialog'}`}
                                         data-side={conversationItem.user === 'bot' ? 'left' : 'right'}
                                         id={index === (conversation.length - 1) ? 'Last-Dialog' : 'Not-Last-Dialog'}
                                         key={index}

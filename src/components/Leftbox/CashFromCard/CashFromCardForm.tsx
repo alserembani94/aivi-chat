@@ -1,5 +1,5 @@
 import React from 'react';
-import { InputBox, InputDropdown } from '../CustomInput';
+import { InputBox, InputDropdown } from '../../CustomComponent';
 
 type slotInputType = {
     inputName: string,
@@ -22,7 +22,7 @@ type InputOptionType = {
     value: string;
 };
 
-interface LeftboxProps {
+interface CashFromCardProps {
     slot: slotType;
     slotInput: slotInputType[];
     updateSubmitted: () => void;
@@ -30,18 +30,18 @@ interface LeftboxProps {
     optionList?: InputOptionType[];
 }
 
-const LeftboxForm: React.FC<LeftboxProps> = ({slot, slotInput, updateSubmitted, handleInputChange, optionList}) => {
+const CashFromCardForm: React.FC<CashFromCardProps> = ({slot, slotInput, updateSubmitted, handleInputChange, optionList}) => {
 
     return (
         <>
-            <section className="Leftbox-Content">
-                <p className="Leftbox-Title">
+            <section className="CashFromCard-Content">
+                <p className="CashFromCard-Title">
                     Application Status: In Progress
                 </p>
-                <p className="Leftbox-Description">
+                <p className="CashFromCard-Description">
                     You can view your progress so far here. Feel free to edit the information by clicking on the field.
                 </p>
-                <div className="Leftbox-Details">
+                <div className="CashFromCard-Details">
                     {
                         slotInput.map((slotInputItem: slotInputType, index: number) => (
                             slotInputItem.inputType === 'dropdown'
@@ -67,7 +67,7 @@ const LeftboxForm: React.FC<LeftboxProps> = ({slot, slotInput, updateSubmitted, 
                     }
                 </div>
             </section>
-            <section className="Leftbox-Button">
+            <section className="CashFromCard-Button">
                 <button
                     className="Button Button-Full"
                     onClick={updateSubmitted}
@@ -80,4 +80,4 @@ const LeftboxForm: React.FC<LeftboxProps> = ({slot, slotInput, updateSubmitted, 
     );
 }
 
-export default LeftboxForm;
+export default CashFromCardForm;
