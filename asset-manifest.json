@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/aivi-chat/static/css/main.be0a96db.chunk.css",
+    "main.js": "/aivi-chat/static/js/main.6b176206.chunk.js",
+    "main.js.map": "/aivi-chat/static/js/main.6b176206.chunk.js.map",
+    "runtime-main.js": "/aivi-chat/static/js/runtime-main.c12e0f39.js",
+    "runtime-main.js.map": "/aivi-chat/static/js/runtime-main.c12e0f39.js.map",
+    "static/js/2.5ac21f02.chunk.js": "/aivi-chat/static/js/2.5ac21f02.chunk.js",
+    "static/js/2.5ac21f02.chunk.js.map": "/aivi-chat/static/js/2.5ac21f02.chunk.js.map",
+    "index.html": "/aivi-chat/index.html",
+    "precache-manifest.2f357c672797e30a275964ed276bd884.js": "/aivi-chat/precache-manifest.2f357c672797e30a275964ed276bd884.js",
+    "service-worker.js": "/aivi-chat/service-worker.js",
+    "static/css/main.be0a96db.chunk.css.map": "/aivi-chat/static/css/main.be0a96db.chunk.css.map",
+    "static/js/2.5ac21f02.chunk.js.LICENSE.txt": "/aivi-chat/static/js/2.5ac21f02.chunk.js.LICENSE.txt",
+    "static/media/index.scss": "/aivi-chat/static/media/FontsFree-Net-Proxima-Nova-Xbold.5243e362.otf"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c12e0f39.js",
+    "static/js/2.5ac21f02.chunk.js",
+    "static/css/main.be0a96db.chunk.css",
+    "static/js/main.6b176206.chunk.js"
+  ]
+}
