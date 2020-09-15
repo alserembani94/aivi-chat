@@ -88,6 +88,7 @@ const InputDropdown: React.FC<InputDropdownProps> = ({slot, inputProps, index, h
     };
 
     const handleChooseOption = (value: string) => {
+        console.log('Go here?');
         handleInputChange(value, inputProps.inputState);
         setDropdown(prevState => { return !prevState });
     };
@@ -97,10 +98,10 @@ const InputDropdown: React.FC<InputDropdownProps> = ({slot, inputProps, index, h
         // setDropdown(prevState => { return true });
     };
 
-    const handleInputBlur = (e: any) => {
-        // if (e.currentTarget.parentElement?.parentElement?.parentElement)  e.currentTarget.parentElement.parentElement.parentElement.style.boxShadow = 'var(--box-shadow)';
-        setDropdown(prevState => { return false });
-    };
+    // const handleInputBlur = (e: any) => {
+    //     // if (e.currentTarget.parentElement?.parentElement?.parentElement)  e.currentTarget.parentElement.parentElement.parentElement.style.boxShadow = 'var(--box-shadow)';
+    //     setDropdown(prevState => { return false });
+    // };
 
     return (
         <div className="InputDropdown-Wrapper" ref={dropdownElement}>
@@ -119,9 +120,8 @@ const InputDropdown: React.FC<InputDropdownProps> = ({slot, inputProps, index, h
                         }
                         <input
                             type={inputProps.inputType}
-                            readOnly={true}
+                            readOnly={false}
                             onFocus={handleInputFocus}
-                            onBlur={handleInputBlur}
                             value={slot[inputProps.inputState]}
                             onChange={({ currentTarget: {value} }) => handleInputChange(value, inputProps.inputName)}
                         />
@@ -136,27 +136,21 @@ const InputDropdown: React.FC<InputDropdownProps> = ({slot, inputProps, index, h
                             <IoIosClose />
                         </IconContext.Provider>
                     </button>
-                    <button
+                    <div
                         className="InputDropdown-Button Button"
                         onClick={toggleDropdown}
                     >
                         <IconContext.Provider value={{ className: 'Icon Icon-Dark Icon-Down' }} >
                             <IoIosArrowDown />
                         </IconContext.Provider>
-                    </button>
+                    </div>
                 </div>
             </div>
             <div
                 className="InputDropdown-List"
-                data-show={isDropdown.toString()}
+                data-show={isDropdown}
             >
                 <ul>
-                    {/* <li
-                        onClick={handleChooseOption}
-                    >
-                        Hello
-                    </li>
-                    <li>Everyone</li> */}
                     {
                         inputProps.optionList && inputProps.optionList.map((optionItem, index) => (
                             <li

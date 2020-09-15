@@ -90,7 +90,7 @@ const AvailableCard: React.FC = () => {
 
     return (
         <React.Fragment>
-            <div id="MultipleChoice" ref={tempRef}>
+            <div ref={tempRef}>
                 <MultipleCheckbox
                     optionList={optionList}
                     selectedOptions={selectedOptions}

@@ -5,11 +5,17 @@ import {
     Checkbox,
     MultipleCheckbox,
 } from './Checkbox';
+import {
+    ImageSelect,
+    MultiImageSelect,
+} from './ImageSelect';
 
 export {
     Checkbox,
+    ImageSelect,
     InputBox,
     InputDropdown,
+    MultiImageSelect,
     MultipleCheckbox,
     TabBar,
 };

@@ -19,6 +19,12 @@ const TabBar: React.FC<TabBarProps> = ({currentTab, updateTab, optionList}) => {
         updateTab(selectedTab);
     }
 
+    React.useEffect(() => {
+        const tabBody = document.getElementById(currentTab);
+        tabBody && tabBody.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'start'});
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
     return (
         <React.Fragment>
             <div className="TabBar-Container">

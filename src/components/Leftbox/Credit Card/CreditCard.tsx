@@ -3,6 +3,7 @@ import {
     TabBar,
 } from '../../CustomComponent';
 import AvailableCard from './AvailableCard';
+import Expenses from './Expenses';
 
 const CreditCard = () => {
     const [currentTab, setCurrentTab] = React.useState('Available Card');
@@ -16,28 +17,28 @@ const CreditCard = () => {
         {
             label: 'Expenses',
             name: 'Expenses',
-            content: <div>Expenses Element</div>,
+            content: <Expenses />,
         },
         {
             label: 'Monthly Income',
             name: 'Monthly Income',
             content: <div>Income Element</div>,
         },
-        {
-            label: 'Card',
-            name: 'Card',
-            content: <AvailableCard />,
-        },
-        {
-            label: 'Hello',
-            name: 'Hello',
-            content: <div>Expenses Element</div>,
-        },
-        {
-            label: 'Malaysia',
-            name: 'Malaysia',
-            content: <div>Income Element</div>,
-        },
+        // {
+        //     label: 'Card',
+        //     name: 'Card',
+        //     content: <AvailableCard />,
+        // },
+        // {
+        //     label: 'Hello',
+        //     name: 'Hello',
+        //     content: <div>Expenses Element</div>,
+        // },
+        // {
+        //     label: 'Malaysia',
+        //     name: 'Malaysia',
+        //     content: <div>Income Element</div>,
+        // },
     ];
 
     const handleChangeTab = (selectedTab: string) => {
