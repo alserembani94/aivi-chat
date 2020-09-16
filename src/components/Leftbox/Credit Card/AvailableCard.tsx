@@ -3,8 +3,13 @@ import {
     MultipleCheckbox,
 } from '../../CustomComponent';
 
-const AvailableCard: React.FC = () => {
-    const [selectedOptions, setSelectedOptions] = React.useState<string[]>([]);
+interface AvailableCardProps {
+    selectedOptions: string[];
+    updateSelectedOptions: (selected: string[]) => void;
+    optionLimit: number;
+}
+
+const AvailableCard: React.FC<AvailableCardProps> = ({selectedOptions, updateSelectedOptions, optionLimit}) => {
     const optionList = [
         {
             name: 'CIMB Bank',
@@ -75,7 +80,7 @@ const AvailableCard: React.FC = () => {
     const [rowSpan, setRowSpan] = React.useState(2);
 
     const handleModifySelectedOptions = (selected: string[]) => {
-        setSelectedOptions(selected);
+        updateSelectedOptions(selected);
     }
     
     React.useEffect(() => {

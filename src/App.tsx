@@ -80,56 +80,6 @@ function App() {
     const [renderSection, setRenderSection] = React.useState('Credit Card');
     const [renderModel, setRenderModel] = React.useState(false);
 
-    const slotInput: slotInputType[] = [
-        {
-            inputName: 'transferFrom',
-            inputState: 'transferFrom',
-            inputType: 'dropdown',
-            inputLabel: 'Transfer from',
-            optionList: [
-                {
-                    name: 'Hello',
-                    label: 'Hello',
-                    value: 'Hello',
-                },
-                {
-                    name: 'World',
-                    label: 'World',
-                    value: 'World',
-                },
-                {
-                    name: 'React',
-                    label: 'React',
-                    value: 'React',
-                },
-            ],
-        },
-        {
-            inputName: 'name',
-            inputState: 'name',
-            inputType: 'text',
-            inputLabel: 'Name',
-        },
-        {
-            inputName: 'phone',
-            inputState: 'phone',
-            inputType: 'text',
-            inputLabel: 'Phone',
-        },
-        {
-            inputName: 'email',
-            inputState: 'email',
-            inputType: 'email',
-            inputLabel: 'Email',
-        },
-        {
-            inputName: 'amount',
-            inputState: 'amount',
-            inputType: 'number',
-            inputLabel: 'Amount',
-        },
-    ];
-
     const sections = ['Cash From Card', 'Credit Card'];
 
     React.useEffect(() => {
@@ -206,7 +156,6 @@ function App() {
                     ? (
                         <CashFromCard
                             slot={userSlot}
-                            slotInput={slotInput}
                             submitted={submitted}
                             updateSubmitted={handleSubmit}
                             handleInputChange={handleInputChange}

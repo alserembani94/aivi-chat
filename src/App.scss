@@ -40,6 +40,9 @@
   --dropdown-hover: #F1F1F1;
   --inactive: var(--input-label);
   --imageselect-background: #F7F7FA;
+  --slider-track: var(--base-background);
+  --slider-thumb: #CF1A2D;
+  --slider-track-between: #F25767;
 
   // Theme standardisation
   --box-shadow: 0 4px 10px var(--shadow);
@@ -261,7 +264,7 @@ button:focus {
       box-shadow: var(--dropdown-shadow);
       overflow: hidden;
       padding: 5px 0;
-      z-index: 19;
+      z-index: 21;
       max-height: 50vh;
       overflow: auto;
       ul {
@@ -285,6 +288,53 @@ button:focus {
         top: 0;
         transition: all 0.1s ease-in-out;
       }
+    }
+    &-NoData {
+      cursor: not-allowed;
+      color: var(--text-light);
+      &:hover {
+        background-color: transparent !important;
+        cursor: not-allowed;
+      }
+    }
+  }
+}
+
+.RangeSlider {
+  &-Wrapper {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &-Item {
+    width: 100%;
+    height: 1.5rem;
+    display: flex;
+    align-items: center;
+  }
+  &-Thumb {
+    width: 8px;
+    height: 100%;
+    background: var(--slider-thumb);
+    border-radius: 8px;
+    &:hover {
+      transform: scaleY(1.5) scaleX(1.2);
+    }
+  }
+  &-Track {
+    height: 60%;
+    background: var(--slider-track);
+    &-0 {
+      border-top-left-radius: 1rem;
+      border-bottom-left-radius: 1rem;
+    }
+    &-1 {
+      background: var(--slider-track-between);
+    }
+    &-2 {
+      border-top-right-radius: 1rem;
+      border-bottom-right-radius: 1rem;
     }
   }
 }
@@ -514,6 +564,7 @@ input[type=number] {
   display: flex;
   flex-flow: column wrap;
   align-items: center;
+  padding: 0px 15px;
   &-SelectWrapper {
     width: 100%;
     max-width: 500px;
@@ -540,6 +591,64 @@ input[type=number] {
         cursor: not-allowed;
       }
     }
+  }
+}
+
+.ExpenseDetails {
+  &-Wrapper {
+    // background: burlywood;
+    width: 100%;
+    margin-bottom: 30px;
+  }
+  &-Title {
+    font-size: 1rem;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+  }
+  &-Container {
+    background: var(--light-background);
+    border: var(--imageselect-border);
+    border-radius: 8px;
+    width: 100%;
+    padding: 20px;
+    box-shadow: var(--imageselect-shadow);
+  }
+  &-Item {
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    &:last-child {
+      margin-bottom: 0px;
+    }
+  }
+  &-Input {
+    padding: 10px;
+    width: 8ch;
+    box-shadow: var(--box-shadow);
+    border-radius: 4px;
+    text-align: center;
+  }
+  &-Label {
+    font-size: 0.8rem;
+    color: var(--text-dark);
+    margin-bottom: 5px;
+  }
+  &-Slider {
+    width: calc(100% - 16ch - 40px - 40px);
+  }
+}
+
+.MonthlyIncome {
+  &-Wrapper {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: stretch;
+  }
+  &-Container {
+    margin-bottom: 40px;
   }
 }
 
@@ -592,7 +701,7 @@ input[type=number] {
       width: 100%;
       flex-shrink: 0;
       padding: 5px;
-      height: 57vh;
+      height: 71vh;
       overflow: auto;
     }
   }

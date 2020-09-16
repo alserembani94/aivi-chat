@@ -17,16 +17,14 @@ interface CashFromCardProps {
         email: string,
         amount: string,
     };
-    slotInput: slotInputType[];
     submitted: boolean;
     updateSubmitted: () => void;
     handleInputChange: (value: string, stateName: string) => void;
 }
 
-const CashFromCard: React.FC<CashFromCardProps> = ({slot, slotInput, submitted, updateSubmitted, handleInputChange}) => {
+const CashFromCard: React.FC<CashFromCardProps> = ({slot, submitted, updateSubmitted, handleInputChange}) => {
     if (!submitted) return <CashFromCardForm
                                 slot={slot}
-                                slotInput={slotInput}
                                 updateSubmitted={updateSubmitted}
                                 handleInputChange={handleInputChange}
                             />

@@ -21,20 +21,13 @@ type slotInputType = {
 };
 
 // All slot data
-type slotType = {
-    [transferFrom: string]: string,
-    name: string,
-    phone: string,
-    email: string,
-    amount: string,
-};
 
 // Props Configuration
 interface InputDropdownProps {
-    slot: slotType;
+    slot: any;
     inputProps: slotInputType;
-    index: number;
     handleInputChange: (value: string, stateName: string) => void;
+    allowInput: boolean;
     
 }
 
@@ -61,7 +54,7 @@ interface InputDropdownProps {
 //     }, [ref]);
 // }
 
-const InputDropdown: React.FC<InputDropdownProps> = ({slot, inputProps, index, handleInputChange}) => {
+const InputDropdown: React.FC<InputDropdownProps> = ({slot, inputProps, handleInputChange, allowInput = false}) => {
     const [isDropdown, setDropdown] = React.useState(false);
 
     const dropdownElement = React.useRef<null | HTMLDivElement>(null);
@@ -107,7 +100,6 @@ const InputDropdown: React.FC<InputDropdownProps> = ({slot, inputProps, index, h
         <div className="InputDropdown-Wrapper" ref={dropdownElement}>
             <div
                 className="InputBox-Container InputDropdown-Container"
-                key={index}
             >
                 <div
                     className="InputDropdown-Thumb"
@@ -120,10 +112,11 @@ const InputDropdown: React.FC<InputDropdownProps> = ({slot, inputProps, index, h
                         }
                         <input
                             type={inputProps.inputType}
-                            readOnly={false}
+                            readOnly={!allowInput}
                             onFocus={handleInputFocus}
                             value={slot[inputProps.inputState]}
                             onChange={({ currentTarget: {value} }) => handleInputChange(value, inputProps.inputName)}
+                            placeholder={allowInput ? 'Select from dropdown, or type your own': 'Select from dropdown'}
                         />
                     </div>
                 </div>
@@ -152,7 +145,8 @@ const InputDropdown: React.FC<InputDropdownProps> = ({slot, inputProps, index, h
             >
                 <ul>
                     {
-                        inputProps.optionList && inputProps.optionList.map((optionItem, index) => (
+                        inputProps.optionList && inputProps.optionList.length !== 0
+                        ? inputProps.optionList.map((optionItem, index) => (
                             <li
                                 key={index}
                                 onClick={() => handleChooseOption(optionItem.value)}
@@ -160,6 +154,14 @@ const InputDropdown: React.FC<InputDropdownProps> = ({slot, inputProps, index, h
                                 {optionItem.label}
                             </li>
                         ))
+                        : (
+                            <li
+                                className="InputDropdown-NoData"
+                            >
+                                No item to display
+                            </li>
+                        )
+                        
                     }
                 </ul>
             </div>
@@ -168,23 +170,3 @@ const InputDropdown: React.FC<InputDropdownProps> = ({slot, inputProps, index, h
 };
 
 export default InputDropdown;
-
-// eslint-disable-next-line no-lone-blocks
-{/* <div
-            className="InputBox-Container"
-            key={index}
-        >
-            <p className="InputBox-Label">{inputProps.inputLabel}</p>
-            <div className="InputBox-InputArea">
-                {
-                    inputProps.inputName === 'amount' && <p className="InputBox-Currency">RM</p>
-                }
-                <input
-                    type={inputProps.inputType}
-                    onFocus={handleInputFocus}
-                    onBlur={handleInputBlur}
-                    value={slot[inputProps.inputState]}
-                    onChange={({ currentTarget: {value} }) => handleInputChange(value, inputProps.inputName)}
-                />
-            </div>
-        </div> */}

@@ -5,10 +5,26 @@ import {
 import ExpensesDetails from './ExpensesDetails';
 import { Images } from '../../../utils/Images';
 
-const Expenses = () => {
-    const [selectedOptions, setSelectedOptions] = React.useState<string[]>([]);
+type ExpenseDetails = {
+    category: string,
+    subcategory?: {
+        name: string,
+        expenseRange: number[],
+    }[],
+    expenseRange?: number[],
+}[];
+
+interface ExpensesProps {
+    selectedOptions: string[];
+    updateSelectedOptions: (selected: string[]) => void;
+    optionLimit: number;
+    expenseDetails: ExpenseDetails;
+    generateExpenseObject: () => void;
+    updateExpenseObject: (expenseObject: ExpenseDetails) => void;
+}
+
+const Expenses: React.FC<ExpensesProps> = ({selectedOptions, updateSelectedOptions, optionLimit, expenseDetails, generateExpenseObject, updateExpenseObject}) => {
     const [optionDetailRender, setOptionDetailRender] = React.useState<boolean>(false);
-    const optionLimit = 3;
     const optionList = [
         {
             name: 'Shopping',
@@ -58,11 +74,19 @@ const Expenses = () => {
     ];
 
     const handleOptionDetails = () => {
+        if (!optionDetailRender) {
+            generateExpenseObject();
+        }
+
         setOptionDetailRender(prevState => { return !prevState });
     }
 
     const handleModifySelectedOptions = (selected: string[]) => {
-        setSelectedOptions(selected);
+        updateSelectedOptions(selected);
+    }
+
+    const handleExpenseDetailsUpdate = (expenseDetails: ExpenseDetails) => {
+        updateExpenseObject(expenseDetails);
     }
 
     return (
@@ -81,7 +105,10 @@ const Expenses = () => {
                         </div>
                     )
                     : (
-                        <ExpensesDetails />
+                        <ExpensesDetails
+                            details={expenseDetails}
+                            updateExpenseObject={handleExpenseDetailsUpdate}
+                        />
                     )
                 }
                 <div className="Expenses-Proceed">

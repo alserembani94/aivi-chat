@@ -1,7 +1,7 @@
 import React from 'react';
 import { InputBox, InputDropdown } from '../../CustomComponent';
 
-type slotInputType = {
+type slotInputItemType = {
     inputName: string,
     inputState: string,
     inputType: string,
@@ -24,14 +24,70 @@ type InputOptionType = {
 
 interface CashFromCardProps {
     slot: slotType;
-    slotInput: slotInputType[];
     updateSubmitted: () => void;
     handleInputChange: (value: string, stateName: string) => void;
     optionList?: InputOptionType[];
 }
 
-const CashFromCardForm: React.FC<CashFromCardProps> = ({slot, slotInput, updateSubmitted, handleInputChange, optionList}) => {
+type slotInputType = {
+    inputName: string,
+    inputState: string,
+    inputType: string,
+    inputLabel: string,
+    optionList?: InputOptionType[];
+};
 
+const slotInput: slotInputType[] = [
+        {
+            inputName: 'transferFrom',
+            inputState: 'transferFrom',
+            inputType: 'dropdown',
+            inputLabel: 'Transfer from',
+            optionList: [
+                {
+                    name: 'Hello',
+                    label: 'Hello',
+                    value: 'Hello',
+                },
+                {
+                    name: 'World',
+                    label: 'World',
+                    value: 'World',
+                },
+                {
+                    name: 'React',
+                    label: 'React',
+                    value: 'React',
+                },
+            ],
+        },
+        {
+            inputName: 'name',
+            inputState: 'name',
+            inputType: 'text',
+            inputLabel: 'Name',
+        },
+        {
+            inputName: 'phone',
+            inputState: 'phone',
+            inputType: 'text',
+            inputLabel: 'Phone',
+        },
+        {
+            inputName: 'email',
+            inputState: 'email',
+            inputType: 'email',
+            inputLabel: 'Email',
+        },
+        {
+            inputName: 'amount',
+            inputState: 'amount',
+            inputType: 'number',
+            inputLabel: 'Amount',
+        },
+    ];
+
+const CashFromCardForm: React.FC<CashFromCardProps> = ({slot, updateSubmitted, handleInputChange, optionList}) => {
     return (
         <>
             <section className="CashFromCard-Content">
@@ -43,14 +99,14 @@ const CashFromCardForm: React.FC<CashFromCardProps> = ({slot, slotInput, updateS
                 </p>
                 <div className="CashFromCard-Details">
                     {
-                        slotInput.map((slotInputItem: slotInputType, index: number) => (
+                        slotInput.map((slotInputItem: slotInputItemType, index: number) => (
                             slotInputItem.inputType === 'dropdown'
                             ? (
                                 <InputDropdown
                                     slot={slot}
                                     inputProps={slotInputItem}
-                                    index={index}
                                     handleInputChange={handleInputChange}
+                                    allowInput={true}
                                     key={index}
                                 />
                             )
@@ -58,7 +114,6 @@ const CashFromCardForm: React.FC<CashFromCardProps> = ({slot, slotInput, updateS
                                 <InputBox
                                     slot={slot}
                                     inputProps={slotInputItem}
-                                    index={index}
                                     handleInputChange={handleInputChange}
                                     key={index}
                                 />
