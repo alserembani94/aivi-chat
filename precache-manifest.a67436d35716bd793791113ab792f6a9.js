@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "ac8e06c60e446c8c178c137ba54a31a7",
+    "revision": "3573e7aff195de6c10105824f511d364",
     "url": "/aivi-chat/index.html"
   },
   {
-    "revision": "c347b5222add5b4ad10c",
-    "url": "/aivi-chat/static/css/main.be0a96db.chunk.css"
+    "revision": "0072b77e148d76f68974",
+    "url": "/aivi-chat/static/css/main.e221290c.chunk.css"
   },
   {
-    "revision": "c0de9c0eddac92b5ccbf",
-    "url": "/aivi-chat/static/js/2.5ac21f02.chunk.js"
+    "revision": "2f9fa65e6ff916b1bdf4",
+    "url": "/aivi-chat/static/js/2.5c377da7.chunk.js"
   },
   {
     "revision": "849657740f66d00720db130cc1e94c97",
-    "url": "/aivi-chat/static/js/2.5ac21f02.chunk.js.LICENSE.txt"
+    "url": "/aivi-chat/static/js/2.5c377da7.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "c347b5222add5b4ad10c",
-    "url": "/aivi-chat/static/js/main.6b176206.chunk.js"
+    "revision": "0072b77e148d76f68974",
+    "url": "/aivi-chat/static/js/main.f288b5ca.chunk.js"
   },
   {
     "revision": "a26740b1ffc503326b77",
@@ -74,5 +74,41 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "5243e362912f7119ede836ab03f23ac7",
     "url": "/aivi-chat/static/media/FontsFree-Net-Proxima-Nova-Xbold.5243e362.otf"
+  },
+  {
+    "revision": "a0313c6307eee971bbf71278b3dbc71e",
+    "url": "/aivi-chat/static/media/Icon-Dining.a0313c63.svg"
+  },
+  {
+    "revision": "6f2e83721bb09e3575b6b2ec1eb2b366",
+    "url": "/aivi-chat/static/media/Icon-Education.6f2e8372.svg"
+  },
+  {
+    "revision": "99ed0e0746aa89bc41a816cc7fa9f56b",
+    "url": "/aivi-chat/static/media/Icon-Entertainment.99ed0e07.svg"
+  },
+  {
+    "revision": "74f92bf8f26c6d3cf753aacf11df71f5",
+    "url": "/aivi-chat/static/media/Icon-Groceries.74f92bf8.svg"
+  },
+  {
+    "revision": "ed0e2fa8b12f695e6778f5669e179c1d",
+    "url": "/aivi-chat/static/media/Icon-Health.ed0e2fa8.svg"
+  },
+  {
+    "revision": "3a7fd64f73a9e6aef9bf637d6d7324bf",
+    "url": "/aivi-chat/static/media/Icon-Petrol.3a7fd64f.svg"
+  },
+  {
+    "revision": "cfd7ddc2239b4483275a0d44653ce217",
+    "url": "/aivi-chat/static/media/Icon-Shopping.cfd7ddc2.svg"
+  },
+  {
+    "revision": "2ee0d82073119a0618716d558d09ecc1",
+    "url": "/aivi-chat/static/media/Icon-Travel.2ee0d820.svg"
+  },
+  {
+    "revision": "84da2eebdd090dc61aa7f28d24a6eb4b",
+    "url": "/aivi-chat/static/media/Icon-Utilities.84da2eeb.svg"
   }
 ]);

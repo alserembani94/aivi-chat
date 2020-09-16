@@ -1,23 +1,32 @@
 {
   "files": {
-    "main.css": "/aivi-chat/static/css/main.be0a96db.chunk.css",
-    "main.js": "/aivi-chat/static/js/main.6b176206.chunk.js",
-    "main.js.map": "/aivi-chat/static/js/main.6b176206.chunk.js.map",
+    "main.css": "/aivi-chat/static/css/main.e221290c.chunk.css",
+    "main.js": "/aivi-chat/static/js/main.f288b5ca.chunk.js",
+    "main.js.map": "/aivi-chat/static/js/main.f288b5ca.chunk.js.map",
     "runtime-main.js": "/aivi-chat/static/js/runtime-main.c12e0f39.js",
     "runtime-main.js.map": "/aivi-chat/static/js/runtime-main.c12e0f39.js.map",
-    "static/js/2.5ac21f02.chunk.js": "/aivi-chat/static/js/2.5ac21f02.chunk.js",
-    "static/js/2.5ac21f02.chunk.js.map": "/aivi-chat/static/js/2.5ac21f02.chunk.js.map",
+    "static/js/2.5c377da7.chunk.js": "/aivi-chat/static/js/2.5c377da7.chunk.js",
+    "static/js/2.5c377da7.chunk.js.map": "/aivi-chat/static/js/2.5c377da7.chunk.js.map",
     "index.html": "/aivi-chat/index.html",
-    "precache-manifest.2f357c672797e30a275964ed276bd884.js": "/aivi-chat/precache-manifest.2f357c672797e30a275964ed276bd884.js",
+    "precache-manifest.a67436d35716bd793791113ab792f6a9.js": "/aivi-chat/precache-manifest.a67436d35716bd793791113ab792f6a9.js",
     "service-worker.js": "/aivi-chat/service-worker.js",
-    "static/css/main.be0a96db.chunk.css.map": "/aivi-chat/static/css/main.be0a96db.chunk.css.map",
-    "static/js/2.5ac21f02.chunk.js.LICENSE.txt": "/aivi-chat/static/js/2.5ac21f02.chunk.js.LICENSE.txt",
-    "static/media/index.scss": "/aivi-chat/static/media/FontsFree-Net-Proxima-Nova-Xbold.5243e362.otf"
+    "static/css/main.e221290c.chunk.css.map": "/aivi-chat/static/css/main.e221290c.chunk.css.map",
+    "static/js/2.5c377da7.chunk.js.LICENSE.txt": "/aivi-chat/static/js/2.5c377da7.chunk.js.LICENSE.txt",
+    "static/media/index.scss": "/aivi-chat/static/media/FontsFree-Net-Proxima-Nova-Xbold.5243e362.otf",
+    "static/media/Icon-Dining.svg": "/aivi-chat/static/media/Icon-Dining.a0313c63.svg",
+    "static/media/Icon-Education.svg": "/aivi-chat/static/media/Icon-Education.6f2e8372.svg",
+    "static/media/Icon-Entertainment.svg": "/aivi-chat/static/media/Icon-Entertainment.99ed0e07.svg",
+    "static/media/Icon-Groceries.svg": "/aivi-chat/static/media/Icon-Groceries.74f92bf8.svg",
+    "static/media/Icon-Health.svg": "/aivi-chat/static/media/Icon-Health.ed0e2fa8.svg",
+    "static/media/Icon-Petrol.svg": "/aivi-chat/static/media/Icon-Petrol.3a7fd64f.svg",
+    "static/media/Icon-Shopping.svg": "/aivi-chat/static/media/Icon-Shopping.cfd7ddc2.svg",
+    "static/media/Icon-Travel.svg": "/aivi-chat/static/media/Icon-Travel.2ee0d820.svg",
+    "static/media/Icon-Utilities.svg": "/aivi-chat/static/media/Icon-Utilities.84da2eeb.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.c12e0f39.js",
-    "static/js/2.5ac21f02.chunk.js",
-    "static/css/main.be0a96db.chunk.css",
-    "static/js/main.6b176206.chunk.js"
+    "static/js/2.5c377da7.chunk.js",
+    "static/css/main.e221290c.chunk.css",
+    "static/js/main.f288b5ca.chunk.js"
   ]
 }
