@@ -2,7 +2,12 @@ import React from 'react';
 import {
     InputBox,
     InputDropdown,
+    ToggleText,
 } from '../../CustomComponent';
+import {
+    IoIosAdd,
+} from 'react-icons/io';
+import { IconContext } from 'react-icons/lib';
 
 type IncomeSourceType = {
     category: string,
@@ -38,29 +43,6 @@ type slotInputItemType = {
 };
 
 const incomeSourceFormat: slotInputItemType[] = [
-    // {
-    //     inputName: 'transferFrom',
-    //     inputState: 'transferFrom',
-    //     inputType: 'dropdown',
-    //     inputLabel: 'Transfer from',
-    //     optionList: [
-    //         {
-    //             name: 'Hello',
-    //             label: 'Hello',
-    //             value: 'Hello',
-    //         },
-    //         {
-    //             name: 'World',
-    //             label: 'World',
-    //             value: 'World',
-    //         },
-    //         {
-    //             name: 'React',
-    //             label: 'React',
-    //             value: 'React',
-    //         },
-    //     ],
-    // },
     {
         inputName: 'industry',
         inputState: 'industry',
@@ -68,19 +50,34 @@ const incomeSourceFormat: slotInputItemType[] = [
         inputLabel: 'Industry',
         optionList: [
             {
-                name: 'Hello',
-                label: 'Hello',
-                value: 'Hello',
+                name: 'Food',
+                label: 'Food',
+                value: 'Food',
             },
             {
-                name: 'World',
-                label: 'World',
-                value: 'World',
+                name: 'Hospitality',
+                label: 'Hospitality',
+                value: 'Hospitality',
             },
             {
-                name: 'React',
-                label: 'React',
-                value: 'React',
+                name: 'Technology',
+                label: 'Technology',
+                value: 'Technology',
+            },
+            {
+                name: 'Tourism',
+                label: 'Tourism',
+                value: 'Tourism',
+            },
+            {
+                name: 'Healthcare',
+                label: 'Healthcare',
+                value: 'Healthcare',
+            },
+            {
+                name: 'Defense & Security',
+                label: 'Defense & Security',
+                value: 'Defense & Security',
             },
         ],
     },
@@ -91,19 +88,19 @@ const incomeSourceFormat: slotInputItemType[] = [
         inputLabel: 'Level',
         optionList: [
             {
-                name: 'Hello',
-                label: 'Hello',
-                value: 'Hello',
+                name: 'Non-executive',
+                label: 'Non-executive',
+                value: 'Non-executive',
             },
             {
-                name: 'World',
-                label: 'World',
-                value: 'World',
+                name: 'Executive',
+                label: 'Executive',
+                value: 'Executive',
             },
             {
-                name: 'React',
-                label: 'React',
-                value: 'React',
+                name: 'Management',
+                label: 'Management',
+                value: 'Management',
             },
         ],
     },
@@ -121,6 +118,8 @@ const incomeSourceFormat: slotInputItemType[] = [
     },
 ];
 
+const categoryToggleOptions = ['Primary', 'Secondary'];
+
 const MonthlyIncomeItem: React.FC<IncomeSourceItemProps> = ({incomeSource, incomeNo, handleIncomeSourceItemUpdate}) => {
     const handleInputChange = (value: string, stateName: string) => {
         const updatedIncomeSourceItem = {...incomeSource, [stateName]: value};
@@ -129,7 +128,14 @@ const MonthlyIncomeItem: React.FC<IncomeSourceItemProps> = ({incomeSource, incom
 
     return (
         <div className="MonthlyIncome-Container">
-            <p>Income {incomeNo}</p>
+            <div className="MonthlyIncome-SectionHeader">
+                <p className="MonthlyIncome-SectionTitle">Income {incomeNo}</p>
+                <ToggleText
+                    optionList={categoryToggleOptions}
+                    selected={incomeSource.category}
+                    handleToggleUpdate={(value: string) => handleInputChange(value, 'category')}
+                />
+            </div>
             {
                 incomeSourceFormat.map((incomeSourceItem, index) => (
                     incomeSourceItem.inputType === 'dropdown'
@@ -152,11 +158,6 @@ const MonthlyIncomeItem: React.FC<IncomeSourceItemProps> = ({incomeSource, incom
                     )
                 ))
             }
-            {/* <InputBox
-                slot={incomeSource}
-                inputProps={incomeSourceFormat[0]}
-
-            /> */}
         </div>
     );
 }
@@ -170,7 +171,7 @@ const MonthlyIncome: React.FC<MonthlyIncomeProps> = ({ incomeSources, handleInco
 
     const addIncomeSource = () => {
         const emptyIncomeSource = {
-            category: '',
+            category: 'Secondary',
             industry: '',
             level: '',
             jobTitle: '',
@@ -192,7 +193,13 @@ const MonthlyIncome: React.FC<MonthlyIncomeProps> = ({ incomeSources, handleInco
                         />
                     ))
                 }
-                <button onClick={addIncomeSource}>Add</button>
+                <div className="MonthlyIncome-Action">
+                    <button className="MonthlyIncome-AddButton" onClick={addIncomeSource}>
+                        <IconContext.Provider value={{ className: 'Icon Icon-AddIncome' }} >
+                            <IoIosAdd />
+                        </IconContext.Provider>
+                    </button>
+                </div>
             </div>
         </React.Fragment>
     );
