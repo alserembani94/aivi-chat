@@ -10,7 +10,6 @@ type optionList = {
     label: string,
     name: string,
     content: JSX.Element;
-    enabled?: boolean;
 };
 
 type ExpenseDetails = {
@@ -102,7 +101,7 @@ const CreditCard = () => {
     
     // TAB CONFIGURATION
     const [currentTab, setCurrentTab] = React.useState('Available Card');
-    const [tabMenuList, setTabMenuList] = React.useState<optionList[]>([
+    const tabMenuList = [
         {
             label: 'Available Card',
             name: 'Available Card',
@@ -111,7 +110,6 @@ const CreditCard = () => {
                         updateSelectedOptions={handleSelectedBanks}
                         optionLimit={banksLimit}
                     />,
-            enabled: true,
         },
         {
             label: 'Expenses',
@@ -124,7 +122,6 @@ const CreditCard = () => {
                         generateExpenseObject={generateExpenseObject}
                         updateExpenseObject={updateExpenseObject}
                     />,
-            enabled: false,
         },
         {
             label: 'Monthly Income',
@@ -133,16 +130,17 @@ const CreditCard = () => {
                         incomeSources={incomeSource}
                         handleIncomeSourceUpdate={updateIncomeSource}
                     />,
-            enabled: false,
         },
-    ]);
+    ];
+    const [enabledTab, setEnabledTab] = React.useState([true, false, false]);
 
     const handleChangeTab = (selectedTab: string) => {
         setCurrentTab(() => { return selectedTab });
     }
 
-    const handleProceedTab = (updatedOptionList: optionList[], nextActiveTab: string) => {
-        setTabMenuList(() => { return updatedOptionList });
+    const handleProceedTab = (updatedEnabledTab: boolean[] | undefined, nextActiveTab: string) => {
+        // setTabMenuList(() => { return updatedOptionList });
+        setEnabledTab(() => { return updatedEnabledTab as boolean[] });
         handleChangeTab(nextActiveTab);
     }
 
@@ -161,6 +159,7 @@ const CreditCard = () => {
                     optionList={tabMenuList}
                     progressStrict={true}
                     updateStrictTab={handleProceedTab}
+                    enabledTab={enabledTab}
                 />
             </div>
             <div className="CreditCard-Button">

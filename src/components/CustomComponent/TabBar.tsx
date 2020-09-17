@@ -16,10 +16,11 @@ interface TabBarProps {
     updateTab: (selectedTab: string) => void;
     optionList: optionList[];
     progressStrict: boolean;
-    updateStrictTab?: (optionList: optionList[], nextActiveTab: string) => void;
+    updateStrictTab?: (enabledTab: boolean[] | undefined, nextActiveTab: string) => void;
+    enabledTab?: boolean[];
 }
 
-const TabBar: React.FC<TabBarProps> = ({currentTab, updateTab, optionList, progressStrict = false, updateStrictTab}) => {
+const TabBar: React.FC<TabBarProps> = ({currentTab, updateTab, optionList, progressStrict = false, updateStrictTab, enabledTab}) => {
     const handleTabChange = (selectedTab: string) => {
         const tabBody = document.getElementById(selectedTab);
         tabBody && tabBody.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'start'});
@@ -27,21 +28,27 @@ const TabBar: React.FC<TabBarProps> = ({currentTab, updateTab, optionList, progr
     }
 
     const handleProceedTab = () => {
-        let enablingFlag = false;
-        let nextActiveTab = currentTab;
-        const updatedTabConfig = optionList.map(optionItem => {
-            if (optionItem.name === currentTab) {
-                enablingFlag = true;
-                return optionItem;
-            };
-            if (enablingFlag) {
-                enablingFlag = false;
-                nextActiveTab = optionItem.name;
-                return {...optionItem, enabled: true};
-            }
-            return optionItem;
+        // let enablingFlag = false;
+        // let nextActiveTab = currentTab;
+        // const updatedTabConfig = optionList.map(optionItem => {
+        //     if (optionItem.name === currentTab) {
+        //         enablingFlag = true;
+        //         return optionItem;
+        //     };
+        //     if (enablingFlag) {
+        //         enablingFlag = false;
+        //         nextActiveTab = optionItem.name;
+        //         return {...optionItem, enabled: true};
+        //     }
+        //     return optionItem;
+        // });
+        // updateStrictTab && updateStrictTab(updatedTabConfig, nextActiveTab);
+        let nextActiveTabIndex = -1;
+        const updatedEnabledTab = enabledTab?.map((enabledItem, index) => {
+            enabledItem && (nextActiveTabIndex = index + 1);
+            if (nextActiveTabIndex === index) { return true; } else { return enabledItem; }
         });
-        updateStrictTab && updateStrictTab(updatedTabConfig, nextActiveTab);
+        updateStrictTab && updateStrictTab(updatedEnabledTab, optionList[nextActiveTabIndex].name);
     }
 
     React.useEffect(() => {
@@ -58,8 +65,9 @@ const TabBar: React.FC<TabBarProps> = ({currentTab, updateTab, optionList, progr
                         optionList.map((optionItem, index) => (
                             <li
                                 data-active={optionItem.name === currentTab}
-                                data-enabled={optionItem.enabled}
-                                onClick={() => optionItem.enabled && handleTabChange(optionItem.name)}
+                                data-enabled={enabledTab ? enabledTab[index] : true}
+                                // onClick={() => handleTabChange(optionItem.name)}
+                                onClick={() => enabledTab && enabledTab[index] && handleTabChange(optionItem.name)}
                                 key={index}
                             >
                                 {optionItem.label}
@@ -70,14 +78,14 @@ const TabBar: React.FC<TabBarProps> = ({currentTab, updateTab, optionList, progr
                 <div className="TabBar-Body" id="TabBar-Body">
                     {
                         optionList.map((optionItem, index) => (
-                            optionItem.enabled && <div className="TabBar-Body-Item" id={optionItem.name} key={index}>
+                            enabledTab && enabledTab[index] && <div className="TabBar-Body-Item" id={optionItem.name} key={index}>
                                 {optionItem.content}
                             </div>
                         ))
                     }
                 </div>
                 {
-                    (progressStrict && (!optionList.every(optionItem => optionItem.enabled)) ) && (
+                    (progressStrict && !enabledTab?.every(enabledTabItem => enabledTabItem) ) && (
                         <div className="TabBar-ProgressAction">
                             <button
                                 className="TabBar-ProgressAction-Proceed"
