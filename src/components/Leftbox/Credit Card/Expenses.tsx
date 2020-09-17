@@ -115,7 +115,7 @@ const Expenses: React.FC<ExpensesProps> = ({selectedOptions, updateSelectedOptio
                     <button
                         disabled={selectedOptions.length !== optionLimit}
                         onClick={handleOptionDetails}
-                    >Proceed</button>
+                    >{optionDetailRender ? `Repick Category` : `Proceed`}</button>
                 </div>
             </div>
         </React.Fragment>

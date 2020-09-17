@@ -11,6 +11,7 @@ import {
     CashFromCard,
     CreditCard,
 } from './components';
+import BalanceTransfer from './components/Leftbox/BalanceTransfer/BalanceTransfer';
 
 // import { validateData } from './utils/DataValidation';
 
@@ -66,21 +67,13 @@ const mockConversation = [
 ];
 
 function App() {
-    const [userSlot, setUserSlot] = React.useState({
-        transferFrom: '',
-        name: '',
-        phone: '',
-        email: '',
-        amount: '',
-    });
-    const [submitted, setSubmitted] = React.useState(false);
     const [userChatInput, setUserChatInput] = React.useState('');
     const [conversation, setConversation] = React.useState<conversationState[]>(mockConversation);
     const [showChatInMobile, setShowChatInMobile] = React.useState(false);
-    const [renderSection, setRenderSection] = React.useState('Credit Card');
+    const [renderSection, setRenderSection] = React.useState('Balance Transfer');
     const [renderModel, setRenderModel] = React.useState(false);
 
-    const sections = ['Cash From Card', 'Credit Card'];
+    const sections = ['Cash From Card', 'Credit Card', 'Balance Transfer'];
 
     React.useEffect(() => {
         // const rootStyle = document.documentElement.style;
@@ -89,15 +82,6 @@ function App() {
         // setInterval({}, 1000); // refresh every second - Is this a good practice?
         // console.log(showChatInMobile);
     }, [showChatInMobile]);
-
-    // Functions for leftbox
-    const handleInputChange = (value: string, stateName: string) => {
-        setUserSlot(() => {return {...userSlot, [stateName]: value}});
-    };
-
-    const handleSubmit = () => {
-        setSubmitted(prevState => { return !prevState});
-    };
 
     // Functions for chatbox
     const handleChatInputUpdate = (value: string) => {
@@ -132,6 +116,18 @@ function App() {
     }
     // END
 
+    const handleSectionRendering = (sectionToRender: string) => {
+        switch (renderSection) {
+            case 'Cash From Card':
+                return <CashFromCard />;
+            case 'Credit Card':
+                return <CreditCard />;
+            case 'Balance Transfer':
+                return <BalanceTransfer />
+            default:
+                return <>Not Found</>;
+        }
+    }
 
     return (
         <main className="AIVI-Page">
@@ -151,20 +147,7 @@ function App() {
                 />
             </section>
             <section className="AIVI-Leftbox">
-                {
-                    renderSection === 'Cash From Card'
-                    ? (
-                        <CashFromCard
-                            slot={userSlot}
-                            submitted={submitted}
-                            updateSubmitted={handleSubmit}
-                            handleInputChange={handleInputChange}
-                        />
-                    )
-                    : (
-                        <CreditCard />
-                    )
-                }
+                { handleSectionRendering(renderSection) }
             </section>
             <button
                 className="AIVI-Chatbox-Mobile-Button Button"

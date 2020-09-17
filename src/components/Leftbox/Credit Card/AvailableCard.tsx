@@ -93,8 +93,6 @@ const AvailableCard: React.FC<AvailableCardProps> = ({selectedOptions, updateSel
         });
     }, [tempRef]);
 
-    React.useEffect(() => { console.log(selectedOptions) }, [selectedOptions]);
-
     return (
         <React.Fragment>
             <div ref={tempRef}>

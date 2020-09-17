@@ -17,7 +17,11 @@ type slotInputType = {
     inputState: string,
     inputType: string,
     inputLabel: string,
-    optionList?: InputOptionType[],
+    // optionList?: InputOptionType[];
+    dropdownOption?: {
+        allowInput: boolean;
+        optionList: InputOptionType[];
+    }
 };
 
 // All slot data
@@ -27,7 +31,6 @@ interface InputDropdownProps {
     slot: any;
     inputProps: slotInputType;
     handleInputChange: (value: string, stateName: string) => void;
-    allowInput: boolean;
     
 }
 
@@ -54,7 +57,7 @@ interface InputDropdownProps {
 //     }, [ref]);
 // }
 
-const InputDropdown: React.FC<InputDropdownProps> = ({slot, inputProps, handleInputChange, allowInput = false}) => {
+const InputDropdown: React.FC<InputDropdownProps> = ({slot, inputProps, handleInputChange}) => {
     const [isDropdown, setDropdown] = React.useState(false);
 
     const dropdownElement = React.useRef<null | HTMLDivElement>(null);
@@ -81,7 +84,6 @@ const InputDropdown: React.FC<InputDropdownProps> = ({slot, inputProps, handleIn
     };
 
     const handleChooseOption = (value: string) => {
-        console.log('Go here?');
         handleInputChange(value, inputProps.inputState);
         setDropdown(prevState => { return !prevState });
     };
@@ -112,11 +114,11 @@ const InputDropdown: React.FC<InputDropdownProps> = ({slot, inputProps, handleIn
                         }
                         <input
                             type={inputProps.inputType}
-                            readOnly={!allowInput}
+                            readOnly={!inputProps.dropdownOption?.allowInput}
                             onFocus={handleInputFocus}
                             value={slot[inputProps.inputState]}
                             onChange={({ currentTarget: {value} }) => handleInputChange(value, inputProps.inputName)}
-                            placeholder={allowInput ? 'Select from dropdown, or type your own': 'Select from dropdown'}
+                            placeholder={inputProps.dropdownOption?.allowInput ? 'Select from dropdown, or type your own': 'Select from dropdown'}
                         />
                     </div>
                 </div>
@@ -145,8 +147,8 @@ const InputDropdown: React.FC<InputDropdownProps> = ({slot, inputProps, handleIn
             >
                 <ul>
                     {
-                        inputProps.optionList && inputProps.optionList.length !== 0
-                        ? inputProps.optionList.map((optionItem, index) => (
+                        inputProps.dropdownOption && inputProps.dropdownOption.optionList.length !== 0
+                        ? inputProps.dropdownOption.optionList.map((optionItem, index) => (
                             <li
                                 key={index}
                                 onClick={() => handleChooseOption(optionItem.value)}

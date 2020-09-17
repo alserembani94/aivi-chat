@@ -8,4 +8,6 @@ export const Images = {
     icon_dining: require('../assets/images/Icon-Dining.svg'),
     icon_petrol: require('../assets/images/Icon-Petrol.svg'),
     icon_health: require('../assets/images/Icon-Health.svg'),
+
+    image_submitted: require('../assets/images/Image-Submitted.svg'),
 }

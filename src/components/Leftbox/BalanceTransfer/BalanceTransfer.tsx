@@ -1,38 +1,33 @@
 import React from 'react';
-import CashFromCardForm from './CashFromCardForm';
+import BalanceTransferForm from './BalanceTransferForm';
 import SubmittedView from '../SubmittedView';
 
-type slotInputType = {
-    inputName: string,
-    inputState: string,
-    inputType: string,
-    inputLabel: string,
-};
-
-const CashFromCard: React.FC = () => {
+const BalanceTransfer = () => {
     const [userSlot, setUserSlot] = React.useState({
         transferFrom: '',
+        transferTo: '',
         name: '',
         phone: '',
         email: '',
         amount: '',
     });
-    const [submitted, setSubmitted] = React.useState(false);
 
     const handleInputChange = (value: string, stateName: string) => {
         setUserSlot(() => {return {...userSlot, [stateName]: value}});
     };
 
+    const [submitted, setSubmitted] = React.useState(false);
+
     const handleSubmit = () => {
         setSubmitted(prevState => { return !prevState});
     };
 
-    if (!submitted) return <CashFromCardForm
+    if (!submitted) return <BalanceTransferForm
                                 slot={userSlot}
                                 updateSubmitted={handleSubmit}
                                 handleInputChange={handleInputChange}
                             />
-    else return <SubmittedView updateSubmitted={handleSubmit} />
-}
+    else return <SubmittedView updateSubmitted={handleSubmit}/>
+};
 
-export default CashFromCard;
+export default BalanceTransfer;

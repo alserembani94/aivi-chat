@@ -139,7 +139,6 @@ const ExpensesDetails: React.FC<ExpenseDetailsProps> = ({details, updateExpenseO
     const handleExpenseUpdate = (expenseItem: ExpenseDetails) => {
         const adjustedDetails = details.map(detailItem => (detailItem.category === expenseItem.category) ? expenseItem : detailItem);
         updateExpenseObject(adjustedDetails);
-        // console.log(adjustedDetails);
     }
 
     return (

@@ -31,14 +31,12 @@ type IncomeSource = {
 
 const CreditCard = () => {
     // AVAILABLE BANKS CONFIGURATION
-    const [selectedBanks, setSelectedBanks] = React.useState<string[]>(['CIMB Bank']);
+    const [selectedBanks, setSelectedBanks] = React.useState<string[]>([]);
     const banksLimit = 3;
 
     const handleSelectedBanks = (selected: string[]) => {
         setSelectedBanks(() => { return selected; });
     };
-
-    React.useEffect(() => { console.log(selectedBanks) }, [selectedBanks]);
 
     // EXPENSES CONFIGURATION
     const [selectedExpenses, setSelectedExpenses] = React.useState<string[]>([]);
@@ -146,12 +144,6 @@ const CreditCard = () => {
         setEnabledTab(() => { return updatedEnabledTab as boolean[] });
         handleChangeTab(nextActiveTab);
     }
-
-    // React.useEffect(() => {
-    //     console.log(selectedBanks);
-    //     console.log(selectedExpenses);
-    //     console.log(incomeSource);
-    // }, [selectedBanks, selectedExpenses, incomeSource]);
 
     return (
         <React.Fragment>

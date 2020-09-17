@@ -1,5 +1,8 @@
 import React from 'react';
-import { InputBox, InputDropdown } from '../../CustomComponent';
+import {
+    InputBox,
+    InputDropdown,
+} from '../../CustomComponent';
 
 type slotInputItemType = {
     inputName: string,
@@ -26,7 +29,6 @@ interface CashFromCardProps {
     slot: slotType;
     updateSubmitted: () => void;
     handleInputChange: (value: string, stateName: string) => void;
-    optionList?: InputOptionType[];
 }
 
 type slotInputType = {
@@ -34,7 +36,10 @@ type slotInputType = {
     inputState: string,
     inputType: string,
     inputLabel: string,
-    optionList?: InputOptionType[];
+    dropdownOption?: {
+        allowInput: boolean;
+        optionList: InputOptionType[];
+    }
 };
 
 const slotInput: slotInputType[] = [
@@ -43,23 +48,26 @@ const slotInput: slotInputType[] = [
             inputState: 'transferFrom',
             inputType: 'dropdown',
             inputLabel: 'Transfer from',
-            optionList: [
-                {
-                    name: 'Hello',
-                    label: 'Hello',
-                    value: 'Hello',
-                },
-                {
-                    name: 'World',
-                    label: 'World',
-                    value: 'World',
-                },
-                {
-                    name: 'React',
-                    label: 'React',
-                    value: 'React',
-                },
-            ],
+            dropdownOption: {
+                allowInput: true,
+                optionList: [
+                    {
+                        name: 'Hello',
+                        label: 'Hello',
+                        value: 'Hello',
+                    },
+                    {
+                        name: 'World',
+                        label: 'World',
+                        value: 'World',
+                    },
+                    {
+                        name: 'React',
+                        label: 'React',
+                        value: 'React',
+                    },
+                ],
+            },
         },
         {
             inputName: 'name',
@@ -87,17 +95,17 @@ const slotInput: slotInputType[] = [
         },
     ];
 
-const CashFromCardForm: React.FC<CashFromCardProps> = ({slot, updateSubmitted, handleInputChange, optionList}) => {
+const CashFromCardForm: React.FC<CashFromCardProps> = ({slot, updateSubmitted, handleInputChange}) => {
     return (
-        <>
-            <section className="CashFromCard-Content">
-                <p className="CashFromCard-Title">
+        <React.Fragment>
+            <section className="AIVIForm-Content">
+                <p className="AIVIForm-Title">
                     Application Status: In Progress
                 </p>
-                <p className="CashFromCard-Description">
+                <p className="AIVIForm-Description">
                     You can view your progress so far here. Feel free to edit the information by clicking on the field.
                 </p>
-                <div className="CashFromCard-Details">
+                <div className="AIVIForm-Details">
                     {
                         slotInput.map((slotInputItem: slotInputItemType, index: number) => (
                             slotInputItem.inputType === 'dropdown'
@@ -106,7 +114,6 @@ const CashFromCardForm: React.FC<CashFromCardProps> = ({slot, updateSubmitted, h
                                     slot={slot}
                                     inputProps={slotInputItem}
                                     handleInputChange={handleInputChange}
-                                    allowInput={true}
                                     key={index}
                                 />
                             )
@@ -122,7 +129,7 @@ const CashFromCardForm: React.FC<CashFromCardProps> = ({slot, updateSubmitted, h
                     }
                 </div>
             </section>
-            <section className="CashFromCard-Button">
+            <section className="AIVIForm-Button">
                 <button
                     className="Button Button-Full"
                     onClick={updateSubmitted}
@@ -131,7 +138,7 @@ const CashFromCardForm: React.FC<CashFromCardProps> = ({slot, updateSubmitted, h
                     Submit Application
                 </button>
             </section>
-        </>
+        </React.Fragment>
     );
 }
 

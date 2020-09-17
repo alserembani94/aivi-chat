@@ -201,6 +201,11 @@ button:focus {
     width: 60%;
     height: 60%;
   }
+  &-TransferTo {
+    width: 70%;
+    height: 70%;
+    color: var(--brand-fill) !important;
+  }
 }
 
 .Input {
@@ -524,7 +529,7 @@ input[type=number] {
   }
 }
 
-.CashFromCard {
+.AIVIForm {
   &-Content {
     height: 20px;
     overflow: auto;
@@ -701,6 +706,25 @@ input[type=number] {
     &:hover svg {
       transform: rotate(90deg);
       transition: transform 0.15s ease-in-out;
+    }
+  }
+}
+
+.BalanceTransfer {
+  &-DualDropdown {
+    &-Wrapper {
+      display: flex;
+      justify-content: space-between;
+    }
+    &-Item {
+      width: 44%;
+    }
+    &-Arrow {
+      width: 50px;
+      height: 57px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
   }
 }

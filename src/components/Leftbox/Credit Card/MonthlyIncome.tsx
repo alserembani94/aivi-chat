@@ -39,7 +39,11 @@ type slotInputItemType = {
     inputState: string,
     inputType: string,
     inputLabel: string,
-    optionList?: InputOptionType[];
+    // optionList?: InputOptionType[];
+    dropdownOption?: {
+        allowInput: boolean;
+        optionList: InputOptionType[];
+    }
 };
 
 const incomeSourceFormat: slotInputItemType[] = [
@@ -48,61 +52,68 @@ const incomeSourceFormat: slotInputItemType[] = [
         inputState: 'industry',
         inputType: 'dropdown',
         inputLabel: 'Industry',
-        optionList: [
-            {
-                name: 'Food',
-                label: 'Food',
-                value: 'Food',
-            },
-            {
-                name: 'Hospitality',
-                label: 'Hospitality',
-                value: 'Hospitality',
-            },
-            {
-                name: 'Technology',
-                label: 'Technology',
-                value: 'Technology',
-            },
-            {
-                name: 'Tourism',
-                label: 'Tourism',
-                value: 'Tourism',
-            },
-            {
-                name: 'Healthcare',
-                label: 'Healthcare',
-                value: 'Healthcare',
-            },
-            {
-                name: 'Defense & Security',
-                label: 'Defense & Security',
-                value: 'Defense & Security',
-            },
-        ],
+        dropdownOption: {
+            allowInput: true,
+            optionList: [
+                {
+                    name: 'Food',
+                    label: 'Food',
+                    value: 'Food',
+                },
+                {
+                    name: 'Hospitality',
+                    label: 'Hospitality',
+                    value: 'Hospitality',
+                },
+                {
+                    name: 'Technology',
+                    label: 'Technology',
+                    value: 'Technology',
+                },
+                {
+                    name: 'Tourism',
+                    label: 'Tourism',
+                    value: 'Tourism',
+                },
+                {
+                    name: 'Healthcare',
+                    label: 'Healthcare',
+                    value: 'Healthcare',
+                },
+                {
+                    name: 'Defense & Security',
+                    label: 'Defense & Security',
+                    value: 'Defense & Security',
+                },
+            ],
+        },
+        
     },
     {
         inputName: 'level',
         inputState: 'level',
         inputType: 'dropdown',
         inputLabel: 'Level',
-        optionList: [
-            {
-                name: 'Non-executive',
-                label: 'Non-executive',
-                value: 'Non-executive',
-            },
-            {
-                name: 'Executive',
-                label: 'Executive',
-                value: 'Executive',
-            },
-            {
-                name: 'Management',
-                label: 'Management',
-                value: 'Management',
-            },
-        ],
+        dropdownOption: {
+            allowInput: false,
+            optionList: [
+                {
+                    name: 'Non-executive',
+                    label: 'Non-executive',
+                    value: 'Non-executive',
+                },
+                {
+                    name: 'Executive',
+                    label: 'Executive',
+                    value: 'Executive',
+                },
+                {
+                    name: 'Management',
+                    label: 'Management',
+                    value: 'Management',
+                },
+            ],
+        },
     },
     {
         inputName: 'jobTitle',
@@ -144,7 +155,6 @@ const MonthlyIncomeItem: React.FC<IncomeSourceItemProps> = ({incomeSource, incom
                             slot={incomeSource}
                             inputProps={incomeSourceItem}
                             handleInputChange={handleInputChange}
-                            allowInput={true}
                             key={index}
                         />
                     )
