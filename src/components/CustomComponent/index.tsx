@@ -2,6 +2,7 @@ import InputBox from './InputBox';
 import InputDropdown from './InputDropdown';
 import InputText from './InputText';
 import TabBar from './TabBar';
+import ToggleText from './ToggleText';
 import {
     Checkbox,
     MultipleCheckbox,
@@ -24,4 +25,5 @@ export {
     MultipleCheckbox, // Use this for multiple options that use checkbox
     RangeSlider, // Use this for setting range using slider
     TabBar, // Use this to create tab bar menu
+    ToggleText, // Use this to toggle between two options using text
 };
