@@ -39,7 +39,6 @@ const Checkbox: React.FC<CheckboxProps> = ({name, label, updateSelected, rows, a
                 onClick={() => handleUpdate(name)}
             >
                 <div className="Checkbox-Indicator">
-                    
                     <IconContext.Provider value={{ className: 'Icon Icon-Light Icon-Check' }} >
                         <IoIosCheckmark />
                     </IconContext.Provider>

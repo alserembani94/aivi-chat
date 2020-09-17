@@ -13,6 +13,7 @@ import {
 } from './ImageSelect';
 import DNDPlayground from './DNDPlayground';
 import RangeSlider from './RangeSlider';
+import ToggleText from './ToggleText';
 
 export {
     Checkbox, // Use this for options that use checkbox
@@ -25,5 +26,9 @@ export {
     MultipleCheckbox, // Use this for multiple options that use checkbox
     RangeSlider, // Use this for setting range using slider
     TabBar, // Use this to create tab bar menu
+<<<<<<< HEAD
     ToggleText, // Use this to toggle between two options using text
+=======
+    ToggleText, // Use this for toggle using text tab
+>>>>>>> 9d4a19ccf2ce7cf3e33bb3243fd4cf12f3ec803c
 };

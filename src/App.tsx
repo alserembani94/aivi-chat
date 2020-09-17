@@ -61,7 +61,7 @@ const mockConversation = [
     {
         user: 'user',
         timestamp: '2020-09-09',
-        message: 'I would like to order a aglio e olio, with a freckle of cinnamon, and the cherry on top!',
+        message: 'I would like to order an aglio e olio, with a freckle of cinnamon, and the cherry on top!',
     },
 ];
 

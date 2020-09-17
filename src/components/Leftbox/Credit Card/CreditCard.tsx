@@ -6,6 +6,12 @@ import AvailableCard from './AvailableCard';
 import Expenses from './Expenses';
 import MonthlyIncome from './MonthlyIncome';
 
+type optionList = {
+    label: string,
+    name: string,
+    content: JSX.Element;
+};
+
 type ExpenseDetails = {
     category: string,
     subcategory?: {
@@ -25,19 +31,21 @@ type IncomeSource = {
 
 const CreditCard = () => {
     // AVAILABLE BANKS CONFIGURATION
-    const [selectedBanks, setSelectedBanks] = React.useState<string[]>([]);
+    const [selectedBanks, setSelectedBanks] = React.useState<string[]>(['CIMB Bank']);
     const banksLimit = 3;
 
     const handleSelectedBanks = (selected: string[]) => {
-        setSelectedBanks(selected);
+        setSelectedBanks(() => { return selected; });
     };
+
+    React.useEffect(() => { console.log(selectedBanks) }, [selectedBanks]);
 
     // EXPENSES CONFIGURATION
     const [selectedExpenses, setSelectedExpenses] = React.useState<string[]>([]);
     const expensesLimit = 3;
 
     const handleSelectedExpenses = (selected: string[]) => {
-        setSelectedExpenses(selected);
+        setSelectedExpenses(() => { return selected; });
     };
 
     const [expenseObject, setExpenseObject] = React.useState<any[]>([]);
@@ -73,13 +81,13 @@ const CreditCard = () => {
     }
 
     const updateExpenseObject = (newExpenseObject: ExpenseDetails) => {
-        setExpenseObject(newExpenseObject);
+        setExpenseObject(() => {  return newExpenseObject; });
     }
 
     // MONTHLY INCOME CONFIGURATION
     const [incomeSource, setIncomeSource] = React.useState<IncomeSource>([
         {
-            category: '',
+            category: 'Primary',
             industry: '',
             level: '',
             jobTitle: '',
@@ -88,7 +96,7 @@ const CreditCard = () => {
     ]);
 
     const updateIncomeSource = (updatedIncomeSource: IncomeSource) => {
-        setIncomeSource(() => { return updatedIncomeSource });
+        setIncomeSource(() => { return updatedIncomeSource; });
     }
     
     // TAB CONFIGURATION
@@ -127,15 +135,23 @@ const CreditCard = () => {
             enabled: false,
         },
     ];
+    const [enabledTab, setEnabledTab] = React.useState([true, false, false]);
 
     const handleChangeTab = (selectedTab: string) => {
         setCurrentTab(() => { return selectedTab });
     }
 
-    // const handleProceedTab = (updatedOptionList: optionList[], nextActiveTab: string) => {
-    //     setTabMenuList(() => { return updatedOptionList });
-    //     handleChangeTab(nextActiveTab);
-    // }
+    const handleProceedTab = (updatedEnabledTab: boolean[] | undefined, nextActiveTab: string) => {
+        // setTabMenuList(() => { return updatedOptionList });
+        setEnabledTab(() => { return updatedEnabledTab as boolean[] });
+        handleChangeTab(nextActiveTab);
+    }
+
+    // React.useEffect(() => {
+    //     console.log(selectedBanks);
+    //     console.log(selectedExpenses);
+    //     console.log(incomeSource);
+    // }, [selectedBanks, selectedExpenses, incomeSource]);
 
     return (
         <React.Fragment>
@@ -145,6 +161,8 @@ const CreditCard = () => {
                     updateTab={handleChangeTab}
                     optionList={tabMenuList}
                     progressStrict={true}
+                    updateStrictTab={handleProceedTab}
+                    enabledTab={enabledTab}
                 />
             </div>
             <div className="CreditCard-Button">
