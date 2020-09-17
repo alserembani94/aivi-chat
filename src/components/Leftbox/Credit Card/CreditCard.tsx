@@ -92,7 +92,7 @@ const CreditCard = () => {
     }
     
     // TAB CONFIGURATION
-    const [currentTab, setCurrentTab] = React.useState('Monthly Income');
+    const [currentTab, setCurrentTab] = React.useState('Available Card');
     const tabMenuList = [
         {
             label: 'Available Card',
@@ -102,6 +102,7 @@ const CreditCard = () => {
                         updateSelectedOptions={handleSelectedBanks}
                         optionLimit={banksLimit}
                     />,
+            enabled: true,
         },
         {
             label: 'Expenses',
@@ -114,6 +115,7 @@ const CreditCard = () => {
                         generateExpenseObject={generateExpenseObject}
                         updateExpenseObject={updateExpenseObject}
                     />,
+            enabled: false,
         },
         {
             label: 'Monthly Income',
@@ -122,6 +124,7 @@ const CreditCard = () => {
                         incomeSources={incomeSource}
                         handleIncomeSourceUpdate={updateIncomeSource}
                     />,
+            enabled: false,
         },
     ];
 
@@ -136,6 +139,7 @@ const CreditCard = () => {
                     currentTab={currentTab}
                     updateTab={handleChangeTab}
                     optionList={tabMenuList}
+                    progressStrict={true}
                 />
             </div>
             <div className="CreditCard-Button">
