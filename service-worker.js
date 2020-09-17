@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/aivi-chat/precache-manifest.a67436d35716bd793791113ab792f6a9.js"
+  "/aivi-chat/precache-manifest.abb3c75da7ba4ec0f751c2c5cbac5fa7.js"
 );
 
 self.addEventListener('message', (event) => {

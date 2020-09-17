@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "3573e7aff195de6c10105824f511d364",
+    "revision": "a7258335151776685718902fe312ad37",
     "url": "/aivi-chat/index.html"
   },
   {
-    "revision": "0072b77e148d76f68974",
-    "url": "/aivi-chat/static/css/main.e221290c.chunk.css"
+    "revision": "648ac70b85108f9d969d",
+    "url": "/aivi-chat/static/css/main.e8c9d9bb.chunk.css"
   },
   {
-    "revision": "2f9fa65e6ff916b1bdf4",
-    "url": "/aivi-chat/static/js/2.5c377da7.chunk.js"
+    "revision": "49e5371d3025a85f08b6",
+    "url": "/aivi-chat/static/js/2.732a9f84.chunk.js"
   },
   {
     "revision": "849657740f66d00720db130cc1e94c97",
-    "url": "/aivi-chat/static/js/2.5c377da7.chunk.js.LICENSE.txt"
+    "url": "/aivi-chat/static/js/2.732a9f84.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "0072b77e148d76f68974",
-    "url": "/aivi-chat/static/js/main.f288b5ca.chunk.js"
+    "revision": "648ac70b85108f9d969d",
+    "url": "/aivi-chat/static/js/main.83cf5e5b.chunk.js"
   },
   {
     "revision": "a26740b1ffc503326b77",
@@ -110,5 +110,9 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "84da2eebdd090dc61aa7f28d24a6eb4b",
     "url": "/aivi-chat/static/media/Icon-Utilities.84da2eeb.svg"
+  },
+  {
+    "revision": "2b3babacaf3cf8abcd518b1b0184effe",
+    "url": "/aivi-chat/static/media/Image-Submitted.2b3babac.svg"
   }
 ]);
