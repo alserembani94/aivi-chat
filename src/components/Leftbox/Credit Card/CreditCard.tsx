@@ -6,6 +6,13 @@ import AvailableCard from './AvailableCard';
 import Expenses from './Expenses';
 import MonthlyIncome from './MonthlyIncome';
 
+type optionList = {
+    label: string,
+    name: string,
+    content: JSX.Element;
+    enabled?: boolean;
+};
+
 type ExpenseDetails = {
     category: string,
     subcategory?: {
@@ -25,19 +32,21 @@ type IncomeSource = {
 
 const CreditCard = () => {
     // AVAILABLE BANKS CONFIGURATION
-    const [selectedBanks, setSelectedBanks] = React.useState<string[]>([]);
+    const [selectedBanks, setSelectedBanks] = React.useState<string[]>(['CIMB Bank']);
     const banksLimit = 3;
 
     const handleSelectedBanks = (selected: string[]) => {
-        setSelectedBanks(selected);
+        setSelectedBanks(() => { return selected; });
     };
+
+    React.useEffect(() => { console.log(selectedBanks) }, [selectedBanks]);
 
     // EXPENSES CONFIGURATION
     const [selectedExpenses, setSelectedExpenses] = React.useState<string[]>([]);
     const expensesLimit = 3;
 
     const handleSelectedExpenses = (selected: string[]) => {
-        setSelectedExpenses(selected);
+        setSelectedExpenses(() => { return selected; });
     };
 
     const [expenseObject, setExpenseObject] = React.useState<any[]>([]);
@@ -73,13 +82,13 @@ const CreditCard = () => {
     }
 
     const updateExpenseObject = (newExpenseObject: ExpenseDetails) => {
-        setExpenseObject(newExpenseObject);
+        setExpenseObject(() => {  return newExpenseObject; });
     }
 
     // MONTHLY INCOME CONFIGURATION
     const [incomeSource, setIncomeSource] = React.useState<IncomeSource>([
         {
-            category: '',
+            category: 'Primary',
             industry: '',
             level: '',
             jobTitle: '',
@@ -88,12 +97,12 @@ const CreditCard = () => {
     ]);
 
     const updateIncomeSource = (updatedIncomeSource: IncomeSource) => {
-        setIncomeSource(() => { return updatedIncomeSource });
+        setIncomeSource(() => { return updatedIncomeSource; });
     }
     
     // TAB CONFIGURATION
-    const [currentTab, setCurrentTab] = React.useState('Monthly Income');
-    const tabMenuList = [
+    const [currentTab, setCurrentTab] = React.useState('Available Card');
+    const [tabMenuList, setTabMenuList] = React.useState<optionList[]>([
         {
             label: 'Available Card',
             name: 'Available Card',
@@ -102,6 +111,7 @@ const CreditCard = () => {
                         updateSelectedOptions={handleSelectedBanks}
                         optionLimit={banksLimit}
                     />,
+            enabled: true,
         },
         {
             label: 'Expenses',
@@ -114,6 +124,7 @@ const CreditCard = () => {
                         generateExpenseObject={generateExpenseObject}
                         updateExpenseObject={updateExpenseObject}
                     />,
+            enabled: false,
         },
         {
             label: 'Monthly Income',
@@ -122,12 +133,24 @@ const CreditCard = () => {
                         incomeSources={incomeSource}
                         handleIncomeSourceUpdate={updateIncomeSource}
                     />,
+            enabled: false,
         },
-    ];
+    ]);
 
     const handleChangeTab = (selectedTab: string) => {
         setCurrentTab(() => { return selectedTab });
     }
+
+    const handleProceedTab = (updatedOptionList: optionList[], nextActiveTab: string) => {
+        setTabMenuList(() => { return updatedOptionList });
+        handleChangeTab(nextActiveTab);
+    }
+
+    // React.useEffect(() => {
+    //     console.log(selectedBanks);
+    //     console.log(selectedExpenses);
+    //     console.log(incomeSource);
+    // }, [selectedBanks, selectedExpenses, incomeSource]);
 
     return (
         <React.Fragment>
@@ -136,6 +159,8 @@ const CreditCard = () => {
                     currentTab={currentTab}
                     updateTab={handleChangeTab}
                     optionList={tabMenuList}
+                    progressStrict={true}
+                    updateStrictTab={handleProceedTab}
                 />
             </div>
             <div className="CreditCard-Button">
