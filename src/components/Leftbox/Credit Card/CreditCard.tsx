@@ -132,6 +132,11 @@ const CreditCard = () => {
         setCurrentTab(() => { return selectedTab });
     }
 
+    // const handleProceedTab = (updatedOptionList: optionList[], nextActiveTab: string) => {
+    //     setTabMenuList(() => { return updatedOptionList });
+    //     handleChangeTab(nextActiveTab);
+    // }
+
     return (
         <React.Fragment>
             <div className="CreditCard-Content">
