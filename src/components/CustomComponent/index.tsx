@@ -1,6 +1,5 @@
 import InputBox from './InputBox';
 import InputDropdown from './InputDropdown';
-import InputText from './InputText';
 import TabBar from './TabBar';
 import {
     Checkbox,
@@ -13,14 +12,19 @@ import {
 import DNDPlayground from './DNDPlayground';
 import RangeSlider from './RangeSlider';
 import ToggleText from './ToggleText';
+import {
+    ChecklistBox,
+    MultiChecklistBox,
+} from './ChecklistBox';
 
 export {
     Checkbox, // Use this for options that use checkbox
+    ChecklistBox, //Use this for checklist-styled input
     DNDPlayground,
     ImageSelect, // Use this for options that use image or icon
     InputBox,
     InputDropdown, // Use this for options that use dropdown
-    InputText, //Use this for standard input
+    MultiChecklistBox, // Use this for multiple checklist-styled input
     MultiImageSelect, // Use this for multiple options that use image or icon
     MultipleCheckbox, // Use this for multiple options that use checkbox
     RangeSlider, // Use this for setting range using slider

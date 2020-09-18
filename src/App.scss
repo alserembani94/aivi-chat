@@ -784,6 +784,7 @@ input[type=number] {
       padding: 5px;
       height: 65vh;
       overflow: auto;
+      margin-right: 100px;
     }
   }
   &-ProgressAction {
@@ -873,6 +874,9 @@ input[type=number] {
         box-shadow: none;
         transition: all 0.15s ease-in-out;
       }
+    }
+    .Icon {
+      animation: tick-zoom 0.3s ease-in-out;
     }
   }
   &-Limit {
@@ -988,6 +992,62 @@ input[type=number] {
         color: var(--text-light);
         font-weight: 400;
       }
+    }
+  }
+}
+
+.ChecklistBox {
+  &-Container {
+    display: flex;
+    align-items: center;
+    flex-flow: row wrap;
+    border: var(--imageselect-border);
+    margin-bottom: 10px;
+    background-color: var(--light-background);
+    box-shadow: var(--imageselect-shadow);
+    padding: 15px;
+    border-radius: 10px;
+    width: 100%;
+  }
+  &-Checkbox {
+    width: 30px;
+    height: 30px;
+    border-radius: 0.4rem;
+    margin-right: 15px;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &[data-checked=true] {
+      background-color: var(--brand-fill);
+      .Icon {
+        animation: tick-zoom 0.3s ease-in-out;
+      }
+    }
+    &[data-checked=false] {
+      background-color: var(--light-background);
+      box-shadow: 0px 0px 0px 2px var(--base-background);
+    }
+  }
+  &-Label {
+    color: var(--text-light);
+    font-weight: 300;
+    // background: var(--brand-fill-test);
+    padding: 11px 15px;
+    width: 40%;
+  }
+  &-Amount {
+    border: 1px solid var(--text-light);
+    border-radius: 0.4rem;
+    padding: 10px 15px;
+    width: 40%;
+    margin-left: auto;
+    color: var(--text-dark);
+    display: flex;
+    justify-content: space-between;
+    input {
+      width: calc(100% - 4ch);
+      color: var(--text-dark);
     }
   }
 }
@@ -1230,4 +1290,10 @@ input[type=number] {
   60% { transform: translateX(2px) }
   80% { transform: translateX(2px) }
   100% { transform: translateX(0px) }
+}
+
+@keyframes tick-zoom {
+  0% { transform: scale(1); }
+  50% { transform: scale(2); }
+  100% { transform: scale(1); }
 }

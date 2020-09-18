@@ -5,15 +5,8 @@ type slotInputType = {
     inputState: string,
     inputType: string,
     inputLabel: string,
+    remarks?: string[],
 };
-
-// type slotType = {
-//     [transferFrom: string]: string,
-//     name: string,
-//     phone: string,
-//     email: string,
-//     amount: string,
-// };
 
 interface InputBoxProps {
     slot: any;
@@ -37,7 +30,7 @@ const InputBox: React.FC<InputBoxProps> = ({slot, inputProps, handleInputChange}
             <p className="InputBox-Label">{inputProps.inputLabel}</p>
             <div className="InputBox-InputArea">
                 {
-                    inputProps.inputName === 'amount' && <p className="InputBox-Currency">RM</p>
+                    inputProps.remarks?.includes('currency') && <p className="InputBox-Currency">RM</p>
                 }
                 <input
                     type={inputProps.inputType}

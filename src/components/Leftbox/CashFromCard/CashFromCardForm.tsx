@@ -39,7 +39,8 @@ type slotInputType = {
     dropdownOption?: {
         allowInput: boolean;
         optionList: InputOptionType[];
-    }
+    },
+    remarks?: string[],
 };
 
 const slotInput: slotInputType[] = [
@@ -92,6 +93,7 @@ const slotInput: slotInputType[] = [
             inputState: 'amount',
             inputType: 'number',
             inputLabel: 'Amount',
+            remarks: ['currency'],
         },
     ];
 

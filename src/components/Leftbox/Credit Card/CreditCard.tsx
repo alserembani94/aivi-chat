@@ -29,7 +29,7 @@ type IncomeSource = {
     income: string,
 }[];
 
-const CreditCard = () => {
+const CreditCard: React.FC = () => {
     // AVAILABLE BANKS CONFIGURATION
     const [selectedBanks, setSelectedBanks] = React.useState<string[]>([]);
     const banksLimit = 3;

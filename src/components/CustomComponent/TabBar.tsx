@@ -15,7 +15,7 @@ interface TabBarProps {
     currentTab: string;
     updateTab: (selectedTab: string) => void;
     optionList: optionList[];
-    progressStrict: boolean;
+    progressStrict?: boolean;
     updateStrictTab?: (enabledTab: boolean[] | undefined, nextActiveTab: string) => void;
     enabledTab?: boolean[];
 }
@@ -65,9 +65,9 @@ const TabBar: React.FC<TabBarProps> = ({currentTab, updateTab, optionList, progr
                         optionList.map((optionItem, index) => (
                             <li
                                 data-active={optionItem.name === currentTab}
-                                data-enabled={enabledTab ? enabledTab[index] : true}
+                                data-enabled={progressStrict ? (enabledTab ? enabledTab[index] : true) : true}
                                 // onClick={() => handleTabChange(optionItem.name)}
-                                onClick={() => enabledTab && enabledTab[index] && handleTabChange(optionItem.name)}
+                                onClick={() => progressStrict ? (enabledTab && enabledTab[index] && handleTabChange(optionItem.name)) : handleTabChange(optionItem.name)}
                                 key={index}
                             >
                                 {optionItem.label}
@@ -78,7 +78,7 @@ const TabBar: React.FC<TabBarProps> = ({currentTab, updateTab, optionList, progr
                 <div className="TabBar-Body" id="TabBar-Body">
                     {
                         optionList.map((optionItem, index) => (
-                            enabledTab && enabledTab[index] && <div className="TabBar-Body-Item" id={optionItem.name} key={index}>
+                            (!progressStrict || (enabledTab && enabledTab[index])) && <div className="TabBar-Body-Item" id={optionItem.name} key={index}>
                                 {optionItem.content}
                             </div>
                         ))

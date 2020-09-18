@@ -39,11 +39,11 @@ type slotInputItemType = {
     inputState: string,
     inputType: string,
     inputLabel: string,
-    // optionList?: InputOptionType[];
     dropdownOption?: {
-        allowInput: boolean;
-        optionList: InputOptionType[];
-    }
+        allowInput: boolean,
+        optionList: InputOptionType[],
+    },
+    remarks?: string[],
 };
 
 const incomeSourceFormat: slotInputItemType[] = [
@@ -126,6 +126,7 @@ const incomeSourceFormat: slotInputItemType[] = [
         inputState: 'income',
         inputType: 'number',
         inputLabel: 'Income',
+        remarks: ['currency'],
     },
 ];
 

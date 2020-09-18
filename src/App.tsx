@@ -10,8 +10,9 @@ import {
     Chatbox,
     CashFromCard,
     CreditCard,
+    BalanceTransfer,
+    PersonalLoan,
 } from './components';
-import BalanceTransfer from './components/Leftbox/BalanceTransfer/BalanceTransfer';
 
 // import { validateData } from './utils/DataValidation';
 
@@ -70,10 +71,10 @@ function App() {
     const [userChatInput, setUserChatInput] = React.useState('');
     const [conversation, setConversation] = React.useState<conversationState[]>(mockConversation);
     const [showChatInMobile, setShowChatInMobile] = React.useState(false);
-    const [renderSection, setRenderSection] = React.useState('Balance Transfer');
+    const [renderSection, setRenderSection] = React.useState('Personal Loan');
     const [renderModel, setRenderModel] = React.useState(false);
 
-    const sections = ['Cash From Card', 'Credit Card', 'Balance Transfer'];
+    const sections = ['Cash From Card', 'Credit Card', 'Balance Transfer', 'Personal Loan'];
 
     React.useEffect(() => {
         // const rootStyle = document.documentElement.style;
@@ -123,7 +124,9 @@ function App() {
             case 'Credit Card':
                 return <CreditCard />;
             case 'Balance Transfer':
-                return <BalanceTransfer />
+                return <BalanceTransfer />;
+            case 'Personal Loan':
+                return <PersonalLoan />
             default:
                 return <>Not Found</>;
         }
@@ -149,6 +152,9 @@ function App() {
             <section className="AIVI-Leftbox">
                 { handleSectionRendering(renderSection) }
             </section>
+
+            {/* FOR MOBILE VERSION ONLY */}
+            {/* START */}
             <button
                 className="AIVI-Chatbox-Mobile-Button Button"
                 onClick={handleChatboxModal}
@@ -165,6 +171,9 @@ function App() {
                     conversation={conversation}
                 />
             </section>
+            {/* END */}
+
+
             {/* FOR DEBUG PURPOSE ONLY */}
             {/* START */}
             <button className="Temporary-ChangeRender" onClick={handleSectionsMenu}>
