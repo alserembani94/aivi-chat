@@ -112,7 +112,7 @@ const PersonalLoan: React.FC = () => {
     }
 
     // TAB CONFIGURATION
-    const [currentTab, setCurrentTab] = React.useState('Marital Status');
+    const [currentTab, setCurrentTab] = React.useState('Preferred Bank');
     const tabMenuList = [
         {
             label: 'Preferred Bank',

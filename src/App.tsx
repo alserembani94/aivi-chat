@@ -71,9 +71,8 @@ function App() {
     const [userChatInput, setUserChatInput] = React.useState('');
     const [conversation, setConversation] = React.useState<conversationState[]>(mockConversation);
     const [showChatInMobile, setShowChatInMobile] = React.useState(false);
-    const [renderSection, setRenderSection] = React.useState('Personal Loan');
+    const [renderSection, setRenderSection] = React.useState('Cash From Card');
     const [renderModel, setRenderModel] = React.useState(false);
-
     const sections = ['Cash From Card', 'Credit Card', 'Balance Transfer', 'Personal Loan'];
 
     React.useEffect(() => {
@@ -141,16 +140,18 @@ function App() {
                     </IconContext.Provider>
                 </div>
             </section>
-            <section className="AIVI-Chatbox">
-                <Chatbox
-                    userInput={userChatInput}
-                    updateInput={handleChatInputUpdate}
-                    submitInput={handleChatSubmit}
-                    conversation={conversation}
-                />
-            </section>
-            <section className="AIVI-Leftbox">
-                { handleSectionRendering(renderSection) }
+            <section className="AIVI-Body">
+                <section className="AIVI-Chatbox">
+                    <Chatbox
+                        userInput={userChatInput}
+                        updateInput={handleChatInputUpdate}
+                        submitInput={handleChatSubmit}
+                        conversation={conversation}
+                    />
+                </section>
+                <section className="AIVI-Leftbox">
+                    { handleSectionRendering(renderSection) }
+                </section>
             </section>
 
             {/* FOR MOBILE VERSION ONLY */}

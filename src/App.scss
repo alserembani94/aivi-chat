@@ -5,8 +5,6 @@
 
   // Dimension adjustment
   --sidebar-width: 50px;
-  --chatbox-width: 60; // Don't put unit, value in percentage
-  --leftbox-width: 40; // Don't put unit, value in percentage
   --button-area-height: 65px;
   --icon-button-dimension: 40px;
   --dialog-input-height-min: 65px;
@@ -391,9 +389,16 @@ input[type=number] {
     background-color: var(--brand-fill);
   }
 
+  &-Body {
+    width: calc(100% - var(--sidebar-width));
+    height: 100%;
+    display: flex;
+    flex-flow: row wrap;
+  }
+
   &-Chatbox {
     height: 100%;
-    width: calc(var(--chatbox-width) / 100 * (100% - var(--sidebar-width) + var(--layout-sidebar-adjustment)));
+    width: 55%;
     padding: 35px;
     &-Mobile {
       &-Model {
@@ -407,7 +412,7 @@ input[type=number] {
 
   &-Leftbox {
     height: 100%;
-    width: calc(var(--leftbox-width) / 100 * (100% - var(--sidebar-width) + var(--layout-sidebar-adjustment)));
+    width: 45%;
     background-color: var(--light-background);
     padding: 50px 35px;
     display: flex;
@@ -741,6 +746,9 @@ input[type=number] {
     overflow: auto;
     scrollbar-color: transparent transparent !important;
     position: sticky;
+    top: 0px;
+    z-index: 999;
+    background-color: var(--light-background);
     &::-webkit-scrollbar {
       display: none;
     }
@@ -782,7 +790,6 @@ input[type=number] {
       width: 100%;
       flex-shrink: 0;
       padding: 5px;
-      height: 65vh;
       overflow: auto;
       margin-right: 100px;
     }
@@ -1170,8 +1177,6 @@ input[type=number] {
 
     // Dimension adjustment
     --sidebar-width: 40px;
-    --chatbox-width: 0; // Don't put unit, value in percentage
-    --leftbox-width: 100; // Don't put unit, value in percentage
     --button-area-height: 65px;
     --icon-button-dimension: 40px;
     --dialog-input-height: 65px;
@@ -1207,6 +1212,9 @@ input[type=number] {
       top: var(--mobile-menu-button-translation);
       left: var(--mobile-menu-button-translation);
       z-index: 20;
+    }
+    &-Body {
+      width: 100%;
     }
     &-Chatbox {
       display: none;
@@ -1257,6 +1265,7 @@ input[type=number] {
       }
     }
     &-Leftbox {
+      width: 100%;
       padding: 75px 30px;
     }
   }
