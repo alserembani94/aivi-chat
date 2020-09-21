@@ -12,7 +12,7 @@ const reducer = (state = [] /* Initial state */, action) => {
             ];
         case actions.THING_REMOVED:
             return state.filter(/* Filter function to remove */);
-        case actions.THINGS_UPDATED:
+        case actions.THING_UPDATED:
             return state.map(
                 // bug => bug.id !== action.payload.id ? bug : { ...bug, resolved: true }
             );

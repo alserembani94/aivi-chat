@@ -1,15 +1,18 @@
 import React from 'react';
 import {
     MultipleCheckbox,
+    ToggleText,
 } from '../../CustomComponent';
 
 interface AvailableCardProps {
+    cardOwnership: boolean;
+    updateCardOwnership: (status: boolean) => void;
     selectedOptions: string[];
     updateSelectedOptions: (selected: string[]) => void;
     optionLimit: number;
 }
 
-const AvailableCard: React.FC<AvailableCardProps> = ({selectedOptions, updateSelectedOptions, optionLimit}) => {
+const AvailableCard: React.FC<AvailableCardProps> = ({cardOwnership, updateCardOwnership, selectedOptions, updateSelectedOptions, optionLimit}) => {
     const optionList = [
         {
             name: 'CIMB Bank',
@@ -93,16 +96,31 @@ const AvailableCard: React.FC<AvailableCardProps> = ({selectedOptions, updateSel
         });
     }, [tempRef]);
 
+    const cardOwnershipOptions = ['This Would Be My First Card', 'I Currently Have Existing Cards'];
+    const handleCardOwnershipToggle = (value: string) => {
+        updateCardOwnership(value === cardOwnershipOptions[0] ? false : true);
+        value === cardOwnershipOptions[0] && updateSelectedOptions([]);
+    }
+
     return (
         <React.Fragment>
             <div ref={tempRef}>
-                <MultipleCheckbox
-                    optionList={optionList}
-                    selectedOptions={selectedOptions}
-                    updateSelected={handleModifySelectedOptions}
-                    maxOption={3}
-                    rows={rowSpan}
+                <ToggleText
+                    optionList={cardOwnershipOptions}
+                    selected={cardOwnership ? cardOwnershipOptions[1] : cardOwnershipOptions[0]}
+                    handleToggleUpdate={(value: string) => handleCardOwnershipToggle(value)}
                 />
+                {
+                    cardOwnership
+                    && <MultipleCheckbox
+                        optionList={optionList}
+                        selectedOptions={selectedOptions}
+                        updateSelected={handleModifySelectedOptions}
+                        maxOption={3}
+                        rows={rowSpan}
+                    />
+                }
+                
             </div>
         </React.Fragment>
     );

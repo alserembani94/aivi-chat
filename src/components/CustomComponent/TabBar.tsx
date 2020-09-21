@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-    IoMdArrowRoundForward,
+    IoMdArrowForward,
 } from 'react-icons/io';
 import { IconContext } from 'react-icons/lib';
 
@@ -92,7 +92,7 @@ const TabBar: React.FC<TabBarProps> = ({currentTab, updateTab, optionList, progr
                                 onClick={handleProceedTab}
                             >
                                 <IconContext.Provider value={{ className: 'Icon Icon-Light Icon-Proceed' }} >
-                                    <IoMdArrowRoundForward />
+                                    <IoMdArrowForward />
                                 </IconContext.Provider>
                             </button>
                         </div>

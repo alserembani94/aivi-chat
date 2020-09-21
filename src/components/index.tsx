@@ -1,3 +1,4 @@
+import Sidebar from './Sidebar/Sidebar';
 import Chatbox from './Chatbox/Chatbox';
 import CashFromCard from './Leftbox/CashFromCard/CashFromCard';
 import CreditCard from './Leftbox/Credit Card/CreditCard';
@@ -11,4 +12,5 @@ export {
     Chatbox,
     CreditCard,
     PersonalLoan,
+    Sidebar,
 };

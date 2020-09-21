@@ -8,6 +8,9 @@ export const Images = {
     icon_dining: require('../assets/images/Icon-Dining.svg'),
     icon_petrol: require('../assets/images/Icon-Petrol.svg'),
     icon_health: require('../assets/images/Icon-Health.svg'),
+    icon_send: require('../assets/images/Icon-Send.svg'),
 
     image_submitted: require('../assets/images/Image-Submitted.svg'),
+
+    logo_AIVI: require('../assets/images/Logo-AIVI.svg'),
 }

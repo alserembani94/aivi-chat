@@ -1,9 +1,4 @@
 import React from 'react';
-// import './App.scss';
-import {
-    MdMenu,
-} from 'react-icons/md';
-import { IconContext } from 'react-icons/lib';
 
 import {
     Chatbox,
@@ -12,6 +7,7 @@ import {
     BalanceTransfer,
     PersonalLoan,
 } from '../../components';
+import { Images } from '../../utils/Images';
 
 // import { validateData } from './utils/DataValidation';
 
@@ -61,22 +57,16 @@ function SmartAssistant() {
     }
 
     return (
-        <main className="AIVI-Page">
-            <section className="AIVI-Sidebar">
-                <div className="Button Button-Hamburger">
-                    <IconContext.Provider value={{ className: 'Icon-Rotate Icon-Light Icon-Hamburger' }} >
-                        <MdMenu />
-                    </IconContext.Provider>
-                </div>
-            </section>
-            <section className="AIVI-Body">
+        <main className="AIVI-Body">
+            {/* <section className="AIVI-Body"> */}
                 <section className="AIVI-Chatbox">
+                    <img src={Images.logo_AIVI} alt="logo-aivi" className="AIVI-Logo" />
                     <Chatbox />
                 </section>
                 <section className="AIVI-Leftbox">
                     { handleSectionRendering(renderSection) }
                 </section>
-            </section>
+            {/* </section> */}
 
             {/* FOR MOBILE VERSION ONLY */}
             {/* START */}

@@ -17,6 +17,7 @@
   --checkbox-indicator-dimension: 30px;
   --imageselect-image-dimension: 5ch;
   --tabbar-proceed-dimension: 40px;
+  --menu-padding: 1rem 3rem;
 
   // Theme color adjustment
   --brand-fill: #D53A4C;
@@ -42,6 +43,7 @@
   --slider-track: var(--base-background);
   --slider-thumb: #CF1A2D;
   --slider-track-between: #F25767;
+  --darken-background: rgba(0, 0, 0, 0.3);
 
   // Theme standardisation
   --box-shadow: 0 4px 10px var(--shadow);
@@ -87,6 +89,12 @@ input {
   background: none;
   outline: none;
   border: none;
+}
+
+button {
+  background: transparent;
+  border: none;
+  outline: none;
 }
 
 button:focus {
@@ -176,8 +184,8 @@ button:focus {
     height: 45%;
   }
   &-Add, &-Audible, &-Smiley {
-    width: 60%;
-    height: 60%;
+    width: 70%;
+    height: 70%;
   }
   &-Down {
     width: 80%;
@@ -387,6 +395,8 @@ input[type=number] {
     height: 100%;
     width: var(--sidebar-width);
     background-color: var(--brand-fill);
+    position: sticky;
+    z-index: 1001;
   }
 
   &-Body {
@@ -394,6 +404,8 @@ input[type=number] {
     height: 100%;
     display: flex;
     flex-flow: row wrap;
+    flex-grow: 1;
+    position: relative;
   }
 
   &-Chatbox {
@@ -420,6 +432,70 @@ input[type=number] {
     align-items: stretch;
     overflow: hidden;
   }
+  &-Logo {
+    position: absolute;
+  }
+}
+
+.Menu {
+  &-Wrapper {
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--darken-background);
+    backdrop-filter: blur(5px);
+    position: absolute;
+    top: 0px;
+    z-index: 900;
+    &[data-visible=true] {
+      opacity: 1;
+      transition: opacity 0.2s ease-in-out;
+    }
+    &[data-visible=false] {
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.2s ease-in-out;
+    }
+  }
+  &-Container {
+    display: flex;
+    flex-flow: column wrap;
+    background-color: var(--light-background);
+    position: absolute;
+    height: 100vh;
+    width: fit-content;
+    padding: var(--menu-padding);
+    z-index: 1000;
+    &[data-visible=true] {
+      left: var(--sidebar-width);
+      transition: left 0.5s ease-in-out;
+    }
+    &[data-visible=false] {
+      left: -50vw;
+      transition: left 0.5s ease-in-out;
+    }
+  }
+  &-Logo {
+    width: 10rem;
+    height: 6rem;
+    margin-bottom: 20px;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: left;
+    }
+  }
+  &-Drawer {
+    display: flex;
+    flex-flow: column wrap;
+    padding: 20px 0px;
+  }
+  &-Button {
+    font-size: 1.2rem;
+    // color: var(--foreground-light-color);
+    margin-bottom: 10px;
+    border-radius: 1.2rem;
+  }
 }
 
 // Adjustment for chatbox
@@ -438,6 +514,7 @@ input[type=number] {
     border-radius: 50%;
     position: relative;
     z-index: 3;
+    // top: calc(var(--avatar-dimension) / 4);
     display: flex;
     align-items: center;
     justify-items: center;
@@ -451,12 +528,12 @@ input[type=number] {
   }
   &-Box {
     width: 100%;
-    height: calc(100% - var(--avatar-dimension));
+    height: calc(100% - (var(--avatar-dimension) / 4 * 3));
     background-color: var(--light-background);
     box-shadow: var(--box-shadow);
     border-radius: 2px;
-    position: relative;
-    top: calc((var(--avatar-dimension) / 2) * -1);
+    position: absolute;
+    top: calc(var(--avatar-dimension) / 2);
     padding: var(--avatar-dimension) 20px 0;
     display: flex;
     flex-direction: column;
@@ -553,11 +630,13 @@ input[type=number] {
     color: var(--text-dark);
     margin-bottom: 20px;
     font-weight: 700;
+    padding-left: 25px;
   }
   &-Description {
     font-size: 0.85rem;
     line-height: 1.3rem;
     color: var(--text-dark);
+    padding-left: 25px;
   }
   &-Details {
     font-size: 0.85rem;
@@ -704,7 +783,7 @@ input[type=number] {
     justify-content: center;
     &:focus {
       border: var(--imageselect-border);
-  box-shadow: 0px 0px 7px var(--brand-fill-test);
+      box-shadow: 0px 0px 7px var(--brand-fill-test);
     }
     svg {
       transform: rotate(0deg);
@@ -713,6 +792,19 @@ input[type=number] {
     &:hover svg {
       transform: rotate(90deg);
       transition: transform 0.15s ease-in-out;
+    }
+  }
+  &-RemoveIncome {
+    background-color: var(--slider-thumb);
+    border: none;
+    color: var(--light-background);
+    outline: none;
+    padding: 5px 25px;
+    border-radius: 1rem;
+    cursor: pointer;
+    font-size: 0.8rem;
+    &:hover {
+      filter: brightness(1.1);
     }
   }
 }
@@ -972,34 +1064,35 @@ input[type=number] {
 
 .ToggleText {
   &-Container {
+    margin-bottom: 20px;
     ul {
       list-style: none;
       display: flex;
       flex-flow: row wrap;
       overflow: hidden;
-      border: 1px solid var(--text-light);
-      border-radius: 1rem;
+      border-radius: 5px;
+      height: 3rem;
+      background-color: var(--light-background);
+      box-shadow: var(--box-shadow);
     }
     li {
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 0.25rem 0px;
-      font-size: 0.7rem;
-      width: 14ch;
       text-align: center;
-      border-right: 1px solid var(--text-light);
+      box-shadow: inset -2px 0px 0px -1px var(--base-background);
       cursor: pointer;
+      flex-grow: 1;
       &:last-child {
-        border-right: none;
+        box-shadow: none;
       }
       &[data-active=true] {
         color: var(--brand-fill);
-        font-weight: 600;
+        font-weight: 500;
       }
       &[data-active=false] {
         color: var(--text-light);
-        font-weight: 400;
+        font-weight: 500;
       }
     }
   }
@@ -1083,6 +1176,7 @@ input[type=number] {
         color: var(--text-dark);
         &:before {
           right: -10px;
+          top: -1px;
           border-color: var(--chat-bubble-user-tail) transparent transparent transparent;
           border-width: 10px 10px 0 0;
         }
@@ -1105,11 +1199,14 @@ input[type=number] {
   }
   &-Bubble {
     max-width: 80%;
-    // width: 90%;
+    width: fit-content;
     padding: 10px 20px;
     border-radius: 0 8px 8px;
     line-height: 1.5rem;
     margin-bottom: 5px;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
     &:before {
       content: '';
       display: flex;
@@ -1125,9 +1222,14 @@ input[type=number] {
     }
   }
   &-Timestamp {
-    font-size: 0.6rem;
-    margin: 0 10px;
-    color: var(--text-light);
+    font-size: 0.55rem !important;
+    position: relative;
+    // margin: 0 10px;
+    // color: var(--text-light);
+    // margin-left: auto;
+    margin-left: 20px;
+    top: 5px;
+    width: fit-content;
   }
 }
 
@@ -1148,8 +1250,8 @@ input[type=number] {
   }
   &-Sections {
     position: absolute;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-flow: column wrap;
     align-items: center;
@@ -1248,7 +1350,7 @@ input[type=number] {
           position: absolute;
           width: 100vw;
           height: 100vh;
-          background: rgba(217, 217, 217, 0.6);
+          background: var(--darken-background);
           backdrop-filter: blur(3px);
           z-index: 99;
           padding: 30px 20px;

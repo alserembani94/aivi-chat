@@ -104,9 +104,9 @@ const CashFromCardForm: React.FC<CashFromCardProps> = ({slot, updateSubmitted, h
                 <p className="AIVIForm-Title">
                     Application Status: In Progress
                 </p>
-                <p className="AIVIForm-Description">
+                {/* <p className="AIVIForm-Description">
                     You can view your progress so far here. Feel free to edit the information by clicking on the field.
-                </p>
+                </p> */}
                 <div className="AIVIForm-Details">
                     {
                         slotInput.map((slotInputItem: slotInputItemType, index: number) => (

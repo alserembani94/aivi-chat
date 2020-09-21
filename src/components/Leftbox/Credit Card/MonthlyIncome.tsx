@@ -142,12 +142,13 @@ const MonthlyIncomeItem: React.FC<IncomeSourceItemProps> = ({incomeSource, incom
         <div className="MonthlyIncome-Container">
             <div className="MonthlyIncome-SectionHeader">
                 <p className="MonthlyIncome-SectionTitle">Income {incomeNo}</p>
-                <ToggleText
-                    optionList={categoryToggleOptions}
-                    selected={incomeSource.category}
-                    handleToggleUpdate={(value: string) => handleInputChange(value, 'category')}
-                />
+                <button className="MonthlyIncome-RemoveIncome">Remove</button>
             </div>
+            <ToggleText
+                optionList={categoryToggleOptions}
+                selected={incomeSource.category}
+                handleToggleUpdate={(value: string) => handleInputChange(value, 'category')}
+            />
             {
                 incomeSourceFormat.map((incomeSourceItem, index) => (
                     incomeSourceItem.inputType === 'dropdown'

@@ -3,11 +3,12 @@ import {
     MdAdd,
     MdMic,
 } from 'react-icons/md';
-import {
-    // RiEmotionHappyLine,
-    RiSendPlaneFill,
-} from 'react-icons/ri';
+// import {
+//     // RiEmotionHappyLine,
+//     RiSendPlaneFill,
+// } from 'react-icons/ri';
 import { IconContext } from 'react-icons/lib';
+import { Images } from '../../utils/Images';
 import moment from 'moment';
 
 interface conversationState {
@@ -96,8 +97,8 @@ const Chatbox: React.FC = () => {
                                     >
                                         <div className="Dialog-Bubble">
                                             <p>{conversationItem.message}</p>
+                                            <p className="Dialog-Timestamp">{moment(conversationItem.timestamp).format('HH:mm')}</p>
                                         </div>
-                                        <p className="Dialog-Timestamp">{moment(conversationItem.timestamp).format('Do MMM YYYY h:mmA')}</p>
                                     </div>
                                 ))
                             }
@@ -138,9 +139,13 @@ const Chatbox: React.FC = () => {
                                 onClick={() => handleChatSubmit('Enter')}
                                 disabled={userChatInput === ''}
                             >
-                                <IconContext.Provider value={{ className: 'Icon Icon-Light Icon-Send' }} >
+                                {/* <IconContext.Provider value={{ className: 'Icon Icon-Light Icon-Send' }} >
                                     <RiSendPlaneFill />
-                                </IconContext.Provider>
+                                </IconContext.Provider> */}
+                                <img
+                                    src={Images.icon_send}
+                                    alt="Send"
+                                />
                             </button>
                         </div>
                     </div>

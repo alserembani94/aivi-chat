@@ -31,11 +31,16 @@ type IncomeSource = {
 
 const CreditCard: React.FC = () => {
     // AVAILABLE BANKS CONFIGURATION
+    const [cardOwnership, setCardOwnership] = React.useState<boolean>(false);
     const [selectedBanks, setSelectedBanks] = React.useState<string[]>([]);
     const banksLimit = 3;
 
     const handleSelectedBanks = (selected: string[]) => {
         setSelectedBanks(() => { return selected; });
+    };
+
+    const toggleExistingCard = (status: boolean) => {
+        setCardOwnership(() => status);
     };
 
     // EXPENSES CONFIGURATION
@@ -104,6 +109,8 @@ const CreditCard: React.FC = () => {
             label: 'Available Card',
             name: 'Available Card',
             content: <AvailableCard
+                        cardOwnership={cardOwnership}
+                        updateCardOwnership={toggleExistingCard}
                         selectedOptions={selectedBanks}
                         updateSelectedOptions={handleSelectedBanks}
                         optionLimit={banksLimit}
