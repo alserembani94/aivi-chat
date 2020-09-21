@@ -4,18 +4,18 @@ import {
     BrowserRouter as Router,
 } from 'react-router-dom';
 import RouterLayout from './routers';
-// import { Provider } from 'react-redux';
-// import store from './redux/store';
+import { Provider } from 'react-redux';
+import store from './store/store';
 
 // import { validateData } from './utils/DataValidation';
 
 function App() {
     return (
-        // <Provider store={store}>
+        <Provider store={store}>
             <Router>
                 <RouterLayout />
             </Router>
-        // </Provider>
+         </Provider>
     );
 }
 
