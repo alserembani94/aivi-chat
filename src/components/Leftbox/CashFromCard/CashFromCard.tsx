@@ -17,6 +17,7 @@ const CashFromCard: React.FC = () => {
         email: '',
         amount: '',
     });
+    
     const [submitted, setSubmitted] = React.useState(false);
 
     const handleInputChange = (value: string, stateName: string) => {

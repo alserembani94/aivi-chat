@@ -44,58 +44,58 @@ type slotInputType = {
 };
 
 const slotInput: slotInputType[] = [
-        {
-            inputName: 'transferFrom',
-            inputState: 'transferFrom',
-            inputType: 'dropdown',
-            inputLabel: 'Transfer from',
-            dropdownOption: {
-                allowInput: true,
-                optionList: [
-                    {
-                        name: 'Hello',
-                        label: 'Hello',
-                        value: 'Hello',
-                    },
-                    {
-                        name: 'World',
-                        label: 'World',
-                        value: 'World',
-                    },
-                    {
-                        name: 'React',
-                        label: 'React',
-                        value: 'React',
-                    },
-                ],
-            },
+    {
+        inputName: 'transferFrom',
+        inputState: 'transferFrom',
+        inputType: 'dropdown',
+        inputLabel: 'Transfer from',
+        dropdownOption: {
+            allowInput: true,
+            optionList: [
+                {
+                    name: 'Hello',
+                    label: 'Hello',
+                    value: 'Hello',
+                },
+                {
+                    name: 'World',
+                    label: 'World',
+                    value: 'World',
+                },
+                {
+                    name: 'React',
+                    label: 'React',
+                    value: 'React',
+                },
+            ],
         },
-        {
-            inputName: 'name',
-            inputState: 'name',
-            inputType: 'text',
-            inputLabel: 'Name',
-        },
-        {
-            inputName: 'phone',
-            inputState: 'phone',
-            inputType: 'text',
-            inputLabel: 'Phone',
-        },
-        {
-            inputName: 'email',
-            inputState: 'email',
-            inputType: 'email',
-            inputLabel: 'Email',
-        },
-        {
-            inputName: 'amount',
-            inputState: 'amount',
-            inputType: 'number',
-            inputLabel: 'Amount',
-            remarks: ['currency'],
-        },
-    ];
+    },
+    {
+        inputName: 'name',
+        inputState: 'name',
+        inputType: 'text',
+        inputLabel: 'Name',
+    },
+    {
+        inputName: 'phone',
+        inputState: 'phone',
+        inputType: 'text',
+        inputLabel: 'Phone',
+    },
+    {
+        inputName: 'email',
+        inputState: 'email',
+        inputType: 'email',
+        inputLabel: 'Email',
+    },
+    {
+        inputName: 'amount',
+        inputState: 'amount',
+        inputType: 'number',
+        inputLabel: 'Amount',
+        remarks: ['currency'],
+    },
+];
 
 const CashFromCardForm: React.FC<CashFromCardProps> = ({slot, updateSubmitted, handleInputChange}) => {
     return (
