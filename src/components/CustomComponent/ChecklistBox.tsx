@@ -100,7 +100,7 @@ const MultiChecklistBox: React.FC<MultiChecklistBoxProps> = ({checklistList, upd
                     />
                 ))
             }
-            <div className="ChecklistBox-Container">
+            <div className="ChecklistBox-Container ChecklistBox-Container-New">
                 <button
                     className="ChecklistBox-Checkbox"
                     id="Testing"

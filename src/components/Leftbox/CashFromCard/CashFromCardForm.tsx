@@ -48,7 +48,7 @@ const slotInput: slotInputType[] = [
         inputName: 'transferFrom',
         inputState: 'transferFrom',
         inputType: 'dropdown',
-        inputLabel: 'Transfer from',
+        inputLabel: 'Bank',
         dropdownOption: {
             allowInput: true,
             optionList: [

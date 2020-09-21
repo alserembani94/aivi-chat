@@ -681,7 +681,9 @@ input[type=number] {
   }
   &-SectionTitle {
     font-size: 0.85rem;
+    font-weight: 600;
     margin-right: 10px;
+    padding-left: 15px;
   }
   &-Action {
     // background: burlywood;
@@ -1008,13 +1010,18 @@ input[type=number] {
     display: flex;
     align-items: center;
     flex-flow: row wrap;
-    border: var(--imageselect-border);
-    margin-bottom: 10px;
+    // border: var(--imageselect-border);
+    margin-bottom: 20px;
     background-color: var(--light-background);
-    box-shadow: var(--imageselect-shadow);
+    box-shadow: var(--box-shadow);
+    // box-shadow: var(--imageselect-shadow);
     padding: 15px;
     border-radius: 10px;
     width: 100%;
+    &-New {
+      border: var(--imageselect-border);
+      box-shadow: var(--imageselect-shadow);
+    }
   }
   &-Checkbox {
     width: 30px;

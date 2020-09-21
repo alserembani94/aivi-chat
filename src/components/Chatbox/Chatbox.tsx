@@ -10,18 +10,40 @@ import {
 import { IconContext } from 'react-icons/lib';
 import moment from 'moment';
 
-interface ChatboxProps {
-    userInput: string;
-    updateInput: (userInput: string) => void;
-    submitInput: () => void,
-    conversation: {
-        user?: string;
-        timestamp?: string;
-        message?: string;
-    }[];
+interface conversationState {
+    user?: string;
+    timestamp?: string;
+    message?: string;
 }
 
-const Chatbox: React.FC<ChatboxProps> = ({userInput, updateInput, submitInput, conversation}) => {
+const mockConversation = [
+    {
+        user: 'bot',
+        timestamp: '2020-09-09',
+        message: 'Welcome!',
+    },
+    {
+        user: 'user',
+        timestamp: '2020-09-09',
+        message: 'Hey!',
+    },
+    {
+        user: 'bot',
+        timestamp: '2020-09-09',
+        message: 'Are you interested in anything?',
+    },
+    {
+        user: 'user',
+        timestamp: '2020-09-09',
+        message: 'I would like to order an aglio e olio, with a freckle of cinnamon, and the cherry on top!',
+    },
+];
+
+const Chatbox: React.FC = () => {
+    const [userChatInput, setUserChatInput] = React.useState('');
+    const [conversation, setConversation] = React.useState<conversationState[]>(mockConversation);
+
+
     React.useEffect(() => {
         // Single Element only
         // const element = document.getElementById('Last-Dialog');
@@ -31,8 +53,27 @@ const Chatbox: React.FC<ChatboxProps> = ({userInput, updateInput, submitInput, c
         elements.forEach(element => element.scrollIntoView({block: 'end', inline: 'end', behavior: 'smooth'}));
     }, [conversation]);
 
-    const handleUpdate = (text: string) => updateInput(text);
-    const handleSubmit = (pressedKey: string) => pressedKey === 'Enter' && submitInput();
+    // Functions for chatbox
+    const handleChatInputUpdate = (value: string) => {
+        setUserChatInput(() => value);
+    };
+
+    const handleChatSubmit = (pressedKey: string) => {
+        if (pressedKey === 'Enter') {
+            if (userChatInput !== '') {
+                const conversationMap = {
+                    user: 'User',
+                    timestamp: moment().format(),
+                    message: userChatInput,
+                };
+                setConversation(prevConversation => { return [...prevConversation, conversationMap] });
+                setUserChatInput('');
+            }
+        }
+    };
+
+    // const handleChatInputUpdate = (text: string) => updateInput(text);
+    // const handleChatSubmit = (pressedKey: string) => pressedKey === 'Enter' && submitInput();
 
     return (
         <React.Fragment>
@@ -70,16 +111,16 @@ const Chatbox: React.FC<ChatboxProps> = ({userInput, updateInput, submitInput, c
                             {/* <textarea
                                 className="Chatbox-Input-InputBox"
                                 placeholder="Input here"
-                                value={userInput}
-                                onChange={({ currentTarget: {value} }) => handleUpdate(value)}
-                                onKeyPress={({ key: pressedKey}) => handleSubmit(pressedKey)}
+                                value={userChatInput}
+                                onChange={({ currentTarget: {value} }) => handleChatInputUpdate(value)}
+                                onKeyPress={({ key: pressedKey}) => handleChatSubmit(pressedKey)}
                             /> */}
                             <input
                                 className="Chatbox-Input-InputBox"
                                 placeholder="Input here"
-                                value={userInput}
-                                onChange={({ currentTarget: {value} }) => handleUpdate(value)}
-                                onKeyPress={({ key: pressedKey}) => handleSubmit(pressedKey)}
+                                value={userChatInput}
+                                onChange={({ currentTarget: {value} }) => handleChatInputUpdate(value)}
+                                onKeyPress={({ key: pressedKey}) => handleChatSubmit(pressedKey)}
                             />
                             
                             <button className="Chatbox-Input-Audible Button">
@@ -94,8 +135,8 @@ const Chatbox: React.FC<ChatboxProps> = ({userInput, updateInput, submitInput, c
                             </button> */}
                             <button
                                 className="Chatbox-Input-Send Button Button-Send"
-                                onClick={() => handleSubmit('Enter')}
-                                disabled={userInput === ''}
+                                onClick={() => handleChatSubmit('Enter')}
+                                disabled={userChatInput === ''}
                             >
                                 <IconContext.Provider value={{ className: 'Icon Icon-Light Icon-Send' }} >
                                     <RiSendPlaneFill />

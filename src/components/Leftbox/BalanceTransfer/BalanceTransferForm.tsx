@@ -43,7 +43,8 @@ type slotInputType = {
     dropdownOption?: {
         allowInput: boolean;
         optionList: InputOptionType[];
-    }
+    },
+    remarks?: string[],
 };
 
 const dualDropdown: slotInputType[] = [
@@ -125,6 +126,7 @@ const slotInput: slotInputType[] = [
         inputState: 'amount',
         inputType: 'number',
         inputLabel: 'Amount',
+        remarks: ['amount'],
     },
 ];
 
