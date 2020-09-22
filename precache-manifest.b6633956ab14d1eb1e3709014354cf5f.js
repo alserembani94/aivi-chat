@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "c0b6053cc8a36663a249e356e69c4fdd",
+    "revision": "60918a64346b09b5abe2f6e958f3e5c7",
     "url": "/aivi-chat/index.html"
   },
   {
-    "revision": "4a0c9e030ca8ad0a8f2d",
-    "url": "/aivi-chat/static/css/main.20abc956.chunk.css"
+    "revision": "26d46483accb29e6bd26",
+    "url": "/aivi-chat/static/css/main.05bdb82e.chunk.css"
   },
   {
-    "revision": "a26e3d045d8254fe9523",
-    "url": "/aivi-chat/static/js/2.f414343f.chunk.js"
+    "revision": "e114c5d77b065b13b105",
+    "url": "/aivi-chat/static/js/2.5ac3bfc5.chunk.js"
   },
   {
-    "revision": "849657740f66d00720db130cc1e94c97",
-    "url": "/aivi-chat/static/js/2.f414343f.chunk.js.LICENSE.txt"
+    "revision": "bbee919d8888a17953b5bb98359759ba",
+    "url": "/aivi-chat/static/js/2.5ac3bfc5.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "4a0c9e030ca8ad0a8f2d",
-    "url": "/aivi-chat/static/js/main.7a761e06.chunk.js"
+    "revision": "26d46483accb29e6bd26",
+    "url": "/aivi-chat/static/js/main.8b40ae51.chunk.js"
   },
   {
     "revision": "a26740b1ffc503326b77",
@@ -100,6 +100,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/aivi-chat/static/media/Icon-Petrol.3a7fd64f.svg"
   },
   {
+    "revision": "682b357a04e8dd9e07416142a321e882",
+    "url": "/aivi-chat/static/media/Icon-Send.682b357a.svg"
+  },
+  {
     "revision": "cfd7ddc2239b4483275a0d44653ce217",
     "url": "/aivi-chat/static/media/Icon-Shopping.cfd7ddc2.svg"
   },
@@ -114,5 +118,9 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "2b3babacaf3cf8abcd518b1b0184effe",
     "url": "/aivi-chat/static/media/Image-Submitted.2b3babac.svg"
+  },
+  {
+    "revision": "78bf7ac3ca05014eebf514cf5a60ebe7",
+    "url": "/aivi-chat/static/media/Logo-AIVI.78bf7ac3.svg"
   }
 ]);
