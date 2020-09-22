@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/aivi-chat/static/css/main.05bdb82e.chunk.css",
-    "main.js": "/aivi-chat/static/js/main.8b40ae51.chunk.js",
-    "main.js.map": "/aivi-chat/static/js/main.8b40ae51.chunk.js.map",
+    "main.js": "/aivi-chat/static/js/main.3d3498ee.chunk.js",
+    "main.js.map": "/aivi-chat/static/js/main.3d3498ee.chunk.js.map",
     "runtime-main.js": "/aivi-chat/static/js/runtime-main.c12e0f39.js",
     "runtime-main.js.map": "/aivi-chat/static/js/runtime-main.c12e0f39.js.map",
     "static/js/2.5ac3bfc5.chunk.js": "/aivi-chat/static/js/2.5ac3bfc5.chunk.js",
     "static/js/2.5ac3bfc5.chunk.js.map": "/aivi-chat/static/js/2.5ac3bfc5.chunk.js.map",
     "index.html": "/aivi-chat/index.html",
-    "precache-manifest.b6633956ab14d1eb1e3709014354cf5f.js": "/aivi-chat/precache-manifest.b6633956ab14d1eb1e3709014354cf5f.js",
+    "precache-manifest.f8e1b4b56ff4f9de3952940df53999ef.js": "/aivi-chat/precache-manifest.f8e1b4b56ff4f9de3952940df53999ef.js",
     "service-worker.js": "/aivi-chat/service-worker.js",
     "static/css/main.05bdb82e.chunk.css.map": "/aivi-chat/static/css/main.05bdb82e.chunk.css.map",
     "static/js/2.5ac3bfc5.chunk.js.LICENSE.txt": "/aivi-chat/static/js/2.5ac3bfc5.chunk.js.LICENSE.txt",
@@ -30,6 +30,6 @@
     "static/js/runtime-main.c12e0f39.js",
     "static/js/2.5ac3bfc5.chunk.js",
     "static/css/main.05bdb82e.chunk.css",
-    "static/js/main.8b40ae51.chunk.js"
+    "static/js/main.3d3498ee.chunk.js"
   ]
 }
