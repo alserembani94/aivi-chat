@@ -840,7 +840,7 @@ input[type=number] {
     scrollbar-color: transparent transparent !important;
     position: sticky;
     top: 0px;
-    z-index: 999;
+    z-index: 500;
     background-color: $light-background;
     &::-webkit-scrollbar {
       display: none;
