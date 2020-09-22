@@ -17,16 +17,12 @@ const menuNav = [
         label: 'Home',
     },
     {
-        path: '/about',
-        label: 'About',
+        path: '/smart-assistant',
+        label: 'Smart Assistant',
     },
     {
-        path: '/projects',
-        label: 'Projects',
-    },
-    {
-        path: '/contact',
-        label: 'Finding Me?',
+        path: '/results',
+        label: 'Result',
     },
 ];
 

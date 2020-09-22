@@ -1,56 +1,57 @@
-// Dimension adjustment
-$sidebar-width: 50px;
-$button-area-height: 65px;
-$icon-button-dimension: 40px;
-$dialog-input-height: 65px;
-$avatar-dimension: 90px;
-$layout-sidebar-adjustment: 0px;
-$mobile-menu-button-translation: 20px;
-$mobile-chatbox-button: 50px;
-$mobile-chatbox-button-translation: 20px;
-$checkbox-indicator-dimension: 30px;
-$imageselect-image-dimension: 5ch;
-$tabbar-proceed-dimension: 40px;
-$menu-padding: 1rem 3rem;
-
-// Theme color adjustment
-$brand-fill: #D53A4C;
-$brand-fill-test: #D53A4C66;
-$brand-gradient: linear-gradient(90.54deg, #F25767 0%, #D83445 100%);
-$light-background: #FFFFFF;
-$base-background: #E5E5E5;
-$text-dark: #707C97;
-$text-light: rgba(112, 124, 151, 0.7);
-$shadow: rgba(32, 32, 32, 0.08);
-$breakline: rgba(112, 124, 151, 0.15);
-$icon-light: white;
-$icon-dark: rgba(112, 124, 151, 0.5);
-$input-label: rgba(17, 17, 17, 0.48);
-$chat-bubble-bot: $brand-gradient;
-$chat-bubble-bot-tail: #F15666;
-$chat-bubble-user: white;
-$chat-bubble-user-border: rgba(112, 124, 151, 0.25);
-$chat-bubble-user-tail: $chat-bubble-user-border;
-$dropdown-hover: #F1F1F1;
-$inactive: $input-label;
-$imageselect-background: #F7F7FA;
-$slider-track: $base-background;
-$slider-thumb: #CF1A2D;
-$slider-track-between: #F25767;
-$darken-background: rgba(0, 0, 0, 0.3);
-
-// Theme standardisation
-$box-shadow: 0 4px 10px $shadow;
-$selected-box-shadow: 0 0 10px $brand-fill-test;
-$dropdown-shadow: 0px 4px 4px rgba(51, 51, 51, 0.15);
-$imageselect-border: 2px dashed rgba(112, 124, 151, 0.25);
-$imageselect-shadow: 10px 10px 25px rgba(112, 124, 151, 0.05);
-$imageselect-border-active: 2px solid $brand-fill;
-
 // Default root setting
 :root {
   // Root measurement adjustment
   font-size: 16px;
+
+  // Dimension adjustment
+  --sidebar-width: 50px;
+  --button-area-height: 65px;
+  --icon-button-dimension: 40px;
+  --dialog-input-height-min: 65px;
+  --dialog-input-height-max: 155px;
+  --avatar-dimension: 90px;
+  --layout-sidebar-adjustment: 0px;
+  --mobile-menu-button-translation: 20px;
+  --mobile-chatbox-button: 50px;
+  --mobile-chatbox-button-translation: 20px;
+  --checkbox-indicator-dimension: 30px;
+  --imageselect-image-dimension: 5ch;
+  --tabbar-proceed-dimension: 40px;
+  --menu-padding: 1rem 3rem;
+
+  // Theme color adjustment
+  --brand-fill: #D53A4C;
+  --brand-fill-test: #D53A4C66;
+  --brand-gradient: linear-gradient(90.54deg, #F25767 0%, #D83445 100%);
+  --light-background: #FFFFFF;
+  --base-background: #E5E5E5;
+  --text-dark: #707C97;
+  --text-light: rgba(112, 124, 151, 0.7);
+  --shadow: rgba(32, 32, 32, 0.08);
+  --breakline: rgba(112, 124, 151, 0.15);
+  --icon-light: white;
+  --icon-dark: rgba(112, 124, 151, 0.5);
+  --input-label: rgba(17, 17, 17, 0.48);
+  --chat-bubble-bot: var(--brand-gradient);
+  --chat-bubble-bot-tail: #F15666;
+  --chat-bubble-user: white;
+  --chat-bubble-user-border: rgba(112, 124, 151, 0.25);
+  --chat-bubble-user-tail: var(--chat-bubble-user-border);
+  --dropdown-hover: #F1F1F1;
+  --inactive: var(--input-label);
+  --imageselect-background: #F7F7FA;
+  --slider-track: var(--base-background);
+  --slider-thumb: #CF1A2D;
+  --slider-track-between: #F25767;
+  --darken-background: rgba(0, 0, 0, 0.3);
+
+  // Theme standardisation
+  --box-shadow: 0 4px 10px var(--shadow);
+  --selected-box-shadow: 0 0 10px var(--brand-fill-test);
+  --dropdown-shadow: 0px 4px 4px rgba(51, 51, 51, 0.15);
+  --imageselect-border: 2px dashed rgba(112, 124, 151, 0.25);
+  --imageselect-shadow: 10px 10px 25px rgba(112, 124, 151, 0.05);
+  --imageselect-border-active: 2px solid var(--brand-fill);
 }
 
 * {
@@ -68,19 +69,19 @@ $imageselect-border-active: 2px solid $brand-fill;
     background: transparent;
   }
   &::-webkit-scrollbar-thumb {
-    background-color: $brand-fill;
-    box-shadow: inset 0 0 10px $brand-fill;
+    background-color: var(--brand-fill);
+    box-shadow: inset 0 0 10px var(--brand-fill);
     border-radius: 200px;
   }
   &:hover {
-    scrollbar-color: $brand-fill transparent;
+    scrollbar-color: var(--brand-fill) transparent;
     transition: all 0.1s ease-in-out;
     &::-webkit-scrollbar {
       width: 6px;
     }
   }
   &::placeholder {
-    color: $text-light;
+    color: var(--text-light);
   }
 }
 
@@ -117,7 +118,7 @@ button:focus {
     }
   }
   &:disabled {
-    background: $base-background;
+    background: var(--base-background);
     box-shadow: none;
     cursor: default;
     transition: all 0.2s ease-in-out;
@@ -127,9 +128,9 @@ button:focus {
     width: fit-content;
     height: fit-content;
     padding: 15px 25px;
-    background-color: $brand-fill;
-    color: $light-background;
-    box-shadow: 0 4px 10px -3px $brand-fill;
+    background-color: var(--brand-fill);
+    color: var(--light-background);
+    box-shadow: 0 4px 10px -3px var(--brand-fill);
     border-radius: 4px;
     transition: all 0.2s ease-in-out;
     transition-property: background-color, box-shadow, opacity;
@@ -141,10 +142,10 @@ button:focus {
   &-Full {
     width: 100%;
     height: 100%;
-    background-color: $brand-fill;
-    color: $light-background;
+    background-color: var(--brand-fill);
+    color: var(--light-background);
     border-radius: 4px;
-    box-shadow: 0 4px 10px -3px $brand-fill;
+    box-shadow: 0 4px 10px -3px var(--brand-fill);
     transition: all 0.2s ease-in-out;
     filter: brightness(1);
     transition-property: background-color, box-shadow, opacity, filter;
@@ -156,8 +157,8 @@ button:focus {
   }
   &-Hamburger {
     background-color: inherit;
-    width: $sidebar-width;
-    height: $sidebar-width;
+    width: var(--sidebar-width);
+    height: var(--sidebar-width);
   }
   // &-Send {
   //   &:hover {
@@ -173,10 +174,10 @@ button:focus {
     transition: transform 0.2s ease-in-out;
   }
   &-Light {
-    color: $icon-light;
+    color: var(--icon-light);
   }
   &-Dark {
-    color: $icon-dark;
+    color: var(--icon-dark);
   }
   &-Hamburger {
     width: 45%;
@@ -209,16 +210,15 @@ button:focus {
   &-TransferTo {
     width: 70%;
     height: 70%;
-    color: $brand-fill !important;
+    color: var(--brand-fill) !important;
   }
 }
 
 .Input {
   &Box {
-    $c: &;
     &-Container {
-      background-color: $light-background;
-      box-shadow: $box-shadow;
+      background-color: var(--light-background);
+      box-shadow: var(--box-shadow);
       margin-bottom: 20px;
       padding: 10px 15px;
       display: flex;
@@ -236,14 +236,11 @@ button:focus {
     &-Label {
       font-size: 0.8rem;
       margin-bottom: 5px;
-      color: $input-label;
+      color: var(--input-label);
     }
     &-InputArea {
       display: flex;
       flex-direction: row;
-    }
-    &-InputArea:focus #{$c}-Container {
-      box-shadow: $selected-box-shadow;
     }
     &-Currency {
       margin-right: 0.6rem;
@@ -287,7 +284,7 @@ button:focus {
       background: white;
       top: calc(100% + 10px);
       border-radius: 4px;
-      box-shadow: $dropdown-shadow;
+      box-shadow: var(--dropdown-shadow);
       overflow: hidden;
       padding: 5px 0;
       z-index: 21;
@@ -301,7 +298,7 @@ button:focus {
         font-size: 0.9rem;
         cursor: pointer;
         &:hover {
-          background-color: $dropdown-hover;
+          background-color: var(--dropdown-hover);
         }
       }
       &[data-show=true] {
@@ -317,7 +314,7 @@ button:focus {
     }
     &-NoData {
       cursor: not-allowed;
-      color: $text-light;
+      color: var(--text-light);
       &:hover {
         background-color: transparent !important;
         cursor: not-allowed;
@@ -342,7 +339,7 @@ button:focus {
   &-Thumb {
     width: 8px;
     height: 100%;
-    background: $slider-thumb;
+    background: var(--slider-thumb);
     border-radius: 8px;
     &:hover {
       transform: scaleY(1.5) scaleX(1.2);
@@ -350,13 +347,13 @@ button:focus {
   }
   &-Track {
     height: 60%;
-    background: $slider-track;
+    background: var(--slider-track);
     &-0 {
       border-top-left-radius: 1rem;
       border-bottom-left-radius: 1rem;
     }
     &-1 {
-      background: $slider-track-between;
+      background: var(--slider-track-between);
     }
     &-2 {
       border-top-right-radius: 1rem;
@@ -389,21 +386,21 @@ input[type=number] {
   &-Page {
     width: 100vw;
     height: 100vh;
-    background-color: $base-background;
+    background-color: var(--base-background);
     display: flex;
     flex-flow: row wrap;
   }
   
   &-Sidebar {
     height: 100%;
-    width: $sidebar-width;
-    background-color: $brand-fill;
+    width: var(--sidebar-width);
+    background-color: var(--brand-fill);
     position: sticky;
     z-index: 1001;
   }
 
   &-Body {
-    width: calc(100% - #{$sidebar-width});
+    width: calc(100% - var(--sidebar-width));
     height: 100%;
     display: flex;
     flex-flow: row wrap;
@@ -428,7 +425,7 @@ input[type=number] {
   &-Leftbox {
     height: 100%;
     width: 45%;
-    background-color: $light-background;
+    background-color: var(--light-background);
     padding: 50px 35px;
     display: flex;
     flex-flow: column wrap;
@@ -444,7 +441,7 @@ input[type=number] {
   &-Wrapper {
     width: 100vw;
     height: 100vh;
-    background-color: $darken-background;
+    background-color: var(--darken-background);
     backdrop-filter: blur(5px);
     position: absolute;
     top: 0px;
@@ -462,14 +459,14 @@ input[type=number] {
   &-Container {
     display: flex;
     flex-flow: column wrap;
-    background-color: $light-background;
+    background-color: var(--light-background);
     position: absolute;
     height: 100vh;
     width: fit-content;
-    padding: $menu-padding;
+    padding: var(--menu-padding);
     z-index: 1000;
     &[data-visible=true] {
-      left: $sidebar-width;
+      left: var(--sidebar-width);
       transition: left 0.5s ease-in-out;
     }
     &[data-visible=false] {
@@ -495,7 +492,7 @@ input[type=number] {
   }
   &-Button {
     font-size: 1.2rem;
-    // color: $foreground-light-color;
+    // color: var(--foreground-light-color);
     margin-bottom: 10px;
     border-radius: 1.2rem;
   }
@@ -512,16 +509,16 @@ input[type=number] {
     position: relative;
   }
   &-Avatar {
-    width: $avatar-dimension;
-    height: $avatar-dimension;
+    width: var(--avatar-dimension);
+    height: var(--avatar-dimension);
     border-radius: 50%;
     position: relative;
     z-index: 3;
-    // top: calc($avatar-dimension) / 4;
+    // top: calc(var(--avatar-dimension) / 4);
     display: flex;
     align-items: center;
     justify-items: center;
-    background-color: $light-background;
+    background-color: var(--light-background);
     img {
       width: 100%;
       height: 100%;
@@ -531,35 +528,37 @@ input[type=number] {
   }
   &-Box {
     width: 100%;
-    height: calc(100% - #{$avatar-dimension / 4 * 3});
-    background-color: $light-background;
-    box-shadow: $box-shadow;
+    height: calc(100% - (var(--avatar-dimension) / 4 * 3));
+    background-color: var(--light-background);
+    box-shadow: var(--box-shadow);
     border-radius: 2px;
     position: absolute;
-    top: $avatar-dimension / 2;
-    padding: $avatar-dimension 20px 0;
+    top: calc(var(--avatar-dimension) / 2);
+    padding: var(--avatar-dimension) 20px 0;
     display: flex;
     flex-direction: column;
     align-items: stretch;
     justify-content: space-between;
   }
   &-Dialog {
-    height: calc(100% - #{$dialog-input-height} - 15px);
+    height: calc(100% - var(--dialog-input-height) - 15px);
     margin-bottom: 10px;
     overflow: auto;
     padding: 0 20px;
   }
   &-Input {
     height: fit-content;
-    border-top: 1px solid $breakline;
+    min-height: var(--dialog-input-height-min);
+    max-height: var(--dialog-input-height-max);
+    border-top: 1px solid var(--breakline);
     display: flex;
     align-items: center;
     padding: 10px 0;
 
     &-UploadOptions, &-Send, &-Audible, &-Smiley {
-      width: $icon-button-dimension;
-      height: $icon-button-dimension;
-      background: $brand-gradient;
+      width: var(--icon-button-dimension);
+      height: var(--icon-button-dimension);
+      background: var(--brand-gradient);
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -574,7 +573,7 @@ input[type=number] {
     }
     &-InputBox {
       font-size: 1rem;
-      flex-grow: 1;
+      width: calc(100% - (3 * var(--icon-button-dimension)) - 20px);
       border: none;
       padding: 10px 15px;
       border-radius: 2rem;
@@ -585,7 +584,7 @@ input[type=number] {
       justify-content: center;
       white-space: normal;
       &:focus {
-        box-shadow: 0 0 4px $brand-fill-test;
+        box-shadow: 0 0 4px var(--brand-fill-test);
       }
     }
   }
@@ -603,7 +602,7 @@ input[type=number] {
     p {
       font-size: 1.1rem;
       font-weight: 700;
-      color: $text-dark;
+      color: var(--text-dark);
       text-align: center;
     }
     img {
@@ -614,12 +613,13 @@ input[type=number] {
 
 .AIVIForm {
   &-Content {
+    height: 20px;
     overflow: auto;
-    height: calc(100% - #{$button-area-height});
+    height: calc(100% - var(--button-area-height));
     width: 100%;
   }
   &-Button {
-    height: $button-area-height;
+    height: var(--button-area-height);
     padding: 10px 20px;
     display: flex;
     align-items: center;
@@ -627,7 +627,7 @@ input[type=number] {
   }
   &-Title {
     font-size: 1rem;
-    color: $text-dark;
+    color: var(--text-dark);
     margin-bottom: 20px;
     font-weight: 700;
     padding-left: 25px;
@@ -635,7 +635,7 @@ input[type=number] {
   &-Description {
     font-size: 0.85rem;
     line-height: 1.3rem;
-    color: $text-dark;
+    color: var(--text-dark);
     padding-left: 25px;
   }
   &-Details {
@@ -647,12 +647,13 @@ input[type=number] {
 
 .CreditCard {
   &-Content {
+    height: 20px;
     overflow: auto;
-    height: calc(100% - #{$button-area-height});
+    height: calc(100% - var(--button-area-height));
     width: 100%;
   }
   &-Button {
-    height: $button-area-height;
+    height: var(--button-area-height);
     padding: 10px 20px;
     display: flex;
     align-items: center;
@@ -676,17 +677,17 @@ input[type=number] {
     justify-content: space-around;
     button {
       text-align: center;
-      background-color: $light-background;
+      background-color: var(--light-background);
       border: none;
-      color: $text-dark;
-      box-shadow: $box-shadow, inset 0px 0px 2px $text-dark;
+      color: var(--text-dark);
+      box-shadow: var(--box-shadow), inset 0px 0px 2px var(--text-dark);
       padding: 5px 15px;
       border-radius: 30px;
       transition: all 0.3s ease-in-out;
       cursor: pointer;
       &:disabled {
         opacity: 0.6;
-        box-shadow: $box-shadow;
+        box-shadow: var(--box-shadow);
         transition: all 0.3s ease-in-out;
         cursor: not-allowed;
       }
@@ -702,16 +703,16 @@ input[type=number] {
   }
   &-Title {
     font-size: 1rem;
-    color: $text-dark;
+    color: var(--text-dark);
     margin-bottom: 10px;
   }
   &-Container {
-    background: $light-background;
-    border: $imageselect-border;
+    background: var(--light-background);
+    border: var(--imageselect-border);
     border-radius: 8px;
     width: 100%;
     padding: 20px;
-    box-shadow: $imageselect-shadow;
+    box-shadow: var(--imageselect-shadow);
   }
   &-Item {
     display: flex;
@@ -727,13 +728,13 @@ input[type=number] {
   &-Input {
     padding: 10px;
     width: 8ch;
-    box-shadow: $box-shadow;
+    box-shadow: var(--box-shadow);
     border-radius: 4px;
     text-align: center;
   }
   &-Label {
     font-size: 0.8rem;
-    color: $text-dark;
+    color: var(--text-dark);
     margin-bottom: 5px;
   }
   &-Slider {
@@ -770,19 +771,19 @@ input[type=number] {
     margin-bottom: 10px;
   }
   &-AddButton {
-    color: $text-dark;
+    color: var(--text-dark);
     width: 3.5rem;
     height: 3.5rem;
-    background-color: $light-background;
-    border: $imageselect-border;
-    box-shadow: $imageselect-shadow;
+    background-color: var(--light-background);
+    border: var(--imageselect-border);
+    box-shadow: var(--imageselect-shadow);
     border-radius: 0.5rem;
     display: flex;
     align-items: center;
     justify-content: center;
     &:focus {
-      border: $imageselect-border;
-      box-shadow: 0px 0px 7px $brand-fill-test;
+      border: var(--imageselect-border);
+      box-shadow: 0px 0px 7px var(--brand-fill-test);
     }
     svg {
       transform: rotate(0deg);
@@ -794,9 +795,9 @@ input[type=number] {
     }
   }
   &-RemoveIncome {
-    background-color: $slider-thumb;
+    background-color: var(--slider-thumb);
     border: none;
-    color: $light-background;
+    color: var(--light-background);
     outline: none;
     padding: 5px 25px;
     border-radius: 1rem;
@@ -841,7 +842,7 @@ input[type=number] {
     position: sticky;
     top: 0px;
     z-index: 999;
-    background-color: $light-background;
+    background-color: var(--light-background);
     &::-webkit-scrollbar {
       display: none;
     }
@@ -856,12 +857,12 @@ input[type=number] {
       width: 15ch;
       cursor: pointer;
       height: fit-content;
-      color: $inactive;
+      color: var(--inactive);
       transition: all 0.2s ease-in-out;
       flex-shrink: 0;
       &[data-active=true] {
-        // border-bottom: 2px inset $brand-fill;
-        box-shadow: inset 0px -3px 0px 0px $brand-fill;
+        // border-bottom: 2px inset var(--brand-fill);
+        box-shadow: inset 0px -3px 0px 0px var(--brand-fill);
         color: black;
         transition: all 0.2s ease-in-out;
       }
@@ -892,9 +893,9 @@ input[type=number] {
     flex-flow: row wrap;
     padding: 0px 20px;
     &-Proceed {
-      background-color: $brand-fill;
-      height: $tabbar-proceed-dimension;
-      width: $tabbar-proceed-dimension;
+      background-color: var(--brand-fill);
+      height: var(--tabbar-proceed-dimension);
+      width: var(--tabbar-proceed-dimension);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -925,7 +926,7 @@ input[type=number] {
     flex-flow: row wrap;
     align-items: center;
     cursor: pointer;
-    color: $text-light;
+    color: var(--text-light);
     height: 100%;
     &[data-rows="1"] {
       width: 100%;
@@ -944,23 +945,23 @@ input[type=number] {
     }
   }
   &-Indicator {
-    width: $checkbox-indicator-dimension;
-    height: $checkbox-indicator-dimension;
+    width: var(--checkbox-indicator-dimension);
+    height: var(--checkbox-indicator-dimension);
     // background: burlywood;
     margin-right: 15px;
-    border-radius: $checkbox-indicator-dimension / 5;
-    // border: 1px solid $base-background;
-    box-shadow: inset 0px 0px 0px 1px $base-background;
+    border-radius: calc(var(--checkbox-indicator-dimension) / 5);
+    // border: 1px solid var(--base-background);
+    box-shadow: inset 0px 0px 0px 1px var(--base-background);
     display: flex;
     align-items: center;
     justify-content: center;
     transition: all 0.15s ease-in-out;
   }
   &-Container:hover {
-    color: $text-dark;
+    color: var(--text-dark);
     .Checkbox {
       &-Indicator {
-        box-shadow: inset 0px 0px 0px 1px $text-light;
+        box-shadow: inset 0px 0px 0px 1px var(--text-light);
         transition: all 0.15s ease-in-out;
       }
     }
@@ -970,7 +971,7 @@ input[type=number] {
     color: black;
     .Checkbox {
       &-Indicator {
-        background-color: $brand-fill;
+        background-color: var(--brand-fill);
         box-shadow: none;
         transition: all 0.15s ease-in-out;
       }
@@ -981,7 +982,7 @@ input[type=number] {
   }
   &-Limit {
     margin-top: 10px;
-    color: $text-light;
+    color: var(--text-light);
   }
 }
 
@@ -1002,13 +1003,13 @@ input[type=number] {
     justify-content: center;
     text-align: center;
     font-size: 0.85rem;
-    color: $text-dark;
+    color: var(--text-dark);
     width: 14ch;
     height: 120px;
-    background: $light-background;
-    border: $imageselect-border;
+    background: var(--light-background);
+    border: var(--imageselect-border);
     border-radius: 10px;
-    box-shadow: $imageselect-shadow;
+    box-shadow: var(--imageselect-shadow);
     padding: 10px;
     cursor: pointer;
     margin-right: 20px;
@@ -1029,10 +1030,10 @@ input[type=number] {
       }
     }
     &[data-active=true] {
-      border: $imageselect-border-active;
+      border: var(--imageselect-border-active);
       .ImageSelect {
         &-ImageContainer {
-          background-color: $brand-fill;
+          background-color: var(--brand-fill);
           transition: background-color 0.3s ease-in-out;
           img {
             filter: grayscale(100%) brightness(1.9);
@@ -1043,14 +1044,14 @@ input[type=number] {
     }
   }
   &-ImageContainer {
-    width: $imageselect-image-dimension;
-    height: $imageselect-image-dimension;
+    width: var(--imageselect-image-dimension);
+    height: var(--imageselect-image-dimension);
     object-fit: contain;
     object-position: center;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: $imageselect-background;
+    background: var(--imageselect-background);
     margin-bottom: 10px;
     border-radius: 50%;
     padding: 7px;
@@ -1071,26 +1072,26 @@ input[type=number] {
       overflow: hidden;
       border-radius: 5px;
       height: 3rem;
-      background-color: $light-background;
-      box-shadow: $box-shadow;
+      background-color: var(--light-background);
+      box-shadow: var(--box-shadow);
     }
     li {
       display: flex;
       justify-content: center;
       align-items: center;
       text-align: center;
-      box-shadow: inset -2px 0px 0px -1px $base-background;
+      box-shadow: inset -2px 0px 0px -1px var(--base-background);
       cursor: pointer;
       flex-grow: 1;
       &:last-child {
         box-shadow: none;
       }
       &[data-active=true] {
-        color: $brand-fill;
+        color: var(--brand-fill);
         font-weight: 500;
       }
       &[data-active=false] {
-        color: $text-light;
+        color: var(--text-light);
         font-weight: 500;
       }
     }
@@ -1102,17 +1103,17 @@ input[type=number] {
     display: flex;
     align-items: center;
     flex-flow: row wrap;
-    // border: $imageselect-border;
+    // border: var(--imageselect-border);
     margin-bottom: 20px;
-    background-color: $light-background;
-    box-shadow: $box-shadow;
-    // box-shadow: $imageselect-shadow;
+    background-color: var(--light-background);
+    box-shadow: var(--box-shadow);
+    // box-shadow: var(--imageselect-shadow);
     padding: 15px;
     border-radius: 10px;
     width: 100%;
     &-New {
-      border: $imageselect-border;
-      box-shadow: $imageselect-shadow;
+      border: var(--imageselect-border);
+      box-shadow: var(--imageselect-shadow);
     }
   }
   &-Checkbox {
@@ -1125,35 +1126,35 @@ input[type=number] {
     align-items: center;
     justify-content: center;
     &[data-checked=true] {
-      background-color: $brand-fill;
+      background-color: var(--brand-fill);
       .Icon {
         animation: tick-zoom 0.3s ease-in-out;
       }
     }
     &[data-checked=false] {
-      background-color: $light-background;
-      box-shadow: 0px 0px 0px 2px $base-background;
+      background-color: var(--light-background);
+      box-shadow: 0px 0px 0px 2px var(--base-background);
     }
   }
   &-Label {
-    color: $text-light;
+    color: var(--text-light);
     font-weight: 300;
-    // background: $brand-fill-test;
+    // background: var(--brand-fill-test);
     padding: 11px 15px;
     width: 40%;
   }
   &-Amount {
-    border: 1px solid $text-light;
+    border: 1px solid var(--text-light);
     border-radius: 0.4rem;
     padding: 10px 15px;
     width: 40%;
     margin-left: auto;
-    color: $text-dark;
+    color: var(--text-dark);
     display: flex;
     justify-content: space-between;
     input {
       width: calc(100% - 4ch);
-      color: $text-dark;
+      color: var(--text-dark);
     }
   }
 }
@@ -1170,13 +1171,13 @@ input[type=number] {
       align-items: flex-end;
       div {
         border-radius: 8px 0px 8px 8px;
-        background: $chat-bubble-user;
-        border: 1px solid $chat-bubble-user-border;
-        color: $text-dark;
+        background: var(--chat-bubble-user);
+        border: 1px solid var(--chat-bubble-user-border);
+        color: var(--text-dark);
         &:before {
           right: -10px;
           top: -1px;
-          border-color: $chat-bubble-user-tail transparent transparent transparent;
+          border-color: var(--chat-bubble-user-tail) transparent transparent transparent;
           border-width: 10px 10px 0 0;
         }
       }
@@ -1186,11 +1187,11 @@ input[type=number] {
       align-items: flex-start;
       div {
         border-radius: 0 8px 8px;
-        background: $chat-bubble-bot;
+        background: var(--chat-bubble-bot);
         color: white;
         &:before {
           left: -10px;
-          border-color: transparent $chat-bubble-bot-tail transparent transparent;
+          border-color: transparent var(--chat-bubble-bot-tail) transparent transparent;
           border-width: 0 10px 10px 0;
         }
       }
@@ -1224,7 +1225,7 @@ input[type=number] {
     font-size: 0.55rem !important;
     position: relative;
     // margin: 0 10px;
-    // color: $text-light;
+    // color: var(--text-light);
     // margin-left: auto;
     margin-left: 20px;
     top: 5px;
@@ -1238,13 +1239,13 @@ input[type=number] {
     bottom: 15px;
     right: 15px;
     padding: 10px 25px;
-    background: $brand-fill;
+    background: var(--brand-fill);
     border: none;
     border-radius: 50px;
     font-size: 0.8rem;
     color: white;
     cursor: pointer;
-    box-shadow: $box-shadow;
+    box-shadow: var(--box-shadow);
     z-index: 10000;
   }
   &-Sections {
@@ -1268,7 +1269,7 @@ input[type=number] {
       list-style: none;
     }
     li {
-      background: $brand-fill;
+      background: var(--brand-fill);
       padding: 10px 25px;
       margin-bottom: 10px;
       color: white;
@@ -1279,46 +1280,46 @@ input[type=number] {
 }
 
 @media  (max-width: 900px) {
-  // Dimension adjustment
-  $sidebar-width: 40px;
-  $button-area-height: 65px;
-  $icon-button-dimension: 40px;
-  $dialog-input-height: 65px;
-  $avatar-dimension: 90px;
-  $layout-sidebar-adjustment: 50px;
-  $mobile-menu-button-translation: 15px;
-
-  // Theme color adjustment
-  $brand-fill: #D53A4C;
-  $brand-fill-test: #D53A4C66;
-  $brand-gradient: linear-gradient(90.54deg, #F25767 0%, #D83445 100%);
-  $light-background: #FFFFFF;
-  $base-background: #E5E5E5;
-  $text-dark: #707C97;
-  $text-light: rgba(112, 124, 151, 0.7);
-  $shadow: rgba(32, 32, 32, 0.08);
-  $breakline: rgba(112, 124, 151, 0.15);
-  $icon-light: white;
-  $icon-dark: rgba(112, 124, 151, 0.5);
-  $input-label: rgba(17, 17, 17, 0.48);
-
-  // Theme standardisation
-  $box-shadow: 0 4px 10px $shadow;
-  $selected-box-shadow: 0 0 10px $brand-fill-test;
-
   :root {
     // Root measurement adjustment
     font-size: 14px;
+
+    // Dimension adjustment
+    --sidebar-width: 40px;
+    --button-area-height: 65px;
+    --icon-button-dimension: 40px;
+    --dialog-input-height: 65px;
+    --avatar-dimension: 90px;
+    --layout-sidebar-adjustment: 50px;
+    --mobile-menu-button-translation: 15px;
+
+    // Theme color adjustment
+    --brand-fill: #D53A4C;
+    --brand-fill-test: #D53A4C66;
+    --brand-gradient: linear-gradient(90.54deg, #F25767 0%, #D83445 100%);
+    --light-background: #FFFFFF;
+    --base-background: #E5E5E5;
+    --text-dark: #707C97;
+    --text-light: rgba(112, 124, 151, 0.7);
+    --shadow: rgba(32, 32, 32, 0.08);
+    --breakline: rgba(112, 124, 151, 0.15);
+    --icon-light: white;
+    --icon-dark: rgba(112, 124, 151, 0.5);
+    --input-label: rgba(17, 17, 17, 0.48);
+
+    // Theme standardisation
+    --box-shadow: 0 4px 10px var(--shadow);
+    --selected-box-shadow: 0 0 10px var(--brand-fill-test);
   }
 
   .AIVI {
     &-Sidebar {
-      height: $sidebar-width;
+      height: var(--sidebar-width);
       border-radius: 50%;
       overflow: hidden;
       position: absolute;
-      top: $mobile-menu-button-translation;
-      left: $mobile-menu-button-translation;
+      top: var(--mobile-menu-button-translation);
+      left: var(--mobile-menu-button-translation);
       z-index: 20;
     }
     &-Body {
@@ -1349,7 +1350,7 @@ input[type=number] {
           position: absolute;
           width: 100vw;
           height: 100vh;
-          background: $darken-background;
+          background: var(--darken-background);
           backdrop-filter: blur(3px);
           z-index: 99;
           padding: 30px 20px;
@@ -1359,13 +1360,13 @@ input[type=number] {
           display: flex;
           align-items: center;
           justify-content: center;
-          background: $brand-gradient;
-          width: $mobile-chatbox-button;
-          height: $mobile-chatbox-button;
+          background: var(--brand-gradient);
+          width: var(--mobile-chatbox-button);
+          height: var(--mobile-chatbox-button);
           color: white;
           position: absolute;
-          bottom: $mobile-chatbox-button-translation;
-          left: $mobile-chatbox-button-translation;
+          bottom: var(--mobile-chatbox-button-translation);
+          left: var(--mobile-chatbox-button-translation);
           border-radius: 50%;
           z-index: 100;
           // border: 10px solid white;

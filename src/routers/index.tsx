@@ -7,10 +7,18 @@ import {
     Sidebar,
 } from '../components';
 import SmartAssistant from '../pages/SmartAssistant';
+import Result from '../pages/Result';
 
 const VentasRoute = [
     {
-        path: '/',
+        path: '/results',
+        exact: false,
+        private: false,
+        sidebar: () => <Sidebar />,
+        main: () => <Result />,
+    },
+    {
+        path: '/smart-assistant',
         exact: true,
         private: false,
         sidebar: () => <Sidebar />,
@@ -20,7 +28,7 @@ const VentasRoute = [
         path: '*',
         exact: false,
         private: false,
-        sidebar: () => null,
+        sidebar: () => <Sidebar />,
         main: () => null,
     },
 ];

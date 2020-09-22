@@ -15,13 +15,13 @@ interface InputBoxProps {
 }
 
 const InputBox: React.FC<InputBoxProps> = ({slot, inputProps, handleInputChange}) => {
-    const handleInputFocus = (e: React.FocusEvent) => {
-        if (e.currentTarget.parentElement?.parentElement) e.currentTarget.parentElement.parentElement.style.boxShadow = 'var(--selected-box-shadow)';
-    };
+    // const handleInputFocus = (e: React.FocusEvent) => {
+    //     if (e.currentTarget.parentElement?.parentElement) e.currentTarget.parentElement.parentElement.style.boxShadow = '$selected-box-shadow';
+    // };
 
-    const handleInputBlur = (e: any) => {
-        if (e.currentTarget.parentElement?.parentElement)  e.currentTarget.parentElement.parentElement.style.boxShadow = 'var(--box-shadow)';
-    };
+    // const handleInputBlur = (e: any) => {
+    //     if (e.currentTarget.parentElement?.parentElement)  e.currentTarget.parentElement.parentElement.style.boxShadow = '$box-shadow';
+    // };
 
     return (
         <div
@@ -34,8 +34,8 @@ const InputBox: React.FC<InputBoxProps> = ({slot, inputProps, handleInputChange}
                 }
                 <input
                     type={inputProps.inputType}
-                    onFocus={handleInputFocus}
-                    onBlur={handleInputBlur}
+                    // onFocus={handleInputFocus}
+                    // onBlur={handleInputBlur}
                     value={slot[inputProps.inputState]}
                     onChange={({ currentTarget: {value} }) => handleInputChange(value, inputProps.inputName)}
                 />
