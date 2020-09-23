@@ -5,8 +5,8 @@ import {
 } from '../../CustomComponent';
 
 interface AvailableCardProps {
-    cardOwnership: boolean;
-    updateCardOwnership: (status: boolean) => void;
+    cardOwnership?: boolean;
+    updateCardOwnership?: (status: boolean) => void;
     selectedOptions: string[];
     updateSelectedOptions: (selected: string[]) => void;
     optionLimit: number;
@@ -98,20 +98,23 @@ const AvailableCard: React.FC<AvailableCardProps> = ({cardOwnership, updateCardO
 
     const cardOwnershipOptions = ['This Would Be My First Card', 'I Currently Have Existing Cards'];
     const handleCardOwnershipToggle = (value: string) => {
-        updateCardOwnership(value === cardOwnershipOptions[0] ? false : true);
+        updateCardOwnership && updateCardOwnership(value === cardOwnershipOptions[0] ? false : true);
         value === cardOwnershipOptions[0] && updateSelectedOptions([]);
     }
 
     return (
         <React.Fragment>
             <div ref={tempRef}>
-                <ToggleText
-                    optionList={cardOwnershipOptions}
-                    selected={cardOwnership ? cardOwnershipOptions[1] : cardOwnershipOptions[0]}
-                    handleToggleUpdate={(value: string) => handleCardOwnershipToggle(value)}
-                />
                 {
-                    cardOwnership
+                    (cardOwnership !== undefined) &&
+                    <ToggleText
+                        optionList={cardOwnershipOptions}
+                        selected={cardOwnership ? cardOwnershipOptions[1] : cardOwnershipOptions[0]}
+                        handleToggleUpdate={(value: string) => handleCardOwnershipToggle(value)}
+                    />
+                }
+                {
+                    (cardOwnership === undefined || cardOwnership)
                     && <MultipleCheckbox
                         optionList={optionList}
                         selectedOptions={selectedOptions}

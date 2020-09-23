@@ -16,10 +16,12 @@ import {
     ChecklistBox,
     MultiChecklistBox,
 } from './ChecklistBox';
+import CounterInput from './CounterInput';
 
 export {
     Checkbox, // Use this for options that use checkbox
-    ChecklistBox, //Use this for checklist-styled input
+    ChecklistBox, // Use this for checklist-styled input
+    CounterInput, // Use this for counters (increment and decrement)
     DNDPlayground,
     ImageSelect, // Use this for options that use image or icon
     InputBox,

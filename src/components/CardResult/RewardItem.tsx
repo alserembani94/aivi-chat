@@ -5,6 +5,7 @@ import {
 } from 'react-icons/io';
 import { IconContext } from 'react-icons/lib';
 import { Images } from '../../utils/Images';
+import ReactTooltip from 'react-tooltip';
 
 interface RewardItemProps {
     expandAll?: boolean;
@@ -43,13 +44,13 @@ const RewardItem: React.FC<RewardItemProps> = ({ expandAll, toggleExpandAll }) =
                     <div className="CardResult-Details-Rewards">
                         <p className="CardResult-Details-Label">Potential Rewards</p>
                         <div>
-                            <div>
+                            <div data-tip data-for='imageOne'>
                                 
                             </div>
-                            <div>
+                            <div data-tip data-for='imageTwo'>
                                 
                             </div>
-                            <div>
+                            <div data-tip data-for='imageThree'>
                                 
                             </div>
                         </div>
@@ -119,6 +120,37 @@ const RewardItem: React.FC<RewardItemProps> = ({ expandAll, toggleExpandAll }) =
                     </IconContext.Provider>
                 </button>
             </div>
+            
+            <ReactTooltip id="imageOne" place="bottom">
+                <div className="CardResult-Tooltip-Image" />
+                <div className="CardResult-Tooltip-Container">
+                    <p>Samsung Level Box Slim Speaker</p>
+                    <div>
+                        <p>PTS <span>20 200</span></p>
+                        <p>RM <span>240</span></p>
+                    </div>
+                </div>
+            </ReactTooltip>
+            <ReactTooltip id="imageTwo" place="bottom">
+                <div className="CardResult-Tooltip-Image" />
+                <div className="CardResult-Tooltip-Container">
+                    <p>Garmin Watch</p>
+                    <div>
+                        <p>PTS <span>40 200</span></p>
+                        <p>RM <span>450</span></p>
+                    </div>
+                </div>
+            </ReactTooltip>
+            <ReactTooltip id="imageThree" place="bottom">
+                <div className="CardResult-Tooltip-Image" />
+                <div className="CardResult-Tooltip-Container">
+                    <p>Razor V2</p>
+                    <div>
+                        <p>PTS <span>80 900</span></p>
+                        <p>RM <span>4000</span></p>
+                    </div>
+                </div>
+            </ReactTooltip>
         </div>
     );
 };

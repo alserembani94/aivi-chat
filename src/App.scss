@@ -401,12 +401,6 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
-// @keyframes {
-//   0% {
-//     transform: 
-//   }
-// }
-
 // Adjustment for main layout
 .AIVI {
   &-Page {
@@ -969,18 +963,19 @@ input[type=number] {
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: opacity 0.5s ease-in-out;
     &-Wrapper {
-      width: 70%;
+      width: 60%;
       height: fit-content;
       background-color: $light-background;
       border-radius: 0.5rem;
       box-shadow: $box-shadow;
-      padding: 3rem 2.5rem;
+      padding: 3rem 2.5rem 1.5rem;
       overflow: hidden;
     }
     &-Section {
       height: 100%;
-      max-height: 75vh;
+      max-height: 78vh;
       overflow: auto;
     }
     &-Container {
@@ -994,7 +989,7 @@ input[type=number] {
     &-Content {
       min-height: 50px;
       display: flex;
-      padding: 5px 18ch;
+      padding: 5px 10ch;
       justify-content: center;
       align-items: center;
       flex-flow: column wrap;
@@ -1028,6 +1023,11 @@ input[type=number] {
           }
         }
       }
+    }
+    &[data-visible=false] {
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.5s ease-in-out;
     }
   }
 }
@@ -1140,12 +1140,12 @@ input[type=number] {
     &[data-expanded=false] {
       max-height: 0px;
       opacity: 0;
-      transition: all 1s ease-in-out;
+      transition: all 0.5s ease-in-out;
     }
     &[data-expanded=true] {
       max-height: 10rem;
       opacity: 1;
-      transition: all 1s ease-in-out;
+      transition: all 0.5s ease-in-out;
     }
     &-Category {
       display: flex;
@@ -1185,6 +1185,28 @@ input[type=number] {
         span {
           font-size: 0.75rem;
         }
+      }
+    }
+  }
+  &-Tooltip {
+    &-Image {
+      width: 200px;
+      height: 110px;
+      background: $brand-fill;
+      margin: 10px 0px;
+    }
+    &-Container {
+      width: 200px;
+      display: flex;
+      flex-flow: row wrap;
+      p {
+        font-size: 0.8rem;
+        line-height: 1.2rem;
+      }
+      & > div {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
       }
     }
   }
@@ -1517,6 +1539,39 @@ input[type=number] {
     input {
       width: calc(100% - 4ch);
       color: $text-dark;
+    }
+  }
+}
+
+.CounterInput {
+  &-Wrapper {
+    background: $light-background;
+    box-shadow: $imageselect-shadow;
+    border: $imageselect-border;
+    border-radius: 8px;
+    display: flex;
+    flex-grow: 1;
+    width: 100%;
+    align-items: center;
+    padding: 20px;
+    justify-content: space-between;
+    input {
+      border: 1px solid $base-background;
+      border-radius: 5px;
+      padding: 5px 15px;
+      text-align: center;
+      width: 40%;
+      margin-right: 15px;
+    }
+    button {
+      // background:$brand-fill;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0px 20px;
+      font-size: 1.4rem;
+      font-weight: 600;
     }
   }
 }
