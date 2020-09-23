@@ -12,7 +12,7 @@ $checkbox-indicator-dimension: 30px;
 $imageselect-image-dimension: 5ch;
 $tabbar-proceed-dimension: 40px;
 $menu-padding: 1rem 3rem;
-$result-bottomContent: 4rem;
+$result-bottomContent: 5rem;
 
 // Theme color adjustment
 $brand-fill: #D53A4C;
@@ -226,6 +226,12 @@ button:focus {
     &-Down {
       width: 1.2rem;
       height: 1.2rem;
+    }
+  }
+  &-Result {
+    &-Check {
+      width: 90%;
+      height: 90%;
     }
   }
 }
@@ -863,6 +869,44 @@ input[type=number] {
   &-BottomContent {
     background: white;
     height: $result-bottomContent;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    padding: 0px 25px;
+    &-Chat {
+      border: 1px solid black;
+      width: $mobile-chatbox-button;
+      height: $mobile-chatbox-button;
+      border-radius: 50%;
+    }
+    &-Description {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      text-align: right;
+      margin-left: auto;
+      margin-right: 20px;
+      p {
+        color: $text-dark;
+        line-height: 1rem;
+      }
+      &-Title {
+        font-size: 0.8rem;
+        font-weight: 600;
+      }
+      &-Subtitle {
+        font-size: 0.7rem;
+      }
+    }
+    &-Apply {
+      background-color: $brand-fill;
+      color: $light-background;
+      padding: 10px 20px;
+      border-radius: 5px;
+      &:hover {
+        filter: brightness(1.1);
+      }
+    }
   }
   &-TitleBar {
     display: flex;
@@ -880,6 +924,13 @@ input[type=number] {
       border-radius: 2rem;
       padding: 10px 25px;
       font-weight: 600;
+      display: flex;
+      align-items: center;
+      img {
+        margin-left: 10px;
+        height: 1.3rem;
+        object-fit: contain;
+      }
     }
     & > * {
       margin-right: 20px;
@@ -906,6 +957,77 @@ input[type=number] {
     &-Title {
       padding-bottom: 10px;
       color: $text-dark;
+    }
+  }
+  &-Modal {
+    background-color: $darken-background;
+    backdrop-filter: blur(5px);
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &-Wrapper {
+      width: 70%;
+      height: fit-content;
+      background-color: $light-background;
+      border-radius: 0.5rem;
+      box-shadow: $box-shadow;
+      padding: 3rem 2.5rem;
+      overflow: hidden;
+    }
+    &-Section {
+      height: 100%;
+      max-height: 75vh;
+      overflow: auto;
+    }
+    &-Container {
+      margin-bottom: 20px;
+    }
+    &-Title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    &-Content {
+      min-height: 50px;
+      display: flex;
+      padding: 5px 18ch;
+      justify-content: center;
+      align-items: center;
+      flex-flow: column wrap;
+      // border: 1px solid black;
+    }
+    &-Action {
+      height: 4rem;
+      margin-top: 20px;
+      width: 100%;
+      display: flex;
+      flex-flow: row wrap;
+      align-items: center;
+      justify-content: flex-end;
+      &-Cancel {
+        padding: 5px 15px;
+        text-decoration: underline rgba(0, 0, 0, 0.3);
+        margin-right: 25px;
+      }
+      &-Confirm {
+        background: $brand-gradient;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 50%;
+        &:hover {
+          filter: brightness(1.1);
+          .Icon {
+            animation: zoom-in-out 0.6s ease-in-out;
+          }
+        }
+      }
     }
   }
 }
@@ -996,6 +1118,12 @@ input[type=number] {
       display: flex;
       align-items: center;
       font-size: 0.7rem;
+      &:hover {
+        animation: button-blink 1s infinite ease-in-out;
+        .Icon {
+          animation: tabbar-proceed-hover 1s infinite ease-in-out;
+        }
+      }
     }
     &-Expand {
       padding: 2px 20px;
@@ -1585,7 +1713,7 @@ input[type=number] {
           width: 100vw;
           height: 100vh;
           background: $darken-background;
-          backdrop-filter: blur(3px);
+          backdrop-filter: blur(5px);
           z-index: 99;
           padding: 30px 20px;
           overflow: hidden;
@@ -1623,6 +1751,26 @@ input[type=number] {
   }
 }
 
+@media (max-width: 1400px) {
+  .CardResult {
+    &-Details {
+      display: flex;
+      flex: 1 0;
+      flex-flow: column wrap;
+      padding-top: 1rem;
+      &-TotalCollection {
+        margin-right: 0;
+        margin-bottom: 20px;
+        flex: 1;
+      }
+      &-Period  {
+        flex: 1;
+        margin-bottom: 20px;
+      }
+    }
+  }
+}
+
 @keyframes imageselect-image-hover {
   0% { transform: rotate(0deg) scale(1) }
   10% { transform: rotate(-15deg) scale(1.2) }
@@ -1648,4 +1796,19 @@ input[type=number] {
   0% { transform: scale(1); }
   50% { transform: scale(2); }
   100% { transform: scale(1); }
+}
+
+@keyframes button-blink {
+  20% { filter: brightness(1) }
+  40% { filter: brightness(2) }
+  60% { filter: brightness(2) }
+  80% { filter: brightness(1) }
+}
+
+@keyframes zoom-in-out {
+  20% { transform: scale(1); }
+  40% { transform: scale(1.2); }
+  50% { transform: scale(1.3); }
+  60% { transform: scale(1.2); }
+  80% { transform: scale(1); }
 }

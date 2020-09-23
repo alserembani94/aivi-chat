@@ -6,12 +6,12 @@ import {
 import { IconContext } from 'react-icons/lib';
 import { Images } from '../../utils/Images';
 
-interface RewardItemProps {
+interface CashbackItemProps {
     expandAll?: boolean;
     toggleExpandAll?: () => void;
 }
 
-const RewardItem: React.FC<RewardItemProps> = ({ expandAll, toggleExpandAll }) => {
+const CashbackItem: React.FC<CashbackItemProps> = ({ expandAll, toggleExpandAll }) => {
     const [isExpanded, setExpanded] = React.useState(false);
 
     const toggleExpanded = () => {
@@ -33,26 +33,12 @@ const RewardItem: React.FC<RewardItemProps> = ({ expandAll, toggleExpandAll }) =
                 </div>
                 <div className="CardResult-Details">
                     <div className="CardResult-Details-TotalCollection">
-                        <p className="CardResult-Details-Label">Total Estimated Points</p>
-                        <p className="CardResult-Details-Data">1200 - 6000<span>PTS</span></p>
+                        <p className="CardResult-Details-Label">Potential Cashback</p>
+                        <p className="CardResult-Details-Data">RM 1200 - RM 1300</p>
                     </div>
                     <div className="CardResult-Details-Period">
                         <p className="CardResult-Details-Label">Period</p>
                         <p className="CardResult-Details-Data">12 months</p>
-                    </div>
-                    <div className="CardResult-Details-Rewards">
-                        <p className="CardResult-Details-Label">Potential Rewards</p>
-                        <div>
-                            <div>
-                                
-                            </div>
-                            <div>
-                                
-                            </div>
-                            <div>
-                                
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -64,8 +50,8 @@ const RewardItem: React.FC<RewardItemProps> = ({ expandAll, toggleExpandAll }) =
                             <img src={Images.icon_ticket} alt="icon" />
                         </div>
                         <div className="CardResult-Returns-Category-Details">
-                            <p className="CardResult-Returns-Category-Points">200 <span>PTS</span></p>
-                            <p className="CardResult-Returns-Category-UnitPoint"><span>5</span> PTS PER <span>RM1</span></p>
+                            <p className="CardResult-Returns-Category-Points">RM 80 <span>(cap at 80)</span></p>
+                            <p className="CardResult-Returns-Category-UnitPoint"><span>5% from RM 1000 and above</span></p>
                         </div>
                     </div>
                 </div>
@@ -76,8 +62,8 @@ const RewardItem: React.FC<RewardItemProps> = ({ expandAll, toggleExpandAll }) =
                             <img src={Images.icon_ticket} alt="icon" />
                         </div>
                         <div className="CardResult-Returns-Category-Details">
-                            <p className="CardResult-Returns-Category-Points">200 <span>PTS</span></p>
-                            <p className="CardResult-Returns-Category-UnitPoint"><span>5</span> PTS PER <span>RM1</span></p>
+                            <p className="CardResult-Returns-Category-Points">RM 80 <span>(cap at 80)</span></p>
+                            <p className="CardResult-Returns-Category-UnitPoint"><span>5% from RM 1000 and above</span></p>
                         </div>
                     </div>
                 </div>
@@ -88,8 +74,8 @@ const RewardItem: React.FC<RewardItemProps> = ({ expandAll, toggleExpandAll }) =
                             <img src={Images.icon_ticket} alt="icon" />
                         </div>
                         <div className="CardResult-Returns-Category-Details">
-                            <p className="CardResult-Returns-Category-Points">200 <span>PTS</span></p>
-                            <p className="CardResult-Returns-Category-UnitPoint"><span>5</span> PTS PER <span>RM1</span></p>
+                            <p className="CardResult-Returns-Category-Points">RM 80 <span>(cap at 80)</span></p>
+                            <p className="CardResult-Returns-Category-UnitPoint"><span>5% from RM 1000 and above</span></p>
                         </div>
                     </div>
                 </div>
@@ -100,8 +86,8 @@ const RewardItem: React.FC<RewardItemProps> = ({ expandAll, toggleExpandAll }) =
                             <img src={Images.icon_ticket} alt="icon" />
                         </div>
                         <div className="CardResult-Returns-Category-Details">
-                            <p className="CardResult-Returns-Category-Points">200 <span>PTS</span></p>
-                            <p className="CardResult-Returns-Category-UnitPoint"><span>5</span> PTS PER <span>RM1</span></p>
+                            <p className="CardResult-Returns-Category-Points">RM 80 <span></span></p>
+                            <p className="CardResult-Returns-Category-UnitPoint"><span>Uncapped</span></p>
                         </div>
                     </div>
                 </div>
@@ -123,4 +109,4 @@ const RewardItem: React.FC<RewardItemProps> = ({ expandAll, toggleExpandAll }) =
     );
 };
 
-export default RewardItem;
+export default CashbackItem;

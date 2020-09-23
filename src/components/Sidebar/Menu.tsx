@@ -13,15 +13,15 @@ interface MenuProps {
 
 const menuNav = [
     {
-        path: '/aivi-chat/',
+        path: '/',
         label: 'Home',
     },
     {
-        path: '/aivi-chat/smart-assistant/',
+        path: '/smart-assistant/',
         label: 'Smart Assistant',
     },
     {
-        path: '/aivi-chat/results/',
+        path: '/results/',
         label: 'Result',
     },
 ];

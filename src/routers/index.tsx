@@ -11,14 +11,14 @@ import Result from '../pages/Result';
 
 const VentasRoute = [
     {
-        path: '/aivi-chat/results',
+        path: '/results',
         exact: false,
         private: false,
         sidebar: () => <Sidebar />,
         main: () => <Result />,
     },
     {
-        path: '/aivi-chat/smart-assistant',
+        path: '/smart-assistant',
         exact: true,
         private: false,
         sidebar: () => <Sidebar />,
