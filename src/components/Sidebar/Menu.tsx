@@ -55,6 +55,7 @@ const Menu: React.FC<MenuProps> = ({ visible, toggleVisibility }) => {
                     {
                         menuNav.map((menuItem, index) => (
                             <button
+                                key={index}
                                 className="Menu-Button"
                                 onClick={() => handleNavigation(menuItem.path)}
                             >{menuItem.label}</button>

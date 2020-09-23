@@ -168,9 +168,9 @@ const PersonalLoan: React.FC = () => {
         setCurrentTab(() => { return selectedTab });
     }
 
-    React.useEffect(() => {
-        console.log(maritalInfo);
-    }, [maritalInfo]);
+    // React.useEffect(() => {
+    //     console.log(maritalInfo);
+    // }, [maritalInfo]);
 
     return (
         <React.Fragment>

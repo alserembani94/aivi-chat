@@ -12,6 +12,7 @@ $checkbox-indicator-dimension: 30px;
 $imageselect-image-dimension: 5ch;
 $tabbar-proceed-dimension: 40px;
 $menu-padding: 1rem 3rem;
+$result-bottomContent: 4rem;
 
 // Theme color adjustment
 $brand-fill: #D53A4C;
@@ -94,6 +95,7 @@ button {
   background: transparent;
   border: none;
   outline: none;
+  cursor: pointer;
 }
 
 button:focus {
@@ -178,6 +180,9 @@ button:focus {
   &-Dark {
     color: $icon-dark;
   }
+  &-Black {
+    color: black;
+  }
   &-Hamburger {
     width: 45%;
     height: 45%;
@@ -210,6 +215,18 @@ button:focus {
     width: 70%;
     height: 70%;
     color: $brand-fill !important;
+  }
+  &-Details {
+    &-Forward {
+      width: 1.5rem;
+      height: 1.5rem;
+      color: $brand-fill;
+      margin-left: 5px;
+    }
+    &-Down {
+      width: 1.2rem;
+      height: 1.2rem;
+    }
   }
 }
 
@@ -823,6 +840,224 @@ input[type=number] {
       display: flex;
       align-items: center;
       justify-content: center;
+    }
+  }
+}
+
+.CreditCardResult {
+  &-Body {
+    display: flex;
+    flex: 1 0 calc(100% - #{$sidebar-width});
+    flex-flow: column wrap;
+    height: 100vh;
+  }
+  &-TopContent {
+    display: flex;
+    flex-flow: column wrap;
+    flex: 1 0;
+    // flex: 1 0 calc(100% - #{$result-bottomContent});
+    // height: calc(100% - #{$result-bottomContent});
+    overflow: hidden;
+    padding: 3.5rem;
+  }
+  &-BottomContent {
+    background: white;
+    height: $result-bottomContent;
+  }
+  &-TitleBar {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    p {
+      font-size: 2rem;
+      font-weight: 700;
+      flex-grow: 1;
+    }
+    button {
+      background-color: $light-background;
+      box-shadow: $box-shadow;
+      border-radius: 2rem;
+      padding: 10px 25px;
+      font-weight: 600;
+    }
+    & > * {
+      margin-right: 20px;
+      &:last-child {
+        margin-right: 0px;
+      }
+    }
+  }
+  &-Content {
+    display: flex;
+    flex: 1 0;
+    flex-flow: row wrap;
+    padding: 0px 1.5rem;
+    overflow: auto;
+    &-Column {
+      flex: 1 0;
+      padding: 20px;
+    }
+    &-Seperator {
+      background: #0000000F;
+      width: 1px;
+      border-radius: 50%;
+    }
+    &-Title {
+      padding-bottom: 10px;
+      color: $text-dark;
+    }
+  }
+}
+
+.CardResult {
+  &-Wrapper {
+    background-color: $light-background;
+    padding: 20px 20px 10px;
+    border-radius: 8px;
+    width: 100%;
+    margin-bottom: 30px;
+    box-shadow: $box-shadow;
+  }
+  &-Main {
+    display: flex;
+    flex-flow: row wrap;
+  }
+  &-Card {
+    display: flex;
+    flex-flow: column wrap;
+    margin-right: 25px;
+    &-Image {
+      width: 165px;
+      height: 100px;
+      margin-bottom: 10px;
+      object-fit: contain;
+      object-position: left;
+      background: #EEE;
+    }
+    &-Name {
+      font-size: 0.9rem;
+    }
+  }
+  &-Details {
+    display: flex;
+    flex: 1 0;
+    flex-flow: row wrap;
+    padding-top: 1rem;
+    &-TotalCollection, &-Period, &-Rewards {
+      display: flex;
+      flex-flow: column wrap;
+    }
+    &-Label {
+      color: $text-light;
+      font-size: 0.8rem;
+      margin-bottom: 5px;
+    }
+    &-Data {
+      font-size: 1.3rem;
+      font-weight: 600;
+      span {
+        font-size: 0.8rem;
+        font-weight: 400;
+        margin-left: 5px;
+      }
+    }
+    &-TotalCollection {
+      margin-right: 4%;
+      margin-bottom: 20px;
+      flex: 1 0 60%;
+    }
+    &-Period  {
+      flex: 1 0 36%;
+    }
+    &-Rewards {
+      & > div {
+        display: flex;
+        flex-flow: row wrap;
+        & > div {
+          width: 60px;
+          height: 60px;
+          border: 1px solid #EFEFEF;
+          border-radius: 50%;
+          overflow: hidden;
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+  &-CardAction {
+    display: flex;
+    margin-top: 10px;
+    position: relative;
+    justify-content: center;
+    &-ViewDetails {
+      position: absolute;
+      right: 0px;
+      display: flex;
+      align-items: center;
+      font-size: 0.7rem;
+    }
+    &-Expand {
+      padding: 2px 20px;
+      &[data-expanded=true] .Icon {
+        transform: rotate(180deg);
+      }
+    }
+  }
+  &-Returns {
+    margin-top: 20px;
+    display: flex;
+    flex-flow: row wrap;
+    overflow: hidden;
+    &[data-expanded=false] {
+      max-height: 0px;
+      opacity: 0;
+      transition: all 1s ease-in-out;
+    }
+    &[data-expanded=true] {
+      max-height: 10rem;
+      opacity: 1;
+      transition: all 1s ease-in-out;
+    }
+    &-Category {
+      display: flex;
+      flex: 1 0 50%;
+      padding-right: 10px;
+      flex-flow: column wrap;
+      margin-bottom: 15px;
+      &-Content {
+        display: flex;
+        flex-flow: row wrap;
+        align-items: center;
+      }
+      &-Icon {
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        background-color: $base-background;
+        margin-right: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      &-Title {
+        font-size: 0.9rem;
+        margin-bottom: 0.3rem;
+      }
+      &-Points {
+        font-size: 1.2rem;
+        font-weight: 600;
+        span {
+          font-size: 0.75rem;
+        }
+      }
+      &-UnitPoint {
+        color: $text-dark;
+        font-size: 0.65rem;
+        span {
+          font-size: 0.75rem;
+        }
+      }
     }
   }
 }
