@@ -7,6 +7,7 @@ import {
     Sidebar,
 } from '../components';
 import SmartAssistant from '../pages/SmartAssistant';
+import CardDetails from '../pages/CardDetails';
 import CreditCardResult from '../pages/CreditCardResult';
 import LoanResult from '../pages/LoanResult';
 
@@ -31,6 +32,13 @@ const VentasRoute = [
         private: false,
         sidebar: () => <Sidebar />,
         main: () => <LoanResult />,
+    },
+    {
+        path: '/card-details',
+        exact: true,
+        private: false,
+        sidebar: () => <Sidebar />,
+        main: () => <CardDetails />,
     },
     {
         path: '*',

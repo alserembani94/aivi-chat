@@ -1225,6 +1225,66 @@ input[type=number] {
       }
     }
   }
+  &-CardDetails {
+    background: #FAFAFA;
+    border: 1px solid #F1F1F1;
+    margin-top: 20px;
+    &-Container {
+      display: flex;
+      flex-flow: row wrap;
+      overflow: hidden;
+      padding-left: 20px;
+      &[data-expanded=false] {
+        max-height: 0px;
+        opacity: 0;
+        transition: all 0.5s ease-in-out;
+      }
+      &[data-expanded=true] {
+        max-height: 10rem;
+        opacity: 1;
+        transition: all 0.5s ease-in-out;
+      }
+      &-Category {
+        display: flex;
+        flex: 1 0 50%;
+        padding-right: 60px;
+        flex-flow: column wrap;
+        &-Content {
+          display: flex;
+          flex-flow: row wrap;
+          align-items: center;
+        }
+        &-Icon {
+          width: 35px;
+          height: 35px;
+          border-radius: 50%;
+          background-color: $base-background;
+          margin-right: 10px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        &-Title {
+          font-size: 0.9rem;
+          margin-bottom: 0.3rem;
+        }
+        &-Points {
+          font-size: 1.2rem;
+          font-weight: 600;
+          span {
+            font-size: 0.75rem;
+          }
+        }
+        &-UnitPoint {
+          color: $text-dark;
+          font-size: 0.65rem;
+          span {
+            font-size: 0.75rem;
+          }
+        }
+      }
+    }
+  }
   &-Returns {
     margin-top: 20px;
     display: flex;
@@ -1241,11 +1301,10 @@ input[type=number] {
       transition: all 0.5s ease-in-out;
     }
     &-Category {
-      display: flex;
-      flex: 1 0 50%;
-      padding-right: 10px;
-      flex-flow: column wrap;
-      margin-bottom: 15px;
+      margin-top: 20px;
+      padding-right: 65px;
+      margin-bottom: 5px;
+
       &-Content {
         display: flex;
         flex-flow: row wrap;
