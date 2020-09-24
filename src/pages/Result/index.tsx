@@ -5,6 +5,7 @@ import {
 } from '../../components/CardResult';
 import {
     CounterInput,
+    Modal,
 } from '../../components/CustomComponent';
 import { Images } from '../../utils/Images';
 import ExpensesDetails from '../../components/Leftbox/Credit Card/ExpensesDetails';
@@ -39,7 +40,7 @@ const Result: React.FC = () => {
         setAllExpanded(prevState => !prevState);
     };
     // Temporary Period Details
-    const [period, setPeriod] = React.useState(0);
+    const [period, setPeriod] = React.useState(6);
     
     const handlePeriodChange = (value: number) => setPeriod(() => value);
 
@@ -95,12 +96,18 @@ const Result: React.FC = () => {
     const [resetModal, setResetModal] = React.useState(false);
     const [searchModal, setSearchModal] = React.useState(false);
 
-    const handleModalToggle = (modalName: string) => {
-        // console.log(modalName);
+    const handleModalOpen = (modalName: string) => {
         modalName === 'resetModal'
-        ? setResetModal(prevState => !prevState)
+        ? setResetModal(prevState => true)
         : modalName === 'searchModal'
-        && setSearchModal(prevState => !prevState);
+        && setSearchModal(prevState => true);
+    }
+
+    const handleModalClose = (modalName: string) => {
+        modalName === 'resetModal'
+        ? setResetModal(prevState => false)
+        : modalName === 'searchModal'
+        && setSearchModal(prevState => false);
     }
 
     React.useEffect(() => {
@@ -115,13 +122,13 @@ const Result: React.FC = () => {
                         <p>Your results are in!</p>
                         <button onClick={toggleAllExpanded}>{ allExpanded ? `Collapse` : `Expand`} All</button>
                         <button
-                            onClick={() => handleModalToggle('resetModal')}
+                            onClick={() => handleModalOpen('resetModal')}
                         >
                             Reset Expense
                             <img src={Images.icon_readjust} alt="Reset" />
                         </button>
                         <button
-                            onClick={() => handleModalToggle('searchModal')}
+                            onClick={() => handleModalOpen('searchModal')}
                         >Not what you're looking for?
                             <img src={Images.icon_search} alt="Search" />
                         </button>
@@ -170,76 +177,78 @@ const Result: React.FC = () => {
                 </section>
 
                 {/* RESET EXPENSE MODAL */}
-                <section className="CreditCardResult-Modal" data-visible={resetModal}>
-                    <div className="CreditCardResult-Modal-Wrapper">
-                        <div className="CreditCardResult-Modal-Section">
-                            <div className="CreditCardResult-Modal-Container">
-                                <p className="CreditCardResult-Modal-Title">Reset Period</p>
-                                <div className="CreditCardResult-Modal-Content">
-                                    <CounterInput
-                                        value={period}
-                                        updateCounter={handlePeriodChange}
-                                        unit="months"
-                                        limit={20}
-                                    />
-                                </div>
-                            </div>
-                            <div className="CreditCardResult-Modal-Container">
-                                <p className="CreditCardResult-Modal-Title">Reset your monthly spending range</p>
-                                <div className="CreditCardResult-Modal-Content">
-                                    <ExpensesDetails
-                                        details={expenseDetails}
-                                        updateExpenseObject={handleExpenseDetailsUpdate}
-                                    />
-                                </div>
-                            </div>
-                        </div>
-                        <div className="CreditCardResult-Modal-Action">
-                            <button
-                                className="CreditCardResult-Modal-Action-Cancel"
-                                onClick={() => handleModalToggle('resetModal')}
-                            >Cancel</button>
-                            <button
-                                className="CreditCardResult-Modal-Action-Confirm"
-                                onClick={() => handleModalToggle('resetModal')}
-                            >
-                                <IconContext.Provider value={{ className: 'Icon Icon-Light Icon-Result-Check' }} >
-                                    <IoIosCheckmark />
-                                </IconContext.Provider>
-                            </button>
-                        </div>
-                    </div>
-                </section>
-
-                {/* NOT LOOKING FOR MODAL */}
-                <section className="CreditCardResult-Modal" data-visible={searchModal}>
-                    <div className="CreditCardResult-Modal-Wrapper">
-                        <div className="CreditCardResult-Modal-Section">
-                            <div className="CreditCardResult-Modal-Container">
-                                <p className="CreditCardResult-Modal-Title">Choose your preferred bank...</p>
-                                <AvailableCard
-                                    selectedOptions={selectedBanks}
-                                    updateSelectedOptions={handleSelectedBanks}
-                                    optionLimit={banksLimit}
+                <Modal
+                    visible={resetModal}
+                >
+                    <div className="CreditCardResult-Modal-Section">
+                        <div className="CreditCardResult-Modal-Container">
+                            <p className="CreditCardResult-Modal-Title">Reset Period</p>
+                            <div className="CreditCardResult-Modal-Content">
+                                <CounterInput
+                                    value={period}
+                                    updateCounter={handlePeriodChange}
+                                    unit="months"
+                                    min={6}
+                                    max={24}
                                 />
                             </div>
                         </div>
-                        <div className="CreditCardResult-Modal-Action">
-                            <button
-                                className="CreditCardResult-Modal-Action-Cancel"
-                                onClick={() => handleModalToggle('searchModal')}
-                            >Cancel</button>
-                            <button
-                                className="CreditCardResult-Modal-Action-Confirm"
-                                onClick={() => handleModalToggle('searchModal')}
-                            >
-                                <IconContext.Provider value={{ className: 'Icon Icon-Light Icon-Result-Check' }} >
-                                    <IoIosCheckmark />
-                                </IconContext.Provider>
-                            </button>
+                        <div className="CreditCardResult-Modal-Container">
+                            <p className="CreditCardResult-Modal-Title">Reset your monthly spending range</p>
+                            <div className="CreditCardResult-Modal-Content">
+                                <ExpensesDetails
+                                    details={expenseDetails}
+                                    updateExpenseObject={handleExpenseDetailsUpdate}
+                                />
+                            </div>
                         </div>
                     </div>
-                </section>
+                    <div className="CreditCardResult-Modal-Action">
+                        <button
+                            className="CreditCardResult-Modal-Action-Cancel"
+                            onClick={() => handleModalClose('resetModal')}
+                        >Cancel</button>
+                        <button
+                            className="CreditCardResult-Modal-Action-Confirm"
+                            onClick={() => handleModalClose('resetModal')}
+                        >
+                            <IconContext.Provider value={{ className: 'Icon Icon-Light Icon-Result-Check' }} >
+                                <IoIosCheckmark />
+                            </IconContext.Provider>
+                        </button>
+                    </div>
+                </Modal>
+
+                {/* NOT LOOKING FOR MODAL */}
+                <Modal
+                    visible={searchModal}
+                >
+                    <div className="CreditCardResult-Modal-Section">
+                        <div className="CreditCardResult-Modal-Container">
+                            <p className="CreditCardResult-Modal-Title">Choose your preferred bank...</p>
+                            <AvailableCard
+                                selectedOptions={selectedBanks}
+                                updateSelectedOptions={handleSelectedBanks}
+                                optionLimit={banksLimit}
+                            />
+                        </div>
+                    </div>
+                    <div className="CreditCardResult-Modal-Action">
+                        <button
+                            className="CreditCardResult-Modal-Action-Cancel"
+                            onClick={() => handleModalClose('searchModal')}
+                        >Cancel</button>
+                        <button
+                            className="CreditCardResult-Modal-Action-Confirm"
+                            onClick={() => handleModalClose('searchModal')}
+                        >
+                            <IconContext.Provider value={{ className: 'Icon Icon-Light Icon-Result-Check' }} >
+                                <IoIosCheckmark />
+                            </IconContext.Provider>
+                        </button>
+                    </div>
+                </Modal>
+                        
             </main>
         </React.Fragment>
     );

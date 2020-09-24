@@ -6,7 +6,7 @@ export const validateData = (dataValue: string, dataType: DataTypeStrings) => {
     }
 };
 
-export const convertToInt = (value: string, limit: number = Infinity) => {
+export const convertToInt = (value: string, min: number = -Infinity, max: number = Infinity) => {
     // Use case 1: Empty string
     if (value === '') return 0;
     else {
@@ -19,8 +19,8 @@ export const convertToInt = (value: string, limit: number = Infinity) => {
             ? parseInt(extractedNumber.substr(1), 10)
             // Perfect number, voilla!
             : parseInt(extractedNumber, 10);
-            // Check for optional limit
-            return parsedNumber >= limit ? limit : parsedNumber;
+            // Check for optional max
+            return parsedNumber >= max ? max : parsedNumber <= min ? min : parsedNumber;
         }
     }
 }

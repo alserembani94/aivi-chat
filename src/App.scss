@@ -1576,6 +1576,35 @@ input[type=number] {
   }
 }
 
+.Modal {
+  &-Container {
+    background-color: $darken-background;
+    backdrop-filter: blur(5px);
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.5s ease-in-out;
+    &[data-visible=false] {
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.5s ease-in-out;
+    }
+  }
+  &-Wrapper {
+    width: 60%;
+    height: fit-content;
+    background-color: $light-background;
+    border-radius: 0.5rem;
+    box-shadow: $box-shadow;
+    padding: 3rem 2.5rem 1.5rem;
+    overflow: hidden;
+  }
+}
+
 // Adjustment for dialog
 .Dialog {
   &-Container {

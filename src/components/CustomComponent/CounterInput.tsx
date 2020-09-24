@@ -7,18 +7,19 @@ interface CounterInputProps {
     value: number;
     updateCounter: (value: number) => void;
     unit: string;
-    limit?: number;
+    min?: number;
+    max?: number;
 }
 
-const CounterInput: React.FC<CounterInputProps> = ({value, updateCounter, unit, limit = Infinity}) => {
+const CounterInput: React.FC<CounterInputProps> = ({value, updateCounter, unit, min = -Infinity ,max = Infinity}) => {
     const handleCounterInput = (value: string) => {
-        updateCounter(convertToInt(value, limit));
+        updateCounter(convertToInt(value, min, max));
     }
 
     const handleCounterFlactuate = (operation: string) => {
-        operation === '+' && (value + 1 <= limit)
+        operation === '+' && (value + 1 <= max)
         ? updateCounter(value + 1)
-        : operation === '-'&& (value - 1 >= 0) && updateCounter(value - 1);
+        : operation === '-'&& (value - 1 >= min) && updateCounter(value - 1);
     };
 
     return (

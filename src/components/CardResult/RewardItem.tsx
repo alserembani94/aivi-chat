@@ -127,7 +127,7 @@ const RewardItem: React.FC<RewardItemProps> = ({ expandAll, toggleExpandAll }) =
                     <p>Samsung Level Box Slim Speaker</p>
                     <div>
                         <p>PTS <span>20 200</span></p>
-                        <p>RM <span>240</span></p>
+                        <p><span>240</span></p>
                     </div>
                 </div>
             </ReactTooltip>
@@ -137,7 +137,7 @@ const RewardItem: React.FC<RewardItemProps> = ({ expandAll, toggleExpandAll }) =
                     <p>Garmin Watch</p>
                     <div>
                         <p>PTS <span>40 200</span></p>
-                        <p>RM <span>450</span></p>
+                        <p><span>450</span></p>
                     </div>
                 </div>
             </ReactTooltip>
@@ -147,7 +147,7 @@ const RewardItem: React.FC<RewardItemProps> = ({ expandAll, toggleExpandAll }) =
                     <p>Razor V2</p>
                     <div>
                         <p>PTS <span>80 900</span></p>
-                        <p>RM <span>4000</span></p>
+                        <p><span>4000</span></p>
                     </div>
                 </div>
             </ReactTooltip>
