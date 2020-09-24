@@ -4,14 +4,9 @@ import {
     InputDropdown,
 } from '../../CustomComponent';
 
-type LoanDetailsType = {
-    loanAmount: string,
-    repaymentPeriod: string,
-};
-
 interface LoanDetailsProps {
-    loanDetails: LoanDetailsType;
-    handleLoanDetailsUpdate: (updatedLoanDetails: LoanDetailsType) => void;
+    loanDetails: any;
+    handleLoanDetailsUpdate: (updatedLoanDetails: any) => void;
 };
 
 type InputOptionType = {
@@ -69,7 +64,7 @@ const LoanDetails: React.FC<LoanDetailsProps> = ({ loanDetails, handleLoanDetail
                     )
                     : (
                         <InputBox
-                            slot={loanDetails}
+                            value={loanDetails[loanDetailsItem.inputState]}
                             inputProps={loanDetailsItem}
                             handleInputChange={handleInputChange}
                             key={index}

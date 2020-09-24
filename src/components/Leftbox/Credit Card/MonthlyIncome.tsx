@@ -9,23 +9,15 @@ import {
 } from 'react-icons/io';
 import { IconContext } from 'react-icons/lib';
 
-type IncomeSourceType = {
-    category: string,
-    industry: string,
-    level: string,
-    jobTitle: string,
-    income: string,
-};
-
 interface IncomeSourceItemProps {
-    incomeSource: IncomeSourceType;
+    incomeSource: any;
     incomeNo: number;
-    handleIncomeSourceItemUpdate: (incomeSourceItem: IncomeSourceType) => void;
+    handleIncomeSourceItemUpdate: (incomeSourceItem: any) => void;
 }
 
 interface MonthlyIncomeProps {
-    incomeSources: IncomeSourceType[];
-    handleIncomeSourceUpdate: (updatedIncomeSource: IncomeSourceType[]) => void;
+    incomeSources: any[];
+    handleIncomeSourceUpdate: (updatedIncomeSource: any[]) => void;
 }
 
 type InputOptionType = {
@@ -162,7 +154,7 @@ const MonthlyIncomeItem: React.FC<IncomeSourceItemProps> = ({incomeSource, incom
                     )
                     : (
                         <InputBox
-                            slot={incomeSource}
+                            value={incomeSource[incomeSourceItem.inputState]}
                             inputProps={incomeSourceItem}
                             handleInputChange={handleInputChange}
                             key={index}
@@ -175,7 +167,7 @@ const MonthlyIncomeItem: React.FC<IncomeSourceItemProps> = ({incomeSource, incom
 }
 
 const MonthlyIncome: React.FC<MonthlyIncomeProps> = ({ incomeSources, handleIncomeSourceUpdate }) => {
-    const updateIncomeSources = (incomeSourceItem: IncomeSourceType, index: number) => {
+    const updateIncomeSources = (incomeSourceItem: any, index: number) => {
         const updatedIncomeSource = [...incomeSources];
         updatedIncomeSource[index] = incomeSourceItem;
         handleIncomeSourceUpdate(updatedIncomeSource);

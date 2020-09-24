@@ -9,12 +9,12 @@ type slotInputType = {
 };
 
 interface InputBoxProps {
-    slot: any;
+    value: string | number;
     inputProps: slotInputType;
     handleInputChange: (value: string, stateName: string) => void;
 }
 
-const InputBox: React.FC<InputBoxProps> = ({slot, inputProps, handleInputChange}) => {
+const InputBox: React.FC<InputBoxProps> = ({value, inputProps, handleInputChange}) => {
     // const handleInputFocus = (e: React.FocusEvent) => {
     //     if (e.currentTarget.parentElement?.parentElement) e.currentTarget.parentElement.parentElement.style.boxShadow = '$selected-box-shadow';
     // };
@@ -36,8 +36,8 @@ const InputBox: React.FC<InputBoxProps> = ({slot, inputProps, handleInputChange}
                     type={inputProps.inputType}
                     // onFocus={handleInputFocus}
                     // onBlur={handleInputBlur}
-                    value={slot[inputProps.inputState]}
-                    onChange={({ currentTarget: {value} }) => handleInputChange(value, inputProps.inputName)}
+                    value={value}
+                    onChange={({ currentTarget: { value } }) => handleInputChange(value, inputProps.inputName)}
                 />
             </div>
         </div>

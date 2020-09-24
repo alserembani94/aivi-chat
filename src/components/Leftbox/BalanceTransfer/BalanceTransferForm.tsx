@@ -175,7 +175,7 @@ const BalanceTransferForm: React.FC<BalanceTransferProps> = ({slot, updateSubmit
                             )
                             : (
                                 <InputBox
-                                    slot={slot}
+                                    value={slot[slotInputItem.inputState]}
                                     inputProps={slotInputItem}
                                     handleInputChange={handleInputChange}
                                     key={index}

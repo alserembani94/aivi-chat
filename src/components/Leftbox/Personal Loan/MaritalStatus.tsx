@@ -5,23 +5,9 @@ import {
 } from '../../CustomComponent';
 import MonthlyIncome from '../Credit Card/MonthlyIncome';
 
-type IncomeSourceType = {
-    category: string,
-    industry: string,
-    level: string,
-    jobTitle: string,
-    income: string,
-}[];
-
-type MaritalInfoType = {
-    maritalStatus: string,
-    spouseName?: string,
-    incomeInfo?: IncomeSourceType;
-}
-
 interface MaritalStatusProps {
-    maritalInfo: MaritalInfoType;
-    updateMaritalInfo: (updatedMaritalStatus: MaritalInfoType) => void;
+    maritalInfo: any;
+    updateMaritalInfo: (updatedMaritalStatus: any) => void;
 }
 
 const maritalInput = {
@@ -67,7 +53,7 @@ const MaritalStatus: React.FC<MaritalStatusProps> = ({ maritalInfo, updateMarita
     const handleMaritalInfoUpdate = (value: string, stateName: string) => {
         if (stateName === 'maritalStatus') {
             if (value === 'Married') {
-                const updatedMaritalInfo: MaritalInfoType = {
+                const updatedMaritalInfo: any = {
                     maritalStatus: 'Married',
                     spouseName: '',
                     incomeInfo: [
@@ -87,7 +73,7 @@ const MaritalStatus: React.FC<MaritalStatusProps> = ({ maritalInfo, updateMarita
         else return updateMaritalInfo({...maritalInfo, [stateName]: value});
     }
 
-    const handleIncomeInfoUpdate = (updatedIncomeInfo: IncomeSourceType) => {
+    const handleIncomeInfoUpdate = (updatedIncomeInfo: any) => {
         updateMaritalInfo({...maritalInfo, incomeInfo: updatedIncomeInfo});
     }
 
@@ -102,7 +88,7 @@ const MaritalStatus: React.FC<MaritalStatusProps> = ({ maritalInfo, updateMarita
                 maritalInfo.incomeInfo && maritalInfo.maritalStatus === 'Married' && (
                     <>
                         <InputBox
-                            slot={maritalInfo}
+                            value={maritalInfo}
                             inputProps={spouseInput}
                             handleInputChange={handleMaritalInfoUpdate}
                         />

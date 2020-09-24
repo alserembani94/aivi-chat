@@ -11,14 +11,6 @@ type slotInputItemType = {
     inputLabel: string,
 };
 
-type slotType = {
-    [transferFrom: string]: string,
-    name: string,
-    phone: string,
-    email: string,
-    amount: string,
-};
-
 type InputOptionType = {
     name: string;
     label: string;
@@ -26,7 +18,7 @@ type InputOptionType = {
 };
 
 interface CashFromCardProps {
-    slot: slotType;
+    slot: any;
     updateSubmitted: () => void;
     handleInputChange: (value: string, stateName: string) => void;
 }
@@ -121,7 +113,7 @@ const CashFromCardForm: React.FC<CashFromCardProps> = ({slot, updateSubmitted, h
                             )
                             : (
                                 <InputBox
-                                    slot={slot}
+                                    value={slot[slotInputItem.inputState]}
                                     inputProps={slotInputItem}
                                     handleInputChange={handleInputChange}
                                     key={index}
