@@ -183,6 +183,9 @@ button:focus {
   &-Black {
     color: black;
   }
+  &-Brand {
+    color: $brand-fill;
+  }
   &-Hamburger {
     width: 45%;
     height: 45%;
@@ -844,7 +847,7 @@ input[type=number] {
   }
 }
 
-.CreditCardResult {
+.ResultPage {
   &-Body {
     display: flex;
     flex: 1 0 calc(100% - #{$sidebar-width});
@@ -900,17 +903,31 @@ input[type=number] {
       &:hover {
         filter: brightness(1.1);
       }
+      &:disabled {
+        background: $base-background;
+        &:hover {
+          pointer-events: none;
+          cursor: initial;
+        }
+      }
     }
   }
-  &-TitleBar {
+  &-TopBar {
     display: flex;
     flex-flow: row wrap;
     align-items: center;
     margin-bottom: 1.5rem;
-    p {
+    &-TitleBar {
+      display: flex;
+      flex-flow: column wrap;
+      flex-grow: 1;
+    }
+    &-Title {
       font-size: 2rem;
       font-weight: 700;
-      flex-grow: 1;
+    }
+    &-Subtitle {
+      font-size: 0.9rem;
     }
     button {
       background-color: $light-background;
@@ -952,27 +969,83 @@ input[type=number] {
       padding-bottom: 10px;
       color: $text-dark;
     }
-  }
-  &-Modal {
-    background-color: $darken-background;
-    backdrop-filter: blur(5px);
-    position: fixed;
-    top: 0px;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: opacity 0.5s ease-in-out;
-    &-Wrapper {
-      width: 60%;
-      height: fit-content;
-      background-color: $light-background;
-      border-radius: 0.5rem;
-      box-shadow: $box-shadow;
-      padding: 3rem 2.5rem 1.5rem;
-      overflow: hidden;
+    &-Col {
+      display: flex;
+      flex-flow: column nowrap;
+      align-items: center;
+      flex: 1 0;
+      overflow: auto;
     }
+  }
+}
+
+.LoanItem {
+  &-Wrapper {
+    background: $light-background;
+    flex-grow: 1;
+    margin-bottom: 20px;
+    padding: 40px 40px 20px;
+    box-shadow: $box-shadow;
+    border-radius: 8px;
+    display: flex;
+    flex-flow: column wrap;
+    max-width: 800px;
+    &[data-selected=true] {
+      box-shadow: inset 0px 0px 1px 3px $brand-fill;
+    }
+  }
+  &-Content {
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+    margin-bottom: 5px;
+  }
+  &-Bank {
+    display: flex;
+    flex-flow: column wrap;
+    width: 200px;
+    margin-right: 50px;
+    margin-bottom: 20px;
+    img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      margin-bottom: 10px;
+    }
+    p {
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+  }
+  &-Detail {
+    display: flex;
+    flex-flow: row wrap;
+    flex: 1 0;
+    // max-width: calc(100% - 300px);
+    &-Item {
+      width: 180px;
+      margin-bottom: 15px;
+      margin-right: 20px;
+      &-Label {
+        font-size: 1rem;
+        color: $text-dark;
+        line-height: 1.5rem;
+      }
+      &-Content {
+        font-size: 1.4rem;
+        font-weight: 600;
+      }
+    }
+  }
+  &-Action {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-end;
+  }
+}
+
+.ModalContent {
+  &-CreditCardResult {
     &-Section {
       height: 100%;
       max-height: 78vh;
@@ -993,7 +1066,6 @@ input[type=number] {
       justify-content: center;
       align-items: center;
       flex-flow: column wrap;
-      // border: 1px solid black;
     }
     &-Action {
       height: 4rem;
@@ -1040,6 +1112,9 @@ input[type=number] {
     width: 100%;
     margin-bottom: 30px;
     box-shadow: $box-shadow;
+    &[data-selected=true] {
+      box-shadow: inset 0px 0px 1px 3px $brand-fill;
+    }
   }
   &-Main {
     display: flex;
@@ -1049,6 +1124,7 @@ input[type=number] {
     display: flex;
     flex-flow: column wrap;
     margin-right: 25px;
+    position: relative;
     &-Image {
       width: 165px;
       height: 100px;
@@ -1056,9 +1132,26 @@ input[type=number] {
       object-fit: contain;
       object-position: left;
       background: #EEE;
+      transition: transform 0.5s ease-in-out;
+      position: relative;
     }
     &-Name {
       font-size: 0.9rem;
+    }
+    &-Selected {
+      width: 165px;
+      height: 100px;
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #FFFFFF77;
+      transition: opacity 0.3s ease-in-out;
+      pointer-events: none;
+      &[data-selected=false] {
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+      }
     }
   }
   &-Details {

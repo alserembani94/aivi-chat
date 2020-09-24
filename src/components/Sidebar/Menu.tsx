@@ -17,12 +17,16 @@ const menuNav = [
         label: 'Home',
     },
     {
-        path: '/smart-assistant/',
+        path: '/smart-assistant',
         label: 'Smart Assistant',
     },
     {
-        path: '/results/',
-        label: 'Result',
+        path: '/credit-card-result',
+        label: 'Credit Card Result',
+    },
+    {
+        path: '/loan-result',
+        label: 'Loan Result',
     },
 ];
 
