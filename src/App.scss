@@ -1066,6 +1066,9 @@ input[type=number] {
     flex: 1 0;
     flex-flow: row wrap;
     padding-top: 1rem;
+    &:first-child {
+      margin-left:20px;
+    }
     &-TotalCollection, &-Period, &-Rewards {
       display: flex;
       flex-flow: column wrap;
@@ -1134,9 +1137,9 @@ input[type=number] {
   }
   &-CardDetails {
     background: #FAFAFA;
-    
+    border: 1px solid #F1F1F1;
+    margin-top: 20px;
     &-Container {
-      margin-top: 20px;
       display: flex;
       flex-flow: row wrap;
       overflow: hidden;
@@ -1153,9 +1156,8 @@ input[type=number] {
       &-Category {
         display: flex;
         flex: 1 0 50%;
-        padding-right: 10px;
+        padding-right: 60px;
         flex-flow: column wrap;
-        margin-bottom: 15px;
         &-Content {
           display: flex;
           flex-flow: row wrap;
@@ -1208,11 +1210,10 @@ input[type=number] {
       transition: all 0.5s ease-in-out;
     }
     &-Category {
-      display: flex;
-      flex: 1 0 50%;
-      padding-right: 10px;
-      flex-flow: column wrap;
-      margin-bottom: 15px;
+      margin-top: 20px;
+      padding-right: 65px;
+      margin-bottom: 5px;
+
       &-Content {
         display: flex;
         flex-flow: row wrap;
