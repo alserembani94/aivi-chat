@@ -1066,9 +1066,6 @@ input[type=number] {
     flex: 1 0;
     flex-flow: row wrap;
     padding-top: 1rem;
-    &:first-child {
-      margin-left:20px;
-    }
     &-TotalCollection, &-Period, &-Rewards {
       display: flex;
       flex-flow: column wrap;
@@ -1143,6 +1140,7 @@ input[type=number] {
       display: flex;
       flex-flow: row wrap;
       overflow: hidden;
+      padding-left: 20px;
       &[data-expanded=false] {
         max-height: 0px;
         opacity: 0;
