@@ -7,23 +7,31 @@ import {
     Sidebar,
 } from '../components';
 import SmartAssistant from '../pages/SmartAssistant';
-import Result from '../pages/Result';
 import CardDetails from '../pages/CardDetails';
+import CreditCardResult from '../pages/CreditCardResult';
+import LoanResult from '../pages/LoanResult';
 
 const VentasRoute = [
-    {
-        path: '/results',
-        exact: false,
-        private: false,
-        sidebar: () => <Sidebar />,
-        main: () => <Result />,
-    },
     {
         path: '/smart-assistant',
         exact: true,
         private: false,
         sidebar: () => <Sidebar />,
         main: () => <SmartAssistant />,
+    },
+    {
+        path: '/credit-card-result',
+        exact: false,
+        private: false,
+        sidebar: () => <Sidebar />,
+        main: () => <CreditCardResult />,
+    },
+    {
+        path: '/loan-result',
+        exact: false,
+        private: false,
+        sidebar: () => <Sidebar />,
+        main: () => <LoanResult />,
     },
     {
         path: '/card-details',

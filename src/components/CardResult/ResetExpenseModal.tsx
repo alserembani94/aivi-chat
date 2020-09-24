@@ -1,49 +1,61 @@
 import React from 'react';
+import {
+    IoIosCheckmark,
+} from 'react-icons/io';
+import { IconContext } from 'react-icons/lib';
+import {
+    CounterInput,
+} from '../../components/CustomComponent';
+import ExpensesDetails from '../Leftbox/Credit Card/ExpensesDetails';
 
 interface ResetExpenseModalProps {
-    
+    period: number;
+    updatePeriodChange: (value: number) => void;
+    expenseDetails: any;
+    updateExpenseDetails: (updatedExpenseDetails: any) => void;
+    closeModal: (modalName: string) => void;
 }
 
-const ResetExpenseModal: React.FC<ResetExpenseModalProps> = () => {
+const ResetExpenseModal: React.FC<ResetExpenseModalProps> = ({ period, updatePeriodChange, expenseDetails, updateExpenseDetails, closeModal }) => {
     return (
         <React.Fragment>
-            {/* <div className="CreditCardResult-Modal-Section">
-                <div className="CreditCardResult-Modal-Container">
-                    <p className="CreditCardResult-Modal-Title">Reset Period</p>
-                    <div className="CreditCardResult-Modal-Content">
+            <div className="ModalContent-CreditCardResult-Section">
+                <div className="ModalContent-CreditCardResult-Container">
+                    <p className="ModalContent-CreditCardResult-Title">Reset Period</p>
+                    <div className="ModalContent-CreditCardResult-Content">
                         <CounterInput
                             value={period}
-                            updateCounter={handlePeriodChange}
+                            updateCounter={updatePeriodChange}
                             unit="months"
                             min={6}
                             max={24}
                         />
                     </div>
                 </div>
-                <div className="CreditCardResult-Modal-Container">
-                    <p className="CreditCardResult-Modal-Title">Reset your monthly spending range</p>
-                    <div className="CreditCardResult-Modal-Content">
+                <div className="ModalContent-CreditCardResult-Container">
+                    <p className="ModalContent-CreditCardResult-Title">Reset your monthly spending range</p>
+                    <div className="ModalContent-CreditCardResult-Content">
                         <ExpensesDetails
                             details={expenseDetails}
-                            updateExpenseObject={handleExpenseDetailsUpdate}
+                            updateExpenseObject={updateExpenseDetails}
                         />
                     </div>
                 </div>
             </div>
-            <div className="CreditCardResult-Modal-Action">
+            <div className="ModalContent-CreditCardResult-Action">
                 <button
-                    className="CreditCardResult-Modal-Action-Cancel"
-                    onClick={() => handleModalClose('resetModal')}
+                    className="ModalContent-CreditCardResult-Action-Cancel"
+                    onClick={() => closeModal('resetModal')}
                 >Cancel</button>
                 <button
-                    className="CreditCardResult-Modal-Action-Confirm"
-                    onClick={() => handleModalClose('resetModal')}
+                    className="ModalContent-CreditCardResult-Action-Confirm"
+                    onClick={() => closeModal('resetModal')}
                 >
                     <IconContext.Provider value={{ className: 'Icon Icon-Light Icon-Result-Check' }} >
                         <IoIosCheckmark />
                     </IconContext.Provider>
                 </button>
-            </div> */}
+            </div>
         </React.Fragment>
     );
 };

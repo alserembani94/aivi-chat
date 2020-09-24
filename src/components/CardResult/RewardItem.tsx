@@ -2,17 +2,21 @@ import React from 'react';
 import {
     IoIosArrowDown,
     IoIosArrowRoundForward,
+    IoIosCheckmark,
 } from 'react-icons/io';
 import { IconContext } from 'react-icons/lib';
 import { Images } from '../../utils/Images';
 import ReactTooltip from 'react-tooltip';
 
 interface RewardItemProps {
+    cardName: string;
+    selectedCard: string;
+    updateSelectedCard: (cardName: string) => void;
     expandAll?: boolean;
     toggleExpandAll?: () => void;
 }
 
-const RewardItem: React.FC<RewardItemProps> = ({ expandAll, toggleExpandAll }) => {
+const RewardItem: React.FC<RewardItemProps> = ({ cardName, selectedCard, updateSelectedCard, expandAll, toggleExpandAll }) => {
     const [isExpanded, setExpanded] = React.useState(false);
 
     const toggleExpanded = () => {
@@ -24,11 +28,16 @@ const RewardItem: React.FC<RewardItemProps> = ({ expandAll, toggleExpandAll }) =
     }, [expandAll]);
 
     return (
-        <div className="CardResult-Wrapper">
+        <div className="CardResult-Wrapper" data-selected={selectedCard === cardName}>
             <div className="CardResult-Main">
-                <div className="CardResult-Card">
+                <div className="CardResult-Card" onClick={() => updateSelectedCard(cardName)}>
                     <div className="CardResult-Card-Image">
-
+                        {/* Card Image Here */}
+                    </div>
+                    <div className="CardResult-Card-Selected" data-selected={selectedCard === cardName}>
+                        <IconContext.Provider value={{ className: 'Icon Icon-Brand Icon-Result-Check' }} >
+                            <IoIosCheckmark />
+                        </IconContext.Provider>
                     </div>
                     <p className="CardResult-Card-Name">Card Name Here</p>
                 </div>
