@@ -8,6 +8,7 @@ import {
 } from '../components';
 import SmartAssistant from '../pages/SmartAssistant';
 import Result from '../pages/Result';
+import CardDetails from '../pages/CardDetails';
 
 const VentasRoute = [
     {
@@ -23,6 +24,13 @@ const VentasRoute = [
         private: false,
         sidebar: () => <Sidebar />,
         main: () => <SmartAssistant />,
+    },
+    {
+        path: '/card-details',
+        exact: true,
+        private: false,
+        sidebar: () => <Sidebar />,
+        main: () => <CardDetails />,
     },
     {
         path: '*',
