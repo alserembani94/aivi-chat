@@ -28,8 +28,8 @@ const CashbackItem: React.FC<CashbackItemProps> = ({ cardName, selectedCard, upd
 
     return (
         <div className="CardResult-Wrapper" data-selected={selectedCard === cardName}>
-            <div className="CardResult-Main">
-                <div className="CardResult-Card" onClick={() => updateSelectedCard(cardName)}>
+            <div className="CardResult-Main" onClick={() => updateSelectedCard(cardName)}>
+                <div className="CardResult-Card">
                     <div className="CardResult-Card-Image">
                         {/* Card Image Here */}
                     </div>

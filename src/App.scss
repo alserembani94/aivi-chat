@@ -1729,22 +1729,22 @@ input[type=number] {
 }
 
 .Modal {
-  &-Outside {
-    background-color: $darken-background;
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    top: 0px;
-    transition: opacity 0.5s ease-in-out;
-    backdrop-filter: blur(5px);
-    &[data-visible=false] {
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.5s ease-in-out;
-    }
-  }
+  // &-Outside {
+  //   background-color: $darken-background;
+  //   width: 100%;
+  //   height: 100%;
+  //   position: fixed;
+  //   top: 0px;
+  //   transition: opacity 0.5s ease-in-out;
+  //   backdrop-filter: blur(5px);
+  //   &[data-visible=false] {
+  //     opacity: 0;
+  //     pointer-events: none;
+  //     transition: opacity 0.5s ease-in-out;
+  //   }
+  // }
   &-Container {
-    // background-color: $darken-background;
+    background-color: $darken-background;
     backdrop-filter: blur(5px);
     position: fixed;
     top: 0px;

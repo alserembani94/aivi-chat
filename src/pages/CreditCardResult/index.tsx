@@ -215,7 +215,7 @@ const CreditCardResult: React.FC = () => {
                 </Modal>
                 <Modal
                     modalName='searchModal'
-                    visible={resetModal}
+                    visible={searchModal}
                     closeModal={handleModalClose}
                 >
                     <ReselectBankModal
