@@ -116,6 +116,7 @@ const LoanResult: React.FC = () => {
     }
 
     const handleModalClose = (modalName: string) => {
+        console.log(modalName);
         switch (modalName) {
             case 'resetModal':
                 setResetModal(() => false);
@@ -174,14 +175,16 @@ const LoanResult: React.FC = () => {
                     <div className="ResultPage-BottomContent-Description">
                         <p className="ResultPage-BottomContent-Description-Title">Ready To Apply?</p>
                     </div>
-                    <button className="ResultPage-BottomContent-Apply" disabled>
+                    <button className="ResultPage-BottomContent-Apply" disabled={!selectedLoan}>
                         Apply Now
                     </button>
                 </section>
 
                 {/* MODAL SECTIONS */}
                 <Modal
+                    modalName='resetModal'
                     visible={resetModal}
+                    closeModal={handleModalClose}
                 >
                     {/* <ResetExpenseModal
                         period={period}
@@ -192,7 +195,9 @@ const LoanResult: React.FC = () => {
                     /> */}
                 </Modal>
                 <Modal
+                    modalName='searchModal'
                     visible={searchModal}
+                    closeModal={handleModalClose}
                 >
                     <ReselectBankModal
                         selectedBanks={selectedBanks}

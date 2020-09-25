@@ -44,8 +44,7 @@ const Menu: React.FC<MenuProps> = ({ visible, toggleVisibility }) => {
 
     return (
         <React.Fragment>
-            <section className="Menu-Wrapper" data-visible={visible} onClick={toggleVisibility}>
-            </section>
+            <section className="Menu-Wrapper" data-visible={visible} onClick={toggleVisibility} />
             <section className="Menu-Container" data-visible={visible}>
                 <button
                     className="Menu-Logo"

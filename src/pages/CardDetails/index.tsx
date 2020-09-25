@@ -246,7 +246,9 @@ const CardDetails: React.FC = () => {
 
                 {/* RESET EXPENSE MODAL */}
                 <Modal
+                    modalName='resetModal'
                     visible={resetModal}
+                    closeModal={handleModalClose}
                 >
                     <div className="CreditCardResult-Modal-Section">
                         <div className="CreditCardResult-Modal-Container">
@@ -289,7 +291,9 @@ const CardDetails: React.FC = () => {
 
                 {/* NOT LOOKING FOR MODAL */}
                 <Modal
-                    visible={searchModal}
+                    modalName='searchModal'
+                    visible={resetModal}
+                    closeModal={handleModalClose}
                 >
                     <div className="CreditCardResult-Modal-Section">
                         <div className="CreditCardResult-Modal-Container">

@@ -201,7 +201,9 @@ const CreditCardResult: React.FC = () => {
 
                 {/* MODAL SECTIONS */}
                 <Modal
+                    modalName='resetModal'
                     visible={resetModal}
+                    closeModal={handleModalClose}
                 >
                     <ResetExpenseModal
                         period={period}
@@ -212,7 +214,9 @@ const CreditCardResult: React.FC = () => {
                     />
                 </Modal>
                 <Modal
-                    visible={searchModal}
+                    modalName='searchModal'
+                    visible={resetModal}
+                    closeModal={handleModalClose}
                 >
                     <ReselectBankModal
                         selectedBanks={selectedBanks}
