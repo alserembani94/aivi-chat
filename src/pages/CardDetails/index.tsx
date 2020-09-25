@@ -231,7 +231,7 @@ const CardDetails: React.FC = () => {
 
                     
                 </section>
-                <section className="CreditCardResult-BottomContent">
+                {/* <section className="CreditCardResult-BottomContent">
                     <button className="CreditCardResult-BottomContent-Chat">
                         Chat
                     </button>
@@ -242,7 +242,7 @@ const CardDetails: React.FC = () => {
                     <button className="CreditCardResult-BottomContent-Apply">
                         Apply Now
                     </button>
-                </section>
+                </section> */}
 
                 {/* RESET EXPENSE MODAL */}
                 <Modal

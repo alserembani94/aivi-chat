@@ -1111,6 +1111,8 @@ input[type=number] {
     border-radius: 8px;
     width: 100%;
     margin-bottom: 30px;
+    margin-left: 2%;
+    margin-top: 2%;
     box-shadow: $box-shadow;
     &[data-selected=true] {
       box-shadow: inset 0px 0px 1px 3px $brand-fill;
