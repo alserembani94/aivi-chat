@@ -37,7 +37,7 @@ const slice = createSlice({
         informationAdded: (cashFromCard: SliceState, { payload }) => {
             cashFromCard.data[payload.type] = payload.value;
         },
-    }
+    },
 });
 
 export const {

@@ -20,7 +20,7 @@ type SliceState = {
 
 // Reducers for each actions
 const slice = createSlice({
-    name: 'BalanceTransfer',
+    name: 'balanceTransfer',
     initialState: {
         data: {
             transferFrom: '',
@@ -33,8 +33,8 @@ const slice = createSlice({
         lastFetch: null,
     },
     reducers: {
-        informationAdded: (BalanceTransfer: SliceState, { payload }) => {
-            BalanceTransfer.data[payload.type] = payload.value;
+        informationAdded: (balanceTransfer: SliceState, { payload }) => {
+            balanceTransfer.data[payload.type] = payload.value;
         },
     }
 });

@@ -2,8 +2,8 @@ import React from 'react';
 import {
     TabBar,
 } from '../../CustomComponent';
-import AvailableCard from '../Credit Card/AvailableCard';
-import MonthlyIncome from '../Credit Card/MonthlyIncome';
+import AvailableCard from '../CreditCard/AvailableCard';
+import MonthlyIncome from '../CreditCard/MonthlyIncome';
 import LoanDetails from './LoanDetails';
 import LoanCommitment from './LoanCommitment';
 import MaritalStatus from './MaritalStatus';

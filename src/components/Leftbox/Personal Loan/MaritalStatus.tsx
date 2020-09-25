@@ -3,7 +3,7 @@ import {
     InputBox,
     InputDropdown,
 } from '../../CustomComponent';
-import MonthlyIncome from '../Credit Card/MonthlyIncome';
+import MonthlyIncome from '../CreditCard/MonthlyIncome';
 
 interface MaritalStatusProps {
     maritalInfo: any;

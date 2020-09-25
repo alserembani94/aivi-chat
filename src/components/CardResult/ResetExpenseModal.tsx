@@ -6,7 +6,7 @@ import { IconContext } from 'react-icons/lib';
 import {
     CounterInput,
 } from '../../components/CustomComponent';
-import ExpensesDetails from '../Leftbox/Credit Card/ExpensesDetails';
+import ExpensesDetails from '../Leftbox/CreditCard/ExpensesDetails';
 
 interface ResetExpenseModalProps {
     period: number;

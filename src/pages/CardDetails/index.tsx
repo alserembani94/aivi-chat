@@ -1,19 +1,19 @@
 import React from 'react';
-import {
-    CashbackItem,
-    RewardItem,
-} from '../../components/CardResult';
+// import {
+//     CashbackItem,
+//     RewardItem,
+// } from '../../components/CardResult';
 import {
     CounterInput,
     Modal,
 } from '../../components/CustomComponent';
-import { Images } from '../../utils/Images';
-import ExpensesDetails from '../../components/Leftbox/Credit Card/ExpensesDetails';
+// import { Images } from '../../utils/Images';
+import ExpensesDetails from '../../components/Leftbox/CreditCard/ExpensesDetails';
 import {
     IoIosCheckmark,
 } from 'react-icons/io';
 import { IconContext } from 'react-icons/lib';
-import AvailableCard from '../../components/Leftbox/Credit Card/AvailableCard';
+import AvailableCard from '../../components/Leftbox/CreditCard/AvailableCard';
 // import { csv } from 'd3';
 // import { CSVFiles } from '../../utils/DataSample';
 
@@ -34,11 +34,11 @@ type ExpenseDetails = {
 }[];
 
 const CardDetails: React.FC = () => {
-    const [allExpanded, setAllExpanded] = React.useState(false);
+    // const [allExpanded, setAllExpanded] = React.useState(false);
 
-    const toggleAllExpanded = () => {
-        setAllExpanded(prevState => !prevState);
-    };
+    // const toggleAllExpanded = () => {
+    //     setAllExpanded(prevState => !prevState);
+    // };
     // Temporary Period Details
     const [period, setPeriod] = React.useState(6);
     
@@ -96,12 +96,12 @@ const CardDetails: React.FC = () => {
     const [resetModal, setResetModal] = React.useState(false);
     const [searchModal, setSearchModal] = React.useState(false);
 
-    const handleModalOpen = (modalName: string) => {
-        modalName === 'resetModal'
-        ? setResetModal(prevState => true)
-        : modalName === 'searchModal'
-        && setSearchModal(prevState => true);
-    }
+    // const handleModalOpen = (modalName: string) => {
+    //     modalName === 'resetModal'
+    //     ? setResetModal(prevState => true)
+    //     : modalName === 'searchModal'
+    //     && setSearchModal(prevState => true);
+    // }
 
     const handleModalClose = (modalName: string) => {
         modalName === 'resetModal'

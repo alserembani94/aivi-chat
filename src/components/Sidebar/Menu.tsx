@@ -28,6 +28,10 @@ const menuNav = [
         path: '/loan-result',
         label: 'Loan Result',
     },
+    {
+        path: '/card-details',
+        label: 'Card Details',
+    },
 ];
 
 const Menu: React.FC<MenuProps> = ({ visible, toggleVisibility }) => {

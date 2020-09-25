@@ -3,7 +3,7 @@ import {
     IoIosCheckmark,
 } from 'react-icons/io';
 import { IconContext } from 'react-icons/lib';
-import AvailableCard from '../Leftbox/Credit Card/AvailableCard';
+import AvailableCard from '../Leftbox/CreditCard/AvailableCard';
 
 // Construct types for component props
 interface ReselectBankModalProps {

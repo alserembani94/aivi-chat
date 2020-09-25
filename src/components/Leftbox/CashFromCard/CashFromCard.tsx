@@ -2,7 +2,8 @@ import React from 'react';
 import CashFromCardForm from './CashFromCardForm';
 import SubmittedView from '../SubmittedView';
 import { connect } from 'react-redux';
-import { CashFromCardType, informationAdded } from '../../../store/reducers/cashFromCard';
+// import { CashFromCardType } from '../../../store/reducers/cashFromCard';
+// import { submitForRecommendation } from '../../../store/reducers/recommendCreditCard';
 
 type slotInputType = {
     inputName: string,
@@ -11,7 +12,7 @@ type slotInputType = {
     inputLabel: string,
 };
 
-const CashFromCard: React.FC<CashFromCardType> = ({transferFrom, name, phone, email, amount}) => {
+const CashFromCard: React.FC = (props) => {
     const [userSlot, setUserSlot] = React.useState({
         transferFrom: '',
         name: '',
@@ -21,13 +22,15 @@ const CashFromCard: React.FC<CashFromCardType> = ({transferFrom, name, phone, em
     });
 
     React.useEffect(() => {
-        setUserSlot(() => ({
-            transferFrom,
-            name,
-            phone,
-            email,
-            amount,
-        }));
+        // dispatch(submitForRecommendation());
+        // console.log(props);
+        // setUserSlot(() => ({
+        //     transferFrom,
+        //     name,
+        //     phone,
+        //     email,
+        //     amount,
+        // }));
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
     
@@ -51,9 +54,9 @@ const CashFromCard: React.FC<CashFromCardType> = ({transferFrom, name, phone, em
 
 const mapStateToProps = (state: any) => state.cashFromCard.data;
 
-const mapDispatchToProps = { informationAdded };
+// const mapDispatchToProps = { submitForRecommendation };
 
 export default connect(
     mapStateToProps,
-    mapDispatchToProps,
+    null,
 )(CashFromCard);

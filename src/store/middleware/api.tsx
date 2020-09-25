@@ -3,6 +3,8 @@ import * as actions from '../api';
 
 const api = ({ dispatch }: { dispatch: any }) => (next: any) => async (action: any) => {
     if (action.type !== actions.apiCallBegan.type) return next(action);
+    
+    console.log('Nothing?');
 
     const { url, method, data, onStart, onSuccess, onError } = action.payload;
 
@@ -12,7 +14,7 @@ const api = ({ dispatch }: { dispatch: any }) => (next: any) => async (action: a
 
     try {
         const response = await axios.request({
-            baseURL: 'https://aivi.backend.qijang.com/',
+            baseURL: 'https://aivi.backend.qijang.com',
             url,
             method,
             data,
