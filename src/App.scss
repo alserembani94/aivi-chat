@@ -1133,6 +1133,13 @@ input[type=number] {
   }
 }
 
+.Pages-Red-Button {
+  background: #D43A4C;
+  border-radius: 4px;
+  padding: 10px;
+  color: #FFFFFF;
+}
+
 .CardResult {
   &-Wrapper {
     background-color: $light-background;

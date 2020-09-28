@@ -143,7 +143,7 @@ const CardDetails: React.FC = () => {
                                             Pay no annual fees for your American Express and MasterCard or Visa. Extra Rewards<br/>
                                             with AMEX, 5x TreatsPoints on all retail & 5% cashback on weekend spends<br/><br/>
                                         </p>
-                                        <p><button className="CreditCardResult-BottomContent-Apply">Apply Now</button></p>
+                                        <p><button className="Pages-Red-Button">Apply Now</button></p>
                                     </div>
                                 </div>
                             </div>
