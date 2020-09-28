@@ -233,12 +233,13 @@ const CardDetails: React.FC = () => {
                                                 can also earn 1x TreatPoints on all your spending with MasterCard or Visa.
                                             </div>
                                             <div>
-                                                {/* <table>
-                                                    <tr>
-                                                        <th>EARN</th>
-                                                        <th>SPEND</th>
-                                                    </tr>
+                                                <table>
                                                     <tbody>
+                                                        <tr>
+                                                            <th>EARN</th>
+                                                            <th>SPEND</th>
+                                                        </tr>
+                                                    
                                                         <tr>
                                                             <td>5 point per RM1</td>
                                                             <td>on all retail with Maybank 2 American Express Card (weekdays)</td>
@@ -256,7 +257,7 @@ const CardDetails: React.FC = () => {
                                                             <td>on all retail with Maybank 2 Mastercard or Visa</td>
                                                         </tr>
                                                     </tbody>
-                                                </table> */}
+                                                </table>
                                                 
                                             </div>
                                         </div>
@@ -315,33 +316,35 @@ const CardDetails: React.FC = () => {
                                     <div>Maybank EzyPay offers payment terms of up to 36 months, at 0% interest, on purchases to approved merchants. For all other purchases, you can opt to Maybank EzyPay<br/>
                                     Plus for installment up to 24 months and low interest rates. No penalty for early payment</div>
                                     <div>
-                                        {/* <table>
-                                            <tr>
-                                                <th>PAYOVER</th>
-                                                <th>WITH INTEREST RATE AT</th>
-                                                <th>WHEN YOU SPEND</th>
-                                            </tr>
-                                            <tr>
-                                                <td>3 months</td>
-                                                <td>0% p.a. and no one-time upfront handling fee</td>
-                                                <td>RM50</td>
-                                            </tr>
-                                            <tr>
-                                                <td>6 months</td>
-                                                <td>0% p.a. and no one-time upfront handling pay</td>
-                                                <td>RM50</td>
-                                            </tr>
-                                            <tr>
-                                                <td>12 months</td>
-                                                <td>0% p.a. and no one-time upfront handling pay</td>
-                                                <td>RM50</td>
-                                            </tr>
-                                            <tr>
-                                                <td>18 months</td>
-                                                <td>0% p.a. and no one-time upfront handling pay</td>
-                                                <td>RM50</td>
-                                            </tr>
-                                        </table> */}
+                                        <table>
+                                            <tbody>
+                                                <tr>
+                                                    <th>PAYOVER</th>
+                                                    <th>WITH INTEREST RATE AT</th>
+                                                    <th>WHEN YOU SPEND</th>
+                                                </tr>
+                                                <tr>
+                                                    <td>3 months</td>
+                                                    <td>0% p.a. and no one-time upfront handling fee</td>
+                                                    <td>RM50</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>6 months</td>
+                                                    <td>0% p.a. and no one-time upfront handling pay</td>
+                                                    <td>RM50</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>12 months</td>
+                                                    <td>0% p.a. and no one-time upfront handling pay</td>
+                                                    <td>RM50</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>18 months</td>
+                                                    <td>0% p.a. and no one-time upfront handling pay</td>
+                                                    <td>RM50</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
                             </div><br/><br/><br/>
@@ -350,24 +353,26 @@ const CardDetails: React.FC = () => {
                                 <div className="CardResult-GroupTitle">Fees & Charges</div>
                                 <div className="CardResult-GroupBody">
                                     <div>
-                                        {/* <table>
-                                            <tr>
-                                                <td>Annual Fee</td>
-                                                <td>RM0 primary card, Free for life</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Sales And Service Tax</td>
-                                                <td>RM25 on each principle and supplementary card upon activation and anniversary date</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Minimum Monthly</td>
-                                                <td>RM25 or 5% of outstanding amount, whichever is higher</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Late Payment Fee</td>
-                                                <td>RM10 or 1% of outstanding amount, up to a maximum amount of RM100</td>
-                                            </tr>
-                                        </table> */}
+                                        <table>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Annual Fee</td>
+                                                    <td>RM0 primary card, Free for life</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Sales And Service Tax</td>
+                                                    <td>RM25 on each principle and supplementary card upon activation and anniversary date</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Minimum Monthly</td>
+                                                    <td>RM25 or 5% of outstanding amount, whichever is higher</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Late Payment Fee</td>
+                                                    <td>RM10 or 1% of outstanding amount, up to a maximum amount of RM100</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
                             </div><br/><br/><br/>
@@ -380,7 +385,8 @@ const CardDetails: React.FC = () => {
                             <div className="CardResult-GroupTitle">Requirements</div>
                             <div className="CardResult-GroupBody">
                                 <div>
-                                    {/* <table>
+                                    <table>
+                                        <tbody>
                                         <tr>
                                             <td>Minimum Annual Income</td>
                                             <td>RM30,000</td>
@@ -393,7 +399,8 @@ const CardDetails: React.FC = () => {
                                             <td>Who Can Apply</td>
                                             <td>Anyone</td>
                                         </tr>
-                                    </table> */}
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div><br/><br/><br/>
