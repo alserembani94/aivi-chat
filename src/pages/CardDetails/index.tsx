@@ -313,7 +313,7 @@ const CardDetails: React.FC = () => {
                                     <div>Maybank EzyPay offers payment terms of up to 36 months, at 0% interest, on purchases to approved merchants. For all other purchases, you can opt to Maybank EzyPay<br/>
                                     Plus for installment up to 24 months and low interest rates. No penalty for early payment</div>
                                     <div>
-                                        <table>
+                                        {/* <table>
                                             <tr>
                                                 <th>PAYOVER</th>
                                                 <th>WITH INTEREST RATE AT</th>
@@ -339,7 +339,7 @@ const CardDetails: React.FC = () => {
                                                 <td>0% p.a. and no one-time upfront handling pay</td>
                                                 <td>RM50</td>
                                             </tr>
-                                        </table>
+                                        </table> */}
                                     </div>
                                 </div>
                             </div>
@@ -348,7 +348,7 @@ const CardDetails: React.FC = () => {
                                 <p className="CardResult-Details-Data">Fees & Charges</p>
                                 <div>
                                     <div>
-                                        <table>
+                                        {/* <table>
                                             <tr>
                                                 <td>Annual Fee</td>
                                                 <td>RM0 primary card, Free for life</td>
@@ -365,7 +365,7 @@ const CardDetails: React.FC = () => {
                                                 <td>Late Payment Fee</td>
                                                 <td>RM10 or 1% of outstanding amount, up to a maximum amount of RM100</td>
                                             </tr>
-                                        </table>
+                                        </table> */}
                                     </div>
                                 </div>
                             </div>
@@ -378,7 +378,7 @@ const CardDetails: React.FC = () => {
                             <p className="CardResult-Details-Data">Requirements</p>
                             <div>
                                 <div>
-                                    <table>
+                                    {/* <table>
                                         <tr>
                                             <td>Minimum Annual Income</td>
                                             <td>RM30,000</td>
@@ -391,7 +391,7 @@ const CardDetails: React.FC = () => {
                                             <td>Who Can Apply</td>
                                             <td>Anyone</td>
                                         </tr>
-                                    </table>
+                                    </table> */}
                                 </div>
                             </div>
                         </div>
