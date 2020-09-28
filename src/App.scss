@@ -1183,6 +1183,9 @@ input[type=number] {
   &-GroupBody {
     border: 1px solid #F1F1F1;
   }
+  &-GroupPadding {
+    padding: 40px;
+  }
   &-Card {
     display: flex;
     flex-flow: column wrap;

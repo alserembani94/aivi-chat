@@ -269,7 +269,7 @@ const CardDetails: React.FC = () => {
 
                             <div>
                                 <div className="CardResult-GroupTitle">Features</div>
-                                <div className="CardResult-GroupBody">
+                                <div className="CardResult-GroupBody CardResult-GroupPadding">
 
                                     <div>
                                         <p className="CardResult-Details-Data">Easy Payment Plan</p>
