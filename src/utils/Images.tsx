@@ -13,6 +13,9 @@ export const Images = {
     icon_readjust: require('../assets/images/Icon-Readjust.svg'),
     icon_search: require('../assets/images/Icon-Search.svg'),
 
+    icon_facebook_small: require('../assets/images/Icon-Facebook-Small.png'),
+    icon_google_small: require('../assets/images/Icon-Google-Small.svg'),
+
     image_submitted: require('../assets/images/Image-Submitted.svg'),
 
     logo_AIVI: require('../assets/images/Logo-AIVI.svg'),

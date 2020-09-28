@@ -17,6 +17,18 @@ const menuNav = [
         label: 'Home',
     },
     {
+        path: '/sign-in',
+        label: 'Sign In',
+    },
+    {
+        path: '/register',
+        label: 'Register',
+    },
+    {
+        path: '/main-menu',
+        label: 'Main Menu',
+    },
+    {
         path: '/smart-assistant',
         label: 'Smart Assistant',
     },

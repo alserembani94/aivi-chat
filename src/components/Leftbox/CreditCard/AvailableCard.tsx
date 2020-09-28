@@ -96,7 +96,7 @@ const AvailableCard: React.FC<AvailableCardProps> = ({cardOwnership, updateCardO
         });
     }, [tempRef]);
 
-    const cardOwnershipOptions = ['This Would Be My First Card', 'I Currently Have Existing Cards'];
+    const cardOwnershipOptions = ['This is my first card', 'I have existing card(s)'];
     const handleCardOwnershipToggle = (value: string) => {
         updateCardOwnership && updateCardOwnership(value === cardOwnershipOptions[0] ? false : true);
         value === cardOwnershipOptions[0] && updateSelectedOptions([]);

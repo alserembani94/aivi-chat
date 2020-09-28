@@ -10,9 +10,10 @@ interface LoanItemProps {
     loanAmount: number;
     selectedLoan: string;
     updateSelectedLoan: (loanName: string) => void;
+    openLoanDetail: (loanName: string) => void;
 }
 
-const LoanItem: React.FC<LoanItemProps> = ({ logoUrl, loanName, loanTenure, loanRate, loanAmount, selectedLoan, updateSelectedLoan }) => {
+const LoanItem: React.FC<LoanItemProps> = ({ logoUrl, loanName, loanTenure, loanRate, loanAmount, selectedLoan, updateSelectedLoan, openLoanDetail }) => {
     return (
         <React.Fragment>
             <div className="LoanItem-Wrapper" data-selected={selectedLoan === loanName}>
@@ -57,7 +58,7 @@ const LoanItem: React.FC<LoanItemProps> = ({ logoUrl, loanName, loanTenure, loan
                     </div>
                 </div>
                 <div className="LoanItem-Action">
-                    <button>View Details</button>
+                    <button onClick={() => openLoanDetail(loanName)}>View Details</button>
                 </div>
                 {/* <p>Loan Payment = {calculateMonthlyLoanPayment(loanAmount, loanRate, loanTenure)}</p> */}
             </div>

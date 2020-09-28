@@ -5,6 +5,7 @@ type slotInputType = {
     inputState: string,
     inputType: string,
     inputLabel: string,
+    inputAutocomplete?: string,
     remarks?: string[],
 };
 
@@ -36,6 +37,7 @@ const InputBox: React.FC<InputBoxProps> = ({value, inputProps, handleInputChange
                     type={inputProps.inputType}
                     // onFocus={handleInputFocus}
                     // onBlur={handleInputBlur}
+                    autoComplete={inputProps.inputAutocomplete ? inputProps.inputAutocomplete : "off"}
                     value={value}
                     onChange={({ currentTarget: { value } }) => handleInputChange(value, inputProps.inputName)}
                 />

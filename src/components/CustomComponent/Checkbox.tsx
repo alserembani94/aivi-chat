@@ -11,10 +11,11 @@ type optionType = {
 
 interface CheckboxProps {
     name: string;
-    label: string;
+    label?: string;
     updateSelected: (value: string, isActive: boolean) => void;
     rows?: number;
     active: boolean;
+    children?: any;
 }
 
 interface MultipleCheckboxProps {
@@ -23,9 +24,10 @@ interface MultipleCheckboxProps {
     updateSelected: (selectedList: string[]) => void;
     maxOption?: number;
     rows?: number;
+    children?: any;
 }
 
-const Checkbox: React.FC<CheckboxProps> = ({name, label, updateSelected, rows, active}) => {
+const Checkbox: React.FC<CheckboxProps> = ({name, label, updateSelected, rows, active, children}) => {
     const handleUpdate = (value: string) => {
         updateSelected(value, active);
     }
@@ -43,7 +45,7 @@ const Checkbox: React.FC<CheckboxProps> = ({name, label, updateSelected, rows, a
                         <IoIosCheckmark />
                     </IconContext.Provider>
                 </div>
-                <p>{label}</p>
+                { children ? children : <p>{label}</p>}
             </div>
         </React.Fragment>
     );

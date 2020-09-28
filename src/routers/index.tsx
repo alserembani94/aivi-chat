@@ -10,8 +10,32 @@ import SmartAssistant from '../pages/SmartAssistant';
 import CardDetails from '../pages/CardDetails';
 import CreditCardResult from '../pages/CreditCardResult';
 import LoanResult from '../pages/LoanResult';
+import SignIn from '../pages/Auth/SignIn';
+import Register from '../pages/Auth/Register';
+import MainMenu from '../pages/MainMenu';
 
 const VentasRoute = [
+    {
+        path: '/sign-in',
+        exact: true,
+        private: false,
+        sidebar: () => <Sidebar />,
+        main: () => <SignIn />,
+    },
+    {
+        path: '/register',
+        exact: true,
+        private: false,
+        sidebar: () => <Sidebar />,
+        main: () => <Register />,
+    },
+    {
+        path: '/main-menu',
+        exact: true,
+        private: false,
+        sidebar: () => <Sidebar />,
+        main: () => <MainMenu />,
+    },
     {
         path: '/smart-assistant',
         exact: true,

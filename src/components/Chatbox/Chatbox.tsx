@@ -16,7 +16,7 @@ type conversationState = {
     timestamp: string,
     message: string,
     actions?: {
-        actionType: "links" | "images" | "dropdown" | "suggestedReply",
+        actionType: "links" | "images" | "dropdown" | "suggestedReply" | "multipleOption",
         content: {
             url?: string,
             imageUrl?: string,
@@ -42,13 +42,6 @@ const Chatbox: React.FC = () => {
             user: 'user',
             timestamp: '2020-09-09',
             message: 'Hey!',
-            actions: {
-                actionType: 'links',
-                content: {
-                    url: 'https://stackoverflow.com/questions/26855423/how-to-require-a-specific-string-in-typescript-interface',
-                    caption: 'I just want to follow the links.',
-                }
-            },
         },
         {
             user: 'bot',
@@ -60,8 +53,46 @@ const Chatbox: React.FC = () => {
             timestamp: '2020-09-09',
             message: 'I would like to order an aglio e olio, with a freckle of cinnamon, and the cherry on top!',
         },
+        {
+            user: 'bot',
+            timestamp: '2020-09-09',
+            message: 'Okay, what\'s next?',
+            actions: {
+                actionType: "multipleOption",
+                content: {
+                    optionList: [
+                        {
+                            label: 'Credit Card',
+                            value: 'Credit Card',
+                        },
+                        {
+                            label: 'Balance Transfer',
+                            value: 'Balance Transfer',
+                        },
+                        {
+                            label: 'Personal Loan',
+                            value: 'Personal Loan',
+                        },
+                        {
+                            label: 'Cash From Card',
+                            value: 'Cash From Card',
+                        },
+                    ],
+                },
+            },
+        },
     ]);
 
+    const [convActionSelection, setConvActionSelection] = React.useState();
+    // const updateConvActionSelection = (value: any) => setConvActionSelection(() => value);
+    const updateConvActionSelection = (value: any) => {
+        setConvActionSelection(() => value);
+        setUserChatInput(() => value);
+    };
+
+    React.useEffect(() =>{
+        if (convActionSelection !== '') handleChatSubmit('Enter');
+    }, [convActionSelection]);
 
     React.useEffect(() => {
         // Single Element only
@@ -89,6 +120,7 @@ const Chatbox: React.FC = () => {
                 setUserChatInput('');
             }
         }
+        setConvActionSelection(() => '' as any);
     };
 
     // const handleChatInputUpdate = (text: string) => updateInput(text);
@@ -117,12 +149,33 @@ const Chatbox: React.FC = () => {
                                             <p>{conversationItem.message}</p>
                                             <p className="Dialog-Timestamp">{moment(conversationItem.timestamp).format('HH:mm')}</p>
                                         </div>
+                                        {
+                                            ((conversation.length - 1) === index && conversationItem.actions) && (
+                                                <div className="Dialog-ConvAction-Wrapper">
+                                                    {
+                                                        conversationItem.actions.actionType === 'multipleOption' && (
+                                                            <div className="Dialog-ConvAction-MultipleOption">
+                                                                {
+                                                                    conversationItem.actions.content.optionList?.map((optionItem, index) => (
+                                                                        <button
+                                                                            key={index}
+                                                                            className="Dialog-ConvAction-MultipleOption-Item"
+                                                                            onClick={() => updateConvActionSelection(optionItem.value)}
+                                                                        >{optionItem.label}</button>
+                                                                    ))
+                                                                }
+                                                            </div>
+                                                        )
+                                                    }
+                                                </div>
+                                            )
+                                        }
                                     </div>
                                 ))
                             }
                         </div>
                         <div className="Chatbox-Suggestions">
-                            <p>Hello87b2yhr97832nr978hv4g98472mnhgm9834mhurweffiuwrhjgmfrywbn8h34joiruhfdjrew987gvgq37rtbcvb8736ertcfg3726cfb8gn87qwengcfjhny4h3jfgidhuwerojgimuhj</p>
+                            {/* <p>Hello87b2yhr97832nr978hv4g98472mnhgm9834mhurweffiuwrhjgmfrywbn8h34joiruhfdjrew987gvgq37rtbcvb8736ertcfg3726cfb8gn87qwengcfjhny4h3jfgidhuwerojgimuhj</p> */}
                         </div>
                         <div className="Chatbox-Input">
                             <button className="Chatbox-Input-UploadOptions Button">

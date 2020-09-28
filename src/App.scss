@@ -231,6 +231,10 @@ button:focus {
       width: 1.2rem;
       height: 1.2rem;
     }
+    &-Next, &-Previous {
+      width: auto;
+      height: 1rem;
+    }
   }
   &-Result {
     &-Check {
@@ -247,11 +251,12 @@ button:focus {
       background-color: $light-background;
       box-shadow: $box-shadow;
       margin-bottom: 20px;
-      padding: 10px 15px;
+      padding: calc(10px + 1rem) 15px 10px;
       display: flex;
       flex-direction: column;
       transition: box-shadow 0.3s ease-in-out;
       border-radius: 4px;
+      position: relative;
       &:last-child {
         margin-bottom: 0;
       }
@@ -264,14 +269,17 @@ button:focus {
       font-size: 0.8rem;
       margin-bottom: 5px;
       color: $input-label;
+      position: absolute;
+      top: 10px;
+      pointer-events: none;
     }
     &-InputArea {
       display: flex;
       flex-direction: row;
     }
-    &-InputArea:focus #{$c}-Container {
-      box-shadow: $selected-box-shadow;
-    }
+    // &-InputArea:focus #{$c}-Container {
+    //   box-shadow: $selected-box-shadow;
+    // }
     &-Currency {
       margin-right: 0.6rem;
       font-size: 1rem;
@@ -516,9 +524,9 @@ input[type=number] {
   }
   &-Button {
     font-size: 1.2rem;
-    // color: $foreground-light-color;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     border-radius: 1.2rem;
+    text-align: left;
   }
 }
 
@@ -526,6 +534,7 @@ input[type=number] {
 .Chatbox {
   &-Container {
     width: 100%;
+    max-width: 700px;
     height: 100%;
     display: flex;
     flex-flow: column nowrap;
@@ -567,7 +576,7 @@ input[type=number] {
   &-Dialog {
     height: calc(100% - #{$dialog-input-height} - 15px);
     margin-bottom: 10px;
-    overflow: overlay;
+    overflow: auto;
     padding: 0 20px;
   }
   &-Suggestions {
@@ -1133,6 +1142,166 @@ input[type=number] {
   }
 }
 
+.LoanDetail {
+  &-Action {
+    display: flex;
+    justify-content: space-between;
+    position: sticky;
+    margin-bottom: 20px;
+    button {
+      display: flex;
+      font-size: 12px;
+      color: $text-dark;
+      background: $base-background;
+      padding: 5px 15px;
+      border-radius: 1rem;
+      align-items: center;
+
+    }
+  }
+  &-Content {
+    border: 1px solid black;
+    display: flex;
+    flex-flow: column wrap;
+    div {
+      border: 1px solid red;
+    }
+  }
+  &-Header {
+    height: fit-content;
+    min-height: 200px;
+    display: flex;
+    flex-flow: row wrap;
+    &-Image {
+      width: 300px;
+    }
+    &-Description {
+      flex: 1 0;
+    }
+  }
+}
+
+.Auth {
+  &-Page {
+    border: 1px solid $brand-fill;
+    flex-grow: 1;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
+  }
+  &-Avatar {
+    position: relative;
+    z-index: 5;
+    width: $avatar-dimension;
+    height: $avatar-dimension;
+    border-radius: 50%;
+    // background-color: #bbb;
+  }
+  &-Wrapper {
+    background: $light-background;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    width: clamp(300px, 100%, 500px);
+    height: fit-content;
+    min-height: 200px;
+    position: relative;
+    top: calc(-1 * #{$avatar-dimension} / 2);
+    align-items: stretch;
+    padding-top: calc(#{$avatar-dimension} / 2 + 10px);
+    border-radius: 5px;
+    & > div {
+      padding-left: 30px;
+      padding-right: 30px;
+      margin-bottom: 10px;
+      &:last-child {
+        margin-bottom: 0px;;
+      }
+    }
+  }
+  &-Title {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    text-align: center;
+    color: $text-dark;
+    & > h1 {
+      font-size: 1.5rem;
+    }
+    & > p {
+      font-size: 1rem;
+    }
+  }
+  &-SocMed {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: #FAFAFA;
+    & > p {
+      font-size: 0.8rem;
+      margin-right: 20px;
+      color: $text-dark;
+    }
+    &-Buttons {
+      & > button {
+        // border: 1px solid blue;
+        width: 2rem;
+        height: 2rem;
+        border-radius: 50%;
+        margin-right: 10px;
+        overflow: hidden;
+        padding: 0px;
+        &:last-child {
+          margin-right: 0;
+        }
+        & > img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center;
+          &[data-for="Google"] {
+            transform: scale(1.3);
+          }
+        }
+      }
+    }
+  }
+  &-Inputs {
+    padding: 10px;
+    display: flex;
+    flex-flow: column wrap;
+    &-Forgot {
+      // background: $brand-fill;
+      color: $text-dark;
+      font-size: 0.8rem;
+      text-align: right;
+    }
+  }
+  &-Action {
+    padding: 30px;
+    button {
+      background-color: $brand-fill;
+      width: 100%;
+      padding: 12px;
+      border-radius: 5px;
+      color: $light-background;
+      // flex-grow: 1;
+    }
+  }
+  &-SwitchAuth {
+    & > p {
+      color: $text-dark;
+      span {
+        color: $brand-fill;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
 .CardResult {
   &-Wrapper {
     background-color: $light-background;
@@ -1408,6 +1577,15 @@ input[type=number] {
   }
 }
 
+.MainMenu {
+  &-Screen {
+    width: calc(100% - #{$sidebar-width});
+    padding: 50px;
+    display: flex;
+    justify-content: center;
+  }
+}
+
 .TabBar {
   &-Header {
     display: flex;
@@ -1507,13 +1685,14 @@ input[type=number] {
     align-items: center;
     cursor: pointer;
     color: $text-light;
-    height: 100%;
+    // height: 100%;
     &[data-rows="1"] {
       width: 100%;
       margin-bottom: 20px;
     }
     &[data-rows="2"] {
       width: 40%;
+      height: 100%;
       &:nth-child(2n-1) {
         margin-right: 8%;
         margin-bottom: 20px;
@@ -1522,6 +1701,10 @@ input[type=number] {
     &:last-child {
       margin-right: 0;
       margin-bottom: 0;
+    }
+    a {
+      color: $brand-fill;
+      text-decoration: none;
     }
   }
   &-Indicator {
@@ -1792,7 +1975,8 @@ input[type=number] {
     backdrop-filter: blur(5px);
     position: fixed;
     top: 0px;
-    width: 100%;
+    // flex: 1 0 100%;
+    width: calc(100% - #{$sidebar-width});
     height: 100%;
     display: flex;
     align-items: center;
@@ -1805,8 +1989,10 @@ input[type=number] {
     }
   }
   &-Wrapper {
-    width: 60%;
+    width: 90%;
+    max-width: 800px;
     height: fit-content;
+    min-height: 200px;
     background-color: $light-background;
     border-radius: 0.5rem;
     box-shadow: $box-shadow;
@@ -1860,7 +2046,7 @@ input[type=number] {
     &[data-side='right'] {
       text-align: right;
       align-items: flex-end;
-      div {
+      .Dialog-Bubble {
         border-radius: 8px 0px 8px 8px;
         background: $chat-bubble-user;
         border: 1px solid $chat-bubble-user-border;
@@ -1876,7 +2062,7 @@ input[type=number] {
     &[data-side='left'] {
       text-align: left;
       align-items: flex-start;
-      div {
+      .Dialog-Bubble {
         border-radius: 0 8px 8px;
         background: $chat-bubble-bot;
         color: white;
@@ -1921,6 +2107,45 @@ input[type=number] {
     margin-left: 20px;
     top: 5px;
     width: fit-content;
+  }
+  &-ConvAction {
+    &-Wrapper {
+      // background-color: $brand-fill;
+      width: 100%;
+      padding: 20px;
+    }
+    &-MultipleOption {
+      // border: 1px solid $base-background;
+      box-shadow: $box-shadow;
+      border-radius: 8px;
+      display: flex;
+      flex-flow: row wrap;
+      overflow: hidden;
+      &-Item {
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 15px;
+        width: 50%;
+        min-width: 200px;
+        border-bottom: 1px solid $base-background;
+        &:nth-child(2n-1) {
+          box-shadow: inset -2px 0px 0px -1px $base-background;
+        }
+        &:last-child, &:nth-last-child(2) {
+          // border-bottom: 1px solid $base-background;
+          border-bottom: none;
+        }
+        &:focus {
+          border-bottom: 1px solid $base-background;
+          &:last-child, &:nth-last-child(2) {
+            // border-bottom: 1px solid $base-background;
+            border-bottom: none;
+          }
+        }
+      }
+    }
   }
 }
 
@@ -2076,6 +2301,12 @@ input[type=number] {
         width: 200px;
         height: 200px;
       }
+    }
+  }
+
+  .Modal {
+    &-Container {
+      width: 100%;
     }
   }
 }

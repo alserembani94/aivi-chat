@@ -6,6 +6,7 @@ import {
     // RewardItem,
 } from '../../components/CardResult';
 import {
+    LoanDetail,
     LoanItem,
     ResetLoanRequestModal,
 } from '../../components/LoanResult';
@@ -103,6 +104,15 @@ const LoanResult: React.FC = () => {
     const [resetModal, setResetModal] = React.useState(false);
     const [searchModal, setSearchModal] = React.useState(false);
 
+    const [loanDetailModal, setLoanDetailModal] = React.useState(false);
+    const [loanDetailData, setLoanDetailData] = React.useState({
+
+    });
+
+    const handleLoanDetail = (loanName: string) => {
+        handleModalOpen('loanDetailModal');
+    }
+
     const handleModalOpen = (modalName: string) => {
         switch (modalName) {
             case 'resetModal':
@@ -111,19 +121,24 @@ const LoanResult: React.FC = () => {
             case 'searchModal':
                 setSearchModal(() => true);
                 break;
+            case 'loanDetailModal':
+                setLoanDetailModal(() => true);
+                break;
             default:
                 return;
         }
     }
 
     const handleModalClose = (modalName: string) => {
-        console.log(modalName);
         switch (modalName) {
             case 'resetModal':
                 setResetModal(() => false);
                 break;
             case 'searchModal':
                 setSearchModal(() => false);
+                break;
+            case 'loanDetailModal':
+                setLoanDetailModal(() => false);
                 break;
             default:
                 return;
@@ -169,6 +184,7 @@ const LoanResult: React.FC = () => {
                                     loanAmount={loan.loanAmount}
                                     selectedLoan={selectedLoan}
                                     updateSelectedLoan={handleLoanChange}
+                                    openLoanDetail={handleLoanDetail}
                                 />
                             ))
                         }
@@ -217,6 +233,13 @@ const LoanResult: React.FC = () => {
                         updateSelectedOptions={handleSelectedBanks}
                         closeModal={handleModalClose}
                     />
+                </Modal>
+                <Modal
+                    modalName='loanDetailModal'
+                    visible={loanDetailModal}
+                    closeModal={handleModalClose}
+                >
+                    <LoanDetail />
                 </Modal>
             </main>
         </React.Fragment>
