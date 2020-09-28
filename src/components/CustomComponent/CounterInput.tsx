@@ -1,7 +1,5 @@
 import React from 'react';
-import {
-    convertToInt,
-} from '../../utils/DataValidation';
+import InputNumber from './InputNumber';
 
 interface CounterInputProps {
     value: number;
@@ -12,8 +10,8 @@ interface CounterInputProps {
 }
 
 const CounterInput: React.FC<CounterInputProps> = ({value, updateCounter, unit, min = -Infinity ,max = Infinity}) => {
-    const handleCounterInput = (value: string) => {
-        updateCounter(convertToInt(value, min, max));
+    const handleCounterInput = (value: number) => {
+        updateCounter(value);
     }
 
     const handleCounterFlactuate = (operation: string) => {
@@ -25,13 +23,11 @@ const CounterInput: React.FC<CounterInputProps> = ({value, updateCounter, unit, 
     return (
         <React.Fragment>
             <div className="CounterInput-Wrapper">
-                <input
-                    type="text"
-                    min={0}
-                    max={20}
+                <InputNumber
+                    min={min}
+                    max={max}
                     value={value}
-                    inputMode="numeric"
-                    onChange={({ currentTarget: { value } }) => handleCounterInput(value)}
+                    onChange={handleCounterInput}
                 />
                 <p>{unit}</p>
                 <button onClick={() => handleCounterFlactuate('-')}>-</button>

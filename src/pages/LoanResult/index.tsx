@@ -7,6 +7,7 @@ import {
 } from '../../components/CardResult';
 import {
     LoanItem,
+    ResetLoanRequestModal,
 } from '../../components/LoanResult';
 import {
     Modal,
@@ -79,10 +80,10 @@ type ExpenseDetails = {
 
 const LoanResult: React.FC = () => {
     // EXPAND / COLLAPSE CONFIGURATION
-    const [allExpanded, setAllExpanded] = React.useState(false);
-    const toggleAllExpanded = () => {
-        setAllExpanded(prevState => !prevState);
-    };
+    // const [allExpanded, setAllExpanded] = React.useState(false);
+    // const toggleAllExpanded = () => {
+    //     setAllExpanded(prevState => !prevState);
+    // };
 
     // Temporary Period Details
     // const [period, setPeriod] = React.useState(6);
@@ -129,6 +130,11 @@ const LoanResult: React.FC = () => {
         }
     }
 
+    const [loanTenure, setLoanTenure] = React.useState(6);
+    const [loanAmount, setLoanAmount] = React.useState(20000);
+    const handleLoanTenureUpdate = (tenure: number) => setLoanTenure(() => tenure);
+    const handleLoanAmountUpdate = (amount: number) => setLoanAmount(() => amount);
+
     return (
         <React.Fragment>
             <main className="ResultPage-Body">
@@ -138,7 +144,7 @@ const LoanResult: React.FC = () => {
                             <p className="ResultPage-TopBar-Title">Your results are in!</p>
                             <p className="ResultPage-TopBar-Subtitle">Click on the card to select.</p>
                         </div>
-                        <button onClick={toggleAllExpanded}>{ allExpanded ? `Collapse` : `Expand`} All</button>
+                        {/* <button onClick={toggleAllExpanded}>{ allExpanded ? `Collapse` : `Expand`} All</button> */}
                         <button
                             onClick={() => handleModalOpen('resetModal')}
                         >
@@ -186,6 +192,13 @@ const LoanResult: React.FC = () => {
                     visible={resetModal}
                     closeModal={handleModalClose}
                 >
+                    <ResetLoanRequestModal
+                        loanTenure={loanTenure}
+                        updateLoanTenure={handleLoanTenureUpdate}
+                        loanAmount={loanAmount}
+                        updateLoanAmount={handleLoanAmountUpdate}
+                        closeModal={handleModalClose}
+                    />
                     {/* <ResetExpenseModal
                         period={period}
                         updatePeriodChange={handlePeriodChange}

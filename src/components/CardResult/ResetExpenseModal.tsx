@@ -21,7 +21,7 @@ const ResetExpenseModal: React.FC<ResetExpenseModalProps> = ({ period, updatePer
         <React.Fragment>
             <div className="ModalContent-CreditCardResult-Section">
                 <div className="ModalContent-CreditCardResult-Container">
-                    <p className="ModalContent-CreditCardResult-Title">Reset Period</p>
+                    <p className="ModalContent-CreditCardResult-Title">Reset period</p>
                     <div className="ModalContent-CreditCardResult-Content">
                         <CounterInput
                             value={period}

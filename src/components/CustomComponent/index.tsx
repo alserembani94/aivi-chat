@@ -18,6 +18,7 @@ import {
 } from './ChecklistBox';
 import CounterInput from './CounterInput';
 import Modal from './Modal';
+import InputNumber from './InputNumber';
 
 export {
     Checkbox, // Use this for options that use checkbox
@@ -27,6 +28,7 @@ export {
     ImageSelect, // Use this for options that use image or icon
     InputBox,
     InputDropdown, // Use this for options that use dropdown
+    InputNumber,
     Modal, // Use this for modals (pop ups)
     MultiChecklistBox, // Use this for multiple checklist-styled input
     MultiImageSelect, // Use this for multiple options that use image or icon

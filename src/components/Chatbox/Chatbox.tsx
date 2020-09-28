@@ -11,38 +11,56 @@ import { IconContext } from 'react-icons/lib';
 import { Images } from '../../utils/Images';
 import moment from 'moment';
 
-interface conversationState {
-    user?: string;
-    timestamp?: string;
-    message?: string;
-}
-
-const mockConversation = [
-    {
-        user: 'bot',
-        timestamp: '2020-09-09',
-        message: 'Welcome!',
+type conversationState = {
+    user: string,
+    timestamp: string,
+    message: string,
+    actions?: {
+        actionType: "links" | "images" | "dropdown" | "suggestedReply",
+        content: {
+            url?: string,
+            imageUrl?: string,
+            caption?: string,
+            optionList?: {
+                label: string,
+                value: string,
+            }[],
+        },
+        remarks?: string[],
     },
-    {
-        user: 'user',
-        timestamp: '2020-09-09',
-        message: 'Hey!',
-    },
-    {
-        user: 'bot',
-        timestamp: '2020-09-09',
-        message: 'Are you interested in anything?',
-    },
-    {
-        user: 'user',
-        timestamp: '2020-09-09',
-        message: 'I would like to order an aglio e olio, with a freckle of cinnamon, and the cherry on top!',
-    },
-];
+};
 
 const Chatbox: React.FC = () => {
     const [userChatInput, setUserChatInput] = React.useState('');
-    const [conversation, setConversation] = React.useState<conversationState[]>(mockConversation);
+    const [conversation, setConversation] = React.useState<conversationState[]>([
+        {
+            user: 'bot',
+            timestamp: '2020-09-09',
+            message: 'Welcome!',
+        },
+        {
+            user: 'user',
+            timestamp: '2020-09-09',
+            message: 'Hey!',
+            actions: {
+                actionType: 'links',
+                content: {
+                    url: 'https://stackoverflow.com/questions/26855423/how-to-require-a-specific-string-in-typescript-interface',
+                    caption: 'I just want to follow the links.',
+                }
+            },
+        },
+        {
+            user: 'bot',
+            timestamp: '2020-09-09',
+            message: 'Are you interested in anything?',
+        },
+        {
+            user: 'user',
+            timestamp: '2020-09-09',
+            message: 'I would like to order an aglio e olio, with a freckle of cinnamon, and the cherry on top!',
+        },
+    ]);
 
 
     React.useEffect(() => {
@@ -102,6 +120,9 @@ const Chatbox: React.FC = () => {
                                     </div>
                                 ))
                             }
+                        </div>
+                        <div className="Chatbox-Suggestions">
+                            <p>Hello87b2yhr97832nr978hv4g98472mnhgm9834mhurweffiuwrhjgmfrywbn8h34joiruhfdjrew987gvgq37rtbcvb8736ertcfg3726cfb8gn87qwengcfjhny4h3jfgidhuwerojgimuhj</p>
                         </div>
                         <div className="Chatbox-Input">
                             <button className="Chatbox-Input-UploadOptions Button">
