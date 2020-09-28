@@ -233,7 +233,7 @@ const CardDetails: React.FC = () => {
                                         can also earn 1x TreatPoints on all your spending with MasterCard or Visa.
                                     </div>
                                     <div>
-                                        <table>
+                                        {/* <table>
                                             <tr>
                                                 <th>EARN</th>
                                                 <th>SPEND</th>
@@ -256,7 +256,7 @@ const CardDetails: React.FC = () => {
                                                     <td>on all retail with Maybank 2 Mastercard or Visa</td>
                                                 </tr>
                                             </tbody>
-                                        </table>
+                                        </table> */}
                                         
                                     </div>
                                 </div>
