@@ -222,7 +222,178 @@ const CardDetails: React.FC = () => {
                                 </div>
                             </div>
                         </div>
-                            
+                        <div>
+                            <br/><br/>
+                            <div>Rewards</div>
+
+                            <div className="CardResult-Main">
+                                <div className="CardResult-Card">
+                                    <div>
+                                        5x TreatPoints for all the weekday spend on your Maybank 2 American Express Card. You <br/>
+                                        can also earn 1x TreatPoints on all your spending with MasterCard or Visa.
+                                    </div>
+                                    <div>
+                                        <table>
+                                            <tr>
+                                                <th>EARN</th>
+                                                <th>SPEND</th>
+                                            </tr>
+                                            <tbody>
+                                                <tr>
+                                                    <td>5 point per RM1</td>
+                                                    <td>on all retail with Maybank 2 American Express Card (weekdays)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>1 point per RM1</td>
+                                                    <td>on utilities, insurance and EzyPay installment with Maybank 2 American Express Card</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>5 points per RM1</td>
+                                                    <td>on all retail with Maybank 2 Mastercard or Visa</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>1 point per RM1</td>
+                                                    <td>on all retail with Maybank 2 Mastercard or Visa</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        
+                                    </div>
+                                </div>
+                                <div className="CardResult-Details">
+                                    <div className="CardResult-Card-Image"></div>
+                                </div>
+                            </div>
+
+
+                            <div>
+                                <div>Features</div>
+                                <div>
+
+                                    <div>
+                                        <p className="CardResult-Details-Data">Easy Payment Plan</p>
+                                        <div>.</div>
+                                        <div>
+                                            <div>Maybankard EzPay</div>
+                                            <div>Easypay is, well, easy: a 0% interest installment plan which lets you spread your payments over 36 months.<br/>
+                                                Available at participating merchants only.
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <p className="CardResult-Details-Data">Cash Advance /Cash Loans</p>
+                                        <div>.</div>
+                                        <div>
+                                            <div>Maybank Cash Treats</div>
+                                            <div>It's reassuring to know that you have access to cash in an emergency. With Maybankard Cash Treats it's so<br/>
+                                                easy to apply as no documents are required and fast approval guaranteed!
+                                            </div>
+                                        </div>
+                                    </div> 
+
+                                    <div>
+                                        <p className="CardResult-Details-Data">Balance Transfer Plans</p>
+                                        <div>.</div>
+                                        <div>
+                                            <div>Maybank Balance Transfer Program</div>
+                                            <div>Save on your credit card bills with lower interest rates, choose the plan that meets your need, and enjoy a<br/>
+                                                longer repayment period of up to 36 months
+                                            </div>
+                                        </div>
+                                    </div>   
+
+                                </div>
+                            </div>
+
+
+                            <div>
+                                <p className="CardResult-Details-Data">Easy Payment Plans</p>
+                                <div>
+                                    <div>Maybank EzyPay offers payment terms of up to 36 months, at 0% interest, on purchases to approved merchants. For all other purchases, you can opt to Maybank EzyPay<br/>
+                                    Plus for installment up to 24 months and low interest rates. No penalty for early payment</div>
+                                    <div>
+                                        <table>
+                                            <tr>
+                                                <th>PAYOVER</th>
+                                                <th>WITH INTEREST RATE AT</th>
+                                                <th>WHEN YOU SPEND</th>
+                                            </tr>
+                                            <tr>
+                                                <td>3 months</td>
+                                                <td>0% p.a. and no one-time upfront handling fee</td>
+                                                <td>RM50</td>
+                                            </tr>
+                                            <tr>
+                                                <td>6 months</td>
+                                                <td>0% p.a. and no one-time upfront handling pay</td>
+                                                <td>RM50</td>
+                                            </tr>
+                                            <tr>
+                                                <td>12 months</td>
+                                                <td>0% p.a. and no one-time upfront handling pay</td>
+                                                <td>RM50</td>
+                                            </tr>
+                                            <tr>
+                                                <td>18 months</td>
+                                                <td>0% p.a. and no one-time upfront handling pay</td>
+                                                <td>RM50</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <p className="CardResult-Details-Data">Fees & Charges</p>
+                                <div>
+                                    <div>
+                                        <table>
+                                            <tr>
+                                                <td>Annual Fee</td>
+                                                <td>RM0 primary card, Free for life</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Sales And Service Tax</td>
+                                                <td>RM25 on each principle and supplementary card upon activation and anniversary date</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Minimum Monthly</td>
+                                                <td>RM25 or 5% of outstanding amount, whichever is higher</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Late Payment Fee</td>
+                                                <td>RM10 or 1% of outstanding amount, up to a maximum amount of RM100</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+
+                            </div>
+
+                        </div>
+                            <p className="CardResult-Details-Data">Requirements</p>
+                            <div>
+                                <div>
+                                    <table>
+                                        <tr>
+                                            <td>Minimum Annual Income</td>
+                                            <td>RM30,000</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Minimum Age</td>
+                                            <td>21 to 65 years old primary card<br/>18 years old supplementary card</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Who Can Apply</td>
+                                            <td>Anyone</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                        
                     </div>
