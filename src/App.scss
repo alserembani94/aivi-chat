@@ -1166,6 +1166,16 @@ input[type=number] {
     display: flex;
     flex-flow: row wrap;
   }
+  &-GroupTitle {
+    background: #FAFAFA;
+    height: 39.4px;
+    vertical-align: middle;
+    border: 1px solid #F1F1F1;
+    font-size: 20px;
+  }
+  &-GroupBody {
+    border: 1px solid #F1F1F1;
+  }
   &-Card {
     display: flex;
     flex-flow: column wrap;

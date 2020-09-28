@@ -221,54 +221,55 @@ const CardDetails: React.FC = () => {
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div><br/><br/><br/>
                         <div>
-                            <br/><br/>
-                            <div>Rewards</div>
-
-                            <div className="CardResult-Main">
-                                <div className="CardResult-Card">
-                                    <div>
-                                        5x TreatPoints for all the weekday spend on your Maybank 2 American Express Card. You <br/>
-                                        can also earn 1x TreatPoints on all your spending with MasterCard or Visa.
+                            <div>
+                                <div className="CardResult-GroupTitle">Rewards</div>
+                                <div className="CardResult-GroupBody">
+                                    <div className="CardResult-Main">
+                                        <div className="CardResult-Card">
+                                            <div>
+                                                5x TreatPoints for all the weekday spend on your Maybank 2 American Express Card. You <br/>
+                                                can also earn 1x TreatPoints on all your spending with MasterCard or Visa.
+                                            </div>
+                                            <div>
+                                                {/* <table>
+                                                    <tr>
+                                                        <th>EARN</th>
+                                                        <th>SPEND</th>
+                                                    </tr>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>5 point per RM1</td>
+                                                            <td>on all retail with Maybank 2 American Express Card (weekdays)</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>1 point per RM1</td>
+                                                            <td>on utilities, insurance and EzyPay installment with Maybank 2 American Express Card</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>5 points per RM1</td>
+                                                            <td>on all retail with Maybank 2 Mastercard or Visa</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>1 point per RM1</td>
+                                                            <td>on all retail with Maybank 2 Mastercard or Visa</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table> */}
+                                                
+                                            </div>
+                                        </div>
+                                        <div className="CardResult-Details">
+                                            <div className="CardResult-Card-Image"></div>
+                                        </div>
                                     </div>
-                                    <div>
-                                        {/* <table>
-                                            <tr>
-                                                <th>EARN</th>
-                                                <th>SPEND</th>
-                                            </tr>
-                                            <tbody>
-                                                <tr>
-                                                    <td>5 point per RM1</td>
-                                                    <td>on all retail with Maybank 2 American Express Card (weekdays)</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>1 point per RM1</td>
-                                                    <td>on utilities, insurance and EzyPay installment with Maybank 2 American Express Card</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>5 points per RM1</td>
-                                                    <td>on all retail with Maybank 2 Mastercard or Visa</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>1 point per RM1</td>
-                                                    <td>on all retail with Maybank 2 Mastercard or Visa</td>
-                                                </tr>
-                                            </tbody>
-                                        </table> */}
-                                        
-                                    </div>
-                                </div>
-                                <div className="CardResult-Details">
-                                    <div className="CardResult-Card-Image"></div>
-                                </div>
+                                </div><br/><br/><br/>
                             </div>
 
-
                             <div>
-                                <div>Features</div>
-                                <div>
+                                <div className="CardResult-GroupTitle">Features</div>
+                                <div className="CardResult-GroupBody">
 
                                     <div>
                                         <p className="CardResult-Details-Data">Easy Payment Plan</p>
@@ -304,12 +305,13 @@ const CardDetails: React.FC = () => {
                                     </div>   
 
                                 </div>
+                                <br/><br/><br/>
                             </div>
 
 
                             <div>
-                                <p className="CardResult-Details-Data">Easy Payment Plans</p>
-                                <div>
+                                <div className="CardResult-GroupTitle">Easy Payment Plans</div>
+                                <div className="CardResult-GroupBody">
                                     <div>Maybank EzyPay offers payment terms of up to 36 months, at 0% interest, on purchases to approved merchants. For all other purchases, you can opt to Maybank EzyPay<br/>
                                     Plus for installment up to 24 months and low interest rates. No penalty for early payment</div>
                                     <div>
@@ -342,11 +344,11 @@ const CardDetails: React.FC = () => {
                                         </table> */}
                                     </div>
                                 </div>
-                            </div>
+                            </div><br/><br/><br/>
 
                             <div>
-                                <p className="CardResult-Details-Data">Fees & Charges</p>
-                                <div>
+                                <div className="CardResult-GroupTitle">Fees & Charges</div>
+                                <div className="CardResult-GroupBody">
                                     <div>
                                         {/* <table>
                                             <tr>
@@ -368,15 +370,15 @@ const CardDetails: React.FC = () => {
                                         </table> */}
                                     </div>
                                 </div>
-                            </div>
+                            </div><br/><br/><br/>
 
                             <div>
 
                             </div>
 
                         </div>
-                            <p className="CardResult-Details-Data">Requirements</p>
-                            <div>
+                            <div className="CardResult-GroupTitle">Requirements</div>
+                            <div className="CardResult-GroupBody">
                                 <div>
                                     {/* <table>
                                         <tr>
@@ -394,7 +396,7 @@ const CardDetails: React.FC = () => {
                                     </table> */}
                                 </div>
                             </div>
-                        </div>
+                        </div><br/><br/><br/>
                        
                     </div>
                 </div>
