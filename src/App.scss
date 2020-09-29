@@ -444,6 +444,8 @@ input[type=number] {
     height: 100%;
     width: 55%;
     padding: 35px;
+    display: flex;
+    justify-content: center;
     &-Mobile {
       &-Model {
         display: none;
@@ -466,6 +468,8 @@ input[type=number] {
   }
   &-Logo {
     position: absolute;
+    top: 30px;
+    left: 30px;
   }
 }
 

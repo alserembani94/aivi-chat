@@ -6,6 +6,8 @@ import {
     CreditCard,
     BalanceTransfer,
     PersonalLoan,
+
+    conversationState,
 } from '../../components';
 import { Images } from '../../utils/Images';
 
@@ -54,14 +56,47 @@ function SmartAssistant() {
             default:
                 return <>Not Found</>;
         }
-    }
+    };
+    
+    const [conversation, setConversation] = React.useState<conversationState[]>([
+        {
+            user: 'bot',
+            timestamp: '2020-09-09',
+            message: 'Welcome!',
+        },
+        {
+            user: 'user',
+            timestamp: '2020-09-09',
+            message: 'Hey!',
+        },
+        {
+            user: 'bot',
+            timestamp: '2020-09-09',
+            message: 'Are you interested in anything?',
+        },
+        {
+            user: 'user',
+            timestamp: '2020-09-09',
+            message: 'I would like to order an aglio e olio, with a freckle of cinnamon, and the cherry on top!',
+        },
+        {
+            user: 'bot',
+            timestamp: '2020-09-09',
+            message: 'Okay, what\'s next?',
+        },
+    ]);
+
+    const updateConversation = (newConversation: conversationState) => setConversation(() => [...conversation, newConversation]);
 
     return (
         <main className="AIVI-Body">
             {/* <section className="AIVI-Body"> */}
                 <section className="AIVI-Chatbox">
                     <img src={Images.logo_AIVI} alt="logo-aivi" className="AIVI-Logo" />
-                    <Chatbox />
+                    <Chatbox
+                        conversation={conversation}
+                        updateConversation={updateConversation}
+                    />
                 </section>
                 <section className="AIVI-Leftbox">
                     { handleSectionRendering(renderSection) }
@@ -79,7 +114,10 @@ function SmartAssistant() {
             <section
                 className={`AIVI-Chatbox-Mobile-Model ${showChatInMobile ? `AIVI-Chatbox-Mobile-Show` : `AIVI-Chatbox-Mobile-Hide`}`}
             >
-                <Chatbox />
+                <Chatbox
+                    conversation={conversation}
+                    updateConversation={updateConversation}
+                />
             </section>
             {/* END */}
 

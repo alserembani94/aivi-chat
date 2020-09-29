@@ -11,7 +11,7 @@ import { IconContext } from 'react-icons/lib';
 import { Images } from '../../utils/Images';
 import moment from 'moment';
 
-type conversationState = {
+export type conversationState = {
     user: string,
     timestamp: string,
     message: string,
@@ -30,58 +30,63 @@ type conversationState = {
     },
 };
 
-const Chatbox: React.FC = () => {
+interface ChatboxProps {
+    conversation: conversationState[];
+    updateConversation: (newConversation: conversationState) => void;
+}
+
+const Chatbox: React.FC<ChatboxProps> = ({ conversation, updateConversation }) => {
     const [userChatInput, setUserChatInput] = React.useState('');
-    const [conversation, setConversation] = React.useState<conversationState[]>([
-        {
-            user: 'bot',
-            timestamp: '2020-09-09',
-            message: 'Welcome!',
-        },
-        {
-            user: 'user',
-            timestamp: '2020-09-09',
-            message: 'Hey!',
-        },
-        {
-            user: 'bot',
-            timestamp: '2020-09-09',
-            message: 'Are you interested in anything?',
-        },
-        {
-            user: 'user',
-            timestamp: '2020-09-09',
-            message: 'I would like to order an aglio e olio, with a freckle of cinnamon, and the cherry on top!',
-        },
-        {
-            user: 'bot',
-            timestamp: '2020-09-09',
-            message: 'Okay, what\'s next?',
-            actions: {
-                actionType: "multipleOption",
-                content: {
-                    optionList: [
-                        {
-                            label: 'Credit Card',
-                            value: 'Credit Card',
-                        },
-                        {
-                            label: 'Balance Transfer',
-                            value: 'Balance Transfer',
-                        },
-                        {
-                            label: 'Personal Loan',
-                            value: 'Personal Loan',
-                        },
-                        {
-                            label: 'Cash From Card',
-                            value: 'Cash From Card',
-                        },
-                    ],
-                },
-            },
-        },
-    ]);
+    // const [conversation, setConversation] = React.useState<conversationState[]>([
+    //     {
+    //         user: 'bot',
+    //         timestamp: '2020-09-09',
+    //         message: 'Welcome!',
+    //     },
+    //     {
+    //         user: 'user',
+    //         timestamp: '2020-09-09',
+    //         message: 'Hey!',
+    //     },
+    //     {
+    //         user: 'bot',
+    //         timestamp: '2020-09-09',
+    //         message: 'Are you interested in anything?',
+    //     },
+    //     {
+    //         user: 'user',
+    //         timestamp: '2020-09-09',
+    //         message: 'I would like to order an aglio e olio, with a freckle of cinnamon, and the cherry on top!',
+    //     },
+    //     {
+    //         user: 'bot',
+    //         timestamp: '2020-09-09',
+    //         message: 'Okay, what\'s next?',
+    //         actions: {
+    //             actionType: "multipleOption",
+    //             content: {
+    //                 optionList: [
+    //                     {
+    //                         label: 'Credit Card',
+    //                         value: 'Credit Card',
+    //                     },
+    //                     {
+    //                         label: 'Balance Transfer',
+    //                         value: 'Balance Transfer',
+    //                     },
+    //                     {
+    //                         label: 'Personal Loan',
+    //                         value: 'Personal Loan',
+    //                     },
+    //                     {
+    //                         label: 'Cash From Card',
+    //                         value: 'Cash From Card',
+    //                     },
+    //                 ],
+    //             },
+    //         },
+    //     },
+    // ]);
 
     const [convActionSelection, setConvActionSelection] = React.useState();
     // const updateConvActionSelection = (value: any) => setConvActionSelection(() => value);
@@ -92,6 +97,7 @@ const Chatbox: React.FC = () => {
 
     React.useEffect(() =>{
         if (convActionSelection !== '') handleChatSubmit('Enter');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [convActionSelection]);
 
     React.useEffect(() => {
@@ -116,7 +122,7 @@ const Chatbox: React.FC = () => {
                     timestamp: moment().format(),
                     message: userChatInput,
                 };
-                setConversation(prevConversation => { return [...prevConversation, conversationMap] });
+                updateConversation(conversationMap);
                 setUserChatInput('');
             }
         }

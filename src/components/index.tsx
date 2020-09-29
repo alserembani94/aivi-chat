@@ -1,10 +1,11 @@
 import Sidebar from './Sidebar/Sidebar';
-import Chatbox from './Chatbox/Chatbox';
+import Chatbox, { conversationState } from './Chatbox/Chatbox';
 import CashFromCard from './Leftbox/CashFromCard/CashFromCard';
 import CreditCard from './Leftbox/CreditCard/CreditCard';
 import BalanceTransfer from './Leftbox/BalanceTransfer/BalanceTransfer';
 import PersonalLoan from './Leftbox/Personal Loan/PersonalLoan';
 
+// Exporting as modules
 // Exporting as modules
 export {
     BalanceTransfer,
@@ -12,5 +13,7 @@ export {
     Chatbox,
     CreditCard,
     PersonalLoan,
-    Sidebar,
+    Sidebar
 };
+
+export type { conversationState };
