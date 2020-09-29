@@ -11,7 +11,7 @@ const MainMenu: React.FC<MainMenuProps> = () => {
         {
             user: 'bot',
             timestamp: '2020-09-09',
-            message: 'Okay, what\'s next?',
+            message: "",
             actions: {
                 actionType: "multipleOption",
                 content: {

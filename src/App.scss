@@ -1306,6 +1306,13 @@ input[type=number] {
   }
 }
 
+.Pages-Red-Button {
+  background: #D43A4C;
+  border-radius: 4px;
+  padding: 10px;
+  color: #FFFFFF;
+}
+
 .CardResult {
   &-Wrapper {
     background-color: $light-background;
@@ -1313,6 +1320,8 @@ input[type=number] {
     border-radius: 8px;
     width: 100%;
     margin-bottom: 30px;
+    margin-left: 2%;
+    margin-top: 2%;
     box-shadow: $box-shadow;
     position: relative;
     &:after {
@@ -1336,6 +1345,19 @@ input[type=number] {
   &-Main {
     display: flex;
     flex-flow: row wrap;
+  }
+  &-GroupTitle {
+    background: #FAFAFA;
+    height: 39.4px;
+    vertical-align: middle;
+    border: 1px solid #F1F1F1;
+    font-size: 20px;
+  }
+  &-GroupBody {
+    border: 1px solid #F1F1F1;
+  }
+  &-GroupPadding {
+    padding: 40px;
   }
   &-Card {
     display: flex;
