@@ -69,21 +69,6 @@ function SmartAssistant() {
             timestamp: '2020-09-09',
             message: 'Hey!',
         },
-        {
-            user: 'bot',
-            timestamp: '2020-09-09',
-            message: 'Are you interested in anything?',
-        },
-        {
-            user: 'user',
-            timestamp: '2020-09-09',
-            message: 'I would like to order an aglio e olio, with a freckle of cinnamon, and the cherry on top!',
-        },
-        {
-            user: 'bot',
-            timestamp: '2020-09-09',
-            message: 'Okay, what\'s next?',
-        },
     ]);
 
     const updateConversation = (newConversation: conversationState) => setConversation(() => [...conversation, newConversation]);
