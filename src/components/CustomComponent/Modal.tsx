@@ -31,7 +31,7 @@ const Modal: FC<ModalProps> = ({ children, modalName, visible = false, closeModa
     return (
         <React.Fragment>
             <section className="Modal-Container" data-visible={visible}>
-                    <div className="Modal-Wrapper" ref={modalElement}>
+                    <div className="Modal-Wrapper" ref={modalElement} data-modal={modalName}>
                         {
                             children && children
                         }

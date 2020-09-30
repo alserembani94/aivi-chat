@@ -59,7 +59,7 @@ const Register: FC<RegisterProps> = () => {
                 <div className="Auth-Wrapper">
                     <div className="Auth-Title">
                         <h1>Welcome to AIVI</h1>
-                        <p>Let's get you started!</p>
+                        <p className="Auth-Subtitle">Let's get you started!</p>
                     </div>
                     <div className="Auth-SocMed">
                         <p>You can register with social media account</p>

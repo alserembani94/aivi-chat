@@ -1262,9 +1262,24 @@ input[type=number] {
     color: $text-dark;
     & > h1 {
       font-size: 1.5rem;
+      line-height: 3rem;
     }
-    & > p {
-      font-size: 1rem;
+  }
+  &-Subtitle {
+    font-size: 1rem;
+  }
+  &-Description {
+    font-size: 1rem;
+    font-weight: 300;
+    padding: 20px 20px 0px;
+    line-height: 1.3rem;
+    br {
+      margin-bottom: 20px;
+    }
+    a {
+      text-decoration: none;
+      color: $brand-fill;
+      font-weight: 600;
     }
   }
   &-SocMed {
@@ -1330,6 +1345,7 @@ input[type=number] {
       color: $text-dark;
       span {
         color: $brand-fill;
+        font-weight: 600;
         cursor: pointer;
       }
     }
@@ -2031,6 +2047,7 @@ input[type=number] {
     backdrop-filter: blur(5px);
     position: fixed;
     top: 0px;
+    z-index: 1000;
     // flex: 1 0 100%;
     width: calc(100% - #{$sidebar-width});
     height: 100%;
@@ -2054,6 +2071,21 @@ input[type=number] {
     box-shadow: $box-shadow;
     padding: 3rem 2.5rem 1.5rem;
     overflow: hidden;
+
+    // To access specific modal styling, just use [data-modal=modalName]
+    &[data-modal="Authentication"] {
+      padding-left: 0px;
+      padding-right: 0px;
+      max-width: 500px;
+      .Auth {
+        &-Inputs {
+          padding: 20px;
+        }
+        &-SwitchAuth {
+          text-align: center;
+        }
+      }
+    }
   }
 }
 

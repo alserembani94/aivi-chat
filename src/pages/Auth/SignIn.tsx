@@ -55,7 +55,7 @@ const SignIn: FC<SignInProps> = () => {
                 <div className="Auth-Wrapper">
                     <div className="Auth-Title">
                         <h1>Welcome back to AIVI!</h1>
-                        <p>Sign in to your account</p>
+                        <p className="Auth-Subtitle">Sign in to your account</p>
                     </div>
                     <div className="Auth-Inputs">
                         {

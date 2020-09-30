@@ -1,5 +1,6 @@
 import React, { FC, useState } from 'react';
 import {
+    // Modal,
     TabBar,
 } from '../../CustomComponent';
 import AvailableCard from './AvailableCard';
@@ -29,7 +30,14 @@ type IncomeSource = {
     income: string,
 }[];
 
-const CreditCard: FC = () => {
+interface CreditCardProps {
+    authenticated: boolean;
+    authModal: boolean;
+    openAuthModal: () => void;
+    closeAuthModal: () => void;
+}
+
+const CreditCard: FC<CreditCardProps> = ({ authenticated, authModal, openAuthModal, closeAuthModal }) => {
     // AVAILABLE BANKS CONFIGURATION
     const [cardOwnership, setCardOwnership] = useState<boolean>(false);
     const [selectedBanks, setSelectedBanks] = useState<string[]>([]);
@@ -152,6 +160,11 @@ const CreditCard: FC = () => {
         handleChangeTab(nextActiveTab);
     }
 
+    const handleSubmit = () => {
+        authenticated ? console.log('Proceed') : openAuthModal();
+    };
+
+    
     return (
         <React.Fragment>
             <div className="CreditCard-Content">
@@ -167,6 +180,8 @@ const CreditCard: FC = () => {
             <div className="CreditCard-Button">
                 <button
                     className="Button Button-Full"
+                    disabled={[selectedBanks.length === 3, expenseObject.length === 3, incomeSource[0].income].every(item => !item)}
+                    onClick={handleSubmit}
                 >
                     Submit Application
                 </button>
