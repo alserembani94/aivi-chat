@@ -8,6 +8,8 @@ import {
 } from '../components';
 import SmartAssistant from '../pages/SmartAssistant';
 import CardDetails from '../pages/CardDetails';
+import SiteBlogList from '../pages/SiteBlogList';
+import SiteBlogArticle from '../pages/SiteBlogArticle';
 import CreditCardResult from '../pages/CreditCardResult';
 import LoanResult from '../pages/LoanResult';
 import SignIn from '../pages/Auth/SignIn';
@@ -63,6 +65,20 @@ const VentasRoute = [
         private: false,
         sidebar: () => <Sidebar />,
         main: () => <CardDetails />,
+    },
+    {
+        path: '/site-blog-list',
+        exact: true,
+        private: false,
+        sidebar: () => <Sidebar />,
+        main: () => <SiteBlogList />,
+    },
+    {
+        path: '/site-blog-article',
+        exact: true,
+        private: false,
+        sidebar: () => <Sidebar />,
+        main: () => <SiteBlogArticle />,
     },
     {
         path: '*',

@@ -44,6 +44,14 @@ const menuNav = [
         path: '/card-details',
         label: 'Card Details',
     },
+    {
+        path: '/site-blog-list',
+        label: 'Site Blog List',
+    },
+    {
+        path: '/site-blog-article',
+        label: 'Site Blog Article',
+    },
 ];
 
 const Menu: React.FC<MenuProps> = ({ visible, toggleVisibility }) => {
