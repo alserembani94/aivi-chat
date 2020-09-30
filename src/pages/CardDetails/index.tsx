@@ -130,7 +130,6 @@ const CardDetails: FC = () => {
                                     <div className="CardResult-Card-Image">
                                         <img src={Images.icon_maybank} alt="icon-maybank" />
                                     </div>
-
                                 </div>
                                 <div className="CardResult-Details">
                                     <div className="CardResult-Details-TotalCollection">
