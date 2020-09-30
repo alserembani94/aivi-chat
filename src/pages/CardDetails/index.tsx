@@ -14,6 +14,7 @@ import {
 } from 'react-icons/io';
 import { IconContext } from 'react-icons/lib';
 import AvailableCard from '../../components/Leftbox/CreditCard/AvailableCard';
+import { Images } from '../../utils/Images';
 // import { csv } from 'd3';
 // import { CSVFiles } from '../../utils/DataSample';
 
@@ -127,16 +128,13 @@ const CardDetails: React.FC = () => {
                             <div className="CardResult-Main">
                                 <div className="CardResult-Card">
                                     <div className="CardResult-Card-Image">
-
+                                        <img src={Images.icon_maybank} alt="icon-maybank" />
                                     </div>
 
                                 </div>
                                 <div className="CardResult-Details">
                                     <div className="CardResult-Details-TotalCollection">
-                                        <p className="CardResult-Details-Data">Maybank 2 Gold Cards</p>
-                                    </div>
-                                    <div className="CardResult-Details-Period">
-                                        &nbsp;
+                                        <p className="CardResult-Details-Data">Maybank Loan</p>
                                     </div>
                                     <div className="CardResult-Details-Rewards">
                                         <p className="CardResult-Details-Label">
