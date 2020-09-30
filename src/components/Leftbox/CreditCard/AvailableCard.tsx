@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import {
     MultipleCheckbox,
     ToggleText,
@@ -12,7 +12,7 @@ interface AvailableCardProps {
     optionLimit: number;
 }
 
-const AvailableCard: React.FC<AvailableCardProps> = ({cardOwnership, updateCardOwnership, selectedOptions, updateSelectedOptions, optionLimit}) => {
+const AvailableCard: FC<AvailableCardProps> = ({cardOwnership, updateCardOwnership, selectedOptions, updateSelectedOptions, optionLimit}) => {
     const optionList = [
         {
             name: 'CIMB Bank',
@@ -80,13 +80,13 @@ const AvailableCard: React.FC<AvailableCardProps> = ({cardOwnership, updateCardO
         },
     ];
     const tempRef = React.useRef<HTMLDivElement>(null);
-    const [rowSpan, setRowSpan] = React.useState(2);
+    const [rowSpan, setRowSpan] = useState(2);
 
     const handleModifySelectedOptions = (selected: string[]) => {
         updateSelectedOptions(selected);
     }
     
-    React.useEffect(() => {
+    useEffect(() => {
         setRowSpan(prevState => {
             if (tempRef.current) {
                 if (tempRef.current.scrollWidth > 450) return 2

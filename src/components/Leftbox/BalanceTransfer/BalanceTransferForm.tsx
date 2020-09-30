@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import {
     InputBox,
     InputDropdown,
@@ -130,7 +130,7 @@ const slotInput: slotInputType[] = [
     },
 ];
 
-const BalanceTransferForm: React.FC<BalanceTransferProps> = ({slot, updateSubmitted, handleInputChange}) => {
+const BalanceTransferForm: FC<BalanceTransferProps> = ({slot, updateSubmitted, handleInputChange}) => {
     return (
         <React.Fragment>
             <section className="AIVIForm-Content">

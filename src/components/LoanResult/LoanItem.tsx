@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { calculateMonthlyLoanPayment } from '../../utils/Calculator';
 
 // Construct types for component props
@@ -13,7 +13,7 @@ interface LoanItemProps {
     openLoanDetail: (loanName: string) => void;
 }
 
-const LoanItem: React.FC<LoanItemProps> = ({ logoUrl, loanName, loanTenure, loanRate, loanAmount, selectedLoan, updateSelectedLoan, openLoanDetail }) => {
+const LoanItem: FC<LoanItemProps> = ({ logoUrl, loanName, loanTenure, loanRate, loanAmount, selectedLoan, updateSelectedLoan, openLoanDetail }) => {
     return (
         <React.Fragment>
             <div className="LoanItem-Wrapper" data-selected={selectedLoan === loanName}>

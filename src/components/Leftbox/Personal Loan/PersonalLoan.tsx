@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC, useState } from 'react';
 import {
     TabBar,
 } from '../../CustomComponent';
@@ -36,10 +36,10 @@ type MaritalInfoType = {
 
 type ChecklistType = ChecklistItemType[];
 
-const PersonalLoan: React.FC = () => {
+const PersonalLoan: FC = () => {
     // AVAILABLE BANKS CONFIGURATION
-    const [cardOwnership, setCardOwnership] = React.useState<boolean>(false);
-    const [selectedBanks, setSelectedBanks] = React.useState<string[]>([]);
+    const [cardOwnership, setCardOwnership] = useState<boolean>(false);
+    const [selectedBanks, setSelectedBanks] = useState<string[]>([]);
     const banksLimit = 3;
 
     const handleSelectedBanks = (selected: string[]) => {
@@ -51,7 +51,7 @@ const PersonalLoan: React.FC = () => {
     };
 
     // LOAN DETAILS CONFIGURATION
-    const [loanDetails, setLoanDetails] = React.useState<LoanDetailsType>({
+    const [loanDetails, setLoanDetails] = useState<LoanDetailsType>({
         loanAmount: '',
         repaymentPeriod: '',
     });
@@ -61,7 +61,7 @@ const PersonalLoan: React.FC = () => {
     }
 
     // MONTHLY INCOME CONFIGURATION
-    const [incomeSource, setIncomeSource] = React.useState<IncomeSourceType>([
+    const [incomeSource, setIncomeSource] = useState<IncomeSourceType>([
         {
             category: 'Primary',
             industry: '',
@@ -76,7 +76,7 @@ const PersonalLoan: React.FC = () => {
     }
 
     // MARITAL STATUS CONFIGURATION
-    const [maritalInfo, setMaritalInfo] = React.useState<MaritalInfoType>({
+    const [maritalInfo, setMaritalInfo] = useState<MaritalInfoType>({
         maritalStatus: 'Single',
     });
 
@@ -85,7 +85,7 @@ const PersonalLoan: React.FC = () => {
     }
 
     // LOAN COMMITMENTS CONFIGURATION
-    const [loanCommitments, setLoanCommitments] = React.useState<ChecklistType>([
+    const [loanCommitments, setLoanCommitments] = useState<ChecklistType>([
         {
             checked: true,
             name: 'Personal Loan',
@@ -117,7 +117,7 @@ const PersonalLoan: React.FC = () => {
     }
 
     // TAB CONFIGURATION
-    const [currentTab, setCurrentTab] = React.useState('Preferred Bank');
+    const [currentTab, setCurrentTab] = useState('Preferred Bank');
     const tabMenuList = [
         {
             label: 'Preferred Bank',
@@ -168,7 +168,7 @@ const PersonalLoan: React.FC = () => {
         setCurrentTab(() => { return selectedTab });
     }
 
-    // React.useEffect(() => {
+    // useEffect(() => {
     //     console.log(maritalInfo);
     // }, [maritalInfo]);
 

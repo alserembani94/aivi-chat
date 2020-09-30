@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import ReactSlider from 'react-slider';
 
 interface RangeSliderProps {
@@ -11,7 +11,7 @@ interface RangeSliderProps {
     minDistance: number;
 }
 
-const RangeSlider: React.FC<RangeSliderProps> = ({min, max, defaultValue, value, handleChange, step, minDistance }) => {
+const RangeSlider: FC<RangeSliderProps> = ({min, max, defaultValue, value, handleChange, step, minDistance }) => {
     const handleSliderChange = (value: number | number[] | null | undefined) => {
         handleChange(value as number[]);
     }

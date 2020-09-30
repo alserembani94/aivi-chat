@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Images } from '../../utils/Images';
 
 interface SubmittedViewProps {
     updateSubmitted: () => void;
 }
 
-const SubmittedView: React.FC<SubmittedViewProps> = ({updateSubmitted}) => {
+const SubmittedView: FC<SubmittedViewProps> = ({updateSubmitted}) => {
     return (
         <>
             <section className="Leftbox-Submitted">

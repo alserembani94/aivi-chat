@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import {
     InputBox,
     InputDropdown,
@@ -89,7 +89,7 @@ const slotInput: slotInputType[] = [
     },
 ];
 
-const CashFromCardForm: React.FC<CashFromCardProps> = ({slot, updateSubmitted, handleInputChange}) => {
+const CashFromCardForm: FC<CashFromCardProps> = ({slot, updateSubmitted, handleInputChange}) => {
     return (
         <React.Fragment>
             <section className="AIVIForm-Content">

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import {
     IoIosCheckmark,
 } from 'react-icons/io';
@@ -27,7 +27,7 @@ interface MultipleCheckboxProps {
     children?: any;
 }
 
-const Checkbox: React.FC<CheckboxProps> = ({name, label, updateSelected, rows, active, children}) => {
+const Checkbox: FC<CheckboxProps> = ({name, label, updateSelected, rows, active, children}) => {
     const handleUpdate = (value: string) => {
         updateSelected(value, active);
     }
@@ -51,7 +51,7 @@ const Checkbox: React.FC<CheckboxProps> = ({name, label, updateSelected, rows, a
     );
 };
 
-const MultipleCheckbox: React.FC<MultipleCheckboxProps> = ({optionList, selectedOptions, updateSelected, maxOption = Infinity, rows = 1}) => {
+const MultipleCheckbox: FC<MultipleCheckboxProps> = ({optionList, selectedOptions, updateSelected, maxOption = Infinity, rows = 1}) => {
 
     const handleArrayUpdate = (value: string, isActive: boolean) => {
         // Deselect Option

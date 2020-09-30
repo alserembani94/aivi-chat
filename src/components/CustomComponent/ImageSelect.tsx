@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 
 type optionType = {
     name: string,
@@ -21,7 +21,7 @@ interface MultiImageSelectType {
     maxOption?: number;
 }
 
-const ImageSelect: React.FC<ImageSelectType> = ({name, label, image, updateSelected, active}) => {
+const ImageSelect: FC<ImageSelectType> = ({name, label, image, updateSelected, active}) => {
     const handleUpdate = (value: string) => {
         updateSelected(value, active);
     }
@@ -42,7 +42,7 @@ const ImageSelect: React.FC<ImageSelectType> = ({name, label, image, updateSelec
     );
 };
 
-const MultiImageSelect: React.FC<MultiImageSelectType> = ({optionList, selectedOptions, updateSelected, maxOption = Infinity}) => {
+const MultiImageSelect: FC<MultiImageSelectType> = ({optionList, selectedOptions, updateSelected, maxOption = Infinity}) => {
     const handleArrayUpdate = (value: string, isActive: boolean) => {
         // Deselect Option
         if (isActive) {

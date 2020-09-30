@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC, useState } from 'react';
 import {
     InputBox,
 } from '../../components/CustomComponent';
@@ -33,10 +33,10 @@ const slotInput = [
     },
 ];
 
-const SignIn: React.FC<SignInProps> = () => {
+const SignIn: FC<SignInProps> = () => {
     const history = useHistory();
 
-    const [auth, setAuth] = React.useState<AuthState>({
+    const [auth, setAuth] = useState<AuthState>({
         email: '',
         password: '',
     });

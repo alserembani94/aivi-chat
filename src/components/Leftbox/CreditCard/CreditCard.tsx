@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC, useState } from 'react';
 import {
     TabBar,
 } from '../../CustomComponent';
@@ -29,10 +29,10 @@ type IncomeSource = {
     income: string,
 }[];
 
-const CreditCard: React.FC = () => {
+const CreditCard: FC = () => {
     // AVAILABLE BANKS CONFIGURATION
-    const [cardOwnership, setCardOwnership] = React.useState<boolean>(false);
-    const [selectedBanks, setSelectedBanks] = React.useState<string[]>([]);
+    const [cardOwnership, setCardOwnership] = useState<boolean>(false);
+    const [selectedBanks, setSelectedBanks] = useState<string[]>([]);
     const banksLimit = 3;
 
     const handleSelectedBanks = (selected: string[]) => {
@@ -44,14 +44,14 @@ const CreditCard: React.FC = () => {
     };
 
     // EXPENSES CONFIGURATION
-    const [selectedExpenses, setSelectedExpenses] = React.useState<string[]>([]);
+    const [selectedExpenses, setSelectedExpenses] = useState<string[]>([]);
     const expensesLimit = 3;
 
     const handleSelectedExpenses = (selected: string[]) => {
         setSelectedExpenses(() => { return selected; });
     };
 
-    const [expenseObject, setExpenseObject] = React.useState<any[]>([]);
+    const [expenseObject, setExpenseObject] = useState<any[]>([]);
 
     const generateExpenseObject = () => {
         const generatedExpenseObject = selectedExpenses.map(option => {
@@ -88,7 +88,7 @@ const CreditCard: React.FC = () => {
     }
 
     // MONTHLY INCOME CONFIGURATION
-    const [incomeSource, setIncomeSource] = React.useState<IncomeSource>([
+    const [incomeSource, setIncomeSource] = useState<IncomeSource>([
         {
             category: 'Primary',
             industry: '',
@@ -103,7 +103,7 @@ const CreditCard: React.FC = () => {
     }
     
     // TAB CONFIGURATION
-    const [currentTab, setCurrentTab] = React.useState('Available Card');
+    const [currentTab, setCurrentTab] = useState('Available Card');
     const tabMenuList = [
         {
             label: 'Available Card',
@@ -140,7 +140,7 @@ const CreditCard: React.FC = () => {
             enabled: false,
         },
     ];
-    const [enabledTab, setEnabledTab] = React.useState([true, false, false]);
+    const [enabledTab, setEnabledTab] = useState([true, false, false]);
 
     const handleChangeTab = (selectedTab: string) => {
         setCurrentTab(() => { return selectedTab });

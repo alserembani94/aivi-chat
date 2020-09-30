@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC, useState } from 'react';
 
 type slotInputType = {
     inputName: string,
@@ -15,8 +15,8 @@ interface InputBoxProps {
     handleInputChange: (value: string, stateName: string) => void;
 }
 
-const InputBox: React.FC<InputBoxProps> = ({value, inputProps, handleInputChange}) => {
-    const [isFocused, setFocused] = React.useState(false);
+const InputBox: FC<InputBoxProps> = ({value, inputProps, handleInputChange}) => {
+    const [isFocused, setFocused] = useState(false);
     const handleInputFocus = (e: React.FocusEvent) => {
         setFocused(() => true);
         // if (e.currentTarget.parentElement?.parentElement) e.currentTarget.parentElement.parentElement.style.boxShadow = '$selected-box-shadow';

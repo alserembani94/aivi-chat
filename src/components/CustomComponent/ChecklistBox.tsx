@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import {
     IoIosCheckmark,
 } from 'react-icons/io';
@@ -23,7 +23,7 @@ interface MultiChecklistBoxProps {
     updateChecklistList: (udpatedChecklistList : ChecklistType) => void;
 };
 
-const ChecklistBox: React.FC<ChecklistBoxProps> = ({ checklistItem, updateChecklistItem}) => {
+const ChecklistBox: FC<ChecklistBoxProps> = ({ checklistItem, updateChecklistItem}) => {
     const handleUpdate = (value: string | boolean, key: string) => {
         updateChecklistItem({...checklistItem, [key]: value});
     }
@@ -63,8 +63,8 @@ const ChecklistBox: React.FC<ChecklistBoxProps> = ({ checklistItem, updateCheckl
     );
 };
 
-const MultiChecklistBox: React.FC<MultiChecklistBoxProps> = ({checklistList, updateChecklistList}) => {
-    const [prevListLength, setPrevListLength] = React.useState(checklistList.length);
+const MultiChecklistBox: FC<MultiChecklistBoxProps> = ({checklistList, updateChecklistList}) => {
+    const [prevListLength, setPrevListLength] = useState(checklistList.length);
     const handleChecklistItemUpdate = (updatedChecklistItem: ChecklistItemType, index: number) => {
         const updatedChecklist = checklistList.map((checklistItem, updatedIndex) => updatedIndex === index ? updatedChecklistItem : checklistItem);
         updateChecklistList(updatedChecklist);
@@ -80,7 +80,7 @@ const MultiChecklistBox: React.FC<MultiChecklistBoxProps> = ({checklistList, upd
         updateChecklistList([...checklistList, newChecklistObject]);
     }
 
-    React.useEffect(() => {
+    useEffect(() => {
         if (prevListLength !== checklistList.length) {
             const containers = document.getElementsByClassName('ChecklistBox-Container');
             containers[containers.length - 2].getElementsByTagName('input')[0].focus();

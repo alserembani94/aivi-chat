@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import {
     IoIosArrowDown,
     IoIosClose,
@@ -38,7 +38,7 @@ interface InputDropdownProps {
  * Hook that alerts clicks outside of the passed ref
  */
 // function useOutsideAlerter(ref: React.MutableRefObject<null | HTMLElement>) {
-//     React.useEffect(() => {
+//     useEffect(() => {
 //         /**
 //          * Alert if clicked on outside of element
 //          */
@@ -57,12 +57,12 @@ interface InputDropdownProps {
 //     }, [ref]);
 // }
 
-const InputDropdown: React.FC<InputDropdownProps> = ({slot, inputProps, handleInputChange}) => {
-    const [isDropdown, setDropdown] = React.useState(false);
+const InputDropdown: FC<InputDropdownProps> = ({slot, inputProps, handleInputChange}) => {
+    const [isDropdown, setDropdown] = useState(false);
 
     const dropdownElement = React.useRef<null | HTMLDivElement>(null);
 
-    React.useEffect(() => {
+    useEffect(() => {
         function handleClickOutside(event: { target: any; }) {
             if (dropdownElement.current && !dropdownElement.current.contains(event.target)) {
                 if (isDropdown) {

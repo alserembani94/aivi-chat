@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import {
     IoIosCheckmark,
 } from 'react-icons/io';
@@ -12,7 +12,7 @@ interface ReselectBankModalProps {
     closeModal: (modalName: string) => void;
 }
 
-const ReselectBankModal: React.FC<ReselectBankModalProps> = ({ selectedBanks, updateSelectedOptions, closeModal }) => {
+const ReselectBankModal: FC<ReselectBankModalProps> = ({ selectedBanks, updateSelectedOptions, closeModal }) => {
     const banksLimit = 1;
     return (
         <React.Fragment>

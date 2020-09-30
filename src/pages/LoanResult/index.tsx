@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC, useState } from 'react';
 import {
     // CashbackItem,
     // ResetExpenseModal,
@@ -79,33 +79,33 @@ type ExpenseDetails = {
     expenseRange?: number[],
 }[];
 
-const LoanResult: React.FC = () => {
+const LoanResult: FC = () => {
     // EXPAND / COLLAPSE CONFIGURATION
-    // const [allExpanded, setAllExpanded] = React.useState(false);
+    // const [allExpanded, setAllExpanded] = useState(false);
     // const toggleAllExpanded = () => {
     //     setAllExpanded(prevState => !prevState);
     // };
 
     // Temporary Period Details
-    // const [period, setPeriod] = React.useState(6);
+    // const [period, setPeriod] = useState(6);
     // const handlePeriodChange = (value: number) => setPeriod(() => value);
 
     // CONFIGURATION FOR BANKS
-    const [selectedBanks, setSelectedBanks] = React.useState<string[]>([]);
+    const [selectedBanks, setSelectedBanks] = useState<string[]>([]);
     const handleSelectedBanks = (selected: string[]) => {
         setSelectedBanks(() => { return selected; });
     };
 
     // CONFIGURATION FOR SELECTED LOAN
-    const [selectedLoan, setSelectedLoan] = React.useState('');
+    const [selectedLoan, setSelectedLoan] = useState('');
     const handleLoanChange = (loanName: string) => loanName === selectedLoan ? setSelectedLoan(() => '') : setSelectedLoan(() => loanName);
 
     // CONFIGURATION FOR MODALS
-    const [resetModal, setResetModal] = React.useState(false);
-    const [searchModal, setSearchModal] = React.useState(false);
+    const [resetModal, setResetModal] = useState(false);
+    const [searchModal, setSearchModal] = useState(false);
 
-    const [loanDetailModal, setLoanDetailModal] = React.useState(false);
-    const [loanDetailData, setLoanDetailData] = React.useState({
+    const [loanDetailModal, setLoanDetailModal] = useState(false);
+    const [loanDetailData, setLoanDetailData] = useState({
 
     });
 
@@ -145,8 +145,8 @@ const LoanResult: React.FC = () => {
         }
     }
 
-    const [loanTenure, setLoanTenure] = React.useState(6);
-    const [loanAmount, setLoanAmount] = React.useState(20000);
+    const [loanTenure, setLoanTenure] = useState(6);
+    const [loanAmount, setLoanAmount] = useState(20000);
     const handleLoanTenureUpdate = (tenure: number) => setLoanTenure(() => tenure);
     const handleLoanAmountUpdate = (amount: number) => setLoanAmount(() => amount);
 

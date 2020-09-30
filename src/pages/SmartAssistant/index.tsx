@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import {
     Chatbox,
@@ -14,12 +14,12 @@ import { Images } from '../../utils/Images';
 // import { validateData } from './utils/DataValidation';
 
 function SmartAssistant() {
-    const [showChatInMobile, setShowChatInMobile] = React.useState(false);
-    const [renderSection, setRenderSection] = React.useState('Cash From Card');
-    const [renderModel, setRenderModel] = React.useState(false);
+    const [showChatInMobile, setShowChatInMobile] = useState(false);
+    const [renderSection, setRenderSection] = useState('Cash From Card');
+    const [renderModel, setRenderModel] = useState(false);
     const sections = ['Cash From Card', 'Credit Card', 'Balance Transfer', 'Personal Loan'];
 
-    React.useEffect(() => {
+    useEffect(() => {
         // const rootStyle = document.documentElement.style;
         // rootStyle.setProperty('--sidebar-width', '10px');
         // console.log(validateData('Hello', 'email'));
@@ -58,7 +58,7 @@ function SmartAssistant() {
         }
     };
     
-    const [conversation, setConversation] = React.useState<conversationState[]>([
+    const [conversation, setConversation] = useState<conversationState[]>([
         {
             user: 'bot',
             timestamp: '2020-09-09',

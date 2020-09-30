@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import BalanceTransferForm from './BalanceTransferForm';
 import SubmittedView from '../SubmittedView';
 
 const BalanceTransfer = () => {
-    const [userSlot, setUserSlot] = React.useState({
+    const [userSlot, setUserSlot] = useState({
         transferFrom: '',
         transferTo: '',
         name: '',
@@ -16,7 +16,7 @@ const BalanceTransfer = () => {
         setUserSlot(() => {return {...userSlot, [stateName]: value}});
     };
 
-    const [submitted, setSubmitted] = React.useState(false);
+    const [submitted, setSubmitted] = useState(false);
 
     const handleSubmit = () => {
         setSubmitted(prevState => { return !prevState});

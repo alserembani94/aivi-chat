@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import {
     InputBox,
     InputDropdown,
@@ -49,7 +49,7 @@ const spouseInput = {
     inputLabel: 'Name of Spouse',
 };
 
-const MaritalStatus: React.FC<MaritalStatusProps> = ({ maritalInfo, updateMaritalInfo }) => {
+const MaritalStatus: FC<MaritalStatusProps> = ({ maritalInfo, updateMaritalInfo }) => {
     const handleMaritalInfoUpdate = (value: string, stateName: string) => {
         if (stateName === 'maritalStatus') {
             if (value === 'Married') {

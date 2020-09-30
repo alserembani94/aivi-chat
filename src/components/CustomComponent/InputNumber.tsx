@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import {
     convertToInt,
 } from '../../utils/DataValidation';
@@ -14,7 +14,7 @@ interface InputNumberProps {
     children?: any;
 }
 
-const InputNumber: React.FC<InputNumberProps> = ({
+const InputNumber: FC<InputNumberProps> = ({
     value,
     onChange,
     numberType = 'integer',

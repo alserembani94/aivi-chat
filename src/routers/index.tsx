@@ -77,7 +77,7 @@ const RouterLayout = () => {
     // const history = useHistory();
     const mainPage = React.useRef<HTMLElement>(null);
 
-    // React.useEffect(() => {
+    // useEffect(() => {
     //     console.log(mainPage.current?.children.length);
     // }, []);
 

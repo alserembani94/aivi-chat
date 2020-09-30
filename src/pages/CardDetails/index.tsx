@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC, useEffect, useState } from 'react';
 // import {
 //     CashbackItem,
 //     RewardItem,
@@ -33,19 +33,19 @@ type ExpenseDetails = {
     expenseRange?: number[],
 }[];
 
-const CardDetails: React.FC = () => {
-    // const [allExpanded, setAllExpanded] = React.useState(false);
+const CardDetails: FC = () => {
+    // const [allExpanded, setAllExpanded] = useState(false);
 
     // const toggleAllExpanded = () => {
     //     setAllExpanded(prevState => !prevState);
     // };
     // Temporary Period Details
-    const [period, setPeriod] = React.useState(6);
+    const [period, setPeriod] = useState(6);
     
     const handlePeriodChange = (value: number) => setPeriod(() => value);
 
     // Temporary Expense Details
-    const [expenseDetails, setExpenseDetails] = React.useState<ExpenseDetails>([
+    const [expenseDetails, setExpenseDetails] = useState<ExpenseDetails>([
         {
             category: 'Shopping',
             subcategory: [
@@ -75,26 +75,26 @@ const CardDetails: React.FC = () => {
     }
 
     // CONFIGURATION FOR BANKS
-    const [selectedBanks, setSelectedBanks] = React.useState<string[]>([]);
+    const [selectedBanks, setSelectedBanks] = useState<string[]>([]);
     const banksLimit = 1;
 
     const handleSelectedBanks = (selected: string[]) => {
         setSelectedBanks(() => { return selected; });
     };
-    // const [data, setData] = React.useState<any>();
-    // React.useEffect(() => {
+    // const [data, setData] = useState<any>();
+    // useEffect(() => {
     //     csv(CSVFiles.rewardCatalogue).then(data => {
     //         setData(() => data);
     //     })
     // }, []);
 
-    // React.useEffect(() => {
+    // useEffect(() => {
     //     data && console.log(data[0]);
     // }, [data]);
 
     // CONFIGURATION FOR MODALS
-    const [resetModal, setResetModal] = React.useState(false);
-    const [searchModal, setSearchModal] = React.useState(false);
+    const [resetModal, setResetModal] = useState(false);
+    const [searchModal, setSearchModal] = useState(false);
 
     // const handleModalOpen = (modalName: string) => {
     //     modalName === 'resetModal'
@@ -110,7 +110,7 @@ const CardDetails: React.FC = () => {
         && setSearchModal(prevState => false);
     }
 
-    React.useEffect(() => {
+    useEffect(() => {
         console.log({resetModal, searchModal});
     }, [resetModal, searchModal]);
 

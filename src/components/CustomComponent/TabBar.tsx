@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC, useEffect } from 'react';
 import {
     IoMdArrowForward,
 } from 'react-icons/io';
@@ -20,7 +20,7 @@ interface TabBarProps {
     enabledTab?: boolean[];
 }
 
-const TabBar: React.FC<TabBarProps> = ({currentTab, updateTab, optionList, progressStrict = false, updateStrictTab, enabledTab}) => {
+const TabBar: FC<TabBarProps> = ({currentTab, updateTab, optionList, progressStrict = false, updateStrictTab, enabledTab}) => {
     const handleTabChange = (selectedTab: string) => {
         const tabBody = document.getElementById(selectedTab);
         tabBody && tabBody.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'start'});
@@ -51,7 +51,7 @@ const TabBar: React.FC<TabBarProps> = ({currentTab, updateTab, optionList, progr
         updateStrictTab && updateStrictTab(updatedEnabledTab, optionList[nextActiveTabIndex].name);
     }
 
-    React.useEffect(() => {
+    useEffect(() => {
         const tabBody = document.getElementById(currentTab);
         tabBody && tabBody.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'start'});
     // eslint-disable-next-line react-hooks/exhaustive-deps
