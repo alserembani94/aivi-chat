@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import CashFromCardForm from './CashFromCardForm';
 import SubmittedView from '../SubmittedView';
 import { connect } from 'react-redux';
@@ -12,8 +12,8 @@ type slotInputType = {
     inputLabel: string,
 };
 
-const CashFromCard: React.FC = (props) => {
-    const [userSlot, setUserSlot] = React.useState({
+const CashFromCard: FC = (props) => {
+    const [userSlot, setUserSlot] = useState({
         transferFrom: '',
         name: '',
         phone: '',
@@ -21,7 +21,7 @@ const CashFromCard: React.FC = (props) => {
         amount: 0,
     });
 
-    React.useEffect(() => {
+    useEffect(() => {
         // dispatch(submitForRecommendation());
         // console.log(props);
         // setUserSlot(() => ({
@@ -34,7 +34,7 @@ const CashFromCard: React.FC = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
     
-    const [submitted, setSubmitted] = React.useState(false);
+    const [submitted, setSubmitted] = useState(false);
 
     const handleInputChange = (value: string, stateName: string) => {
         setUserSlot(() => {return {...userSlot, [stateName]: value}});

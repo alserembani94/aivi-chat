@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import {
     InputBox,
     InputDropdown,
@@ -43,7 +43,7 @@ const loanDetailsFormat: slotInputItemType[] = [
     },
 ];
 
-const LoanDetails: React.FC<LoanDetailsProps> = ({ loanDetails, handleLoanDetailsUpdate }) => {
+const LoanDetails: FC<LoanDetailsProps> = ({ loanDetails, handleLoanDetailsUpdate }) => {
     const handleInputChange = (value: string, stateName: string) => {
         const updatedLoanDetailsItem = {...loanDetails, [stateName]: value};
         handleLoanDetailsUpdate(updatedLoanDetailsItem);

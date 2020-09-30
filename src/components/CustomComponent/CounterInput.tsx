@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import InputNumber from './InputNumber';
 
 interface CounterInputProps {
@@ -9,7 +9,7 @@ interface CounterInputProps {
     max?: number;
 }
 
-const CounterInput: React.FC<CounterInputProps> = ({value, updateCounter, unit, min = -Infinity ,max = Infinity}) => {
+const CounterInput: FC<CounterInputProps> = ({value, updateCounter, unit, min = -Infinity ,max = Infinity}) => {
     const handleCounterInput = (value: number) => {
         updateCounter(value);
     }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import {
     IoIosArrowBack,
     IoIosArrowForward,
@@ -10,7 +10,7 @@ interface LoanDetailProps {
     
 }
 
-const LoanDetail: React.FC<LoanDetailProps> = () => {
+const LoanDetail: FC<LoanDetailProps> = () => {
     return (
         <React.Fragment>
             <div className="LoanDetail-Action">

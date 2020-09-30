@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { FC, useState } from 'react';
 import {
+    // Modal,
     TabBar,
 } from '../../CustomComponent';
 import AvailableCard from './AvailableCard';
@@ -29,10 +30,17 @@ type IncomeSource = {
     income: string,
 }[];
 
-const CreditCard: React.FC = () => {
+interface CreditCardProps {
+    authenticated: boolean;
+    authModal: boolean;
+    openAuthModal: () => void;
+    closeAuthModal: () => void;
+}
+
+const CreditCard: FC<CreditCardProps> = ({ authenticated, authModal, openAuthModal, closeAuthModal }) => {
     // AVAILABLE BANKS CONFIGURATION
-    const [cardOwnership, setCardOwnership] = React.useState<boolean>(false);
-    const [selectedBanks, setSelectedBanks] = React.useState<string[]>([]);
+    const [cardOwnership, setCardOwnership] = useState<boolean>(false);
+    const [selectedBanks, setSelectedBanks] = useState<string[]>([]);
     const banksLimit = 3;
 
     const handleSelectedBanks = (selected: string[]) => {
@@ -44,14 +52,14 @@ const CreditCard: React.FC = () => {
     };
 
     // EXPENSES CONFIGURATION
-    const [selectedExpenses, setSelectedExpenses] = React.useState<string[]>([]);
+    const [selectedExpenses, setSelectedExpenses] = useState<string[]>([]);
     const expensesLimit = 3;
 
     const handleSelectedExpenses = (selected: string[]) => {
         setSelectedExpenses(() => { return selected; });
     };
 
-    const [expenseObject, setExpenseObject] = React.useState<any[]>([]);
+    const [expenseObject, setExpenseObject] = useState<any[]>([]);
 
     const generateExpenseObject = () => {
         const generatedExpenseObject = selectedExpenses.map(option => {
@@ -88,7 +96,7 @@ const CreditCard: React.FC = () => {
     }
 
     // MONTHLY INCOME CONFIGURATION
-    const [incomeSource, setIncomeSource] = React.useState<IncomeSource>([
+    const [incomeSource, setIncomeSource] = useState<IncomeSource>([
         {
             category: 'Primary',
             industry: '',
@@ -103,7 +111,7 @@ const CreditCard: React.FC = () => {
     }
     
     // TAB CONFIGURATION
-    const [currentTab, setCurrentTab] = React.useState('Available Card');
+    const [currentTab, setCurrentTab] = useState('Available Card');
     const tabMenuList = [
         {
             label: 'Available Card',
@@ -140,7 +148,7 @@ const CreditCard: React.FC = () => {
             enabled: false,
         },
     ];
-    const [enabledTab, setEnabledTab] = React.useState([true, false, false]);
+    const [enabledTab, setEnabledTab] = useState([true, false, false]);
 
     const handleChangeTab = (selectedTab: string) => {
         setCurrentTab(() => { return selectedTab });
@@ -152,6 +160,11 @@ const CreditCard: React.FC = () => {
         handleChangeTab(nextActiveTab);
     }
 
+    const handleSubmit = () => {
+        authenticated ? console.log('Proceed') : openAuthModal();
+    };
+
+    
     return (
         <React.Fragment>
             <div className="CreditCard-Content">
@@ -167,6 +180,8 @@ const CreditCard: React.FC = () => {
             <div className="CreditCard-Button">
                 <button
                     className="Button Button-Full"
+                    disabled={[selectedBanks.length === 3, expenseObject.length === 3, incomeSource[0].income].every(item => !item)}
+                    onClick={handleSubmit}
                 >
                     Submit Application
                 </button>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
     MdMenu,
 } from 'react-icons/md';
@@ -7,7 +7,7 @@ import Menu from './Menu';
 
 
 const Sidebar = () => {
-    const [toggleMenu, setToggleMenu] = React.useState<boolean>(false);
+    const [toggleMenu, setToggleMenu] = useState<boolean>(false);
 
     const handleMenuVisibility = () => {
         setToggleMenu(prevState => { return !prevState });

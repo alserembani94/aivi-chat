@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import {
     InputBox,
     InputDropdown,
@@ -124,7 +124,7 @@ const incomeSourceFormat: slotInputItemType[] = [
 
 const categoryToggleOptions = ['Primary', 'Secondary'];
 
-const MonthlyIncomeItem: React.FC<IncomeSourceItemProps> = ({incomeSource, incomeNo, handleIncomeSourceItemUpdate}) => {
+const MonthlyIncomeItem: FC<IncomeSourceItemProps> = ({incomeSource, incomeNo, handleIncomeSourceItemUpdate}) => {
     const handleInputChange = (value: string, stateName: string) => {
         const updatedIncomeSourceItem = {...incomeSource, [stateName]: value};
         handleIncomeSourceItemUpdate(updatedIncomeSourceItem);
@@ -166,7 +166,7 @@ const MonthlyIncomeItem: React.FC<IncomeSourceItemProps> = ({incomeSource, incom
     );
 }
 
-const MonthlyIncome: React.FC<MonthlyIncomeProps> = ({ incomeSources, handleIncomeSourceUpdate }) => {
+const MonthlyIncome: FC<MonthlyIncomeProps> = ({ incomeSources, handleIncomeSourceUpdate }) => {
     const updateIncomeSources = (incomeSourceItem: any, index: number) => {
         const updatedIncomeSource = [...incomeSources];
         updatedIncomeSource[index] = incomeSourceItem;

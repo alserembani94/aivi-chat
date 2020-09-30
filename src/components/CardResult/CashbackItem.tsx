@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import {
     IoIosArrowDown,
     IoIosArrowRoundForward,
@@ -15,14 +15,14 @@ interface CashbackItemProps {
     toggleExpandAll?: () => void;
 }
 
-const CashbackItem: React.FC<CashbackItemProps> = ({ cardName, selectedCard, updateSelectedCard, expandAll, toggleExpandAll }) => {
-    const [isExpanded, setExpanded] = React.useState(false);
+const CashbackItem: FC<CashbackItemProps> = ({ cardName, selectedCard, updateSelectedCard, expandAll, toggleExpandAll }) => {
+    const [isExpanded, setExpanded] = useState(false);
 
     const toggleExpanded = () => {
         setExpanded(prevState => !prevState);
     }
 
-    React.useEffect(() => {
+    useEffect(() => {
         (expandAll !== undefined) && setExpanded(() => expandAll);
     }, [expandAll]);
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC, useState } from 'react';
 
 type slotInputType = {
     inputName: string,
@@ -15,28 +15,31 @@ interface InputBoxProps {
     handleInputChange: (value: string, stateName: string) => void;
 }
 
-const InputBox: React.FC<InputBoxProps> = ({value, inputProps, handleInputChange}) => {
-    // const handleInputFocus = (e: React.FocusEvent) => {
-    //     if (e.currentTarget.parentElement?.parentElement) e.currentTarget.parentElement.parentElement.style.boxShadow = '$selected-box-shadow';
-    // };
+const InputBox: FC<InputBoxProps> = ({value, inputProps, handleInputChange}) => {
+    const [isFocused, setFocused] = useState(false);
+    const handleInputFocus = (e: React.FocusEvent) => {
+        setFocused(() => true);
+        // if (e.currentTarget.parentElement?.parentElement) e.currentTarget.parentElement.parentElement.style.boxShadow = '$selected-box-shadow';
+    };
 
-    // const handleInputBlur = (e: any) => {
-    //     if (e.currentTarget.parentElement?.parentElement)  e.currentTarget.parentElement.parentElement.style.boxShadow = '$box-shadow';
-    // };
+    const handleInputBlur = (e: any) => {
+        setFocused(() => false);
+        // if (e.currentTarget.parentElement?.parentElement)  e.currentTarget.parentElement.parentElement.style.boxShadow = '$box-shadow';
+    };
 
     return (
         <div
             className="InputBox-Container"
         >
-            <p className="InputBox-Label">{inputProps.inputLabel}</p>
+            <p className="InputBox-Label" data-populated={!!value || !!inputProps.remarks} data-focused={isFocused}>{inputProps.inputLabel}</p>
             <div className="InputBox-InputArea">
                 {
                     inputProps.remarks?.includes('currency') && <p className="InputBox-Currency">RM</p>
                 }
                 <input
                     type={inputProps.inputType}
-                    // onFocus={handleInputFocus}
-                    // onBlur={handleInputBlur}
+                    onFocus={handleInputFocus}
+                    onBlur={handleInputBlur}
                     autoComplete={inputProps.inputAutocomplete ? inputProps.inputAutocomplete : "off"}
                     value={value}
                     onChange={({ currentTarget: { value } }) => handleInputChange(value, inputProps.inputName)}

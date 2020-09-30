@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import {
     MdAdd,
     MdMic,
@@ -33,74 +33,25 @@ export type conversationState = {
 interface ChatboxProps {
     conversation: conversationState[];
     updateConversation: (newConversation: conversationState) => void;
+    disableInput?: boolean;
 }
 
-const Chatbox: React.FC<ChatboxProps> = ({ conversation, updateConversation }) => {
-    const [userChatInput, setUserChatInput] = React.useState('');
-    // const [conversation, setConversation] = React.useState<conversationState[]>([
-    //     {
-    //         user: 'bot',
-    //         timestamp: '2020-09-09',
-    //         message: 'Welcome!',
-    //     },
-    //     {
-    //         user: 'user',
-    //         timestamp: '2020-09-09',
-    //         message: 'Hey!',
-    //     },
-    //     {
-    //         user: 'bot',
-    //         timestamp: '2020-09-09',
-    //         message: 'Are you interested in anything?',
-    //     },
-    //     {
-    //         user: 'user',
-    //         timestamp: '2020-09-09',
-    //         message: 'I would like to order an aglio e olio, with a freckle of cinnamon, and the cherry on top!',
-    //     },
-    //     {
-    //         user: 'bot',
-    //         timestamp: '2020-09-09',
-    //         message: 'Okay, what\'s next?',
-    //         actions: {
-    //             actionType: "multipleOption",
-    //             content: {
-    //                 optionList: [
-    //                     {
-    //                         label: 'Credit Card',
-    //                         value: 'Credit Card',
-    //                     },
-    //                     {
-    //                         label: 'Balance Transfer',
-    //                         value: 'Balance Transfer',
-    //                     },
-    //                     {
-    //                         label: 'Personal Loan',
-    //                         value: 'Personal Loan',
-    //                     },
-    //                     {
-    //                         label: 'Cash From Card',
-    //                         value: 'Cash From Card',
-    //                     },
-    //                 ],
-    //             },
-    //         },
-    //     },
-    // ]);
+const Chatbox: FC<ChatboxProps> = ({ conversation, updateConversation, disableInput }) => {
+    const [userChatInput, setUserChatInput] = useState('');
 
-    const [convActionSelection, setConvActionSelection] = React.useState();
+    const [convActionSelection, setConvActionSelection] = useState();
     // const updateConvActionSelection = (value: any) => setConvActionSelection(() => value);
     const updateConvActionSelection = (value: any) => {
         setConvActionSelection(() => value);
         setUserChatInput(() => value);
     };
 
-    React.useEffect(() =>{
+    useEffect(() =>{
         if (convActionSelection !== '') handleChatSubmit('Enter');
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [convActionSelection]);
 
-    React.useEffect(() => {
+    useEffect(() => {
         // Single Element only
         // const element = document.getElementById('Last-Dialog');
         // element?.scrollIntoView({block: 'end', inline: 'end', behavior: 'smooth'});
@@ -198,7 +149,8 @@ const Chatbox: React.FC<ChatboxProps> = ({ conversation, updateConversation }) =
                             /> */}
                             <input
                                 className="Chatbox-Input-InputBox"
-                                placeholder="Input here"
+                                disabled={disableInput}
+                                placeholder={disableInput? 'Choose one of the option above' : "Input here"}
                                 value={userChatInput}
                                 onChange={({ currentTarget: {value} }) => handleChatInputUpdate(value)}
                                 onKeyPress={({ key: pressedKey}) => handleChatSubmit(pressedKey)}

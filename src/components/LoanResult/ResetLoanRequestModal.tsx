@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import {
     CounterInput,
     InputNumber,
@@ -20,7 +20,7 @@ interface ResetLoanModalProps {
     closeModal: (modalName: string) => void;
 }
 
-const ResetLoanModal: React.FC<ResetLoanModalProps> = ({ loanTenure, updateLoanTenure, loanAmount, updateLoanAmount, closeModal }) => {
+const ResetLoanModal: FC<ResetLoanModalProps> = ({ loanTenure, updateLoanTenure, loanAmount, updateLoanAmount, closeModal }) => {
     return (
         <React.Fragment>
             <div className="ModalContent-CreditCardResult-Section">

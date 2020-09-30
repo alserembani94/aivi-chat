@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 // import {
 //     RangeSlider,
 // } from '../../CustomComponent';
@@ -29,7 +29,7 @@ interface ExpenseDetailsProps {
     updateExpenseObject: (expenseObject: ExpenseDetails[]) => void;
 }
 
-const ExpenseItem: React.FC<ExpenseItemProps> = ({name, expenseRange, updateRange}) => {
+const ExpenseItem: FC<ExpenseItemProps> = ({name, expenseRange, updateRange}) => {
     const minRange = 200;
     const maxRange = 10000;
     const sliderStep = 100;
@@ -97,7 +97,7 @@ const ExpenseItem: React.FC<ExpenseItemProps> = ({name, expenseRange, updateRang
     );
 }
 
-const ExpenseCategory: React.FC<ExpenseCategoryProps> = ({details, updateExpenseItem}) => {
+const ExpenseCategory: FC<ExpenseCategoryProps> = ({details, updateExpenseItem}) => {
     const handleRangeUpdate = (value: number[], subcategoryIndex?: number) => {
         const adjustedDetails = details;
         if (adjustedDetails.subcategory) {
@@ -135,7 +135,7 @@ const ExpenseCategory: React.FC<ExpenseCategoryProps> = ({details, updateExpense
     );
 }
 
-const ExpensesDetails: React.FC<ExpenseDetailsProps> = ({details, updateExpenseObject}) => {
+const ExpensesDetails: FC<ExpenseDetailsProps> = ({details, updateExpenseObject}) => {
     const handleExpenseUpdate = (expenseItem: ExpenseDetails) => {
         const adjustedDetails = details.map(detailItem => (detailItem.category === expenseItem.category) ? expenseItem : detailItem);
         updateExpenseObject(adjustedDetails);

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC, useState } from 'react';
 import {
     CashbackItem,
     ResetExpenseModal,
@@ -28,20 +28,20 @@ type ExpenseDetails = {
     expenseRange?: number[],
 }[];
 
-const CreditCardResult: React.FC = () => {
+const CreditCardResult: FC = () => {
     // EXPAND / COLLAPSE CONFIGURATION
-    const [allExpanded, setAllExpanded] = React.useState(false);
+    const [allExpanded, setAllExpanded] = useState(false);
 
     const toggleAllExpanded = () => {
         setAllExpanded(prevState => !prevState);
     };
     // Temporary Period Details
-    const [period, setPeriod] = React.useState(6);
+    const [period, setPeriod] = useState(6);
     
     const handlePeriodChange = (value: number) => setPeriod(() => value);
 
     // Temporary Expense Details
-    const [expenseDetails, setExpenseDetails] = React.useState<ExpenseDetails>([
+    const [expenseDetails, setExpenseDetails] = useState<ExpenseDetails>([
         {
             category: 'Shopping',
             subcategory: [
@@ -71,29 +71,29 @@ const CreditCardResult: React.FC = () => {
     }
 
     // CONFIGURATION FOR BANKS
-    const [selectedBanks, setSelectedBanks] = React.useState<string[]>([]);
+    const [selectedBanks, setSelectedBanks] = useState<string[]>([]);
 
     const handleSelectedBanks = (selected: string[]) => {
         setSelectedBanks(() => { return selected; });
     };
 
     // CONFIGURATION FOR SELECTED CARD
-    const [selectedCard, setSelectedCard] = React.useState('');
+    const [selectedCard, setSelectedCard] = useState('');
     const handleCardChange = (cardName: string) => cardName === selectedCard ? setSelectedCard(() => '') : setSelectedCard(() => cardName);
-    // const [data, setData] = React.useState<any>();
-    // React.useEffect(() => {
+    // const [data, setData] = useState<any>();
+    // useEffect(() => {
     //     csv(CSVFiles.rewardCatalogue).then(data => {
     //         setData(() => data);
     //     })
     // }, []);
 
-    // React.useEffect(() => {
+    // useEffect(() => {
     //     data && console.log(data[0]);
     // }, [data]);
 
     // CONFIGURATION FOR MODALS
-    const [resetModal, setResetModal] = React.useState(false);
-    const [searchModal, setSearchModal] = React.useState(false);
+    const [resetModal, setResetModal] = useState(false);
+    const [searchModal, setSearchModal] = useState(false);
     const handleModalOpen = (modalName: string) => {
         switch (modalName) {
             case 'resetModal':

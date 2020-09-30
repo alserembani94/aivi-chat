@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import {
     MultiChecklistBox,
 } from '../../CustomComponent';
@@ -17,7 +17,7 @@ interface LoanCommitmentProps {
     updateLoanCommitments: (updatedLoanCommitments: ChecklistType) => void;
 };
 
-const LoanCommitment: React.FC<LoanCommitmentProps> = ({ loanCommitments, updateLoanCommitments }) => {
+const LoanCommitment: FC<LoanCommitmentProps> = ({ loanCommitments, updateLoanCommitments }) => {
 
     const handleLoanCommitmentsUpdate = (updatedLoanCommitments: ChecklistType) => {
         updateLoanCommitments(updatedLoanCommitments);

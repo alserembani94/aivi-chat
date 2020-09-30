@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import {
     useHistory,
 } from 'react-router-dom';
@@ -54,7 +54,7 @@ const menuNav = [
     },
 ];
 
-const Menu: React.FC<MenuProps> = ({ visible, toggleVisibility }) => {
+const Menu: FC<MenuProps> = ({ visible, toggleVisibility }) => {
     const history = useHistory();
 
     const handleNavigation = (route: string) => {

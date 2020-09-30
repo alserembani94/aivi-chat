@@ -268,10 +268,26 @@ button:focus {
     &-Label {
       font-size: 0.8rem;
       margin-bottom: 5px;
-      color: $input-label;
       position: absolute;
-      top: 10px;
+      color: $input-label;
+      top: 0.8rem;
       pointer-events: none;
+      &[data-focused=false] {
+        color: $input-label;
+        &[data-populated=false] {
+          top: 1.1rem;
+          font-size: 1rem;
+        }
+        &[data-populated=true] {
+          top: 0.8rem;
+          font-size: 0.8rem;
+        }
+      }
+      &[data-focused=true] {
+        color: $brand-fill;
+        top: 0.8rem;
+        font-size: 0.8rem;
+      }
     }
     &-InputArea {
       display: flex;
@@ -297,6 +313,7 @@ button:focus {
       align-items: stretch;
       justify-content: center;
       z-index: 20;
+      padding-bottom: 0px !important;
     }
     &-Thumb {
       width: 100%;
@@ -307,6 +324,8 @@ button:focus {
       flex-direction: row;
       justify-content: center;
       align-items: center;
+      position: relative;
+      top: -0.7rem;
     }
     &-Button {
       background: transparent;
@@ -531,6 +550,17 @@ input[type=number] {
     margin-bottom: 20px;
     border-radius: 1.2rem;
     text-align: left;
+    position: relative;
+    left: 0px;
+    color: black;
+    font-weight: 400;
+    transition: left color font-weight 0.15s ease-in-out;
+    &:hover {
+      left: 5px;
+      color: $brand-fill;
+      font-weight: 700;
+      transition: left font-weight 0.15s ease-in-out;
+    }
   }
 }
 
@@ -1232,9 +1262,24 @@ input[type=number] {
     color: $text-dark;
     & > h1 {
       font-size: 1.5rem;
+      line-height: 3rem;
     }
-    & > p {
-      font-size: 1rem;
+  }
+  &-Subtitle {
+    font-size: 1rem;
+  }
+  &-Description {
+    font-size: 1rem;
+    font-weight: 300;
+    padding: 20px 20px 0px;
+    line-height: 1.3rem;
+    br {
+      margin-bottom: 20px;
+    }
+    a {
+      text-decoration: none;
+      color: $brand-fill;
+      font-weight: 600;
     }
   }
   &-SocMed {
@@ -1300,6 +1345,7 @@ input[type=number] {
       color: $text-dark;
       span {
         color: $brand-fill;
+        font-weight: 600;
         cursor: pointer;
       }
     }
@@ -2001,6 +2047,7 @@ input[type=number] {
     backdrop-filter: blur(5px);
     position: fixed;
     top: 0px;
+    z-index: 1000;
     // flex: 1 0 100%;
     width: calc(100% - #{$sidebar-width});
     height: 100%;
@@ -2024,6 +2071,21 @@ input[type=number] {
     box-shadow: $box-shadow;
     padding: 3rem 2.5rem 1.5rem;
     overflow: hidden;
+
+    // To access specific modal styling, just use [data-modal=modalName]
+    &[data-modal="Authentication"] {
+      padding-left: 0px;
+      padding-right: 0px;
+      max-width: 500px;
+      .Auth {
+        &-Inputs {
+          padding: 20px;
+        }
+        &-SwitchAuth {
+          text-align: center;
+        }
+      }
+    }
   }
 }
 

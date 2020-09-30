@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC, useState } from 'react';
 import {
     InputBox,
 } from '../../components/CustomComponent';
@@ -33,10 +33,10 @@ const slotInput = [
     },
 ];
 
-const SignIn: React.FC<SignInProps> = () => {
+const SignIn: FC<SignInProps> = () => {
     const history = useHistory();
 
-    const [auth, setAuth] = React.useState<AuthState>({
+    const [auth, setAuth] = useState<AuthState>({
         email: '',
         password: '',
     });
@@ -55,7 +55,7 @@ const SignIn: React.FC<SignInProps> = () => {
                 <div className="Auth-Wrapper">
                     <div className="Auth-Title">
                         <h1>Welcome back to AIVI!</h1>
-                        <p>Sign in to your account</p>
+                        <p className="Auth-Subtitle">Sign in to your account</p>
                     </div>
                     <div className="Auth-Inputs">
                         {

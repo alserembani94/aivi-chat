@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC, useState } from 'react';
 import {
     Checkbox,
     InputBox,
@@ -34,17 +34,17 @@ const slotInput = [
     },
 ];
 
-const Register: React.FC<RegisterProps> = () => {
+const Register: FC<RegisterProps> = () => {
     const history = useHistory();
 
-    const [auth, setAuth] = React.useState<AuthState>({
+    const [auth, setAuth] = useState<AuthState>({
         name: '',
         email: '',
     });
 
     const updateAuth = (value: string, state: string) => setAuth(() => ({...auth, [state]: value}));
 
-    const [agree, setAgree] = React.useState(false);
+    const [agree, setAgree] = useState(false);
     const updateAgree = () => setAgree(prevState => !prevState);
 
     return (
@@ -59,7 +59,7 @@ const Register: React.FC<RegisterProps> = () => {
                 <div className="Auth-Wrapper">
                     <div className="Auth-Title">
                         <h1>Welcome to AIVI</h1>
-                        <p>Let's get you started!</p>
+                        <p className="Auth-Subtitle">Let's get you started!</p>
                     </div>
                     <div className="Auth-SocMed">
                         <p>You can register with social media account</p>

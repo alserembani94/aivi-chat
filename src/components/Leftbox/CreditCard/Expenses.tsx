@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC, useState } from 'react';
 import {
     MultiImageSelect,
 } from '../../CustomComponent';
@@ -23,8 +23,8 @@ interface ExpensesProps {
     updateExpenseObject: (expenseObject: ExpenseDetails) => void;
 }
 
-const Expenses: React.FC<ExpensesProps> = ({selectedOptions, updateSelectedOptions, optionLimit, expenseDetails, generateExpenseObject, updateExpenseObject}) => {
-    const [optionDetailRender, setOptionDetailRender] = React.useState<boolean>(false);
+const Expenses: FC<ExpensesProps> = ({selectedOptions, updateSelectedOptions, optionLimit, expenseDetails, generateExpenseObject, updateExpenseObject}) => {
+    const [optionDetailRender, setOptionDetailRender] = useState<boolean>(false);
     const optionList = [
         {
             name: 'Shopping',

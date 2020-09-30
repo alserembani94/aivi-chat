@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import {
     IoIosCheckmark,
 } from 'react-icons/io';
@@ -16,7 +16,7 @@ interface ResetExpenseModalProps {
     closeModal: (modalName: string) => void;
 }
 
-const ResetExpenseModal: React.FC<ResetExpenseModalProps> = ({ period, updatePeriodChange, expenseDetails, updateExpenseDetails, closeModal }) => {
+const ResetExpenseModal: FC<ResetExpenseModalProps> = ({ period, updatePeriodChange, expenseDetails, updateExpenseDetails, closeModal }) => {
     return (
         <React.Fragment>
             <div className="ModalContent-CreditCardResult-Section">

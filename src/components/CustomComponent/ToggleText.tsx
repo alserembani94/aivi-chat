@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 
 interface ToggleTextProps {
     optionList: string[];
@@ -6,7 +6,7 @@ interface ToggleTextProps {
     handleToggleUpdate: (value: string) => void;
 }
 
-const ToggleText: React.FC<ToggleTextProps> = ({optionList, selected, handleToggleUpdate}) => {
+const ToggleText: FC<ToggleTextProps> = ({optionList, selected, handleToggleUpdate}) => {
     const handleToggleChange = (value: string) => {
         handleToggleUpdate(value);
     };

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC, useEffect } from 'react';
 
 interface ModalProps {
     children: any;
@@ -7,10 +7,10 @@ interface ModalProps {
     closeModal: (modalName: string) => void;
 }
 
-const Modal: React.FC<ModalProps> = ({ children, modalName, visible = false, closeModal }) => {
+const Modal: FC<ModalProps> = ({ children, modalName, visible = false, closeModal }) => {
     const modalElement = React.useRef<null | HTMLDivElement>(null);
 
-    React.useEffect(() => {
+    useEffect(() => {
         function handleClickOutside(event: { target: any; }) {
             if (modalElement.current && !modalElement.current.contains(event.target)) {
                 if (visible) {
@@ -31,7 +31,7 @@ const Modal: React.FC<ModalProps> = ({ children, modalName, visible = false, clo
     return (
         <React.Fragment>
             <section className="Modal-Container" data-visible={visible}>
-                    <div className="Modal-Wrapper" ref={modalElement}>
+                    <div className="Modal-Wrapper" ref={modalElement} data-modal={modalName}>
                         {
                             children && children
                         }
