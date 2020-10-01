@@ -323,7 +323,7 @@ const SmartAssistant = () => {
                                 <button
                                     className='Button'
                                     // Need something to check periodically for confirm registration
-                                    onClick={ undefined }
+                                    onClick={() => console.log('pro')}
                                 >Continue</button>
                             </div>
                         </>
