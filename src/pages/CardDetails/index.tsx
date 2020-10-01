@@ -191,7 +191,7 @@ const CardDetails: FC = () => {
                                         <p className="CardResult-CardDetails-Container-Category-Title">Easy Payment Plan</p>
                                         <div className="CardResult-CardDetails-Container-Category-Content">
                                             <div className="CardResult-CardDetails-Container-Category-Details">
-                                                <p className="CardResult-CardDetails-Container-Category-Points">15% p.a.</p>
+                                                <p className="CardResult-CardDetails-Container-Category-Points">From 0% p.a.</p>
                                             </div>
                                         </div>
                                     </div>
@@ -201,7 +201,7 @@ const CardDetails: FC = () => {
                                         <p className="CardResult-CardDetails-Container-Category-Title">Interest Rate</p>
                                         <div className="CardResult-CardDetails-Container-Category-Content">
                                             <div className="CardResult-CardDetails-Container-Category-Details">
-                                                <p className="CardResult-CardDetails-Container-Category-Points">20 days</p>
+                                                <p className="CardResult-CardDetails-Container-Category-Points">15% p.a.</p>
                                             </div>
                                         </div>
                                     </div>
@@ -211,8 +211,8 @@ const CardDetails: FC = () => {
                                         <p className="CardResult-CardDetails-Container-Category-Title">Interest-free</p>
                                         <div className="CardResult-CardDetails-Container-Category-Content">
                                             <div className="CardResult-CardDetails-Container-Category-Details">
-                                                <p className="CardResult-CardDetails-Container-Category-Points">RM 80 <span></span></p>
-                                                <p className="CardResult-CardDetails-Container-Category-UnitPoint"><span>Uncapped</span></p>
+                                                <p className="CardResult-CardDetails-Container-Category-Points">20 days<span></span></p>
+                                                {/* <p className="CardResult-CardDetails-Container-Category-UnitPoint"><span>Uncapped</span></p> */}
                                             </div>
                                         </div>
                                     </div>
@@ -224,13 +224,14 @@ const CardDetails: FC = () => {
                                 <div className="CardResult-GroupTitle">Rewards</div>
                                 <div className="CardResult-GroupBody">
                                     <div className="CardResult-Main">
-                                        <div className="CardResult-Card">
+                                        <div className="CardResult-Card CardResult-Padding">
                                             <div>
+                                                <br/>
                                                 5x TreatPoints for all the weekday spend on your Maybank 2 American Express Card. You <br/>
-                                                can also earn 1x TreatPoints on all your spending with MasterCard or Visa.
+                                                can also earn 1x TreatPoints on all your spending with MasterCard or Visa.<br/><br/>
                                             </div>
-                                            <div>
-                                                <table>
+                                            <div className="CardResult-TableContainer">
+                                                <table className="CardResult-TableContainer-Table">
                                                     <tbody>
                                                         <tr>
                                                             <th>EARN</th>
@@ -255,12 +256,12 @@ const CardDetails: FC = () => {
                                                         </tr>
                                                     </tbody>
                                                 </table>
-                                                
-                                            </div>
+                                            
+                                            </div><br/><br/>
                                         </div>
-                                        <div className="CardResult-Details">
+                                        {/* <div className="CardResult-Details">
                                             <div className="CardResult-Card-Image"></div>
-                                        </div>
+                                        </div> */}
                                     </div>
                                 </div><br/><br/><br/>
                             </div>
@@ -280,7 +281,7 @@ const CardDetails: FC = () => {
                                         </div>
                                     </div>
 
-                                    <div>
+                                    <div><br/><br/>
                                         <p className="CardResult-Details-Data">Cash Advance /Cash Loans</p>
                                         <div>.</div>
                                         <div>
@@ -291,7 +292,7 @@ const CardDetails: FC = () => {
                                         </div>
                                     </div> 
 
-                                    <div>
+                                    <div><br/><br/>
                                         <p className="CardResult-Details-Data">Balance Transfer Plans</p>
                                         <div>.</div>
                                         <div>
@@ -310,10 +311,12 @@ const CardDetails: FC = () => {
                             <div>
                                 <div className="CardResult-GroupTitle">Easy Payment Plans</div>
                                 <div className="CardResult-GroupBody">
-                                    <div>Maybank EzyPay offers payment terms of up to 36 months, at 0% interest, on purchases to approved merchants. For all other purchases, you can opt to Maybank EzyPay<br/>
-                                    Plus for installment up to 24 months and low interest rates. No penalty for early payment</div>
+                                <div className="CardResult-Main">
+                                <div className="CardResult-GroupBody CardResult-Padding">
+                                    <div><br/>Maybank EzyPay offers payment terms of up to 36 months, at 0% interest, on purchases to approved merchants. For all other purchases, you can opt to Maybank EzyPay<br/>
+                                    Plus for installment up to 24 months and low interest rates. No penalty for early payment <br/><br/><br/></div>
                                     <div>
-                                        <table>
+                                        <table className="CardResult-TableContainer-Table">
                                             <tbody>
                                                 <tr>
                                                     <th>PAYOVER</th>
@@ -342,16 +345,18 @@ const CardDetails: FC = () => {
                                                 </tr>
                                             </tbody>
                                         </table>
-                                    </div>
+                                    </div><br/><br/>
                                 </div>
+                                </div></div>
                             </div><br/><br/><br/>
 
                             <div>
                                 <div className="CardResult-GroupTitle">Fees & Charges</div>
                                 <div className="CardResult-GroupBody">
-                                    <div>
-                                        <table>
+                                    <div className="CardResult-TableContainer">
+                                        <table className="CardResult-TableContainer-Table">
                                             <tbody>
+                                                <tr></tr>
                                                 <tr>
                                                     <td>Annual Fee</td>
                                                     <td>RM0 primary card, Free for life</td>
@@ -370,7 +375,7 @@ const CardDetails: FC = () => {
                                                 </tr>
                                             </tbody>
                                         </table>
-                                    </div>
+                                    </div><br/><br/>
                                 </div>
                             </div><br/><br/><br/>
 
@@ -381,9 +386,10 @@ const CardDetails: FC = () => {
                         </div>
                             <div className="CardResult-GroupTitle">Requirements</div>
                             <div className="CardResult-GroupBody">
-                                <div>
-                                    <table>
+                                <div className="CardResult-TableContainer">
+                                    <table className="CardResult-TableContainer-Table">
                                         <tbody>
+                                        <tr></tr>
                                         <tr>
                                             <td>Minimum Annual Income</td>
                                             <td>RM30,000</td>
@@ -398,7 +404,7 @@ const CardDetails: FC = () => {
                                         </tr>
                                         </tbody>
                                     </table>
-                                </div>
+                                </div><br/><br/>
                             </div>
                         </div><br/><br/><br/>
                        
