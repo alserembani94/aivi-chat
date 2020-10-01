@@ -1444,6 +1444,8 @@ input[type=number] {
   }
   &-TableContainer {
     border: 1px solid #F1F1F1;
+    width: 97%;
+    margin: 20px;
     &-Table {
       border-collapse: collapse;
       width: 100%;
