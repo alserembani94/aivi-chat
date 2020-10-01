@@ -353,7 +353,7 @@ const CardDetails: FC = () => {
                             <div>
                                 <div className="CardResult-GroupTitle">Fees & Charges</div>
                                 <div className="CardResult-GroupBody">
-                                    <div className="CardResult-TableContainer"><br/>
+                                    <div className="CardResult-TableContainer">
                                         <table className="CardResult-TableContainer-Table">
                                             <tbody>
                                                 <tr></tr>
