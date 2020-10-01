@@ -68,9 +68,9 @@ $imageselect-border-active: 2px solid $brand-fill;
     height: 6px;
     position: fixed;
   }
-  &::-webkit-scrollbar-track {
+  // &::-webkit-scrollbar-track {
 
-  }
+  // }
   &::-webkit-scrollbar-thumb {
     background-color: $brand-fill;
     border-radius: 6px;
@@ -78,8 +78,8 @@ $imageselect-border-active: 2px solid $brand-fill;
   &:hover {
     scrollbar-color: $brand-fill transparent;
     transition: all 0.1s ease-in-out;
-    &::-webkit-scrollbar-thumb {
-    }
+    // &::-webkit-scrollbar-thumb {
+    // }
   }
   &::placeholder {
     color: $text-light;
