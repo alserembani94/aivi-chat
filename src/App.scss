@@ -1439,6 +1439,26 @@ input[type=number] {
       }
     }
   }
+  &-Padding {
+    padding: 15px;
+  }
+  &-TableContainer {
+    border: 1px solid #F1F1F1;
+    &-Table {
+      border-collapse: collapse;
+      width: 100%;
+      th {
+        background: #707C97;
+        color: #FAFAFA;
+      }
+      th, td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #F1F1F1;
+      }
+      tr:nth-child(odd) {background-color: #FAFAFA;}
+    }
+  }
   &-Details {
     display: flex;
     flex: 1 0;
