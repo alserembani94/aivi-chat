@@ -281,7 +281,7 @@ const CardDetails: FC = () => {
                                         </div>
                                     </div>
 
-                                    <div>
+                                    <div><br/><br/>
                                         <p className="CardResult-Details-Data">Cash Advance /Cash Loans</p>
                                         <div>.</div>
                                         <div>
@@ -292,7 +292,7 @@ const CardDetails: FC = () => {
                                         </div>
                                     </div> 
 
-                                    <div>
+                                    <div><br/><br/>
                                         <p className="CardResult-Details-Data">Balance Transfer Plans</p>
                                         <div>.</div>
                                         <div>
