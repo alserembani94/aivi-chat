@@ -123,40 +123,43 @@ const SiteBlogList: React.FC = () => {
                 <section className="ResultPage-TopContent">
                     <div className="ResultPage-TopBar">
                         <div className="ResultPage-TopBar-TitleBar">
-                            <p className="ResultPage-TopBar-Title">Your results are in!</p>
-                            <p className="ResultPage-TopBar-Subtitle">Click on the card to select.</p>
+                            &nbsp;
                         </div>
                         <button
                             onClick={() => handleModalOpen('searchModal')}
                         ><img src={Images.icon_search} alt="Search" />Search an article...
                         </button>
                     </div>
-                    <div className="ResultPage-Content">
-                        <div className="ResultPage-Content-Column">
-                            <p className="ResultPage-Content-Title">Rewards</p>
-                            
-                        </div>
-                        <div className="ResultPage-Content-Seperator" />
-                        <div className="ResultPage-Content-Column">
-                            <p className="ResultPage-Content-Title">Cashbacks</p>
-                         
-                        </div>
+                    <div>
+                        <div>Finance</div>
                     </div>
-                </section>
-                <section className="ResultPage-BottomContent">
-                    <button className="ResultPage-BottomContent-Chat">
-                        Chat
-                    </button>
-                    <div className="ResultPage-BottomContent-Description">
-                        <p className="ResultPage-BottomContent-Description-Title">Ready To Apply?</p>
-                        {/* <p className="ResultPage-BottomContent-Description-Subtitle">You Selected: {selectedCard}</p> */}
-                    </div>
-                    <button className="ResultPage-BottomContent-Apply" disabled>
-                        Apply Now
-                    </button>
-                </section>
 
-              
+                    {/* <div className="ResultPage-TopBar-TitleBar">
+                        <p className="ResultPage-TopBar-Title">Finance</p>
+                    </div> */}
+                    <div className="ResultPage-Content ResultPage-Content-Images">
+                    <div className="CardResult-CardDetails CardResult-CardDetails-Images">
+                            <div className="CardResult-CardDetails-Container">
+                                <div className="CardResult-CardDetails-Container-Income-Details">
+                                    <div className="CardResult-Returns-Category CardResult-Returns-Category-Images">
+                                        <img src={Images.image_financial_skyrocketing} />
+                                    </div>
+                                </div>
+                                <div className="CardResult-CardDetails-Container-Income-Details">
+                                    <div className="CardResult-Returns-Category CardResult-Returns-Category-Images">
+                                        <img src={Images.image_financial_world} />
+                                    </div>
+                                </div>
+                                <div className="CardResult-CardDetails-Container-Income-Details">
+                                    <div className="CardResult-Returns-Category CardResult-Returns-Category-Images">
+                                        <img src={Images.image_analyst_confirm_breakthrough} />
+                                    </div>
+                                </div>
+                            
+                            </div>
+                        </div>
+                    </div>
+                </section>
                         
             </main>
         </React.Fragment>

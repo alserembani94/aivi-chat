@@ -20,5 +20,9 @@ export const Images = {
 
     image_submitted: require('../assets/images/Image-Submitted.svg'),
 
+    image_financial_world: require('../assets/images/Image-Financial-World-With-Aivi.svg'),
+    image_financial_skyrocketing: require('../assets/images/Image-Finance-Are-SkyRocketing.svg'),
+    image_analyst_confirm_breakthrough: require('../assets/images/Image-Analyst-Confirm-BreakThrough.svg'),
+
     logo_AIVI: require('../assets/images/Logo-AIVI.svg'),
 }
