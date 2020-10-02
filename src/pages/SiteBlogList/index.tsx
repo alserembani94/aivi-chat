@@ -144,6 +144,15 @@ const SiteBlogList: React.FC = () => {
                                     <div className="CardResult-Returns-Category CardResult-Returns-Category-Images">
                                         <img src={Images.image_financial_skyrocketing} />
                                     </div>
+                                    <div>
+                                        <div>Charts are SkyRocketing</div>
+                                        <div>
+                                            Explore and test different ideas, themes and,<br/>
+                                            styles instantly whether you want to experiment<br/>
+                                            with your team in a design sprint.
+                                        </div>
+                                        <div>28 August 2020</div>
+                                    </div>
                                 </div>
                                 <div className="CardResult-CardDetails-Container-Income-Details">
                                     <div className="CardResult-Returns-Category CardResult-Returns-Category-Images">
