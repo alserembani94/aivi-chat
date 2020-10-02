@@ -37,6 +37,8 @@ interface ChatboxProps {
 }
 
 const Chatbox: FC<ChatboxProps> = ({ conversation, updateConversation, disableInput }) => {
+    // const recognition = SpeechRecognition;
+
     const [userChatInput, setUserChatInput] = useState('');
 
     const [convActionSelection, setConvActionSelection] = useState();
@@ -59,6 +61,10 @@ const Chatbox: FC<ChatboxProps> = ({ conversation, updateConversation, disableIn
         const elements: Element[] = Array.from(document.getElementsByClassName('Last-Dialog'));
         elements.forEach(element => element.scrollIntoView({block: 'end', inline: 'end', behavior: 'smooth'}));
     }, [conversation]);
+
+    useEffect(() => {
+        
+    }, [])
 
     // Functions for chatbox
     const handleChatInputUpdate = (value: string) => {
