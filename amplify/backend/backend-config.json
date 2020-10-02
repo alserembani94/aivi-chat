@@ -1,0 +1,10 @@
+{
+  "auth": {
+    "aivichatdc3b4618": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false
+    }
+  }
+}

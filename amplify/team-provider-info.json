@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-aivichat-dev-222855-authRole",
+      "UnauthRoleArn": "arn:aws:iam::215890679046:role/amplify-aivichat-dev-222855-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::215890679046:role/amplify-aivichat-dev-222855-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-aivichat-dev-222855-deployment",
+      "UnauthRoleName": "amplify-aivichat-dev-222855-unauthRole",
+      "StackName": "amplify-aivichat-dev-222855",
+      "StackId": "arn:aws:cloudformation:us-east-1:215890679046:stack/amplify-aivichat-dev-222855/73161c90-03f2-11eb-9878-0a2de5ab949d",
+      "AmplifyAppId": "ddtbps57yyrkb"
+    },
+    "categories": {
+      "auth": {
+        "aivichatdc3b4618": {}
+      }
+    }
+  }
+}

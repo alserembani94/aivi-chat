@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { FC, useEffect, useRef, useState } from 'react';
 import {
     Switch,
     Route,
+    Redirect,
 } from 'react-router-dom';
 import {
     Sidebar,
@@ -15,6 +16,16 @@ import LoanResult from '../pages/LoanResult';
 import SignIn from '../pages/Auth/SignIn';
 import Register from '../pages/Auth/Register';
 import MainMenu from '../pages/MainMenu';
+
+// Importing Amplify for Authentication with Cognito
+import Amplify from 'aws-amplify';
+import awsConfig from '../aws-exports';
+import {
+    AuthState,
+    onAuthUIStateChange,
+} from '@aws-amplify/ui-components';
+
+Amplify.configure(awsConfig);
 
 const VentasRoute = [
     {
@@ -48,14 +59,14 @@ const VentasRoute = [
     {
         path: '/credit-card-result',
         exact: false,
-        private: false,
+        private: true,
         sidebar: () => <Sidebar />,
         main: () => <CreditCardResult />,
     },
     {
         path: '/loan-result',
         exact: false,
-        private: false,
+        private: true,
         sidebar: () => <Sidebar />,
         main: () => <LoanResult />,
     },
@@ -89,9 +100,20 @@ const VentasRoute = [
     },
 ];
 
-const RouterLayout = () => {
+const RouterLayout: FC = () => {
     // const history = useHistory();
-    const mainPage = React.useRef<HTMLElement>(null);
+    const mainPage = useRef<HTMLElement>(null);
+
+    // States for authentication
+    const [authState, setAuthState] = useState<AuthState>();
+    const [user, setUser] = useState<any | undefined>();
+
+    useEffect(() => {
+        return onAuthUIStateChange((nextAuthState, authData) => {
+            setAuthState(nextAuthState);
+            setUser(authData);
+        });
+    }, [])
 
     // useEffect(() => {
     //     console.log(mainPage.current?.children.length);
@@ -117,12 +139,27 @@ const RouterLayout = () => {
                 <Switch>
                     {
                         VentasRoute.map((route, index) => (
-                            <Route
+                            route.private
+                            // All private routes here - will be redirected to sign in page if not log in
+                            ? (<Route
+                                key={index}
+                                path={route.path}
+                                exact={route.exact}
+                                render={({ location }) => (authState === AuthState.SignedIn && user)
+                                    ? route.main
+                                    : <Redirect to={{
+                                        pathname: "/sign-in",
+                                        state: { from: location },
+                                    }} />
+                                }
+                            />)
+                            // All public routes here - all unauthenticated users can navigate
+                            : (<Route
                                 key={index}
                                 path={route.path}
                                 exact={route.exact}
                                 children={<route.main />}
-                            />
+                            />)
                         ))
                     }
                 </Switch>

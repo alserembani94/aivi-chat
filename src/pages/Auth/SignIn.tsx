@@ -1,9 +1,12 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import {
     InputBox,
 } from '../../components/CustomComponent';
 import { useHistory } from 'react-router-dom';
 import { Images } from '../../utils/Images';
+
+import { useDispatch, useSelector } from 'react-redux';
+import { userSignIn, userSignOut } from '../../store/reducers/auth';
 
 type AuthState = {
     [key: string]: string,
@@ -12,9 +15,9 @@ type AuthState = {
 }
 
 // Construct types for component props
-interface SignInProps {
+// interface SignInProps {
     
-}
+// }
 
 const slotInput = [
     {
@@ -33,15 +36,35 @@ const slotInput = [
     },
 ];
 
-const SignIn: FC<SignInProps> = () => {
+const SignIn: FC<any> = () => {
+// const SignIn: FC<SignInProps> = () => {
     const history = useHistory();
 
+    const dispatch = useDispatch();
+    const state = useSelector((state: any) => state.auth);
+
     const [auth, setAuth] = useState<AuthState>({
-        email: '',
-        password: '',
+        email: 'alserembani94@gmail.com',
+        password: 'Xtreemism9944',
     });
 
     const updateAuth = (value: string, state: string) => setAuth(() => ({...auth, [state]: value}));
+
+    // useEffect(() => {
+        // console.log(user);
+        // dispatch(userSignIn(auth));
+
+        // setTimeout(dispatch(userSignIn(auth)), 10000);
+        // setTimeout(dispatch(userSignOut()), 10000);
+    // }, []);
+
+    useEffect(() => {
+        console.log({ loading: state.loading});
+    }, [state.loading]);
+
+    const handleSignIn = () => dispatch(userSignIn(auth));
+    const handleSignOut = () => dispatch(userSignOut());
+
 
     return (
         <React.Fragment>
@@ -94,8 +117,13 @@ const SignIn: FC<SignInProps> = () => {
                     <div className="Auth-Action">
                         <button
                             className='Button'
-                            disabled={!([auth.email, auth.password].every(element => element))}
-                        >Say Hello to AIVI</button>
+                            disabled={(!([auth.email, auth.password].every(element => element)) || state.loading)}
+                            onClick={handleSignIn}
+                        >{state.loading ? '...' : Object.keys(state.data).length !== 0 ? 'Signed In!' : 'Say Hello to AIVI'}</button>
+                        <button
+                            className='Button'
+                            onClick={handleSignOut}
+                        >Log Out</button>
                     </div>
                 </div>
                 <div className="Auth-SwitchAuth">

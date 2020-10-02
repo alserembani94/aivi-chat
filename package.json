@@ -3,12 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@aws-amplify/auth": "^3.4.6",
+    "@aws-amplify/ui-components": "^0.8.6",
     "@reduxjs/toolkit": "^1.4.0",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.0.4",
     "@testing-library/user-event": "^12.1.6",
     "@types/jest": "^26.0.14",
     "@types/node": "^14.11.2",
+    "aws-amplify": "^3.3.3",
     "axios": "^0.20.0",
     "d3": "^6.2.0",
     "immer": "^7.0.9",
@@ -53,8 +56,8 @@
     ]
   },
   "devDependencies": {
-    "@types/d3": "^5.16.1",
-    "@types/react": "^16.9.49",
+    "@types/d3": "^5.16.2",
+    "@types/react": "^16.9.50",
     "@types/react-dom": "^16.9.8",
     "@types/react-redux": "^7.1.9",
     "@types/react-router-dom": "^5.1.5",

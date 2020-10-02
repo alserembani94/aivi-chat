@@ -5,13 +5,15 @@ import {
 } from 'react-router-dom';
 import RouterLayout from './routers';
 import { Provider } from 'react-redux';
-import store from './store/configureStore';
+import configureStore from './store/configureStore';
 
 // import { validateData } from './utils/DataValidation';
 
+const store = configureStore();
+
 function App() {
     return (
-        <Provider store={store()}>
+        <Provider store={store}>
             <Router>
                 <RouterLayout />
             </Router>
