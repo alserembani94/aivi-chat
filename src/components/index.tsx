@@ -4,6 +4,7 @@ import CashFromCard from './Leftbox/CashFromCard/CashFromCard';
 import CreditCard from './Leftbox/CreditCard/CreditCard';
 import BalanceTransfer from './Leftbox/BalanceTransfer/BalanceTransfer';
 import PersonalLoan from './Leftbox/Personal Loan/PersonalLoan';
+import AuthModal from './AuthModal';
 
 // Exporting as modules
 // Exporting as modules
@@ -13,7 +14,8 @@ export {
     Chatbox,
     CreditCard,
     PersonalLoan,
-    Sidebar
+    Sidebar,
+    AuthModal,
 };
 
 export type { conversationState };

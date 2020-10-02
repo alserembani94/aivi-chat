@@ -7,7 +7,7 @@ export default function() {
     return configureStore({
         reducer,
         middleware: [
-            // ...getDefaultMiddleware(),
+            ...getDefaultMiddleware(),
             api,
             auth,
         ],

@@ -1,4 +1,6 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { showAuthModal } from '../../../store/reducers/authModal';
 import {
     // Modal,
     TabBar,
@@ -37,7 +39,10 @@ interface CreditCardProps {
     closeAuthModal: () => void;
 }
 
-const CreditCard: FC<CreditCardProps> = ({ authenticated, authModal, openAuthModal, closeAuthModal }) => {
+const CreditCard: FC = () => {
+    const authModal = useSelector((state: any) => state.authModal);
+    const dispatch = useDispatch();
+
     // AVAILABLE BANKS CONFIGURATION
     const [cardOwnership, setCardOwnership] = useState<boolean>(false);
     const [selectedBanks, setSelectedBanks] = useState<string[]>([]);
@@ -149,6 +154,7 @@ const CreditCard: FC<CreditCardProps> = ({ authenticated, authModal, openAuthMod
         },
     ];
     const [enabledTab, setEnabledTab] = useState([true, false, false]);
+    const authenticated = false;
 
     const handleChangeTab = (selectedTab: string) => {
         setCurrentTab(() => { return selectedTab });
@@ -161,8 +167,12 @@ const CreditCard: FC<CreditCardProps> = ({ authenticated, authModal, openAuthMod
     }
 
     const handleSubmit = () => {
-        authenticated ? console.log('Proceed') : openAuthModal();
+        authenticated ? console.log('Proceed') : dispatch(showAuthModal());
     };
+
+    useEffect(() => {
+        console.log(authModal);
+    }, [authModal]);
 
     
     return (

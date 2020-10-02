@@ -1,6 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-// import { CognitoUser } from '@aws-amplify/auth';
-// import moment from 'moment';
 import { authenticationBegan } from '../authAction';
 
 // type IdentityType = {
