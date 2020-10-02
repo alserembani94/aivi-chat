@@ -19,13 +19,15 @@ const slice = createSlice({
     name: 'userAuth',
     initialState: {
         data: {},
+        user: {},
         loading: false,
         lastFetch: null,
         error: null,
     },
     reducers: {
         userSignedIn: (auth: any, action: any) => {
-            auth.data = action.payload;
+            action.payload.challengeName === 'NEW_PASSWORD_REQUIRED'
+            ? auth.data = action.payload : auth.user = action.payload;
             auth.loading = false;
             auth.lastFetch = Date.now();
         },
@@ -39,6 +41,7 @@ const slice = createSlice({
         },
         userSignedOut: (auth: any, action: any) => {
             auth.data = {};
+            auth.user = {};
             auth.loading = false;
         }
     }
@@ -52,16 +55,33 @@ const {
 } = slice.actions;
 export default slice.reducer;
 
-export const userSignIn = (userInfo: any) => authenticationBegan({
+export const userSignIn = (userInfo: { email: string, password: string }) => authenticationBegan({
     data: userInfo,
-    operation: 'sign-in',
+    operation: 'sign_in',
     onStart: userRequestedAuth.type,
     onSuccess: userSignedIn.type,
     onError: userRequestFailed.type,
 });
 
+export const userNewPassword = ({ email, newPassword }: { email: string, newPassword: string }) => (dispatch: any, getState: any) => {
+    const { requiredAttributes } = getState().auth.data;
+    dispatch(authenticationBegan({
+        data: {
+            email,
+            newPassword,
+            requiredAttributes,
+        },
+        operation: 'complete_new_password',
+        onStart: userRequestedAuth.type,
+        onSuccess: userSignedIn.type,
+        onFailed: userRequestFailed.type,
+    }));
+};
+
+// export const userSignUp = (userInfo: )
+
 export const userSignOut = () => authenticationBegan({
-    operation: 'sign-out',
+    operation: 'sign_out',
     onStart: userRequestedAuth.type,
     onSuccess: userSignedOut.type,
     onError: userRequestFailed.type,
