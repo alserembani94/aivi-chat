@@ -1032,9 +1032,9 @@ input[type=number] {
       flex: 1 0;
       overflow: auto;
     }
-  }
-  &-Content-Images {
-    overflow: auto;
+    &-Images {
+      overflow: auto;
+    }
   }
 }
 
@@ -1624,7 +1624,7 @@ input[type=number] {
       margin-bottom: 5px;
 
       &-Images {
-        padding-right: 60px !important;
+        padding-right: 50px !important;
       }
       &-Content {
         display: flex;
