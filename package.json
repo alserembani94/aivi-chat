@@ -4,11 +4,10 @@
   "private": true,
   "dependencies": {
     "@aws-amplify/auth": "^3.4.6",
-    "@aws-amplify/ui-components": "^0.8.6",
     "@reduxjs/toolkit": "^1.4.0",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.0.4",
-    "@testing-library/user-event": "^12.1.6",
+    "@testing-library/user-event": "^12.1.7",
     "@types/jest": "^26.0.14",
     "@types/node": "^14.11.2",
     "aws-amplify": "^3.3.3",

@@ -20,10 +20,10 @@ import MainMenu from '../pages/MainMenu';
 // Importing Amplify for Authentication with Cognito
 import Amplify from 'aws-amplify';
 import awsConfig from '../aws-exports';
-import {
-    AuthState,
-    onAuthUIStateChange,
-} from '@aws-amplify/ui-components';
+// import {
+//     AuthState,
+//     onAuthUIStateChange,
+// } from '@aws-amplify/ui-components';
 
 Amplify.configure(awsConfig);
 
@@ -105,15 +105,15 @@ const RouterLayout: FC = () => {
     const mainPage = useRef<HTMLElement>(null);
 
     // States for authentication
-    const [authState, setAuthState] = useState<AuthState>();
-    const [user, setUser] = useState<any | undefined>();
+    // const [authState, setAuthState] = useState<AuthState>();
+    // const [user, setUser] = useState<any | undefined>();
 
-    useEffect(() => {
-        return onAuthUIStateChange((nextAuthState, authData) => {
-            setAuthState(nextAuthState);
-            setUser(authData);
-        });
-    }, [])
+    // useEffect(() => {
+    //     return onAuthUIStateChange((nextAuthState, authData) => {
+    //         setAuthState(nextAuthState);
+    //         setUser(authData);
+    //     });
+    // }, [])
 
     // useEffect(() => {
     //     console.log(mainPage.current?.children.length);
@@ -145,8 +145,8 @@ const RouterLayout: FC = () => {
                                 key={index}
                                 path={route.path}
                                 exact={route.exact}
-                                render={({ location }) => (authState === AuthState.SignedIn && user)
-                                    ? route.main
+                                render={({ location }) => (true)  // Auth check here
+                                    ? <route.main />
                                     : <Redirect to={{
                                         pathname: "/sign-in",
                                         state: { from: location },
