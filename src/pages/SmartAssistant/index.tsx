@@ -33,10 +33,6 @@ const SmartAssistant = () => {
         // console.log(showChatInMobile);
     }, [showChatInMobile]);
 
-    // useEffect(() => {
-    //     console.log(authModal);
-    // }, [authModal]);
-
 
     const handleChatboxModal = () => {
         setShowChatInMobile(prevState => { return !prevState });

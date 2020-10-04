@@ -168,10 +168,6 @@ const PersonalLoan: FC = () => {
         setCurrentTab(() => { return selectedTab });
     }
 
-    // useEffect(() => {
-    //     console.log(maritalInfo);
-    // }, [maritalInfo]);
-
     return (
         <React.Fragment>
             <div className="CreditCard-Content">

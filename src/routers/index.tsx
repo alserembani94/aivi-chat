@@ -20,6 +20,7 @@ import MainMenu from '../pages/MainMenu';
 // Importing Amplify for Authentication with Cognito
 import Amplify from 'aws-amplify';
 import awsConfig from '../aws-exports';
+import { useSelector } from 'react-redux';
 // import {
 //     AuthState,
 //     onAuthUIStateChange,
@@ -103,21 +104,15 @@ const VentasRoute = [
 const RouterLayout: FC = () => {
     // const history = useHistory();
     const mainPage = useRef<HTMLElement>(null);
+    const user = useSelector((state: any) => state.auth);
+
+    // useEffect(() => {
+    //     console.log(user);
+    // }, [user]);
 
     // States for authentication
     // const [authState, setAuthState] = useState<AuthState>();
     // const [user, setUser] = useState<any | undefined>();
-
-    // useEffect(() => {
-    //     return onAuthUIStateChange((nextAuthState, authData) => {
-    //         setAuthState(nextAuthState);
-    //         setUser(authData);
-    //     });
-    // }, [])
-
-    // useEffect(() => {
-    //     console.log(mainPage.current?.children.length);
-    // }, []);
 
     return (
         <React.Fragment>
@@ -145,7 +140,7 @@ const RouterLayout: FC = () => {
                                 key={index}
                                 path={route.path}
                                 exact={route.exact}
-                                render={({ location }) => (true)  // Auth check here
+                                render={({ location }) => (Object.keys(user.data).length !== 0)  // Auth check here
                                     ? <route.main />
                                     : <Redirect to={{
                                         pathname: "/sign-in",

@@ -44,8 +44,8 @@ const SignIn: FC<any> = () => {
     const state = useSelector((state: any) => state.auth);
 
     const [auth, setAuth] = useState<AuthState>({
-        email: 'alserembani94@gmail.com',
-        password: 'Xtreemism9944',
+        email: '',
+        password: '',
     });
 
     const updateAuth = (value: string, state: string) => setAuth(() => ({...auth, [state]: value}));
@@ -58,9 +58,13 @@ const SignIn: FC<any> = () => {
         // setTimeout(dispatch(userSignOut()), 10000);
     // }, []);
 
+    // useEffect(() => {
+    //     console.log({ loading: state.loading});
+    // }, [state.loading]);
+
     useEffect(() => {
-        console.log({ loading: state.loading});
-    }, [state.loading]);
+        console.log(state);
+    }, [state]);
 
     const handleSignIn = () => dispatch(userSignIn(auth));
     const handleSignOut = () => dispatch(userSignOut());

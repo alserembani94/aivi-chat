@@ -18,7 +18,8 @@ const auth = ({ dispatch }: { dispatch: any }) => (next: any) => async (action: 
             password: data.password,
             attributes: {
                 email: data.email,
-                phone_number: data.phone_number,
+                phone_number: data.phoneNo,
+                name: data.name,
             }
         });
         else if (operation === 'confirm_sign_up') response = await Auth.confirmSignUp(data.email, data.code);

@@ -3,8 +3,6 @@ import * as actions from '../api';
 
 const api = ({ dispatch }: { dispatch: any }) => (next: any) => async (action: any) => {
     if (action.type !== actions.apiCallBegan.type) return next(action);
-    
-    console.log('Nothing?');
 
     const { url, method, data, onStart, onSuccess, onError } = action.payload;
 

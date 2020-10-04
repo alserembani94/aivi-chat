@@ -87,10 +87,6 @@ const CreditCardResult: FC = () => {
     //     })
     // }, []);
 
-    // useEffect(() => {
-    //     data && console.log(data[0]);
-    // }, [data]);
-
     // CONFIGURATION FOR MODALS
     const [resetModal, setResetModal] = useState(false);
     const [searchModal, setSearchModal] = useState(false);

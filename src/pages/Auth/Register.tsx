@@ -1,10 +1,12 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import {
     Checkbox,
     InputBox,
 } from '../../components/CustomComponent';
 import { useHistory } from 'react-router-dom';
 import { Images } from '../../utils/Images';
+import { useDispatch, useSelector } from 'react-redux';
+import { detailsAdded } from '../../store/reducers/signUpTemp';
 
 type AuthState = {
     [key: string]: string,
@@ -37,15 +39,24 @@ const slotInput = [
 const Register: FC<RegisterProps> = () => {
     const history = useHistory();
 
-    const [auth, setAuth] = useState<AuthState>({
-        name: '',
-        email: '',
-    });
+    const signUpTemp = useSelector((state: any) => state.signUpTemp);
+    const dispatch = useDispatch();
+
+    const [auth, setAuth] = useState<AuthState>(signUpTemp);
 
     const updateAuth = (value: string, state: string) => setAuth(() => ({...auth, [state]: value}));
 
     const [agree, setAgree] = useState(false);
     const updateAgree = () => setAgree(prevState => !prevState);
+
+    const submitSignUpTemp = () => {
+        dispatch(detailsAdded(auth));
+        history.push('/main-menu');
+    };
+
+    useEffect(() => {
+        console.log(signUpTemp);
+    }, [signUpTemp]);
 
     return (
         <React.Fragment>
@@ -103,6 +114,7 @@ const Register: FC<RegisterProps> = () => {
                         <button
                             className='Button'
                             disabled={!([auth.name, auth.email, agree].every(element => element))}
+                            onClick={submitSignUpTemp}
                         >Say Hello to AIVI</button>
                     </div>
                 </div>

@@ -41,6 +41,14 @@ const slice = createSlice({
             auth.data = {};
             auth.user = {};
             auth.loading = false;
+        },
+        userRegistered: (auth: any, action: any) => {
+            auth.data = action.payload;
+            auth.loading = false;
+        },
+        userRegisterConfirmed: (auth: any, action: any) => {
+            auth.data = action.payload;
+            auth.loading = false;
         }
     }
 })
@@ -50,6 +58,8 @@ const {
     userRequestedAuth,
     userRequestFailed,
     userSignedOut,
+    userRegistered,
+    userRegisterConfirmed,
 } = slice.actions;
 export default slice.reducer;
 
@@ -72,11 +82,28 @@ export const userNewPassword = ({ email, newPassword }: { email: string, newPass
         operation: 'complete_new_password',
         onStart: userRequestedAuth.type,
         onSuccess: userSignedIn.type,
-        onFailed: userRequestFailed.type,
+        onError: userRequestFailed.type,
     }));
 };
 
-// export const userSignUp = (userInfo: )
+export const userSignUp = (userInfo: { email: string, password: string, name: string, phoneNo: string }) => authenticationBegan({
+    data: userInfo,
+    operation: 'sign_up',
+    onStart: userRequestedAuth.type,
+    onSuccess: userRegistered.type,
+    onError: userRequestFailed.type,
+});
+
+export const userSignUpConfirm = ({ email, code }: { email: string, code: string }) => authenticationBegan({
+    data: {
+        email,
+        code,
+    },
+    operation: 'confirm_sign_up',
+    onStart: userRequestedAuth.type,
+    onSuccess: userRegisterConfirmed.type,
+    onError: userRequestFailed.type,
+});
 
 export const userSignOut = () => authenticationBegan({
     operation: 'sign_out',

@@ -170,10 +170,6 @@ const CreditCard: FC = () => {
         authenticated ? console.log('Proceed') : dispatch(showAuthModal());
     };
 
-    useEffect(() => {
-        console.log(authModal);
-    }, [authModal]);
-
     
     return (
         <React.Fragment>

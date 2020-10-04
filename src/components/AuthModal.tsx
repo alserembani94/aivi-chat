@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { userSignUp, userSignUpConfirm } from '../store/reducers/auth';
 import { hideAuthModal } from '../store/reducers/authModal';
 import { Images } from '../utils/Images';
 import { InputBox, Modal } from './CustomComponent';
@@ -8,6 +9,8 @@ type AuthState = {
     [key: string]: string,
     email: string,
     password: string;
+    name: string;
+    phoneNo: string;
 };
 
 // Construct types for component props
@@ -68,6 +71,7 @@ const registerInput = [
 const AuthModal: React.FC<AuthModalProps> = () => {
     const auth = useSelector((state: any) => state.auth);
     const authModal = useSelector((state: any) => state.authModal);
+    const [code, setCode] = useState('');
     const dispatch = useDispatch();
 
     // AUTH SECTION
@@ -81,12 +85,31 @@ const AuthModal: React.FC<AuthModalProps> = () => {
     const [authInput, setAuthInput] = useState<AuthState>({
         email: '',
         password: '',
+        name: '',
+        phoneNo: '',
     });
 
     const toggleAuthOption = (value: string) => setAuthOption(() => value);
 
-    const updateAuth = (value: string, state: string) => setAuthInput(() => ({...auth, [state]: value}));
+    const updateAuth = (value: string, state: string) => setAuthInput(() => ({...authInput, [state]: value}));
+
+    const submitRegistration = () => {
+        dispatch(userSignUp(authInput));
+        toggleAuthOption('Confirm Email');
+    };
+
+    const submitConfirmRegistration = () => {
+        dispatch(userSignUpConfirm({
+            email: authInput.email,
+            code,
+        }));
+        toggleAuthOption('Email Confirmed');
+    };
     // END OF AUTH SECTION
+
+    useEffect(() => {
+        console.log(auth);
+    }, [auth]);
 
     return (
         <React.Fragment>
@@ -171,7 +194,7 @@ const AuthModal: React.FC<AuthModalProps> = () => {
                                 <button
                                     className='Button'
                                     // disabled={!([auth.name, auth.email, auth.mobileNo, auth.password, auth.password === auth.confirmPassword].every(element => element))}
-                                    onClick={() => toggleAuthOption('Confirm Email')}
+                                    onClick={submitRegistration}
                                 >Complete Registration</button>
                             </div>
                             <div className="Auth-SwitchAuth">
@@ -191,12 +214,13 @@ const AuthModal: React.FC<AuthModalProps> = () => {
                                     If you don’t see the email, be sure to check your junk, spam, or other folders. <br />
                                     Still haven't received the email? <a href="#">Send again</a><br />
                                 </p>
+                                <input value={code} onChange={({ currentTarget: { value } }) => setCode(value)} />
                             </div>
                             <div className="Auth-Action">
                                 <button
                                     className='Button'
                                     // Need something to check periodically for confirm registration
-                                    onClick={() => toggleAuthOption('Email Confirmed')}
+                                    onClick={submitConfirmRegistration}
                                 >Continue</button>
                             </div>
                         </>
