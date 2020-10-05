@@ -54,9 +54,9 @@ const Register: FC<RegisterProps> = () => {
         history.push('/main-menu');
     };
 
-    useEffect(() => {
-        console.log(signUpTemp);
-    }, [signUpTemp]);
+    // useEffect(() => {
+    //     console.log(signUpTemp);
+    // }, [signUpTemp]);
 
     return (
         <React.Fragment>
@@ -107,7 +107,7 @@ const Register: FC<RegisterProps> = () => {
                             active={agree}
                             updateSelected={updateAgree}
                         >
-                            <p>I agree to the <a href="/credit-card" target="_blank">Terms of use</a> and <a>Privacy Policy</a></p>
+                            <p>I agree to the <a href="/" target="_blank">Terms of use</a> and <a href="/" target="_blank">Privacy Policy</a></p>
                         </Checkbox>
                     </div>
                     <div className="Auth-Action">

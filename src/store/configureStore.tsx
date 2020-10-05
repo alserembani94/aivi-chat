@@ -7,7 +7,11 @@ export default function() {
     return configureStore({
         reducer,
         middleware: [
-            ...getDefaultMiddleware(),
+            ...getDefaultMiddleware({
+                serializableCheck: {
+                    ignoredActionPaths: ['payload'],
+                }
+            }),
             api,
             auth,
         ],

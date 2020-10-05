@@ -1,7 +1,9 @@
 import React, { FC } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import {
     useHistory,
 } from 'react-router-dom';
+import { userSignOut } from '../../store/reducers/auth';
 import {
     Images,
 } from '../../utils/Images';
@@ -15,14 +17,6 @@ const menuNav = [
     {
         path: '/',
         label: 'Home',
-    },
-    {
-        path: '/sign-in',
-        label: 'Sign In',
-    },
-    {
-        path: '/register',
-        label: 'Register',
     },
     {
         path: '/main-menu',
@@ -55,26 +49,70 @@ const menuNav = [
 ];
 
 const Menu: FC<MenuProps> = ({ visible, toggleVisibility }) => {
+    const auth = useSelector((state: any) => state.auth)
     const history = useHistory();
+    const dispatch = useDispatch();
 
     const handleNavigation = (route: string) => {
         history.push(route);
         toggleVisibility();
     };
 
+    const handleSignOut = () => {
+        dispatch(userSignOut());
+        history.push('/');
+    };
+
     return (
         <React.Fragment>
             <section className="Menu-Wrapper" data-visible={visible} onClick={toggleVisibility} />
             <section className="Menu-Container" data-visible={visible}>
-                <button
-                    className="Menu-Logo"
-                    onClick={() => handleNavigation('/')}
-                >
-                    <img
-                        src={Images.logo_AIVI}
-                        alt="AIVI"
-                    />
-                </button>
+                <div className="Menu-Header">
+                    <button
+                        className="Menu-Logo"
+                        onClick={() => handleNavigation('/')}
+                    >
+                        <img
+                            src={Images.logo_AIVI}
+                            alt="AIVI"
+                        />
+                        <img
+                            src={Images.emoji_malaysia}
+                            alt="1 Malaysia"
+                        />
+                    </button>
+                    <div
+                        className="Menu-Auth"
+                    >
+                        {
+                            auth.user.username
+                            ? (
+                                <>
+                                    <button
+                                        className="Menu-Register"
+                                        onClick={handleSignOut}
+                                    >Sign Out</button>
+                                </>
+                            )
+                            : (
+                                <>
+                                    <button
+                                        className="Menu-SignIn"
+                                        onClick={() => handleNavigation('/sign-in')}
+                                    >
+                                        Sign In
+                                    </button>
+                                    <button
+                                        className="Menu-Register"
+                                        onClick={() => handleNavigation('/register')}
+                                    >
+                                        Create Account
+                                    </button>
+                                </>
+                            )
+                        }
+                    </div>
+                </div>
                 <div className="Menu-Drawer">
                     {/* <button className="Menu-Button">
                         Hello

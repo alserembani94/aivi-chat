@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { userSignUp, userSignUpConfirm } from '../store/reducers/auth';
 import { hideAuthModal } from '../store/reducers/authModal';
@@ -73,6 +73,7 @@ const AuthModal: React.FC<AuthModalProps> = () => {
     const authModal = useSelector((state: any) => state.authModal);
     const [code, setCode] = useState('');
     const dispatch = useDispatch();
+    const signUpTemp = useSelector((state: any) => state.signUpTemp)
 
     // AUTH SECTION
     // const [authenticated, setAuthenticated] = useState(false);
@@ -83,9 +84,9 @@ const AuthModal: React.FC<AuthModalProps> = () => {
     // const closeAuthModal = () => setAuthModal(() => false);
 
     const [authInput, setAuthInput] = useState<AuthState>({
-        email: '',
+        email: signUpTemp.email || '',
         password: '',
-        name: '',
+        name: signUpTemp.name || '',
         phoneNo: '',
     });
 
@@ -93,13 +94,13 @@ const AuthModal: React.FC<AuthModalProps> = () => {
 
     const updateAuth = (value: string, state: string) => setAuthInput(() => ({...authInput, [state]: value}));
 
-    const submitRegistration = () => {
-        dispatch(userSignUp(authInput));
+    const submitRegistration = async () => {
+        await dispatch(userSignUp(authInput));
         toggleAuthOption('Confirm Email');
     };
 
-    const submitConfirmRegistration = () => {
-        dispatch(userSignUpConfirm({
+    const submitConfirmRegistration = async () => {
+        await dispatch(userSignUpConfirm({
             email: authInput.email,
             code,
         }));
@@ -107,9 +108,9 @@ const AuthModal: React.FC<AuthModalProps> = () => {
     };
     // END OF AUTH SECTION
 
-    useEffect(() => {
-        console.log(auth);
-    }, [auth]);
+    // useEffect(() => {
+    //     console.log(auth);
+    // }, [auth]);
 
     return (
         <React.Fragment>
@@ -195,7 +196,7 @@ const AuthModal: React.FC<AuthModalProps> = () => {
                                     className='Button'
                                     // disabled={!([auth.name, auth.email, auth.mobileNo, auth.password, auth.password === auth.confirmPassword].every(element => element))}
                                     onClick={submitRegistration}
-                                >Complete Registration</button>
+                                >{auth.loading ? 'Loading...' : 'Complete Registration'}</button>
                             </div>
                             <div className="Auth-SwitchAuth">
                                 <p>Have an account? <span onClick={() => toggleAuthOption('Sign In')}>Sign in</span></p>
@@ -209,10 +210,14 @@ const AuthModal: React.FC<AuthModalProps> = () => {
                                 <h1>Welcome to AIVI!</h1>
                                 <p className="Auth-Subtitle">Your Progress Is Now Saved</p>
                                 <p className="Auth-Description">
-                                    Thank you for signing up for AIVI, you’ll be receiving an email shortly, it may take a few minutes. <br />
+                                    {/* Thank you for signing up for AIVI, you’ll be receiving an email shortly, it may take a few minutes. <br />
                                     Follow the instructions in the email to verify your account. <br />
                                     If you don’t see the email, be sure to check your junk, spam, or other folders. <br />
-                                    Still haven't received the email? <a href="#">Send again</a><br />
+                                    Still haven't received the email? <a href="/">Send again</a><br /> */}
+                                    Thank you for signing up with AIVI!<br />
+                                    The verification code has been sent to your email. To complete your registration, please enter the verification code sent to your email.<br />
+                                    In case you don't see the email, check your spam folder and add exception.
+
                                 </p>
                                 <input value={code} onChange={({ currentTarget: { value } }) => setCode(value)} />
                             </div>
@@ -221,7 +226,7 @@ const AuthModal: React.FC<AuthModalProps> = () => {
                                     className='Button'
                                     // Need something to check periodically for confirm registration
                                     onClick={submitConfirmRegistration}
-                                >Continue</button>
+                                >{auth.loading ? 'Loading...' : 'Continue'}</button>
                             </div>
                         </>
                     )

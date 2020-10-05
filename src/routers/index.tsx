@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useRef, useState } from 'react';
+import React, { FC, useEffect, useRef } from 'react';
 import {
     Switch,
     Route,
@@ -16,11 +16,13 @@ import LoanResult from '../pages/LoanResult';
 import SignIn from '../pages/Auth/SignIn';
 import Register from '../pages/Auth/Register';
 import MainMenu from '../pages/MainMenu';
+import ConfirmRegister from '../pages/Auth/ConfirmRegister';
 
 // Importing Amplify for Authentication with Cognito
 import Amplify from 'aws-amplify';
 import awsConfig from '../aws-exports';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { getCurrentAuthenticatedUser } from '../store/reducers/auth';
 // import {
 //     AuthState,
 //     onAuthUIStateChange,
@@ -42,6 +44,13 @@ const VentasRoute = [
         private: false,
         sidebar: () => <Sidebar />,
         main: () => <Register />,
+    },
+    {
+        path: '/confirm-register',
+        exact: true,
+        private: false,
+        sidebar: () => <Sidebar />,
+        main: () => <ConfirmRegister />,
     },
     {
         path: '/main-menu',
@@ -105,6 +114,16 @@ const RouterLayout: FC = () => {
     // const history = useHistory();
     const mainPage = useRef<HTMLElement>(null);
     const user = useSelector((state: any) => state.auth);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getCurrentAuthenticatedUser());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
+    // useEffect(() => {
+    //     user.error && alert(user.error);
+    // }, [user]);
 
     // useEffect(() => {
     //     console.log(user);
@@ -118,7 +137,7 @@ const RouterLayout: FC = () => {
         <React.Fragment>
             <main className="AIVI-Page" ref={mainPage}>
                 {/* Sidebar Rendering */}
-                <Switch>
+                {/* <Switch>
                     {
                         VentasRoute.map((route, index) => (
                             <Route
@@ -129,7 +148,8 @@ const RouterLayout: FC = () => {
                             />
                         ))
                     }
-                </Switch>
+                </Switch> */}
+                <Sidebar />
                 {/* Page Rendering */}
                 <Switch>
                     {
@@ -140,7 +160,7 @@ const RouterLayout: FC = () => {
                                 key={index}
                                 path={route.path}
                                 exact={route.exact}
-                                render={({ location }) => (Object.keys(user.data).length !== 0)  // Auth check here
+                                render={({ location }) => (user.user.username)  // Auth check here
                                     ? <route.main />
                                     : <Redirect to={{
                                         pathname: "/sign-in",

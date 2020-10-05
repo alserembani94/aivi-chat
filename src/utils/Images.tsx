@@ -25,4 +25,6 @@ export const Images = {
     image_analyst_confirm_breakthrough: require('../assets/images/Image-Analyst-Confirm-BreakThrough.svg'),
 
     logo_AIVI: require('../assets/images/Logo-AIVI.svg'),
+
+    emoji_malaysia: require('../assets/images/malaysia-emoji.png'),
 }
