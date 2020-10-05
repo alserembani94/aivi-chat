@@ -49,7 +49,7 @@ const MainMenu: FC<MainMenuProps> = () => {
                 user,
                 timestamp,
                 sessionAttributes,
-                responseCard,
+                // responseCard,
                 actions,
             } = res.data;
             setConversation(() => [...conversation, {
@@ -59,7 +59,7 @@ const MainMenu: FC<MainMenuProps> = () => {
                 actions,
             }]);
             setSessionAttributes(() => sessionAttributes);
-            console.log(responseCard, actions);
+            // console.log(responseCard, actions);
         })
         .catch((err) => {
             console.log(err);

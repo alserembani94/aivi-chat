@@ -530,9 +530,10 @@ input[type=number] {
     }
   }
   &-Logo {
-    width: 10rem;
-    height: 6rem;
-    margin-bottom: 20px;
+    width: auto;
+    height: 3rem;
+    margin-right: 50px;
+    display: flex;
     img {
       width: 100%;
       height: 100%;
@@ -547,20 +548,43 @@ input[type=number] {
   }
   &-Button {
     font-size: 1.2rem;
-    margin-bottom: 20px;
-    border-radius: 1.2rem;
+    width: fit-content;
     text-align: left;
     position: relative;
     left: 0px;
     color: black;
     font-weight: 400;
     transition: left color font-weight 0.15s ease-in-out;
+    padding: 10px 0px;
     &:hover {
       left: 5px;
       color: $brand-fill;
       font-weight: 700;
       transition: left font-weight 0.15s ease-in-out;
     }
+  }
+  &-Header {
+    display: flex;
+    align-items: center;
+    margin: 20px 0px;
+  }
+  &-Auth {
+    width: fit-content;
+    min-width: 300px;
+    display: flex;
+    justify-content: flex-end;
+  }
+  &-SignIn {
+    color: $brand-fill;
+    font-weight: 600;
+    padding: 10px 20px;
+    margin-right: 10px;
+  }
+  &-Register {
+    color: $light-background;
+    background-color: $brand-fill;
+    padding: 10px 20px;
+    border-radius: 4px;
   }
 }
 
@@ -1220,7 +1244,7 @@ input[type=number] {
 
 .Auth {
   &-Page {
-    border: 1px solid $brand-fill;
+    // border: 1px solid $brand-fill;
     flex-grow: 1;
     display: flex;
     flex-flow: column wrap;

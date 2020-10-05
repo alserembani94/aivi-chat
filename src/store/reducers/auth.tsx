@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { authenticationBegan } from '../authAction';
+import auth from '../middleware/auth';
 
 // type IdentityType = {
 //     user: CognitoUser,
@@ -20,7 +21,12 @@ const slice = createSlice({
         user: {},
         loading: false,
         lastFetch: null,
-        error: null,
+        error: undefined,
+        tempData: {
+            name: '',
+            email: '',
+            password: '',
+        },
     },
     reducers: {
         userSignedIn: (auth: any, action: any) => {
@@ -30,8 +36,13 @@ const slice = createSlice({
             auth.lastFetch = Date.now();
         },
         userRequestedAuth: (auth: any, action: any) => {
-            auth.error = null;
+            auth.error = undefined;
             auth.loading = true;
+        },
+        userRequestedSignOut: (auth: any, action: any) => {
+            auth.error = undefined;
+            auth.loading = true;
+            auth.user = {};
         },
         userRequestFailed: (auth: any, action: any) => {
             auth.loading = false;
@@ -39,7 +50,6 @@ const slice = createSlice({
         },
         userSignedOut: (auth: any, action: any) => {
             auth.data = {};
-            auth.user = {};
             auth.loading = false;
         },
         userRegistered: (auth: any, action: any) => {
@@ -49,6 +59,24 @@ const slice = createSlice({
         userRegisterConfirmed: (auth: any, action: any) => {
             auth.data = action.payload;
             auth.loading = false;
+        },
+        currentAuthenticatedUser: (auth: any, action: any) => {
+            auth.user = action.payload;
+            auth.loading = false;
+        },
+        signUpInitiated: (auth: any, action: any) => {
+            auth.tempData = {
+                name: action.payload.name || '',
+                email: action.payload.email || '',
+                password: action.payload.password || '',
+            }
+        },
+        tempDataCleaned: (auth: any, action: any) => {
+            auth.tempData = {
+                name: '',
+                email: '',
+                password: '',
+            };
         }
     }
 })
@@ -56,24 +84,37 @@ const slice = createSlice({
 const {
     userSignedIn,
     userRequestedAuth,
+    userRequestedSignOut,
     userRequestFailed,
     userSignedOut,
     userRegistered,
     userRegisterConfirmed,
+    currentAuthenticatedUser,
+    signUpInitiated,
+    tempDataCleaned,
 } = slice.actions;
+// export const { signUpInitiated } =  slice.actions;
 export default slice.reducer;
 
-export const userSignIn = (userInfo: { email: string, password: string }) => authenticationBegan({
-    data: userInfo,
-    operation: 'sign_in',
-    onStart: userRequestedAuth.type,
-    onSuccess: userSignedIn.type,
-    onError: userRequestFailed.type,
-});
+export const userSignIn = (userInfo: { email: string, password: string }) => async (dispatch: any, getState: any) => {
+    await dispatch(authenticationBegan({
+        data: userInfo,
+        operation: 'sign_in',
+        onStart: userRequestedAuth.type,
+        onSuccess: userSignedIn.type,
+        onError: userRequestFailed.type,
+    }));
 
-export const userNewPassword = ({ email, newPassword }: { email: string, newPassword: string }) => (dispatch: any, getState: any) => {
+    const { error } = getState().auth;
+    error === 'User is not confirmed.' && dispatch(signUpInitiated({
+        email: userInfo.email,
+        password: userInfo.password,
+    }));
+};
+
+export const userNewPassword = ({ email, newPassword }: { email: string, newPassword: string }) => async (dispatch: any, getState: any) => {
     const { requiredAttributes } = getState().auth.data;
-    dispatch(authenticationBegan({
+    await dispatch(authenticationBegan({
         data: {
             email,
             newPassword,
@@ -86,28 +127,86 @@ export const userNewPassword = ({ email, newPassword }: { email: string, newPass
     }));
 };
 
-export const userSignUp = (userInfo: { email: string, password: string, name: string, phoneNo: string }) => authenticationBegan({
-    data: userInfo,
-    operation: 'sign_up',
-    onStart: userRequestedAuth.type,
-    onSuccess: userRegistered.type,
-    onError: userRequestFailed.type,
-});
+export const userSignUp = (userInfo: { email: string, password: string, name: string, phoneNo: string }) => async (dispatch: any, getState: any) => {
+    await dispatch(authenticationBegan({
+        data: userInfo,
+        operation: 'sign_up',
+        onStart: userRequestedAuth.type,
+        onSuccess: userRegistered.type,
+        onError: userRequestFailed.type,
+    }));
 
-export const userSignUpConfirm = ({ email, code }: { email: string, code: string }) => authenticationBegan({
-    data: {
-        email,
-        code,
-    },
-    operation: 'confirm_sign_up',
-    onStart: userRequestedAuth.type,
-    onSuccess: userRegisterConfirmed.type,
-    onError: userRequestFailed.type,
-});
+    dispatch(signUpInitiated({
+        email: userInfo.email,
+        password: userInfo.password,
+    }));
+};
+
+// export const userSignUp = (userInfo: { email: string, password: string, name: string, phoneNo: string }) => authenticationBegan({
+//     data: userInfo,
+//     operation: 'sign_up',
+//     onStart: userRequestedAuth.type,
+//     onSuccess: userRegistered.type,
+//     onError: userRequestFailed.type,
+// });
+
+export const userSignUpConfirm = ({ email, code }: { email: string, code: string }) => async (dispatch: any, getState: any) => {
+    await dispatch(authenticationBegan({
+        data: {
+            email,
+            code,
+        },
+        operation: 'confirm_sign_up',
+        onStart: userRequestedAuth.type,
+        onSuccess: userRegisterConfirmed.type,
+        onError: userRequestFailed.type,
+    }));
+
+    const proxy = getState().auth.tempData;
+
+    await dispatch(userSignIn({
+        email: proxy.email,
+        password: proxy.password,
+    }));
+
+    // await dispatch(tempDataCleaned);
+};
+
+// export const userSignUpConfirm = ({ email, code }: { email: string, code: string }) => authenticationBegan({
+//     data: {
+//         email,
+//         code,
+//     },
+//     operation: 'confirm_sign_up',
+//     onStart: userRequestedAuth.type,
+//     onSuccess: userRegisterConfirmed.type,
+//     onError: userRequestFailed.type,
+// });
 
 export const userSignOut = () => authenticationBegan({
     operation: 'sign_out',
-    onStart: userRequestedAuth.type,
+    onStart: userRequestedSignOut.type,
     onSuccess: userSignedOut.type,
     onError: userRequestFailed.type,
 });
+
+export const getCurrentAuthenticatedUser = () => authenticationBegan({
+    operation: 'current_authenticated_user',
+    onStart: userRequestedAuth.type,
+    onSuccess: currentAuthenticatedUser.type,
+    onError: userRequestFailed.type,
+});
+
+export const checkIfUserExist = () => authenticationBegan({
+    operation: 'confirm_sign_up',
+    onStart: userRequestedAuth.type,
+    onError: userRequestFailed.type,
+});
+
+export const initiateRegistration = ({email, name}: { email?: string, name?: string }) => (dispatch: any, getState: any) => {
+    const data = {
+        email,
+        name,
+    };
+    dispatch(signUpInitiated(data));
+};

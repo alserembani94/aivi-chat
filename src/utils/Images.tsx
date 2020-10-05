@@ -30,4 +30,6 @@ export const Images = {
     image_finance_chart: require('../assets/images/Image-Finance-Chart.svg'),
 
     logo_AIVI: require('../assets/images/Logo-AIVI.svg'),
+
+    emoji_malaysia: require('../assets/images/malaysia-emoji.png'),
 }

@@ -22,7 +22,7 @@ const auth = ({ dispatch }: { dispatch: any }) => (next: any) => async (action: 
                 name: data.name,
             }
         });
-        else if (operation === 'confirm_sign_up') response = await Auth.confirmSignUp(data.email, data.code);
+        else if (operation === 'confirm_sign_up') response = await Auth.confirmSignUp(data.email, data.code, { forceAliasCreation: false });
         else if (operation === 'resend_confirmation_code') response = await Auth.resendSignUp(data.email);
         
         // USE CASE 2: REGISTERED USER SIGN IN

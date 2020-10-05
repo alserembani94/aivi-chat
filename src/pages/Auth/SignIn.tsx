@@ -6,7 +6,7 @@ import { useHistory } from 'react-router-dom';
 import { Images } from '../../utils/Images';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { userSignIn, userSignOut } from '../../store/reducers/auth';
+import { userSignIn } from '../../store/reducers/auth';
 
 type AuthState = {
     [key: string]: string,
@@ -37,7 +37,6 @@ const slotInput = [
 ];
 
 const SignIn: FC<any> = () => {
-// const SignIn: FC<SignInProps> = () => {
     const history = useHistory();
 
     const dispatch = useDispatch();
@@ -50,25 +49,27 @@ const SignIn: FC<any> = () => {
 
     const updateAuth = (value: string, state: string) => setAuth(() => ({...auth, [state]: value}));
 
-    // useEffect(() => {
-        // console.log(user);
-        // dispatch(userSignIn(auth));
-
-        // setTimeout(dispatch(userSignIn(auth)), 10000);
-        // setTimeout(dispatch(userSignOut()), 10000);
-    // }, []);
-
-    // useEffect(() => {
-    //     console.log({ loading: state.loading});
-    // }, [state.loading]);
+    const handleSignIn = async () => {
+        await dispatch(userSignIn(auth));
+    };
 
     useEffect(() => {
-        console.log(state);
+        switch (state.error) {
+            case 'User is not confirmed.':
+                // 
+                history.push('/confirm-register'); // Supposed to redirect to confirm email page
+                break;
+            case 'User does not exist.':
+                // Don't need to do anything, just clear the state
+                // Or maybe bring to register?
+                break;
+            default:
+        }
+
+        state.user.username && history.push('/main-menu');
+        
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [state]);
-
-    const handleSignIn = () => dispatch(userSignIn(auth));
-    const handleSignOut = () => dispatch(userSignOut());
-
 
     return (
         <React.Fragment>
@@ -124,10 +125,6 @@ const SignIn: FC<any> = () => {
                             disabled={(!([auth.email, auth.password].every(element => element)) || state.loading)}
                             onClick={handleSignIn}
                         >{state.loading ? '...' : Object.keys(state.data).length !== 0 ? 'Signed In!' : 'Say Hello to AIVI'}</button>
-                        <button
-                            className='Button'
-                            onClick={handleSignOut}
-                        >Log Out</button>
                     </div>
                 </div>
                 <div className="Auth-SwitchAuth">
