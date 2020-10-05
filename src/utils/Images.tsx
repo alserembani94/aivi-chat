@@ -24,5 +24,8 @@ export const Images = {
     image_financial_skyrocketing: require('../assets/images/Image-Finance-Are-SkyRocketing.svg'),
     image_analyst_confirm_breakthrough: require('../assets/images/Image-Analyst-Confirm-BreakThrough.svg'),
 
+    image_calculator: require('../assets/images/Image-Calculator.svg'),
+    image_ipad: require('../assets/images/Image-Ipad.svg'),
+
     logo_AIVI: require('../assets/images/Logo-AIVI.svg'),
 }
