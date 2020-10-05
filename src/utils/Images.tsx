@@ -26,6 +26,8 @@ export const Images = {
 
     image_calculator: require('../assets/images/Image-Calculator.svg'),
     image_ipad: require('../assets/images/Image-Ipad.svg'),
+    image_finance_world_with_aivi: require('../assets/images/Image-Finance-World-With-Aivi.svg'),
+    image_finance_chart: require('../assets/images/Image-Finance-Chart.svg'),
 
     logo_AIVI: require('../assets/images/Logo-AIVI.svg'),
 }
