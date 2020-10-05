@@ -121,53 +121,94 @@ const SiteBlogList: React.FC = () => {
         <React.Fragment>
             <main className="ResultPage-Body">
                 <section className="ResultPage-TopContent">
-                    <div className="ResultPage-TopBar">
-                        <div className="ResultPage-TopBar-TitleBar">
-                            &nbsp;
-                        </div>
-                        <button
-                            onClick={() => handleModalOpen('searchModal')}
-                        ><img src={Images.icon_search} alt="Search" />Search an article...
-                        </button>
-                    </div>
                     <div>
-                        <div>Finance</div>
-                    </div>
-
-                    {/* <div className="ResultPage-TopBar-TitleBar">
-                        <p className="ResultPage-TopBar-Title">Finance</p>
-                    </div> */}
-                    <div className="ResultPage-Content ResultPage-Content-Images">
-                    <div className="CardResult-CardDetails CardResult-CardDetails-Images">
-                            <div className="CardResult-CardDetails-Container">
-                                <div className="CardResult-CardDetails-Container-Income-Details">
-                                    <div className="CardResult-Returns-Category CardResult-Returns-Category-Images">
-                                        <img src={Images.image_financial_skyrocketing} />
-                                    </div>
-                                    <div>
-                                        <div>Charts are SkyRocketing</div>
-                                        <div>
-                                            Explore and test different ideas, themes and,<br/>
-                                            styles instantly whether you want to experiment<br/>
-                                            with your team in a design sprint.
+                        <div className="ResultPage-TopBar">
+                            <div className="ResultPage-TopBar-TitleBar">
+                                &nbsp;
+                            </div>
+                            <button
+                                onClick={() => handleModalOpen('searchModal')}
+                            ><img src={Images.icon_search} alt="Search" />Search an article...
+                            </button>
+                        </div>
+                    
+                        <div>
+                            <div>
+                                <div>Finance</div>
+                            </div>
+                            <div className="ResultPage-Content ResultPage-Content-Images">
+                                <div className="CardResult-CardDetails CardResult-CardDetails-Images">
+                                    <div className="CardResult-CardDetails-Container">
+                                        <div className="CardResult-CardDetails-Container-Income-Details">
+                                            <div className="CardResult-Returns-Category CardResult-Returns-Category-Images">
+                                                <img src={Images.image_financial_skyrocketing} />
+                                            </div>
+                                            <div>
+                                                <div>Charts are SkyRocketing</div>
+                                                <div>
+                                                    Explore and test different ideas, themes and,<br/>
+                                                    styles instantly whether you want to experiment<br/>
+                                                    with your team in a design sprint.
+                                                </div>
+                                                <div>28 August 2020</div>
+                                            </div>
                                         </div>
-                                        <div>28 August 2020</div>
+                                        <div className="CardResult-CardDetails-Container-Income-Details">
+                                            <div className="CardResult-Returns-Category CardResult-Returns-Category-Images">
+                                                <img src={Images.image_financial_world} />
+                                            </div>
+                                            <div>
+                                                <div>Financial World with Aivi</div>
+                                                <div>
+                                                    Explore and test different ideas, themes and,<br/>
+                                                    styles instantly whether you want to experiment<br/>
+                                                    with your team in a design sprint.
+                                                </div>
+                                                <div>28 August 2020</div>
+                                            </div>
+                                        </div>
+                                        <div className="CardResult-CardDetails-Container-Income-Details">
+                                            <div className="CardResult-Returns-Category CardResult-Returns-Category-Images">
+                                                <img src={Images.image_analyst_confirm_breakthrough} />
+                                            </div>
+                                            <div>
+                                                <div>Analyst Confirm Breakthrough</div>
+                                                <div>
+                                                    Explore and test different ideas, themes and,<br/>
+                                                    styles instantly whether you want to experiment<br/>
+                                                    with your team in a design sprint.
+                                                </div>
+                                                <div>28 August 2020</div>
+                                            </div>
+                                        </div>
+                                    
                                     </div>
                                 </div>
-                                <div className="CardResult-CardDetails-Container-Income-Details">
-                                    <div className="CardResult-Returns-Category CardResult-Returns-Category-Images">
-                                        <img src={Images.image_financial_world} />
-                                    </div>
+                            </div>                        
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div>
+                            <div><img src={Images.image_calculator} /></div>
+                            <div>
+                                <div>Charts are SkyRocketing</div>
+                                <div>Explore and test different ideas, themes and styles instantly wheather you want<br/>
+                                        to experiment with your team in a design sprint.
                                 </div>
-                                <div className="CardResult-CardDetails-Container-Income-Details">
-                                    <div className="CardResult-Returns-Category CardResult-Returns-Category-Images">
-                                        <img src={Images.image_analyst_confirm_breakthrough} />
-                                    </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div><img src={Images.image_ipad} /></div>
+                            <div>
+                                <div>Charts are SkyRocketing</div>
+                                <div>Explore and test different ideas, themes and styles instantly wheather you want<br/>
+                                        to experiment with your team in a design sprint.
                                 </div>
-                            
                             </div>
                         </div>
                     </div>
+                    
                 </section>
                         
             </main>
