@@ -152,6 +152,19 @@ const SiteBlogArticle: React.FC = () => {
                                 responsible investments to their portfolios.
                             </div>
                             <div><img src={Images.image_finance_chart}/></div>
+                            <div>Recent Studies by Morgan Stanley have shown  more than 70% of women, when asked, want socially responsible<br/>
+                                investments in their portfolios, and 85% of millenial survey respondents seek to achieve sustainability with their<br/>
+                                investments.
+                            </div>
+                            <div>So are advisers who concede that they don't yet speak fluently the language of ESG criteria doomed? Not at all.</div>
+                            <div>Plkenty of avenues exist for advisers to bolster their knowledge, the vernacular, the acronyms and the significant<br/>
+                                milestones of the ESG world.
+                            </div>
+                            <div>"It is tremendous opportunity to get ahead of the curve," says Marlo Stil, and adviser in the managing partner in the<br/>
+                                Rancho Mirage, Calif., office of Wealth Consulting Group, which is based in Las Vegas.
+                            </div>
+                            <div>She focuses on helping other advisers and clients learn more about socially responsible investing.</div>
+                            <div>By Miriam Ross <span>staff reporter, AIVI</span></div>
                         </div>
                     </div>
                     
