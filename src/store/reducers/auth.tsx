@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { authenticationBegan } from '../authAction';
-import auth from '../middleware/auth';
+// import auth from '../middleware/auth';
 
 // type IdentityType = {
 //     user: CognitoUser,

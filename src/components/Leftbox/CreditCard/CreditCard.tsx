@@ -1,5 +1,6 @@
 import React, { FC, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { showAuthModal } from '../../../store/reducers/authModal';
 import {
     // Modal,
@@ -154,7 +155,6 @@ const CreditCard: FC = () => {
         },
     ];
     const [enabledTab, setEnabledTab] = useState([true, false, false]);
-    const authenticated = false;
 
     const handleChangeTab = (selectedTab: string) => {
         setCurrentTab(() => { return selectedTab });
@@ -166,8 +166,11 @@ const CreditCard: FC = () => {
         handleChangeTab(nextActiveTab);
     }
 
+    const auth = useSelector((state: any) => state.auth);
+    const history = useHistory();
+
     const handleSubmit = () => {
-        authenticated ? console.log('Proceed') : dispatch(showAuthModal());
+        auth.user.username ? history.push('/credit-card-result') : dispatch(showAuthModal());
     };
 
     

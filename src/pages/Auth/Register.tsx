@@ -6,7 +6,7 @@ import {
 import { useHistory } from 'react-router-dom';
 import { Images } from '../../utils/Images';
 import { useDispatch, useSelector } from 'react-redux';
-import { detailsAdded } from '../../store/reducers/signUpTemp';
+import { initiateRegistration } from '../../store/reducers/auth';
 
 type AuthState = {
     [key: string]: string,
@@ -39,7 +39,7 @@ const slotInput = [
 const Register: FC<RegisterProps> = () => {
     const history = useHistory();
 
-    const signUpTemp = useSelector((state: any) => state.signUpTemp);
+    const signUpTemp = useSelector((state: any) => state.auth.tempData);
     const dispatch = useDispatch();
 
     const [auth, setAuth] = useState<AuthState>(signUpTemp);
@@ -50,7 +50,7 @@ const Register: FC<RegisterProps> = () => {
     const updateAgree = () => setAgree(prevState => !prevState);
 
     const submitSignUpTemp = () => {
-        dispatch(detailsAdded(auth));
+        dispatch(initiateRegistration(auth));
         history.push('/main-menu');
     };
 

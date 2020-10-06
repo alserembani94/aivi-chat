@@ -1,7 +1,6 @@
 import React, { FC, useEffect, useState } from 'react';
 import CashFromCardForm from './CashFromCardForm';
 import SubmittedView from '../SubmittedView';
-import { connect } from 'react-redux';
 // import { CashFromCardType } from '../../../store/reducers/cashFromCard';
 // import { submitForRecommendation } from '../../../store/reducers/recommendCreditCard';
 
@@ -12,7 +11,7 @@ type slotInputType = {
     inputLabel: string,
 };
 
-const CashFromCard: FC = (props) => {
+const CashFromCard: FC = () => {
     const [userSlot, setUserSlot] = useState({
         transferFrom: '',
         name: '',
@@ -52,11 +51,4 @@ const CashFromCard: FC = (props) => {
     else return <SubmittedView updateSubmitted={handleSubmit} />
 }
 
-const mapStateToProps = (state: any) => state.cashFromCard.data;
-
-// const mapDispatchToProps = { submitForRecommendation };
-
-export default connect(
-    mapStateToProps,
-    null,
-)(CashFromCard);
+export default CashFromCard;

@@ -22,18 +22,18 @@ const menuNav = [
         path: '/main-menu',
         label: 'Main Menu',
     },
-    {
-        path: '/smart-assistant',
-        label: 'Smart Assistant',
-    },
-    {
-        path: '/credit-card-result',
-        label: 'Credit Card Result',
-    },
-    {
-        path: '/loan-result',
-        label: 'Loan Result',
-    },
+    // {
+    //     path: '/smart-assistant',
+    //     label: 'Smart Assistant',
+    // },
+    // {
+    //     path: '/credit-card-result',
+    //     label: 'Credit Card Result',
+    // },
+    // {
+    //     path: '/loan-result',
+    //     label: 'Loan Result',
+    // },
     {
         path: '/card-details',
         label: 'Card Details',
