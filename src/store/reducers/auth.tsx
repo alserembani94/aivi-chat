@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { actionIcon } from 'aws-amplify';
 import { authenticationBegan } from '../authAction';
 
 const slice = createSlice({
@@ -9,6 +10,7 @@ const slice = createSlice({
         loading: false,
         lastFetch: null,
         error: undefined,
+        session: {},
         tempData: {
             name: '',
             email: '',
@@ -17,8 +19,21 @@ const slice = createSlice({
     },
     reducers: {
         userSignedIn: (auth: any, action: any) => {
-            action.payload.challengeName === 'NEW_PASSWORD_REQUIRED'
-            ? auth.data = action.payload : auth.user = action.payload;
+            if (action.payload.challengeName === 'NEW_PASSWORD_REQUIRED') auth.data = action.payload;
+            else {
+                const {
+                    username,
+                    signInUserSession,
+                    attributes,
+                    id,
+                } = action.payload;
+                auth.user = {
+                    username,
+                    attributes,
+                    id,
+                };
+                auth.session = signInUserSession;
+            }
             auth.loading = false;
             auth.lastFetch = Date.now();
         },
@@ -51,6 +66,14 @@ const slice = createSlice({
             auth.user = action.payload;
             auth.loading = false;
         },
+        currentSession: (auth: any, action: any) => {
+            auth.session = action.payload;
+            auth.loading = false;
+        },
+        currentUserInfo: (auth: any, action: any) => {
+            auth.user = action.payload;
+            auth.loading = false;
+        },
         signUpInitiated: (auth: any, action: any) => {
             auth.tempData = {
                 name: action.payload.name || '',
@@ -64,7 +87,20 @@ const slice = createSlice({
                 email: '',
                 password: '',
             };
-        }
+        },
+        forgotPasswordRequested: (auth: any, action: any) => {
+            auth.tempData = {
+                email: action.payload,
+            };
+            auth.loading = false;
+        },
+        forgotPasswordSubmitted: (auth: any, action: any) => {
+            auth.tempData = {
+                name: '',
+                email: '',
+                password: '',
+            };
+        },
     }
 })
 
@@ -77,6 +113,8 @@ const {
     userRegistered,
     userRegisterConfirmed,
     currentAuthenticatedUser,
+    currentSession,
+    currentUserInfo,
     signUpInitiated,
     tempDataCleaned,
 } = slice.actions;
@@ -165,6 +203,20 @@ export const getCurrentAuthenticatedUser = () => authenticationBegan({
     onError: userRequestFailed.type,
 });
 
+export const getCurrentSession = () => authenticationBegan({
+    operation: 'current_session',
+    onStart: userRequestedAuth.type,
+    onSuccess: currentSession.type,
+    onError: userRequestFailed.type,
+});
+
+export const getCurrentUserInfo = () => authenticationBegan({
+    operation: 'current_user_info',
+    onStart: userRequestedAuth.type,
+    onSuccess: currentUserInfo.type,
+    onError: userRequestFailed.type,
+});
+
 export const checkIfUserExist = () => authenticationBegan({
     operation: 'confirm_sign_up',
     onStart: userRequestedAuth.type,
@@ -178,3 +230,5 @@ export const initiateRegistration = ({email, name}: { email?: string, name?: str
     };
     dispatch(signUpInitiated(data));
 };
+
+// export const requestForgotPassword = ()

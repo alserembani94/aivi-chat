@@ -66,7 +66,7 @@ const SignIn: FC<any> = () => {
             default:
         }
 
-        state.user.username && history.push('/main-menu');
+        state.user?.username && history.push('/main-menu');
         
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [state]);
