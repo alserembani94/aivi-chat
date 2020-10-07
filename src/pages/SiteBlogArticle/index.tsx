@@ -118,7 +118,7 @@ const SiteBlogArticle: React.FC = () => {
     return (
         <React.Fragment>
             <main className="ResultPage-Body">
-                <section className="ResultPage-TopContent">
+                <section className="ResultPage-TopContent ResultPage-TopContent-Scroll">
                     <div>
                         <div className="ResultPage-TopBar">
                             <div className="ResultPage-TopBar-TitleBar">

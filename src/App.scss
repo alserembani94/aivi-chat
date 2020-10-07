@@ -942,6 +942,9 @@ input[type=number] {
     // height: calc(100% - #{$result-bottomContent});
     overflow: hidden;
     padding: 3.5rem;
+    &-Scroll {
+      overflow: auto;
+    }
   }
   &-BottomContent {
     background: white;
