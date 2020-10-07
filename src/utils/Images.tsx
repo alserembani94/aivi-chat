@@ -29,6 +29,10 @@ export const Images = {
     image_finance_world_with_aivi: require('../assets/images/Image-Finance-World-With-Aivi.svg'),
     image_finance_chart: require('../assets/images/Image-Finance-Chart.svg'),
 
+    image_bottom_article1: require('../assets/images/Image-Bottom-Article-1.svg'),
+    image_bottom_article2: require('../assets/images/Image-Bottom-Article-2.svg'),
+    image_bottom_article3: require('../assets/images/Image-Bottom-Article-3.svg'),
+
     logo_AIVI: require('../assets/images/Logo-AIVI.svg'),
 
     emoji_malaysia: require('../assets/images/malaysia-emoji.png'),

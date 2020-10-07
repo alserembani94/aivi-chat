@@ -929,6 +929,7 @@ input[type=number] {
 
 .Blog-Article {
   text-align: center;
+  margin-left: 60px;
   &-Date {
     color: #27A8ED;
     font-weight: 600;
@@ -936,6 +937,11 @@ input[type=number] {
   &-Title {
     font-size: 48px;
     font-weight: 700;
+  }
+  &-Bottom-Title {
+    font-weight: 700;
+    font-size: 48px;
+    text-align: left;
   }
 }
 

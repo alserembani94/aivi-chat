@@ -169,6 +169,41 @@ const SiteBlogArticle: React.FC = () => {
                                     <div>By Miriam Ross <span>staff reporter, AIVI</span></div>
                                 </div>
                             </div>
+                            <div>
+                                <div className="Blog-Article-Bottom-Title">Related Articles</div>
+                                <div>
+                                    <div>
+                                        <div><img src={Images.image_bottom_article1}/></div>
+                                        <div>
+                                            <div>Charts are skyrocketing</div>
+                                            <div>Explore and test different ideas, themes, and<br/>
+                                                styles instantly whether you want to experiment<br/>
+                                                with your team in a design sprint.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div><img src={Images.image_bottom_article2}/></div>
+                                        <div>
+                                            <div>Financial World with AIVI</div>
+                                            <div>Explore and test different ideas, themes, and<br/>
+                                                styles instantly whether you want to experiment<br/>
+                                                with your team in a design sprint.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div><img src={Images.image_bottom_article3}/></div>
+                                        <div>
+                                            <div>Analyst Confirm Breakthrough</div>
+                                            <div>Explore and test different ideas, themes, and<br/>
+                                                styles instantly whether you want to experiment<br/>
+                                                with your team in a design sprint.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     
