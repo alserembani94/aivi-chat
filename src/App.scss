@@ -927,6 +927,18 @@ input[type=number] {
   }
 }
 
+.Blog-Article {
+  text-align: center;
+  &-Date {
+    color: #27A8ED;
+    font-weight: 600;
+  }
+  &-Title {
+    font-size: 48px;
+    font-weight: 700;
+  }
+}
+
 .ResultPage {
   &-Body {
     display: flex;
@@ -944,6 +956,7 @@ input[type=number] {
     padding: 3.5rem;
     &-Scroll {
       overflow: auto;
+      background: #FFF;
     }
   }
   &-BottomContent {
