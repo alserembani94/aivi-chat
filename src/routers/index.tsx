@@ -113,25 +113,13 @@ const VentasRoute = [
 const RouterLayout: FC = () => {
     // const history = useHistory();
     const mainPage = useRef<HTMLElement>(null);
-    const user = useSelector((state: any) => state.auth);
+    const auth = useSelector((state: any) => state.auth);
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(getCurrentAuthenticatedUser());
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
-
-    // useEffect(() => {
-    //     user.error && alert(user.error);
-    // }, [user]);
-
-    // useEffect(() => {
-    //     console.log(user);
-    // }, [user]);
-
-    // States for authentication
-    // const [authState, setAuthState] = useState<AuthState>();
-    // const [user, setUser] = useState<any | undefined>();
 
     return (
         <React.Fragment>
@@ -160,7 +148,7 @@ const RouterLayout: FC = () => {
                                 key={index}
                                 path={route.path}
                                 exact={route.exact}
-                                render={({ location }) => (user.user.username)  // Auth check here
+                                render={({ location }) => (auth.user.username)  // Auth check here
                                     ? <route.main />
                                     : <Redirect to={{
                                         pathname: "/sign-in",

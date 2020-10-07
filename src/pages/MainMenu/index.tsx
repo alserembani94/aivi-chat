@@ -1,6 +1,9 @@
 import React, { FC, useEffect, useState } from 'react';
-import { Chatbox, conversationState } from '../../components';
-import axios from 'axios';
+import { Chatbox } from '../../components';
+// import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
+import { converseWithLex, initiateConversation } from '../../store/reducers/conversation';
+import { useHistory } from 'react-router-dom';
 
 // Construct types for component props
 interface MainMenuProps {
@@ -8,79 +11,46 @@ interface MainMenuProps {
 }
 
 const MainMenu: FC<MainMenuProps> = () => {
-    const [conversation, setConversation] = useState<conversationState[]>([]);
+    const history = useHistory();
 
-    const [pushConversation, setPushConversation] = useState<any>();
-    const [sessionAttributes, setSessionAttributes] = useState<any>();
-
-    // Trigger push conversation before sending to lex
-    const updateConversation = (newConversation: conversationState) => {
-        setPushConversation(() => newConversation);
-        setConversation(() => [...conversation, newConversation]);
+    const conversations = useSelector((state: any) => state.conversations);
+    const auth = useSelector((state: any) => state.auth);
+    const dispatch = useDispatch();
+    const updateConversation = (newMessage: string) => {
+        dispatch(converseWithLex(newMessage));
     };
 
-    // Push conversation to lex after user response
     useEffect(() => {
-        const endpoint = 'https://ykieujb749.execute-api.us-east-1.amazonaws.com/lex/';
-
-        const data = pushConversation
-        ? {
-            message: pushConversation.message,
-            userId: "client",
-            sessionAttributes,
-        }
-        : {
-            message: "Hello",
-            userId: "client",
-        };
-
-        const headerConfig = {
-            headers: {
-                'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': '*',
-                'Access-Control-Allow-Methods': 'ANY',
-            },
-        };
-
-        axios.post(endpoint, data, headerConfig)
-        .then((res) => {
-            const {
-                message,
-                user,
-                timestamp,
-                sessionAttributes,
-                // responseCard,
-                actions,
-            } = res.data;
-            setConversation(() => [...conversation, {
-                message,
-                user,
-                timestamp,
-                actions,
-            }]);
-            setSessionAttributes(() => sessionAttributes);
-            // console.log(responseCard, actions);
-        })
-        .catch((err) => {
-            console.log(err);
-        });
+        (auth.user.attributes?.email || auth.tempData.email)
+        ? dispatch(initiateConversation('Hello'))
+        : history.push('/register');
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [pushConversation]);
+    }, []);
 
     useEffect(() => {
-        
-        return () => {
-            
-        }
-    }, [])
+        [
+            'AIVIRequestCard',
+            'AIVIRequestLoan',
+        ].some(currentIntent => currentIntent === conversations.currentIntent) && history.push('/smart-assistant');
+        // switch (conversations.currentIntent) {
+        //     case 'AIVIRequestCard':
+        //         history.push('/smart-assistant/credit-card');
+        //         break;
+        //     case 'AIVIRequestLoan':
+        //         history.push('/smart-assistant/personal-loan');
+        //         break;
+        //     default:
+        // }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [conversations]);
 
     return (
         <React.Fragment>
             <div className="MainMenu-Screen">
                 <Chatbox
-                    conversation={conversation}
+                    conversation={conversations.list}
                     updateConversation={updateConversation}
-                    disableInput={conversation[conversation.length - 1]?.actions?.actionType === 'multipleOption'}
+                    disableInput={conversations.list[conversations.list.length - 1]?.actions?.actionType === 'multipleOption'}
                 />
             </div>
         </React.Fragment>
@@ -88,34 +58,3 @@ const MainMenu: FC<MainMenuProps> = () => {
 };
 
 export default MainMenu;
-
-// const [conversation, setConversation] = useState<conversationState[]>([
-    //     {
-    //         user: 'bot',
-    //         timestamp: moment().format(),
-    //         message: "To get started, how about choosing one of the options below?",
-    //         actions: {
-    //             actionType: "multipleOption",
-    //             content: {
-    //                 optionList: [
-    //                     {
-    //                         label: 'Credit Card',
-    //                         value: 'Credit Card',
-    //                     },
-    //                     {
-    //                         label: 'Balance Transfer',
-    //                         value: 'Balance Transfer',
-    //                     },
-    //                     {
-    //                         label: 'Personal Loan',
-    //                         value: 'Personal Loan',
-    //                     },
-    //                     {
-    //                         label: 'Cash From Card',
-    //                         value: 'Cash From Card',
-    //                     },
-    //                 ],
-    //             },
-    //         },
-    //     },
-    // ]);

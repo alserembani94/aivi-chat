@@ -32,7 +32,7 @@ export type conversationState = {
 
 interface ChatboxProps {
     conversation: conversationState[];
-    updateConversation: (newConversation: conversationState) => void;
+    updateConversation: (newConversation: string) => void;
     disableInput?: boolean;
 }
 
@@ -74,12 +74,13 @@ const Chatbox: FC<ChatboxProps> = ({ conversation, updateConversation, disableIn
     const handleChatSubmit = (pressedKey: string) => {
         if (pressedKey === 'Enter') {
             if (userChatInput !== '') {
-                const conversationMap = {
-                    user: 'User',
-                    timestamp: moment().format(),
-                    message: userChatInput,
-                };
-                updateConversation(conversationMap);
+                // const conversationMap = {
+                //     user: 'User',
+                //     timestamp: moment().format(),
+                //     message: userChatInput,
+                // };
+                // updateConversation(conversationMap);
+                updateConversation(userChatInput);
                 setUserChatInput('');
             }
         }

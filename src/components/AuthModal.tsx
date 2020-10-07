@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { userSignUp, userSignUpConfirm } from '../store/reducers/auth';
+import { useHistory } from 'react-router-dom';
+import { userSignIn, userSignUp, userSignUpConfirm } from '../store/reducers/auth';
 import { hideAuthModal } from '../store/reducers/authModal';
 import { Images } from '../utils/Images';
 import { InputBox, Modal } from './CustomComponent';
@@ -15,7 +16,7 @@ type AuthState = {
 
 // Construct types for component props
 interface AuthModalProps {
-    
+    nextLocation: string;
 }
 
 const signInInput = [
@@ -68,12 +69,21 @@ const registerInput = [
     },
 ];
 
-const AuthModal: React.FC<AuthModalProps> = () => {
+const codeInputProps = {
+    inputName: 'code',
+    inputState: 'code',
+    inputType: 'text',
+    inputLabel: 'Verification Code',
+};
+
+const AuthModal: React.FC<AuthModalProps> = ({ nextLocation }) => {
     const auth = useSelector((state: any) => state.auth);
     const authModal = useSelector((state: any) => state.authModal);
-    const [code, setCode] = useState('');
     const dispatch = useDispatch();
-    const signUpTemp = useSelector((state: any) => state.signUpTemp)
+
+    const history = useHistory();
+
+    const [code, setCode] = useState('');
 
     // AUTH SECTION
     // const [authenticated, setAuthenticated] = useState(false);
@@ -84,9 +94,9 @@ const AuthModal: React.FC<AuthModalProps> = () => {
     // const closeAuthModal = () => setAuthModal(() => false);
 
     const [authInput, setAuthInput] = useState<AuthState>({
-        email: signUpTemp.email || '',
+        email: auth.tempData.email || '',
         password: '',
-        name: signUpTemp.name || '',
+        name: auth.tempData.name || '',
         phoneNo: '',
     });
 
@@ -94,23 +104,32 @@ const AuthModal: React.FC<AuthModalProps> = () => {
 
     const updateAuth = (value: string, state: string) => setAuthInput(() => ({...authInput, [state]: value}));
 
-    const submitRegistration = async () => {
-        await dispatch(userSignUp(authInput));
+    const submitRegistration = () => {
+        dispatch(userSignUp(authInput));
         toggleAuthOption('Confirm Email');
     };
 
-    const submitConfirmRegistration = async () => {
-        await dispatch(userSignUpConfirm({
+    const handleSignIn = () => {
+        dispatch(userSignIn({
+            email: authInput.email,
+            password: authInput.password,
+        }));
+        toggleAuthOption('Sign In Success');
+    }
+
+    const submitConfirmRegistration = () => {
+        dispatch(userSignUpConfirm({
             email: authInput.email,
             code,
         }));
         toggleAuthOption('Email Confirmed');
     };
-    // END OF AUTH SECTION
 
-    // useEffect(() => {
-    //     console.log(auth);
-    // }, [auth]);
+    const updateCode = (newCode: string) => setCode(() => newCode);
+
+    const handleProceed = () => {
+        history.push(nextLocation);
+    };
 
     return (
         <React.Fragment>
@@ -164,7 +183,8 @@ const AuthModal: React.FC<AuthModalProps> = () => {
                             <div className="Auth-Action">
                                 <button
                                     className='Button'
-                                    disabled={!([auth.email, auth.password].every(element => element))}
+                                    disabled={!([authInput.email, authInput.password].every(element => element))}
+                                    onClick={handleSignIn}
                                 >Sign In</button>
                             </div>
                             <div className="Auth-SwitchAuth">
@@ -219,7 +239,13 @@ const AuthModal: React.FC<AuthModalProps> = () => {
                                     In case you don't see the email, check your spam folder and add exception.
 
                                 </p>
-                                <input value={code} onChange={({ currentTarget: { value } }) => setCode(value)} />
+                            </div>
+                            <div className="Auth-Inputs">
+                                <InputBox
+                                    value={code}
+                                    inputProps={codeInputProps}
+                                    handleInputChange={updateCode}
+                                />
                             </div>
                             <div className="Auth-Action">
                                 <button
@@ -231,7 +257,7 @@ const AuthModal: React.FC<AuthModalProps> = () => {
                         </>
                     )
                     : authOption === 'Email Confirmed'
-                    && (
+                    ? (
                         <>
                             <div className="Auth-Title">
                                 <h1>Email successfully verified!</h1>
@@ -241,7 +267,23 @@ const AuthModal: React.FC<AuthModalProps> = () => {
                                 <button
                                     className='Button'
                                     // Need something to check periodically for confirm registration
-                                    onClick={() => console.log('pro')}
+                                    onClick={handleProceed}
+                                >Continue</button>
+                            </div>
+                        </>
+                    )
+                    : authOption === 'Sign In Success'
+                    && (
+                        <>
+                            <div className="Auth-Title">
+                                <h1>Welcome!</h1>
+                                <p className="Auth-Subtitle">You have successfully signed in!</p>
+                            </div>
+                            <div className="Auth-Action">
+                                <button
+                                    className='Button'
+                                    // Need something to check periodically for confirm registration
+                                    onClick={handleProceed}
                                 >Continue</button>
                             </div>
                         </>

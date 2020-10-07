@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 // import { useDispatch, useSelector } from 'react-redux';
 
 import {
@@ -10,6 +12,7 @@ import {
     conversationState,
     AuthModal,
 } from '../../components';
+import { converseWithLex, initiateConversation } from '../../store/reducers/conversation';
 // import { hideAuthModal, showAuthModal } from '../../store/reducers/authModal';
 // import { InputBox, Modal } from '../../components/CustomComponent';
 import { Images } from '../../utils/Images';
@@ -17,11 +20,20 @@ import { Images } from '../../utils/Images';
 // import { validateData } from './utils/DataValidation';
 
 const SmartAssistant = () => {
-    // const authModal = useSelector((state: any) => state.authModal);
-    // const dispatch = useDispatch();
+    
+    const conversations = useSelector((state: any) => state.conversations);
+    const dispatch = useDispatch();
+    
+    const selectedSection = () => {
+        switch (conversations.currentIntent) {
+            case 'AIVIRequestCard': return 'Credit Card';
+            case 'AIVIRequestLoan': return 'Personal Loan';
+            default: return 'Cash From Card';
+        }
+    }
 
     const [showChatInMobile, setShowChatInMobile] = useState(false);
-    const [renderSection, setRenderSection] = useState('Credit Card');
+    const [renderSection, setRenderSection] = useState(selectedSection);
     const [renderModel, setRenderModel] = useState(false);
     const sections = ['Cash From Card', 'Credit Card', 'Balance Transfer', 'Personal Loan'];
 
@@ -50,48 +62,48 @@ const SmartAssistant = () => {
     }
     // END
 
-    const handleSectionRendering = (sectionToRender: string) => {
+    const handleSectionRendering = () => {
         switch (renderSection) {
-            case 'Cash From Card':
-                return <CashFromCard />;
-            case 'Credit Card':
-                return <CreditCard />;
-            case 'Balance Transfer':
-                return <BalanceTransfer />;
-            case 'Personal Loan':
-                return <PersonalLoan />
-            default:
-                return <>Not Found</>;
+            case 'Cash From Card': return <CashFromCard />;
+            case 'Credit Card': return <CreditCard />;
+            case 'Balance Transfer': return <BalanceTransfer />;
+            case 'Personal Loan': return <PersonalLoan />
+            default: return <>Not Found</>;
         }
     };
+
+    const handleNextLocation = () => {
+        switch (renderSection) {
+            case 'Cash From Card': return '/';
+            case 'Credit Card': return '/credit-card-result';
+            case 'Balance Transfer': return '/';
+            case 'Personal Loan': return '/loan-result';
+            default: return '/';
+        }
+    }
+
+    const updateConversation = (newMessage: string) => {
+        dispatch(converseWithLex(newMessage));
+    };
+
+    // useEffect(() => {
+    //     dispatch(initiateConversation('Hello'));
+    // // eslint-disable-next-line react-hooks/exhaustive-deps
+    // }, []);
     
-    const [conversation, setConversation] = useState<conversationState[]>([
-        {
-            user: 'bot',
-            timestamp: '2020-09-09',
-            message: 'Welcome!',
-        },
-        {
-            user: 'user',
-            timestamp: '2020-09-09',
-            message: 'Hey!',
-        },
-    ]);
-
-    const updateConversation = (newConversation: conversationState) => setConversation(() => [...conversation, newConversation]);
-
     return (
         <main className="AIVI-Body">
             {/* <section className="AIVI-Body"> */}
                 <section className="AIVI-Chatbox">
                     <img src={Images.logo_AIVI} alt="logo-aivi" className="AIVI-Logo" />
                     <Chatbox
-                        conversation={conversation}
+                        conversation={conversations.list}
                         updateConversation={updateConversation}
+                        disableInput={conversations.list[conversations.list.length - 1]?.actions?.actionType === 'multipleOption'}
                     />
                 </section>
                 <section className="AIVI-Leftbox">
-                    { handleSectionRendering(renderSection) }
+                    {handleSectionRendering()}
                 </section>
             {/* </section> */}
 
@@ -107,8 +119,9 @@ const SmartAssistant = () => {
                 className={`AIVI-Chatbox-Mobile-Model ${showChatInMobile ? `AIVI-Chatbox-Mobile-Show` : `AIVI-Chatbox-Mobile-Hide`}`}
             >
                 <Chatbox
-                    conversation={conversation}
+                    conversation={conversations.list}
                     updateConversation={updateConversation}
+                    disableInput={conversations.list[conversations.list.length - 1]?.actions?.actionType === 'multipleOption'}
                 />
             </section>
             {/* END */}
@@ -130,7 +143,9 @@ const SmartAssistant = () => {
             <button onClick={() => dispatch(hideAuthModal())}>Hide Auth Modal</button> */}
             {/* END */}
 
-            <AuthModal />
+            <AuthModal
+                nextLocation={handleNextLocation()}
+            />
         </main>
   );
 }
