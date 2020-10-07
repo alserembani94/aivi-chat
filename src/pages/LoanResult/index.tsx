@@ -1,9 +1,6 @@
 import React, { FC, useState } from 'react';
 import {
-    // CashbackItem,
-    // ResetExpenseModal,
     ReselectBankModal,
-    // RewardItem,
 } from '../../components/CardResult';
 import {
     LoanDetail,
@@ -80,11 +77,6 @@ type ExpenseDetails = {
 }[];
 
 const LoanResult: FC = () => {
-    // EXPAND / COLLAPSE CONFIGURATION
-    // const [allExpanded, setAllExpanded] = useState(false);
-    // const toggleAllExpanded = () => {
-    //     setAllExpanded(prevState => !prevState);
-    // };
 
     // Temporary Period Details
     // const [period, setPeriod] = useState(6);
@@ -105,9 +97,9 @@ const LoanResult: FC = () => {
     const [searchModal, setSearchModal] = useState(false);
 
     const [loanDetailModal, setLoanDetailModal] = useState(false);
-    const [loanDetailData, setLoanDetailData] = useState({
+    // const [loanDetailData, setLoanDetailData] = useState({
 
-    });
+    // });
 
     const handleLoanDetail = (loanName: string) => {
         handleModalOpen('loanDetailModal');
@@ -215,13 +207,6 @@ const LoanResult: FC = () => {
                         updateLoanAmount={handleLoanAmountUpdate}
                         closeModal={handleModalClose}
                     />
-                    {/* <ResetExpenseModal
-                        period={period}
-                        updatePeriodChange={handlePeriodChange}
-                        expenseDetails={expenseDetails}
-                        updateExpenseDetails={handleExpenseDetailsUpdate}
-                        closeModal={handleModalClose}
-                    /> */}
                 </Modal>
                 <Modal
                     modalName='searchModal'

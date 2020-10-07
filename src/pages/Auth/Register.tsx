@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useState } from 'react';
 import {
     Checkbox,
     InputBox,
@@ -53,10 +53,6 @@ const Register: FC<RegisterProps> = () => {
         dispatch(initiateRegistration(auth));
         history.push('/main-menu');
     };
-
-    // useEffect(() => {
-    //     console.log(signUpTemp);
-    // }, [signUpTemp]);
 
     return (
         <React.Fragment>

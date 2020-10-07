@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
-// import { useDispatch, useSelector } from 'react-redux';
 
 import {
     Chatbox,
@@ -9,15 +7,10 @@ import {
     CreditCard,
     BalanceTransfer,
     PersonalLoan,
-    conversationState,
     AuthModal,
 } from '../../components';
-import { converseWithLex, initiateConversation } from '../../store/reducers/conversation';
-// import { hideAuthModal, showAuthModal } from '../../store/reducers/authModal';
-// import { InputBox, Modal } from '../../components/CustomComponent';
+import { converseWithLex } from '../../store/reducers/conversation';
 import { Images } from '../../utils/Images';
-
-// import { validateData } from './utils/DataValidation';
 
 const SmartAssistant = () => {
     
@@ -36,14 +29,6 @@ const SmartAssistant = () => {
     const [renderSection, setRenderSection] = useState(selectedSection);
     const [renderModel, setRenderModel] = useState(false);
     const sections = ['Cash From Card', 'Credit Card', 'Balance Transfer', 'Personal Loan'];
-
-    useEffect(() => {
-        // const rootStyle = document.documentElement.style;
-        // rootStyle.setProperty('--sidebar-width', '10px');
-        // console.log(validateData('Hello', 'email'));
-        // setInterval({}, 1000); // refresh every second - Is this a good practice?
-        // console.log(showChatInMobile);
-    }, [showChatInMobile]);
 
 
     const handleChatboxModal = () => {
@@ -85,11 +70,6 @@ const SmartAssistant = () => {
     const updateConversation = (newMessage: string) => {
         dispatch(converseWithLex(newMessage));
     };
-
-    // useEffect(() => {
-    //     dispatch(initiateConversation('Hello'));
-    // // eslint-disable-next-line react-hooks/exhaustive-deps
-    // }, []);
     
     return (
         <main className="AIVI-Body">
@@ -139,8 +119,6 @@ const SmartAssistant = () => {
                     }
                 </ul>
             </div>
-            {/* <button onClick={() => dispatch(showAuthModal())}>Show Auth Modal</button>
-            <button onClick={() => dispatch(hideAuthModal())}>Hide Auth Modal</button> */}
             {/* END */}
 
             <AuthModal

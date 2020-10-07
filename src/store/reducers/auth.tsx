@@ -1,18 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { authenticationBegan } from '../authAction';
-// import auth from '../middleware/auth';
-
-// type IdentityType = {
-//     user: CognitoUser,
-//     userConfirmed: boolean;
-//     userSub: string;
-// }
-
-// interface AuthState {
-//     data: IdentityType,
-//     loading: boolean,
-//     lastFetch: date,
-// }
 
 const slice = createSlice({
     name: 'userAuth',
@@ -142,14 +129,6 @@ export const userSignUp = (userInfo: { email: string, password: string, name: st
     }));
 };
 
-// export const userSignUp = (userInfo: { email: string, password: string, name: string, phoneNo: string }) => authenticationBegan({
-//     data: userInfo,
-//     operation: 'sign_up',
-//     onStart: userRequestedAuth.type,
-//     onSuccess: userRegistered.type,
-//     onError: userRequestFailed.type,
-// });
-
 export const userSignUpConfirm = ({ email, code }: { email: string, code: string }) => async (dispatch: any, getState: any) => {
     await dispatch(authenticationBegan({
         data: {
@@ -169,19 +148,8 @@ export const userSignUpConfirm = ({ email, code }: { email: string, code: string
         password: proxy.password,
     }));
 
-    // await dispatch(tempDataCleaned);
+    await dispatch(tempDataCleaned);
 };
-
-// export const userSignUpConfirm = ({ email, code }: { email: string, code: string }) => authenticationBegan({
-//     data: {
-//         email,
-//         code,
-//     },
-//     operation: 'confirm_sign_up',
-//     onStart: userRequestedAuth.type,
-//     onSuccess: userRegisterConfirmed.type,
-//     onError: userRequestFailed.type,
-// });
 
 export const userSignOut = () => authenticationBegan({
     operation: 'sign_out',
