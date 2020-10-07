@@ -927,6 +927,24 @@ input[type=number] {
   }
 }
 
+.Blog-Article {
+  text-align: center;
+  margin-left: 60px;
+  &-Date {
+    color: #27A8ED;
+    font-weight: 600;
+  }
+  &-Title {
+    font-size: 48px;
+    font-weight: 700;
+  }
+  &-Bottom-Title {
+    font-weight: 700;
+    font-size: 48px;
+    text-align: left;
+  }
+}
+
 .ResultPage {
   &-Body {
     display: flex;
@@ -942,6 +960,10 @@ input[type=number] {
     // height: calc(100% - #{$result-bottomContent});
     overflow: hidden;
     padding: 3.5rem;
+    &-Scroll {
+      overflow: auto;
+      background: #FFF;
+    }
   }
   &-BottomContent {
     background: white;

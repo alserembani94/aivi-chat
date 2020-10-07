@@ -118,7 +118,7 @@ const SiteBlogArticle: React.FC = () => {
     return (
         <React.Fragment>
             <main className="ResultPage-Body">
-                <section className="ResultPage-TopContent">
+                <section className="ResultPage-TopContent ResultPage-TopContent-Scroll">
                     <div>
                         <div className="ResultPage-TopBar">
                             <div className="ResultPage-TopBar-TitleBar">
@@ -130,41 +130,80 @@ const SiteBlogArticle: React.FC = () => {
                             </button>
                         </div>
                     
-                        <div>
+                        <div className="Blog-Article">
                             <div>
-                                <div>14 August 2020 / FINANCE</div>
-                                <div>Financial World with AIVI</div>
-                                <div>Explore and test different ideas, themes, and styles instantly whether you want to experiment<br/>
-                                    with your team in a design sprint
+                                <div>
+                                    <div className="Blog-Article-Date">14 August 2020 / FINANCE</div>
+                                    <div className="Blog-Article-Title">Financial World with AIVI</div>
+                                    <div>Explore and test different ideas, themes, and styles instantly whether you want to experiment<br/>
+                                        with your team in a design sprint.<br/><br/>
+                                    </div>
+                                    <div><img src={Images.image_finance_world_with_aivi}/></div>
                                 </div>
-                                <div><img src={Images.image_finance_world_with_aivi}/></div>
+                                                    
                             </div>
-                                                  
-                        </div>
-                        <div>
-                            <div>Surveys repeatedly show that advisers risk being out of step, particularly with their millenial clients, who want to<br/>
-                                know more about socially responsible or environmental,  social and governance investing.
+                            <div><br/><br/>
+                                <div>Surveys repeatedly show that advisers risk being out of step, particularly with their millenial clients, who want to<br/>
+                                    know more about socially responsible or environmental,  social and governance investing.
+                                </div><br/><br/>
+                                <div>In a recent TIAA Global Asset Manangement survey, some 36% of the advisers who participated said that they,<br/>
+                                    can't adequately evaluate the performance of socially responsible investments.
+                                </div><br/><br/>
+                                <div>At the same time, investors, particularly millenials and women, expressed a growing interest in adding socially<br/>
+                                    responsible investments to their portfolios.
+                                </div><br/><br/>
+                                <div><img src={Images.image_finance_chart}/></div><br/><br/>
+                                <div>
+                                    <div>Recent Studies by Morgan Stanley have shown  more than 70% of women, when asked, want socially responsible<br/>
+                                        investments in their portfolios, and 85% of millenial survey respondents seek to achieve sustainability with their<br/>
+                                        investments.
+                                    </div><br/><br/>
+                                    <div>So are advisers who concede that they don't yet speak fluently the language of ESG criteria doomed? Not at all.</div><br/><br/>
+                                    <div>Plkenty of avenues exist for advisers to bolster their knowledge, the vernacular, the acronyms and the significant<br/>
+                                        milestones of the ESG world.
+                                    </div><br/><br/>
+                                    <div>"It is tremendous opportunity to get ahead of the curve," says Marlo Stil, and adviser in the managing partner in the<br/>
+                                        Rancho Mirage, Calif., office of Wealth Consulting Group, which is based in Las Vegas.
+                                    </div><br/><br/>
+                                    <div>She focuses on helping other advisers and clients learn more about socially responsible investing.</div><br/><br/>
+                                    <div>By Miriam Ross <span>staff reporter, AIVI</span></div>
+                                </div>
                             </div>
-                            <div>In a recent TIAA Global Asset Manangement survey, some 36% of the advisers who participated said that they,<br/>
-                                can't adequately evaluate the performance of socially responsible investments.
+                            <div>
+                                <div className="Blog-Article-Bottom-Title">Related Articles</div>
+                                <div>
+                                    <div>
+                                        <div><img src={Images.image_bottom_article1}/></div>
+                                        <div>
+                                            <div>Charts are skyrocketing</div>
+                                            <div>Explore and test different ideas, themes, and<br/>
+                                                styles instantly whether you want to experiment<br/>
+                                                with your team in a design sprint.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div><img src={Images.image_bottom_article2}/></div>
+                                        <div>
+                                            <div>Financial World with AIVI</div>
+                                            <div>Explore and test different ideas, themes, and<br/>
+                                                styles instantly whether you want to experiment<br/>
+                                                with your team in a design sprint.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div><img src={Images.image_bottom_article3}/></div>
+                                        <div>
+                                            <div>Analyst Confirm Breakthrough</div>
+                                            <div>Explore and test different ideas, themes, and<br/>
+                                                styles instantly whether you want to experiment<br/>
+                                                with your team in a design sprint.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div>At the same time, investors, particularly millenials and women, expressed a growing interest in adding socially<br/>
-                                responsible investments to their portfolios.
-                            </div>
-                            <div><img src={Images.image_finance_chart}/></div>
-                            <div>Recent Studies by Morgan Stanley have shown  more than 70% of women, when asked, want socially responsible<br/>
-                                investments in their portfolios, and 85% of millenial survey respondents seek to achieve sustainability with their<br/>
-                                investments.
-                            </div>
-                            <div>So are advisers who concede that they don't yet speak fluently the language of ESG criteria doomed? Not at all.</div>
-                            <div>Plkenty of avenues exist for advisers to bolster their knowledge, the vernacular, the acronyms and the significant<br/>
-                                milestones of the ESG world.
-                            </div>
-                            <div>"It is tremendous opportunity to get ahead of the curve," says Marlo Stil, and adviser in the managing partner in the<br/>
-                                Rancho Mirage, Calif., office of Wealth Consulting Group, which is based in Las Vegas.
-                            </div>
-                            <div>She focuses on helping other advisers and clients learn more about socially responsible investing.</div>
-                            <div>By Miriam Ross <span>staff reporter, AIVI</span></div>
                         </div>
                     </div>
                     
