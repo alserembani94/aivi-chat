@@ -85,7 +85,7 @@ const Menu: FC<MenuProps> = ({ visible, toggleVisibility }) => {
                         className="Menu-Auth"
                     >
                         {
-                            auth.user.username
+                            auth.user?.username
                             ? (
                                 <>
                                     <button

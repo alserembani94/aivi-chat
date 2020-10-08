@@ -49,14 +49,14 @@ const slice = createSlice({
 const {
     conversationAdded,
     conversationsRequested,
-    conversationsReceived,
+    // conversationsReceived,
     conversationsRequestFailed,
 } = slice.actions;
 export default slice.reducer;
 
 export const loadConversations = () => (dispatch: any, getState: any) => {
-    const { lastFetch } = getState().conversations;
-    const { username } = getState().auth.user;
+    // const { lastFetch } = getState().conversations;
+    // const { username } = getState().auth.user;
 
     // dispatch to load from database
 };

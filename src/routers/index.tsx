@@ -22,7 +22,7 @@ import ConfirmRegister from '../pages/Auth/ConfirmRegister';
 import Amplify from 'aws-amplify';
 import awsConfig from '../aws-exports';
 import { useDispatch, useSelector } from 'react-redux';
-import { getCurrentAuthenticatedUser } from '../store/reducers/auth';
+import { getCurrentAuthenticatedUser, getCurrentSession, getCurrentUserInfo } from '../store/reducers/auth';
 // import {
 //     AuthState,
 //     onAuthUIStateChange,
@@ -117,7 +117,9 @@ const RouterLayout: FC = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(getCurrentAuthenticatedUser());
+        // dispatch(getCurrentAuthenticatedUser());
+        dispatch(getCurrentSession());
+        dispatch(getCurrentUserInfo());
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 

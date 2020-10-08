@@ -522,11 +522,11 @@ input[type=number] {
     z-index: 1000;
     &[data-visible=true] {
       left: $sidebar-width;
-      transition: left 0.5s ease-in-out;
+      transition: left 0.7s ease-out;
     }
     &[data-visible=false] {
-      left: -50vw;
-      transition: left 0.5s ease-in-out;
+      left: -150vw;
+      transition: left 0.7s ease-in;
     }
   }
   &-Logo {

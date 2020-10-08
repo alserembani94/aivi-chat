@@ -51,6 +51,7 @@ const auth = ({ dispatch }: { dispatch: any }) => (next: any) => async (action: 
 
         // USE CASE 5: GETTING AUTHENTICATION DATA
         else if (operation === 'current_authenticated_user') response = await Auth.currentAuthenticatedUser();
+        else if (operation === 'current_user_info') response = await Auth.currentUserInfo();
         else if (operation === 'current_session') response = await Auth.currentSession();
 
         // General

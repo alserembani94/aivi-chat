@@ -1,6 +1,5 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useEffect } from 'react';
 import { Chatbox } from '../../components';
-// import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { converseWithLex, initiateConversation } from '../../store/reducers/conversation';
 import { useHistory } from 'react-router-dom';
@@ -32,15 +31,6 @@ const MainMenu: FC<MainMenuProps> = () => {
             'AIVIRequestCard',
             'AIVIRequestLoan',
         ].some(currentIntent => currentIntent === conversations.currentIntent) && history.push('/smart-assistant');
-        // switch (conversations.currentIntent) {
-        //     case 'AIVIRequestCard':
-        //         history.push('/smart-assistant/credit-card');
-        //         break;
-        //     case 'AIVIRequestLoan':
-        //         history.push('/smart-assistant/personal-loan');
-        //         break;
-        //     default:
-        // }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [conversations]);
 

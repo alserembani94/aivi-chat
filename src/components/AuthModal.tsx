@@ -86,12 +86,7 @@ const AuthModal: React.FC<AuthModalProps> = ({ nextLocation }) => {
     const [code, setCode] = useState('');
 
     // AUTH SECTION
-    // const [authenticated, setAuthenticated] = useState(false);
-    // const [authModal, setAuthModal] = useState(false);
     const [authOption, setAuthOption] = useState('Register');
-
-    // const openAuthModal = () => setAuthModal(() => true);
-    // const closeAuthModal = () => setAuthModal(() => false);
 
     const [authInput, setAuthInput] = useState<AuthState>({
         email: auth.tempData.email || '',
