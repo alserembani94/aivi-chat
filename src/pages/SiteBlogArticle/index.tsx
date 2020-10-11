@@ -52,10 +52,17 @@ const SiteBlogArticle: React.FC = () => {
                             </div>
                         </div>
                         <div className="SiteBlogArticle-Body-Content-Author">
-                            <div>By Miriam Ross <span>staff reporter, AIVI</span></div>
-                            <div><span>Share on</span></div>
+                            <div className="SiteBlogArticle-Body-Content-Author-Card">
+                                <div className="SiteBlogArticle-Body-Content-Author-Card-NamePosition">By Miriam Ross 
+                                    <span className="SiteBlogArticle-Body-Content-Author-Card-Post">&nbsp;staff reporter, AIVI</span></div>
+                                <div className="SiteBlogArticle-Body-Content-Author-Card-SocialMedia">
+                                    <span className="SiteBlogArticle-Body-Content-Author-Card-SocialMedia-Shareon">Share on</span>
+                                    <span className="SiteBlogArticle-Body-Content-Author-Card-SocialMedia-Fb"><img src={Images.icon_fb_img}/></span>
+                                    <span className="SiteBlogArticle-Body-Content-Author-Card-SocialMedia-Google"><img src={Images.icon_google_img}/></span>
+                                </div>
+                            </div>
                         </div>
-                        <div><hr/></div>
+                        <div><hr className="SiteBlogArticle-Body-Content-Divider"/></div>
                         <div>
                             <div className="SiteBlogArticle-Body-Content-Title">Related Articles</div>
                             <div className="SiteBlogArticle-Body-Content-RelatedArticles">
@@ -63,8 +70,8 @@ const SiteBlogArticle: React.FC = () => {
                                     <div className="SiteBlogArticle-Body-Content-RelatedArticles-CardImage"><img src={Images.image_article_img3} /></div>
                                     <div className="SiteBlogArticle-Body-Content-CardDesc">
                                         <div className="SiteBlogArticle-Body-Content-CardDesc-Inner">
-                                            <div>Charts are SkyRocketing</div>
-                                            <div>Explore and test different ideas, themes and styles instantly wheather you want<br/>
+                                            <div className="SiteBlogArticle-Body-Content-CardDesc-Inner-Title">Charts are SkyRocketing</div>
+                                            <div className="SiteBlogArticle-Body-Content-CardDesc-Inner-Desc">Explore and test different ideas, themes and styles instantly wheather you want<br/>
                                                     to experiment with your team in a design sprint.
                                             </div>
                                             <div className="SiteBlogArticle-Body-Content-CardDesc-Inner-Arrow"><img src={Images.image_article_arrow_to_right}/></div>
@@ -75,8 +82,8 @@ const SiteBlogArticle: React.FC = () => {
                                     <div className="SiteBlogArticle-Body-Content-RelatedArticles-CardImage"><img src={Images.image_article_img4} /></div>
                                     <div className="SiteBlogArticle-Body-Content-CardDesc">
                                         <div className="SiteBlogArticle-Body-Content-CardDesc-Inner">
-                                            <div>Charts are SkyRocketing</div>
-                                            <div>Explore and test different ideas, themes and styles instantly wheather you want<br/>
+                                            <div className="SiteBlogArticle-Body-Content-CardDesc-Inner-Title">Financial World with Aivi</div>
+                                            <div className="SiteBlogArticle-Body-Content-CardDesc-Inner-Desc">Explore and test different ideas, themes and styles instantly wheather you want<br/>
                                                     to experiment with your team in a design sprint.
                                             </div>
                                             <div className="SiteBlogArticle-Body-Content-CardDesc-Inner-Arrow"><img src={Images.image_article_arrow_to_right}/></div>
@@ -87,8 +94,8 @@ const SiteBlogArticle: React.FC = () => {
                                     <div className="SiteBlogArticle-Body-Content-RelatedArticles-CardImage"><img src={Images.image_article_img5} /></div>
                                     <div className="SiteBlogArticle-Body-Content-CardDesc">
                                         <div className="SiteBlogArticle-Body-Content-CardDesc-Inner">
-                                            <div>Charts are SkyRocketing</div>
-                                            <div>Explore and test different ideas, themes and styles instantly wheather you want<br/>
+                                            <div className="SiteBlogArticle-Body-Content-CardDesc-Inner-Title">Analyst Confirm Breakthrough</div>
+                                            <div className="SiteBlogArticle-Body-Content-CardDesc-Inner-Desc">Explore and test different ideas, themes and styles instantly wheather you want<br/>
                                                     to experiment with your team in a design sprint.
                                             </div>
                                             <div className="SiteBlogArticle-Body-Content-CardDesc-Inner-Arrow"><img src={Images.image_article_arrow_to_right}/></div>

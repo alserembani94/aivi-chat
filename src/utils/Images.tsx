@@ -41,6 +41,9 @@ export const Images = {
     image_article_arrow_to_right: require('../assets/images/Image-Article-ArrowToRight.svg'),
     image_article_vector: require('../assets/images/Image-Article-Vector.svg'),
 
+    icon_fb_img: require('../assets/images/Icon-Fb-Img.svg'),
+    icon_google_img: require('../assets/images/Icon-Google-Img.svg'),
+
     logo_AIVI: require('../assets/images/Logo-AIVI.svg'),
 
     emoji_malaysia: require('../assets/images/malaysia-emoji.png'),
