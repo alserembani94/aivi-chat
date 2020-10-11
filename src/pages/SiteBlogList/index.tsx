@@ -1,212 +1,167 @@
 import React from 'react';
-import {
-    CashbackItem,
-    RewardItem,
-} from '../../components/CardResult';
-import {
-    Modal,
-} from '../../components/CustomComponent';
 import { Images } from '../../utils/Images';
-// import { csv } from 'd3';
-// import { CSVFiles } from '../../utils/DataSample';
-
-// const cardMockData = {
-//     image: '',
-//     name: 'Maybank 2 Gold',
-//     estimatedPoints: [1200, 1600],
-//     period: '12 months',
-// };
-
-type ExpenseDetails = {
-    category: string,
-    subcategory?: {
-        name: string,
-        expenseRange: number[],
-    }[],
-    expenseRange?: number[],
-}[];
 
 const SiteBlogList: React.FC = () => {
-    // EXPAND / COLLAPSE CONFIGURATION
-    const [allExpanded, setAllExpanded] = React.useState(false);
-
-    const toggleAllExpanded = () => {
-        setAllExpanded(prevState => !prevState);
-    };
-    // Temporary Period Details
-    const [period, setPeriod] = React.useState(6);
-    
-    const handlePeriodChange = (value: number) => setPeriod(() => value);
-
-    // Temporary Expense Details
-    const [expenseDetails, setExpenseDetails] = React.useState<ExpenseDetails>([
-        {
-            category: 'Shopping',
-            subcategory: [
-                {
-                    name: 'Online',
-                    expenseRange: [2200, 8800],
-                },
-                {
-                    name: 'Traditional',
-                    expenseRange: [3000, 7000],
-                },
-            ],
-        },
-        {
-            category: 'Dining',
-            expenseRange: [3000, 7000],
-        },
-        {
-            category: 'Health & Insurance',
-            expenseRange: [3000, 7000],
-        },
-    ]);
-    
-
-    const handleExpenseDetailsUpdate = (expenseDetails: ExpenseDetails) => {
-        setExpenseDetails(() => expenseDetails);
-    }
-
-    // CONFIGURATION FOR BANKS
-    const [selectedBanks, setSelectedBanks] = React.useState<string[]>([]);
-
-    const handleSelectedBanks = (selected: string[]) => {
-        setSelectedBanks(() => { return selected; });
-    };
-
-    // CONFIGURATION FOR SELECTED CARD
-    const [selectedCard, setSelectedCard] = React.useState('');
-    const handleCardChange = (cardName: string) => cardName === selectedCard ? setSelectedCard(() => '') : setSelectedCard(() => cardName);
-    // const [data, setData] = React.useState<any>();
-    // React.useEffect(() => {
-    //     csv(CSVFiles.rewardCatalogue).then(data => {
-    //         setData(() => data);
-    //     })
-    // }, []);
-
-    // React.useEffect(() => {
-    //     data && console.log(data[0]);
-    // }, [data]);
-
-    // CONFIGURATION FOR MODALS
-    const [resetModal, setResetModal] = React.useState(false);
-    const [searchModal, setSearchModal] = React.useState(false);
-    const handleModalOpen = (modalName: string) => {
-        switch (modalName) {
-            case 'resetModal':
-                setResetModal(() => true);
-                break;
-            case 'searchModal':
-                setSearchModal(() => true);
-                break;
-            default:
-                return;
-        }
-    }
-    const handleModalClose = (modalName: string) => {
-        switch (modalName) {
-            case 'resetModal':
-                setResetModal(() => false);
-                break;
-            case 'searchModal':
-                setSearchModal(() => false);
-                break;
-            default:
-                return;
-        }
-    }
 
     return (
         <React.Fragment>
-            <main className="ResultPage-Body">
-                <section className="ResultPage-TopContent ResultPage-TopContent-Scroll">
-                    <div>
-                        <div className="ResultPage-TopBar">
-                            <div className="ResultPage-TopBar-TitleBar">
-                                &nbsp;
-                            </div>
-                            <button
-                                onClick={() => handleModalOpen('searchModal')}
-                            ><img src={Images.icon_search} alt="Search" />Search an article...
-                            </button>
-                        </div>
-                    
-                        <div>
-                            <div>
-                                <div>Finance</div>
-                            </div>
-                            <div className="ResultPage-Content ResultPage-Content-Images">
-                                <div className="CardResult-CardDetails CardResult-CardDetails-Images">
-                                    <div className="CardResult-CardDetails-Container">
-                                        <div className="CardResult-CardDetails-Container-Income-Details">
-                                            <div className="CardResult-Returns-Category CardResult-Returns-Category-Images">
-                                                <img src={Images.image_financial_skyrocketing} />
-                                            </div>
-                                            <div>
-                                                <div>Charts are SkyRocketing</div>
-                                                <div>
-                                                    Explore and test different ideas, themes and,<br/>
-                                                    styles instantly whether you want to experiment<br/>
-                                                    with your team in a design sprint.
-                                                </div>
-                                                <div>28 August 2020</div>
-                                            </div>
+            <main className="SiteBlogList-Body">
+                <section className="SiteBlogList-Body-Section">
+              
+                    <div className="SiteBlogList-Body-Content">
+                        <div className="SiteBlogList-Body-Content-Phase1">
+                            <div className="SiteBlogList-Body-Content-Phase1-Card1">
+                                <div className="SiteBlogList-Body-Content-ImageContainer">
+                                    <img src={Images.image_site_img1} />
+                                    <div className="SiteBlogList-Body-Content-ImageContainer-Description"><div>FEATURED</div></div>
+                                </div>
+                                <div className="SiteBlogList-Body-Content-CardDesc">
+                                    <div className="SiteBlogList-Body-Content-CardDesc-Inner">
+                                        <div>DATA</div>
+                                        <div>Financial World Trending</div>
+                                        <div>Explore and test different ideas, themes, and styles instantly whether you<br/>
+                                            want to experiment with your team. If that is not to your liking, you may<br/>
+                                            try out other features we have offered.
                                         </div>
-                                        <div className="CardResult-CardDetails-Container-Income-Details">
-                                            <div className="CardResult-Returns-Category CardResult-Returns-Category-Images">
-                                                <img src={Images.image_financial_world} />
-                                            </div>
-                                            <div>
-                                                <div>Financial World with Aivi</div>
-                                                <div>
-                                                    Explore and test different ideas, themes and,<br/>
-                                                    styles instantly whether you want to experiment<br/>
-                                                    with your team in a design sprint.
-                                                </div>
-                                                <div>28 August 2020</div>
-                                            </div>
-                                        </div>
-                                        <div className="CardResult-CardDetails-Container-Income-Details">
-                                            <div className="CardResult-Returns-Category CardResult-Returns-Category-Images">
-                                                <img src={Images.image_analyst_confirm_breakthrough} />
-                                            </div>
-                                            <div>
-                                                <div>Analyst Confirm Breakthrough</div>
-                                                <div>
-                                                    Explore and test different ideas, themes and,<br/>
-                                                    styles instantly whether you want to experiment<br/>
-                                                    with your team in a design sprint.
-                                                </div>
-                                                <div>28 August 2020</div>
-                                            </div>
-                                        </div>
-                                    
+                                        <div>28 August 2020</div>
                                     </div>
                                 </div>
-                            </div>                        
+                            </div>
+                            <div className="SiteBlogList-Body-Content-Phase1-Card2">
+                                <div>
+                                    <img src={Images.image_site_img2}/>
+                                </div>
+                                <div className="SiteBlogList-Body-Content-CardDesc">
+                                    <div className="SiteBlogList-Body-Content-CardDesc-Inner">
+                                        <div>FINANCE</div>
+                                        <div>Multiplayers in Finance</div>
+                                        <div>Explore and test different ideas, themes, and styles instantly whether you<br/>
+                                            want to experiment with your team. If that is not to your liking, you may<br/>
+                                            try out other features we have offered.
+                                        </div>
+                                        <div>28 August 2020</div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+                        <div className="SiteBlogList-Body-Content-Phase2">
+                            <div className="SiteBlogList-Body-Content-Phase2-Card1">
+                                <div className="">
+                                    <img src={Images.image_site_img3} />
+                                </div>
+                                <div className="SiteBlogList-Body-Content-CardDesc">
+                                    <div className="SiteBlogList-Body-Content-CardDesc-Inner">
+                                        <div>Charts are SkyRocketing</div>
+                                        <div>
+                                            Explore and test different ideas, themes and,<br/>
+                                            styles instantly whether you want to experiment<br/>
+                                            with your team in a design sprint.
+                                        </div>
+                                        <div>28 August 2020</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="SiteBlogList-Body-Content-Phase2-Card2">
+                                <div className="SiteBlogList-Body-Content-ImageContainer">
+                                    <img src={Images.image_site_img4} />
+                                    <div className="SiteBlogList-Body-Content-ImageContainer-Description"><div>FEATURED</div></div>
+                                </div>
+                                <div className="SiteBlogList-Body-Content-CardDesc">
+                                    <div className="SiteBlogList-Body-Content-CardDesc-Inner">
+                                        <div>Financial World with Aivi</div>
+                                        <div>
+                                            Explore and test different ideas, themes and,<br/>
+                                            styles instantly whether you want to experiment<br/>
+                                            with your team in a design sprint.
+                                        </div>
+                                        <div>28 August 2020</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="SiteBlogList-Body-Content-Phase2-Card3">
+                                <div className="">
+                                    <img src={Images.image_site_img5} />
+                                </div>
+                                <div className="SiteBlogList-Body-Content-CardDesc">
+                                    <div className="SiteBlogList-Body-Content-CardDesc-Inner">
+                                        <div>Analyst Confirm Breakthrough</div>
+                                        <div>
+                                            Explore and test different ideas, themes and,<br/>
+                                            styles instantly whether you want to experiment<br/>
+                                            with your team in a design sprint.
+                                        </div>
+                                        <div>28 August 2020</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>  
+
+                        <div className="SiteBlogList-Body-Content-Phase3">
+                            <div className="SiteBlogList-Body-Content-Phase3-Card1">
+                                <div><img src={Images.image_site_img6} /></div>
+                                <div className="SiteBlogList-Body-Content-CardDesc">
+                                    <div className="SiteBlogList-Body-Content-CardDesc-Inner">
+                                        <div>Charts are SkyRocketing</div>
+                                        <div>Explore and test different ideas, themes and styles instantly wheather you want<br/>
+                                                to experiment with your team in a design sprint.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="SiteBlogList-Body-Content-Phase3-Card2">
+                                <div><img src={Images.image_site_img7} /></div>
+                                <div className="SiteBlogList-Body-Content-CardDesc">
+                                    <div className="SiteBlogList-Body-Content-CardDesc-Inner">
+                                        <div>Charts are SkyRocketing</div>
+                                        <div>Explore and test different ideas, themes and styles instantly wheather you want<br/>
+                                                to experiment with your team in a design sprint.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div className="SiteBlogList-Body-Content-Phase4">
+                            <div className="SiteBlogList-Body-Content-Phase4-Card1">
+                                <div><img src={Images.image_site_img8} /></div>
+                                <div className="SiteBlogList-Body-Content-CardDesc">
+                                    <div className="SiteBlogList-Body-Content-CardDesc-Inner">
+                                        <div>Charts are SkyRocketing</div>
+                                        <div>Explore and test different ideas, themes and styles instantly wheather you want<br/>
+                                                to experiment with your team in a design sprint.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="SiteBlogList-Body-Content-Phase4-Card2">
+                                <div><img src={Images.image_site_img9} /></div>
+                                <div className="SiteBlogList-Body-Content-CardDesc">
+                                    <div className="SiteBlogList-Body-Content-CardDesc-Inner">
+                                        <div>Charts are SkyRocketing</div>
+                                        <div>Explore and test different ideas, themes and styles instantly wheather you want<br/>
+                                                to experiment with your team in a design sprint.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="SiteBlogList-Body-Content-Phase4-Card3">
+                                <div><img src={Images.image_site_img10} /></div>
+                                <div className="SiteBlogList-Body-Content-CardDesc">
+                                    <div className="SiteBlogList-Body-Content-CardDesc-Inner">
+                                        <div>Charts are SkyRocketing</div>
+                                        <div>Explore and test different ideas, themes and styles instantly wheather you want<br/>
+                                                to experiment with your team in a design sprint.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+
                     </div>
-                    
-                    <div>
-                        <div>
-                            <div><img src={Images.image_calculator} /></div>
-                            <div>
-                                <div>Charts are SkyRocketing</div>
-                                <div>Explore and test different ideas, themes and styles instantly wheather you want<br/>
-                                        to experiment with your team in a design sprint.
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <div><img src={Images.image_ipad} /></div>
-                            <div>
-                                <div>Charts are SkyRocketing</div>
-                                <div>Explore and test different ideas, themes and styles instantly wheather you want<br/>
-                                        to experiment with your team in a design sprint.
-                                </div>
-                            </div>
-                        </div>
+                    <div className="SiteBlogList-Body-Section-Button">
+                        <button className="SiteBlogList-Body-Section-Button-RedButton">Load More</button>
                     </div>
 
                 </section>

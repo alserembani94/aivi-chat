@@ -20,18 +20,26 @@ export const Images = {
 
     image_submitted: require('../assets/images/Image-Submitted.svg'),
 
-    image_financial_world: require('../assets/images/Image-Financial-World-With-Aivi.svg'),
-    image_financial_skyrocketing: require('../assets/images/Image-Finance-Are-SkyRocketing.svg'),
-    image_analyst_confirm_breakthrough: require('../assets/images/Image-Analyst-Confirm-BreakThrough.svg'),
+    image_site_img1: require('../assets/images/Image-Site-Img1.svg'),
+    image_site_img2: require('../assets/images/Image-Site-Img2.svg'),
+    image_site_img3: require('../assets/images/Image-Site-Img3.svg'),
+    image_site_img4: require('../assets/images/Image-Site-Img4.svg'),
+    image_site_img5: require('../assets/images/Image-Site-Img5.svg'),
+    image_site_img6: require('../assets/images/Image-Site-Img6.svg'),
+    image_site_img7: require('../assets/images/Image-Site-Img7.svg'),
+    image_site_img8: require('../assets/images/Image-Site-Img8.svg'),
+    image_site_img9: require('../assets/images/Image-Site-Img9.svg'),
+    image_site_img10: require('../assets/images/Image-Site-Img10.svg'),
 
-    image_calculator: require('../assets/images/Image-Calculator.svg'),
-    image_ipad: require('../assets/images/Image-Ipad.svg'),
-    image_finance_world_with_aivi: require('../assets/images/Image-Finance-World-With-Aivi.svg'),
-    image_finance_chart: require('../assets/images/Image-Finance-Chart.svg'),
 
-    image_bottom_article1: require('../assets/images/Image-Bottom-Article-1.svg'),
-    image_bottom_article2: require('../assets/images/Image-Bottom-Article-2.svg'),
-    image_bottom_article3: require('../assets/images/Image-Bottom-Article-3.svg'),
+    image_article_img1: require('../assets/images/Image-Article-Img1.svg'),
+    image_article_img2: require('../assets/images/Image-Article-Img2.svg'),
+    image_article_img3: require('../assets/images/Image-Article-Img3.svg'),
+    image_article_img4: require('../assets/images/Image-Article-Img4.svg'),
+    image_article_img5: require('../assets/images/Image-Article-Img5.svg'),
+
+    image_article_arrow_to_right: require('../assets/images/Image-Article-ArrowToRight.svg'),
+    image_article_vector: require('../assets/images/Image-Article-Vector.svg'),
 
     logo_AIVI: require('../assets/images/Logo-AIVI.svg'),
 
