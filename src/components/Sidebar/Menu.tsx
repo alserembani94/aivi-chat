@@ -46,6 +46,10 @@ const menuNav = [
         path: '/site-blog-article',
         label: 'Site Blog Article',
     },
+    {
+        path: '/contact-us',
+        label: 'Contact Us',
+    },
 ];
 
 const Menu: FC<MenuProps> = ({ visible, toggleVisibility }) => {
