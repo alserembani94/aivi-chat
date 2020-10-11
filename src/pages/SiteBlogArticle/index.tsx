@@ -13,7 +13,7 @@ const SiteBlogArticle: React.FC = () => {
                         <div className="SiteBlogArticle-Body-Content-Header">
                             <div className="SiteBlogArticle-Body-Content-Header-Date">14 August 2020 / FINANCE</div>
                             <div className="SiteBlogArticle-Body-Content-Header-MainHeader">Financial World with Aivi</div>
-                            <div className="SiteBlogArticle-Body-Content-Header-SecondaryHeader">Explore and test differemt ideas, themes and styles instantly whether you want to experiment<br/>
+                            <div className="SiteBlogArticle-Body-Content-Header-SecondaryHeader">Explore and test different ideas, themes and styles instantly whether you want to experiment<br/>
                                 with your team in a design sprint.</div>
                         </div>
                         <div className="SiteBlogArticle-Body-Content-Article1">
