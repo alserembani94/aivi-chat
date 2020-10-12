@@ -22,6 +22,7 @@ import ConfirmRegister from '../pages/Auth/ConfirmRegister';
 import Amplify from 'aws-amplify';
 import awsConfig from '../aws-exports';
 import { useDispatch, useSelector } from 'react-redux';
+import ContactUs from '../pages/ContactUs';
 import { getCurrentAuthenticatedUser, getCurrentSession, getCurrentUserInfo } from '../store/reducers/auth';
 // import {
 //     AuthState,
@@ -100,6 +101,13 @@ const VentasRoute = [
         private: false,
         sidebar: () => <Sidebar />,
         main: () => <SiteBlogArticle />,
+    },
+    {
+        path: '/contact-us',
+        exact: true,
+        private: false,
+        sidebar: () => <Sidebar />,
+        main: () => <ContactUs />,
     },
     {
         path: '*',
