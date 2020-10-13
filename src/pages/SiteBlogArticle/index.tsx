@@ -1,5 +1,6 @@
 import React from 'react';
 import { Images } from '../../utils/Images';
+import '../../styles/SiteBlogArticle.scss';
 
 const SiteBlogArticle: React.FC = () => {
 
