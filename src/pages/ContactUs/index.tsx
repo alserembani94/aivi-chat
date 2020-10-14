@@ -1,5 +1,6 @@
 import React from 'react';
 import { Images } from '../../utils/Images';
+import '../../styles/ContactUs.scss';
 
 const ContactUs: React.FC = () => {
 
