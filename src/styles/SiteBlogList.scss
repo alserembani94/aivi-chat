@@ -22,7 +22,7 @@
 		}
 
 		&-Content {
-			padding: 50px;
+			padding-top: 30px;
 
 			&-CardDesc {
 				box-shadow: 0px 4px 4px rgba(51, 51, 51, 0.04), 0px 4px 16px rgba(51, 51, 51, 0.08);
@@ -42,7 +42,6 @@
 					position: absolute;
 					width: 124px;
 					height: 36px;
-					left: 0;
 					top: 0;
 					border-top-left-radius: 10px;
 					background: #F53945;
@@ -55,7 +54,8 @@
 					}
 				}
 			}
-			&-Phase1 {
+			
+			&-1Cards {
 
 				flex-flow: row wrap;
 				padding: 0;
@@ -74,25 +74,19 @@
 
 				img {
 					height: 196px;
-					width: 548px;
+					width: 1114px;
 					object-fit: cover;
 					border-top-left-radius: 10px;
 					border-top-right-radius: 10px;
 				}
 
 
-				&-Card1 {
-					width: 548px;
-					margin-right: 40px;
-				}
-
-				&-Card2 {
-					width: 548px;
-					
+				&-Card {
+					width: 1114px;
 				}
 			}
 
-			&-Phase2 {
+			&-2Cards {
 
 				flex-flow: row wrap;
 				padding: 0;
@@ -108,41 +102,6 @@
 				display: flex;
 				margin-bottom: 40px;
 
-				img {
-					height: 196px;
-					width: 354px;
-					object-fit: cover;
-					border-top-left-radius: 10px;
-					border-top-right-radius: 10px;
-				}
-
-				&-Card1 {
-					width: 354px;
-					margin-right: 40px;
-				}
-				&-Card2 {
-					width: 354px;
-					margin-right: 40px;
-				}
-				&-Card3 {
-					width: 354px;
-				}
-			}
-			&-Phase3 {
-
-				flex-flow: row wrap;
-				padding: 0;
-				margin: 0;
-				list-style: none;
-				
-				-ms-box-orient: horizontal;
-				display: -webkit-box;
-				display: -moz-box;
-				display: -ms-flexbox;
-				display: -moz-flex;
-				display: -webkit-flex;
-				display: flex;
-				margin-bottom: 40px;
 
 				img {
 					height: 196px;
@@ -153,15 +112,12 @@
 				}
 
 
-				&-Card1 {
-					width: 548px;
-					margin-right: 40px;
-				}
-				&-Card2 {
+				&-Card {
 					width: 548px;
 				}
 			}
-			&-Phase4 {
+
+			&-3Cards {
 
 				flex-flow: row wrap;
 				padding: 0;
@@ -185,16 +141,7 @@
 					border-top-right-radius: 10px;
 				}
 
-
-				&-Card1 {
-					width: 354px;
-					margin-right: 40px;
-				}
-				&-Card2 {
-					width: 354px;
-					margin-right: 40px;
-				}
-				&-Card3 {
+				&-Card {
 					width: 354px;
 				}
 			}
