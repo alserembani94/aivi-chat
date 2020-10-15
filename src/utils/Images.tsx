@@ -31,6 +31,12 @@ export const Images = {
     image_site_img9: require('../assets/images/Image-Site-Img9.svg'),
     image_site_img10: require('../assets/images/Image-Site-Img10.svg'),
 
+    
+    image_home_img1: require('../assets/images/Image-Home-Img1.svg'),
+    image_home_mobile: require('../assets/images/Image-Home-Mobile.png'),
+
+    button_apple_download: require('../assets/images/Button-Apple-Download.svg'),
+    button_android_download: require('../assets/images/Button-Android-Download.svg'),
 
     image_article_img1: require('../assets/images/Image-Article-Img1.svg'),
     image_article_img2: require('../assets/images/Image-Article-Img2.svg'),
@@ -45,6 +51,8 @@ export const Images = {
     icon_google_img: require('../assets/images/Icon-Google-Img.svg'),
 
     logo_AIVI: require('../assets/images/Logo-AIVI.svg'),
+
+    arrow_right: require('../assets/images/arrow-right.svg'),
 
     emoji_malaysia: require('../assets/images/malaysia-emoji.png'),
 }

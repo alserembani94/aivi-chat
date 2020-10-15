@@ -1,0 +1,207 @@
+.Home{
+    &-Body{ 
+        width: calc(100% - 50px);
+        margin-top: 150px;
+        &-Content{
+            padding: 100px;
+            &-Title {
+				margin-bottom: 50px;
+				font-weight: 700;
+				font-style: normal;
+				font-size:48px;
+            }
+            p{
+                margin-top: 30px;
+            }
+
+			&-RelatedArticles {
+                width: 90%;
+				flex-flow: row wrap;
+				padding: 0;
+				margin-left: auto;
+				margin-right: auto;
+				list-style: none;
+				
+				-ms-box-orient: horizontal;
+				display: -webkit-box;
+				display: -moz-box;
+				display: -ms-flexbox;
+				display: -moz-flex;
+				display: -webkit-flex;
+				display: flex;
+				margin-bottom: 40px;
+
+				&-CardImage {
+					height: 196px;
+					width: 354px;
+					object-fit: cover;
+					margin-bottom: 30px;
+					img {
+						border-radius: 10px;
+					}
+				}
+
+				&-Card1 {
+					width: 354px;
+					margin-right: 40px;
+				}
+				&-Card2 {
+					width: 354px;
+					margin-right: 40px;
+				}
+				&-Card3 {
+					width: 354px;
+				}
+			}
+        }
+    }
+    &-Headline{
+        
+        
+        .content{
+            padding: 10px 50px;
+            // position: absolute;
+            
+            h1{
+                font-size: 2em;
+                font-weight: 700;
+            }
+            .red{
+                color: #F53945;
+                font-size: 1em;
+                font-weight: 700;
+            }
+            button{
+                font-size: small;
+                padding: 5px 30px;
+            }
+        }
+
+        &-Image{
+            text-align: right;
+        }
+        
+        img{
+            width: 600px;
+            float: right;
+            -webkit-filter: blur(5px); /* Safari 6.0 - 9.0 */
+            filter: blur(5px);
+            opacity: 0.1;
+        }
+        
+    }
+
+    &-Content{
+        .container{
+            margin: 100px 150px;
+            .row{
+                width: 100%;
+                .col-3{
+                    max-width: 23%;
+                }
+                .box{
+                    background: #ffffff;
+                    margin: 1%;
+                    padding: 35px;
+                    height: 240px;
+                    width: 100px;
+                    /* Card Shadow */
+                    box-shadow: 0px 4px 4px rgba(51, 51, 51, 0.04), 
+                                0px 4px 16px rgba(51, 51, 51, 0.08); 
+                }
+                h5{
+                    font-weight: 600;
+                    font-size: 23px;
+                }
+            }
+
+        }
+        &-Description{
+            padding: 75px;
+            h1{
+                font-weight: 600;
+            }
+        }
+        &-Video{
+            width: 440px;
+            height: 240px;
+            padding: 15px;
+            background-color: #C4C4C4;
+            float: right;
+            
+            &-Description{
+                padding: 15px 50px 15px 15px;
+                h1{
+                    font-weight: 600;
+                }
+                button{
+                    font-size: small;
+                    padding: 5px 30px;
+                }
+            }
+        }
+
+        &-Download{
+            margin-top: 100px;
+            height: 740px;
+            // background-color: aqua;
+            &-Title{
+                text-align: center;
+                padding: 0 30%;
+                h1{
+                    font-size: 2em;
+                    font-weight: 700;
+                    
+                }
+            }
+            &-Details{
+                &-Content{
+                    margin-top: 240px;
+                    margin-left: 5%;
+                    background: linear-gradient(90.54deg, #FB3C41 0%, #DD0742 100%);;
+                    width: 90%;
+                    border-radius: 20px;
+                    height: 450px;
+                    position: absolute;
+                    z-index: -1;
+                }
+                
+                
+                
+                &-Image{
+                    padding-right: 40px;
+                    position: relative;
+                    margin-top: -55px;
+                    text-align: right;
+                    img{
+                        width: 900px;
+                        float: right;
+                    }
+
+                }
+                .content{
+                    padding: 140px 75px;
+                    text-align: left;
+                    h1{
+                        font-size: 2em;
+                        font-weight: 700;
+                        color: #ffffff;
+                    }
+                    p{
+                        color: #ffffff;
+                    }
+                    .download-button{
+                        width: 50%;
+                        text-align: left;
+                        img{
+                            margin-right: 30px;
+                            width: 30%;
+                            float: left;
+                        }
+                    }
+                }
+            }
+        }
+        
+    }
+}

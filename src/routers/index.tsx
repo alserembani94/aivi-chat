@@ -17,6 +17,7 @@ import SignIn from '../pages/Auth/SignIn';
 import Register from '../pages/Auth/Register';
 import MainMenu from '../pages/MainMenu';
 import ConfirmRegister from '../pages/Auth/ConfirmRegister';
+import Home from '../pages/Home';
 
 // Importing Amplify for Authentication with Cognito
 import Amplify from 'aws-amplify';
@@ -52,6 +53,13 @@ const VentasRoute = [
         private: false,
         sidebar: () => <Sidebar />,
         main: () => <ConfirmRegister />,
+    },
+    {
+        path: '/',
+        exact: true,
+        private: false,
+        sidebar: () => <Sidebar />,
+        main: () => <Home />,
     },
     {
         path: '/main-menu',
