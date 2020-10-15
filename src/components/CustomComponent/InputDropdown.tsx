@@ -1,3 +1,4 @@
+import { input } from 'aws-amplify';
 import React, { FC, useEffect, useState } from 'react';
 import {
     IoIosArrowDown,
@@ -99,7 +100,7 @@ const InputDropdown: FC<InputDropdownProps> = ({slot, inputProps, handleInputCha
     // };
 
     return (
-        <div className={inputProps.inputClass ? inputProps.inputClass : "col-12" }>
+        <div className={inputProps.inputClass ? inputProps.inputClass : "col-12"}>
             <div className="InputDropdown-Wrapper" ref={dropdownElement}>
                 <div
                     className="InputBox-Container InputDropdown-Container"

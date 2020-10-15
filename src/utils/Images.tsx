@@ -17,6 +17,7 @@ export const Images = {
     icon_google_small: require('../assets/images/Icon-Google-Small.svg'),
 
     icon_maybank: require('../assets/images/logo-Maybank.svg'),
+    icon_RHBCard: require('../assets/images/RHB-Card.svg'),
 
     image_submitted: require('../assets/images/Image-Submitted.svg'),
 

@@ -7,16 +7,17 @@ type slotInputType = {
     inputLabel: string,
     inputAutocomplete?: string,
     remarks?: string[],
-    inputClass?: string;
+    inputClass?: string
 };
 
 interface InputBoxProps {
+    inputClass?: String;
     value: string | number;
     inputProps: slotInputType;
     handleInputChange: (value: string, stateName: string) => void;
 }
 
-const InputBox: FC<InputBoxProps> = ({value, inputProps, handleInputChange}) => {
+const InputBox: FC<InputBoxProps> = ({inputClass, value, inputProps, handleInputChange}) => {
     const [isFocused, setFocused] = useState(false);
     const handleInputFocus = (e: React.FocusEvent) => {
         setFocused(() => true);
@@ -29,7 +30,7 @@ const InputBox: FC<InputBoxProps> = ({value, inputProps, handleInputChange}) => 
     };
 
     return (
-        <div className={inputProps.inputClass ? inputProps.inputClass : "col-12" }>
+        <div className={inputProps.inputClass ? inputProps.inputClass: "col-12"}>
             <div
                 className="InputBox-Container"
             >
