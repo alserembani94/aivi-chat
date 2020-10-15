@@ -34,7 +34,7 @@ const personalDetailsFormat: slotInputItemType[] = [
         inputName: 'salutation',
         inputState: 'salutation',
         inputType: 'text',
-        inputLabel: 'Saluation',
+        inputLabel: 'Salutation',
         inputClass: 'col-md-3',
     },
     {

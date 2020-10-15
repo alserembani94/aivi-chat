@@ -1,6 +1,6 @@
 .PersonalLoanApplication {
 
-    &-Body {
+    &-Body { 
         &-Content {
             width: 100%;
             overflow: auto;
@@ -24,6 +24,53 @@
                 right: 60px;
                 z-index: 1000;
             }
+        }
+    }
+}
+
+//FOR THE PILL TABS IN FINANCIAL REFERENCE FORM
+.FinancialReference {
+    .nav {
+        align-items: center;
+        justify-content: center;
+    }
+
+    .nav-item {
+        min-width: 205px;
+        min-height: 35px;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    #left-tabs-example-tab-first {
+        border-radius: 15px 0 0 15px;
+    }
+
+    #left-tabs-example-tab-second {
+        border-radius: 0 15px 15px 0;
+    }
+
+    .nav-link.active {
+        background-color: #9BA3B6 !important;
+        color: white;
+    }
+
+    .nav-link {
+        color: black;
+        background-color: #EBEEF5
+        ;
+    }
+
+    &-AddRef {
+        width: 100%;
+        text-align: center;
+        margin-top: 15px;
+        &-Button {
+            width: 60px;
+            height: 60px;
+            border: 1px solid #707C97;
+            border-radius: 10px;
+            border-style: dashed;
         }
     }
 }

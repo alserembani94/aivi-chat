@@ -120,6 +120,10 @@ type FinancialReferenceDetailsType = {
     financingAmount: string,
     outstandingBalance: string,
     monthlyPayment: string,
+    industry: string, 
+    level: string, 
+    jobTitle: string,
+    income: string
 };
 
 const PersonalLoanApplication: FC = () => {
@@ -274,6 +278,10 @@ const PersonalLoanApplication: FC = () => {
         financingAmount: '',
         outstandingBalance: '',
         monthlyPayment: '',
+        industry: '', 
+        level: '', 
+        jobTitle: '',
+        income: ''
     });
 
     const updateFinancialReferenceDetails = (updateFinancialReferenceDetails: FinancialReferenceDetailsType) => {
@@ -363,8 +371,16 @@ const PersonalLoanApplication: FC = () => {
         },
     ];
 
+    const [enabledTab, setEnabledTab] = useState([true, false, false]);
+
     const handleChangeTab = (selectedTab: string) => {
         setCurrentTab(() => { return selectedTab });
+    }
+
+    const handleProceedTab = (updatedEnabledTab: boolean[] | undefined, nextActiveTab: string) => {
+        // setTabMenuList(() => { return updatedOptionList });
+        setEnabledTab(() => { return updatedEnabledTab as boolean[] });
+        handleChangeTab(nextActiveTab);
     }
 
     return (
@@ -389,11 +405,11 @@ const PersonalLoanApplication: FC = () => {
                                 currentTab={currentTab}
                                 updateTab={handleChangeTab}
                                 optionList={tabMenuList}
+                                progressStrict={true}
+                                updateStrictTab={handleProceedTab}
+                                enabledTab={enabledTab}
                             />
                         </div>
-                        <button className="PersonalLoanApplication-Body-Content-Next" >
-                            <img src={Images.icon_arrow_right} alt="icon-arrow-right" />
-                        </button>
                     </div>
                 </section>
             </main>
