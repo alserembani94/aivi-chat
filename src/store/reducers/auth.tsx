@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { actionIcon } from 'aws-amplify';
 import { authenticationBegan } from '../authAction';
 
 const slice = createSlice({
