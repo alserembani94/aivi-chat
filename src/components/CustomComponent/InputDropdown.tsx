@@ -1,3 +1,4 @@
+import { input } from 'aws-amplify';
 import React, { FC, useEffect, useState } from 'react';
 import {
     IoIosArrowDown,
@@ -17,6 +18,7 @@ type slotInputType = {
     inputState: string,
     inputType: string,
     inputLabel: string,
+    inputClass?: string,
     // optionList?: InputOptionType[];
     dropdownOption?: {
         allowInput: boolean;
@@ -99,73 +101,75 @@ const InputDropdown: FC<InputDropdownProps> = ({slot, inputProps, handleInputCha
     // };
 
     return (
-        <div className="InputDropdown-Wrapper" ref={dropdownElement}>
-            <div
-                className="InputBox-Container InputDropdown-Container"
-            >
+        <div className={inputProps.inputClass ? inputProps.inputClass : "col-12"}>
+            <div className="InputDropdown-Wrapper" ref={dropdownElement}>
                 <div
-                    className="InputDropdown-Thumb"
-                    onClick={toggleDropdown}
+                    className="InputBox-Container InputDropdown-Container"
                 >
-                    <p className="InputBox-Label">{inputProps.inputLabel}</p>
-                    <div className="InputBox-InputArea">
-                        {
-                            inputProps.inputName === 'amount' && <p className="InputBox-Currency">RM</p>
-                        }
-                        <input
-                            type={inputProps.inputType}
-                            readOnly={!inputProps.dropdownOption?.allowInput}
-                            onFocus={handleInputFocus}
-                            value={slot[inputProps.inputState]}
-                            onChange={({ currentTarget: {value} }) => handleInputChange(value, inputProps.inputName)}
-                            placeholder={inputProps.dropdownOption?.allowInput ? 'Select from dropdown, or type your own': 'Select from dropdown'}
-                        />
-                    </div>
-                </div>
-                <div className="InputDropdown-Action">
-                    <button
-                        className="InputDropdown-Button Button"
-                        onClick={()=> console.log()}
-                    >
-                        <IconContext.Provider value={{ className: 'Icon Icon-Dark Icon-Close' }} >
-                            <IoIosClose />
-                        </IconContext.Provider>
-                    </button>
                     <div
-                        className="InputDropdown-Button Button"
+                        className="InputDropdown-Thumb"
                         onClick={toggleDropdown}
                     >
-                        <IconContext.Provider value={{ className: 'Icon Icon-Dark Icon-Down' }} >
-                            <IoIosArrowDown />
-                        </IconContext.Provider>
+                        <p className="InputBox-Label">{inputProps.inputLabel}</p>
+                        <div className="InputBox-InputArea">
+                            {
+                                inputProps.inputName === 'amount' && <p className="InputBox-Currency">RM</p>
+                            }
+                            <input
+                                type={inputProps.inputType}
+                                readOnly={!inputProps.dropdownOption?.allowInput}
+                                onFocus={handleInputFocus}
+                                value={slot[inputProps.inputState]}
+                                onChange={({ currentTarget: {value} }) => handleInputChange(value, inputProps.inputName)}
+                                placeholder={inputProps.dropdownOption?.allowInput ? 'Select from dropdown, or type your own': 'Select from dropdown'}
+                            />
+                        </div>
+                    </div>
+                    <div className="InputDropdown-Action">
+                        <button
+                            className="InputDropdown-Button Button"
+                            onClick={()=> console.log()}
+                        >
+                            <IconContext.Provider value={{ className: 'Icon Icon-Dark Icon-Close' }} >
+                                <IoIosClose />
+                            </IconContext.Provider>
+                        </button>
+                        <div
+                            className="InputDropdown-Button Button"
+                            onClick={toggleDropdown}
+                        >
+                            <IconContext.Provider value={{ className: 'Icon Icon-Dark Icon-Down' }} >
+                                <IoIosArrowDown />
+                            </IconContext.Provider>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div
-                className="InputDropdown-List"
-                data-show={isDropdown}
-            >
-                <ul>
-                    {
-                        inputProps.dropdownOption && inputProps.dropdownOption.optionList.length !== 0
-                        ? inputProps.dropdownOption.optionList.map((optionItem, index) => (
-                            <li
-                                key={index}
-                                onClick={() => handleChooseOption(optionItem.value)}
-                            >
-                                {optionItem.label}
-                            </li>
-                        ))
-                        : (
-                            <li
-                                className="InputDropdown-NoData"
-                            >
-                                No item to display
-                            </li>
-                        )
-                        
-                    }
-                </ul>
+                <div
+                    className="InputDropdown-List"
+                    data-show={isDropdown}
+                >
+                    <ul>
+                        {
+                            inputProps.dropdownOption && inputProps.dropdownOption.optionList.length !== 0
+                            ? inputProps.dropdownOption.optionList.map((optionItem, index) => (
+                                <li
+                                    key={index}
+                                    onClick={() => handleChooseOption(optionItem.value)}
+                                >
+                                    {optionItem.label}
+                                </li>
+                            ))
+                            : (
+                                <li
+                                    className="InputDropdown-NoData"
+                                >
+                                    No item to display
+                                </li>
+                            )
+                            
+                        }
+                    </ul>
+                </div>
             </div>
         </div>
     );

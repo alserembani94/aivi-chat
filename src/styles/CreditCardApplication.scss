@@ -1,0 +1,18 @@
+.CreditCardApplication {
+    &-Body { 
+        &-Content {
+            width: 100%;
+            overflow: auto;
+            &-Card {
+                &-Details {
+                    font-size: 0.9rem;
+                    padding-top: 10px;
+                }
+            }
+            &-Forms {
+                width: 100%;
+                padding-top: 20px;
+            }
+        }
+    }
+}

@@ -17,6 +17,7 @@ import SignIn from '../pages/Auth/SignIn';
 import Register from '../pages/Auth/Register';
 import MainMenu from '../pages/MainMenu';
 import ConfirmRegister from '../pages/Auth/ConfirmRegister';
+import CreditCardApplication from '../components/Leftbox/CreditCardApplication/CreditCardApplication';
 
 // Importing Amplify for Authentication with Cognito
 import Amplify from 'aws-amplify';
@@ -73,6 +74,13 @@ const VentasRoute = [
         private: true,
         sidebar: () => <Sidebar />,
         main: () => <CreditCardResult />,
+    },
+    {
+        path: '/credit-card-application',
+        exact: false,
+        private: false,
+        sidebar: () => <Sidebar />,
+        main: () => <CreditCardApplication />,
     },
     {
         path: '/loan-result',
