@@ -405,7 +405,7 @@ const PersonalLoanApplication: FC = () => {
                                 currentTab={currentTab}
                                 updateTab={handleChangeTab}
                                 optionList={tabMenuList}
-                                progressStrict={true}
+                                progressStrict={false}
                                 updateStrictTab={handleProceedTab}
                                 enabledTab={enabledTab}
                             />

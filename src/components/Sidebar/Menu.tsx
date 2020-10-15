@@ -22,6 +22,10 @@ const menuNav = [
         path: '/main-menu',
         label: 'Main Menu',
     },
+    {
+        path: '/personal-loan-application',
+        label: 'Personal Loan Application',
+    },
     // {
     //     path: '/smart-assistant',
     //     label: 'Smart Assistant',
