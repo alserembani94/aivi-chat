@@ -257,9 +257,9 @@ button:focus {
       transition: box-shadow 0.3s ease-in-out;
       border-radius: 4px;
       position: relative;
-      &:last-child {
-        margin-bottom: 0;
-      }
+      // &:last-child {
+      //   margin-bottom: 0;
+      // }
       input {
         font-size: 1rem;
         width: 100%;
