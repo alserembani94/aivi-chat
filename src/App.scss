@@ -436,14 +436,14 @@ input[type=number] {
 .AIVI {
   &-Page {
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     background-color: $base-background;
     display: flex;
     flex-flow: row wrap;
   }
   
   &-Sidebar {
-    height: 100%;
+    min-height: 100%;
     width: $sidebar-width;
     background-color: $brand-fill;
     position: sticky;
@@ -2354,6 +2354,36 @@ input[type=number] {
             border-bottom: none;
           }
         }
+      }
+    }
+  }
+}
+
+.Footer{
+  &-Wrapper{ 
+    background-color: #1A2127;
+    width: 100%;
+  }
+  &-Content1{
+    margin: 40px;
+    padding: 40px 50px 20px 50px ;
+    background: #27313B;
+    border-radius: 10px;
+    p{
+      color: #FFFFFF;
+    }
+  }
+  &-Content2{
+    margin: 60px 50px 50px 0px;
+    padding: 40px 50px 20px 10px ;
+    border-radius: 10px;
+    .logo{
+      width: 150px;
+    }
+    Button{
+      margin-top: 20px;
+      .download{
+        width: 140px;
       }
     }
   }

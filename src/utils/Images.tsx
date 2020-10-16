@@ -16,6 +16,13 @@ export const Images = {
     icon_facebook_small: require('../assets/images/Icon-Facebook-Small.png'),
     icon_google_small: require('../assets/images/Icon-Google-Small.svg'),
 
+    icon_facebook_footer: require('../assets/images/Icon-Facebook.svg'),
+    icon_messanger_footer: require('../assets/images/Icon-Messanger.svg'),
+    icon_youtube_footer: require('../assets/images/Icon-YouTube.svg'),
+    icon_google_footer: require('../assets/images/Icon-Google.svg'),
+    icon_insta_footer: require('../assets/images/Icon-Instagram (filled).svg'),
+    icon_linkedin_footer: require('../assets/images/Icon-Linked In.svg'),
+
     icon_maybank: require('../assets/images/logo-Maybank.svg'),
     icon_RHBCard: require('../assets/images/RHB-Card.svg'),
 
@@ -38,6 +45,8 @@ export const Images = {
 
     button_apple_download: require('../assets/images/Button-Apple-Download.svg'),
     button_android_download: require('../assets/images/Button-Android-Download.svg'),
+    button_apple_download_white: require('../assets/images/Button-Apple-Download-White.svg'),
+    button_android_download_white: require('../assets/images/Button-Android-Download-White.svg'),
 
     image_article_img1: require('../assets/images/Image-Article-Img1.svg'),
     image_article_img2: require('../assets/images/Image-Article-Img2.svg'),
@@ -52,6 +61,7 @@ export const Images = {
     icon_google_img: require('../assets/images/Icon-Google-Img.svg'),
 
     logo_AIVI: require('../assets/images/Logo-AIVI.svg'),
+    logo_AIVI_white: require('../assets/images/Logo-AIVI-White.svg'),
 
     arrow_right: require('../assets/images/arrow-right.svg'),
 

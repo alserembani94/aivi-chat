@@ -1,7 +1,7 @@
 import React from 'react';
 import { Images } from '../../utils/Images';
 import '../../styles/Home.scss';
-
+import Footer from '../../components/Footer';
 
 const Landing: React.FC = () => {
     return(
@@ -188,6 +188,8 @@ const Landing: React.FC = () => {
                 </div>
             </div>
           </div>
+          
+          <Footer/>  
         </div>
       </React.Fragment>
     );

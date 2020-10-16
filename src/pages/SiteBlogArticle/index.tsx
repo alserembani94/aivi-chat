@@ -1,6 +1,7 @@
 import React from 'react';
 import { Images } from '../../utils/Images';
 import '../../styles/SiteBlogArticle.scss';
+import Footer from '../../components/Footer';
 
 const SiteBlogArticle: React.FC = () => {
 
@@ -64,7 +65,7 @@ const SiteBlogArticle: React.FC = () => {
                             </div>
                         </div>
                         <div><hr className="SiteBlogArticle-Body-Content-Divider"/></div>
-                        <div>
+                        <div className="SiteBlogArticle-Related-Articles">
                             <div className="SiteBlogArticle-Body-Content-Title">Related Articles</div>
                             <div className="SiteBlogArticle-Body-Content-RelatedArticles">
                                 <div className="SiteBlogArticle-Body-Content-RelatedArticles-Card1">
@@ -110,7 +111,7 @@ const SiteBlogArticle: React.FC = () => {
                     </div>
 
                 </section>
-                        
+                   <Footer/>     
             </main>
         </React.Fragment>
     );
