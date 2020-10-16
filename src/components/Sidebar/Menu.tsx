@@ -13,6 +13,67 @@ interface MenuProps {
     toggleVisibility: () => void;
 }
 
+const accountNav = [
+    {
+        path: '/',
+        label: 'Profile',
+    },
+    {
+        path: '/',
+        label: 'Notification',
+    },
+];
+const legalNav = [
+    {
+        path: '/',
+        label: 'Privacy',
+    },
+    {
+        path: '/',
+        label: 'Security',
+    },
+    {
+        path: '/',
+        label: 'Terms of Use',
+    },
+];
+const servicesNav = [
+    {
+        path: '/credit-card-application',
+        label: 'Credit Card',
+    },
+    {
+        path: '/personal-loan-application',
+        label: 'Personal Loans',
+    },
+    {
+        path: '/',
+        label: 'Balance Transfer',
+    },
+    {
+        path: '/',
+        label: 'Cash From Card',
+    },
+    {
+        path: '/',
+        label: 'Social Budget App',
+    },
+];
+const blogNav = [
+    {
+        path: '/site-blog-article',
+        label: 'Articles',
+    },
+    {
+        path: '/',
+        label: 'FAQ',
+    },
+    {
+        path: '/contact-us',
+        label: 'Contact Us',
+    },
+];
+
 const menuNav = [
     {
         path: '/',
@@ -119,6 +180,64 @@ const Menu: FC<MenuProps> = ({ visible, toggleVisibility }) => {
                                 </>
                             )
                         }
+                    </div>
+                </div>
+                <div className="container">
+                    <div className="Menu-Nav-Row row">
+                        <div className="Menu-Nav-ColNoBorder col-4 border-right">
+                            <h1 className="Menu-Nav-Title">Account</h1>
+                            <div className="Menu-Nav-Drawer">
+                                {
+                                    accountNav.map((accountItem, index) => (
+                                        <button
+                                            key={index}
+                                            className="Menu-Nav-Button"
+                                            onClick={() => handleNavigation(accountItem.path)}
+                                        >{accountItem.label}</button>
+                                    ))
+                                }
+                            </div>
+                            <h1 className="Menu-Nav-Title">Legal</h1>
+                            <div className="Menu-Nav-Drawer">
+                            {
+                                legalNav.map((legalItem, index) => (
+                                    <button
+                                        key={index}
+                                        className="Menu-Nav-Button"
+                                        onClick={() => handleNavigation(legalItem.path)}
+                                    >{legalItem.label}</button>
+                                ))
+                            }
+                            </div>
+                        </div>
+                        <div className="Menu-Nav-ColBorder col-4 border-right">
+                            <h1 className="Menu-Nav-Title">Services</h1>
+                            <div className="Menu-Nav-Drawer">
+                            {
+                                servicesNav.map((servicesItem, index) => (
+                                    <button
+                                        key={index}
+                                        className="Menu-Nav-Button"
+                                        onClick={() => handleNavigation(servicesItem.path)}
+                                    >{servicesItem.label}</button>
+                                ))
+                            }
+                            </div>
+                        </div>
+                        <div className="Menu-Nav-ColBorder col-4">
+                            <h1 className="Menu-Nav-Title">Blog</h1>
+                            <div className="Menu-Nav-Drawer">
+                            {
+                                blogNav.map((blogItem, index) => (
+                                    <button
+                                        key={index}
+                                        className="Menu-Nav-Button"
+                                        onClick={() => handleNavigation(blogItem.path)}
+                                    >{blogItem.label}</button>
+                                ))
+                            }
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div className="Menu-Drawer">

@@ -541,6 +541,44 @@ input[type=number] {
       object-position: left;
     }
   }
+  &-Nav{
+    &-Row{
+      padding-top: 20px !important;
+    }
+    &-ColNoBorder{
+      margin-left: -15px !important;
+      
+    }
+    &-ColBorder{
+      padding-left: 40px !important;
+    }
+    &-Title{
+      font-size: 48px;
+      font-weight: 600;
+    }
+    &-Drawer {
+      display: flex;
+      flex-flow: column wrap;
+      padding: 20px 0px;
+    }
+    &-Button {
+      font-size: 1.2rem;
+      width: fit-content;
+      text-align: left;
+      position: relative;
+      left: 0px;
+      color: black;
+      font-weight: 400;
+      transition: left color font-weight 0.15s ease-in-out;
+      padding: 10px 0px;
+      &:hover {
+        left: 5px;
+        color: $brand-fill;
+        font-weight: 700;
+        transition: left font-weight 0.15s ease-in-out;
+      }
+    }
+  }
   &-Drawer {
     display: flex;
     flex-flow: column wrap;
