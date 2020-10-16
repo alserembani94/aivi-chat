@@ -1,0 +1,147 @@
+.Legal {
+    &-Body {
+        width: calc(100% - 50px);
+        padding: 50px 0px 100px 0px;
+        background: white;
+        &-Content {
+            &-Header {
+                text-align: center;
+                font-style: normal;
+                font-weight: bold;
+                font-size: 48px;
+                color: #111111;
+            }
+            &-Tabs {
+                position: relative;
+                &-Bg {
+                    background-color: #FAFAFA;
+                    content: " ";
+                    height: 30%;
+                    width: 100%;
+                    display: block;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                }
+                .TabBar-Header {
+                    justify-content: center;
+                }
+            }
+        }
+    }
+}
+
+//CSS for Privacy Tab Contents
+.Privacy {
+    &-Body {
+        padding: 0px 30px;
+        &-Content {
+            &-Header {
+                text-align: center;
+                &-Main {
+                    font-style: normal;
+                    font-weight: bold;
+                    font-size: 60px;
+                    line-height: 70px;
+                    color: #111111;
+                }
+                &-Sub {
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 16px;
+                    line-height: 24px;
+                }
+            }
+
+            &-Objectives {
+                &-Card {
+                    background-color: white;
+                    box-shadow: 0px 4px 4px rgba(51, 51, 51, 0.04), 0px 4px 16px rgba(51, 51, 51, 0.08);
+                    padding: 35px 20px;
+                    &-Icon {
+                        div {
+                            width: 69px;
+                            height: 69px;
+                            border-radius: 50%;
+                            background: #F7F7FA;
+                            margin-bottom: 10px;
+                        }
+                    }
+                    &-Title {
+                        font-style: normal;
+                        font-weight: 600;
+                        font-size: 23px;
+                        line-height: 24px;
+                    }
+                    &-Content {
+                        font-style: normal;
+                        font-weight: normal;
+                        font-size: 16px;
+                        line-height: 24px;
+                    }
+                }
+            }
+
+            &-LargeDetails {
+                &-Text {
+                    &-Header {
+                        padding: 45px 30px 15px 30px;
+                        font-style: normal;
+                        font-weight: 600;
+                        font-size: 48px;
+                        line-height: 50px;
+                    }
+                    &-Sub {
+                        padding: 0 30px;
+                        font-style: normal;
+                        font-weight: normal;
+                        font-size: 16px;
+                        line-height: 24px;
+                    }
+                }
+                &-Icon {
+                    justify-content: center;
+                    align-items: center;
+                    div {
+                        width: 359px;
+                        height: 359px;
+                        border-radius: 50%;
+                        background: #F7F7FA;
+                        margin-bottom: 10px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+//CSS for Terms Tab Contents
+.Terms {
+    &-Body {
+        &-Content {
+            &-Row {
+                padding: 0 10rem;
+                @media only screen and (max-width: 768px) {
+                    padding: 0;
+                }
+            }
+            &-Header {
+                &-Main {
+                    font-style: normal;
+                    font-weight: bold;
+                    font-size: 48px;
+                    line-height: 58px;
+                    color: #111111;
+                }
+            }
+            &-Details {
+                &-Main {
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 18px;
+                    line-height: 32px;  
+                }
+            }
+        }
+    }
+}
