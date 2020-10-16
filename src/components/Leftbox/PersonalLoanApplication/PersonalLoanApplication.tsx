@@ -10,6 +10,8 @@ import WorkDetails from './WorkDetails';
 import EmergencyContactDetails from './EmergencyContactDetails';
 import OtherDetails from './OtherDetails';
 import FinancialReference from './FinancialReference';
+import Declaration from '../CreditCardApplication/Declaration';
+import Checklist from '../CreditCardApplication/Checklist';
 import '../../../styles/PersonalLoanApplication.scss';
 import { Images } from '../../../utils/Images';
 
@@ -125,6 +127,15 @@ type FinancialReferenceDetailsType = {
     jobTitle: string,
     income: string
 };
+
+type ChecklistItemType = {
+    checked: boolean,
+    name: string,
+    amount?: string,
+    remarks?: string[],
+};
+
+type ChecklistType = ChecklistItemType[];
 
 const PersonalLoanApplication: FC = () => {
     // AVAILABLE BANKS CONFIGURATION
@@ -288,6 +299,54 @@ const PersonalLoanApplication: FC = () => {
         setFinancialReferenceDetails(() => { return updateFinancialReferenceDetails; });
     }
 
+    // CHECKLIST CONFIGURATION
+    const [checklist, setChecklist] = useState<ChecklistType>([
+        {
+            checked: false,
+            name: 'Copy of MyKad/NRIC (both sides)',
+            remarks: ['readonly'],
+        },
+        {
+            checked: false,
+            name: 'Copy of Passport',
+            remarks: ['readonly'],
+        },
+        {
+            checked: false,
+            name: 'Latest 1-month salary OR latest EPF statement OR latest BE form with official tax receipt',
+            remarks: ['readonly'],
+        },
+        {
+            checked: false,
+            name: 'Copy of Degree Certificate / Professional Qualification and employment letter OR 1-month salary slip',
+            remarks: ['readonly'],
+        },
+        {
+            checked: false,
+            name: 'Letter of Employment confirming work duration Malaysia',
+            remarks: ['readonly'],
+        },
+        {
+            checked: false,
+            name: 'Visa Work Permit',
+            remarks: ['readonly'],
+        },
+        {
+            checked: false,
+            name: 'Must hold Maybank account',
+            remarks: ['readonly'],
+        },
+        {
+            checked: false,
+            name: 'Any evidence of retirement income (if applicable): EPF, Savings, FD, ASB, Tenacy Agreement',
+            remarks: ['readonly'],
+        },
+    ]);
+
+    const updateChecklist = (updatedChecklist: ChecklistType) => {
+        setChecklist(() => { return updatedChecklist });
+    }
+
     // TAB CONFIGURATION
     const [currentTab, setCurrentTab] = useState('Personal');
     const tabMenuList = [
@@ -350,23 +409,14 @@ const PersonalLoanApplication: FC = () => {
         {
             label: 'Declaration',
             name: 'Declaration',
-            content: <AvailableCard
-                        cardOwnership={cardOwnership}
-                        updateCardOwnership={toggleExistingCard}
-                        selectedOptions={selectedBanks}
-                        updateSelectedOptions={handleSelectedBanks}
-                        optionLimit={banksLimit}
-                    />,
+            content: <Declaration />,
         },
         {
             label: 'Checklist',
             name: 'Checklist',
-            content: <AvailableCard
-                        cardOwnership={cardOwnership}
-                        updateCardOwnership={toggleExistingCard}
-                        selectedOptions={selectedBanks}
-                        updateSelectedOptions={handleSelectedBanks}
-                        optionLimit={banksLimit}
+            content: <Checklist
+                        checklistList={checklist}
+                        updateChecklist={updateChecklist}
                     />,
         },
     ];
