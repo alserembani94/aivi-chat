@@ -64,6 +64,7 @@ export const Images = {
     logo_AIVI_white: require('../assets/images/Logo-AIVI-White.svg'),
 
     arrow_right: require('../assets/images/arrow-right.svg'),
+    arrow_right_white: require('../assets/images/Icon-Arrow.svg'),
 
     emoji_malaysia: require('../assets/images/malaysia-emoji.png'),
 }

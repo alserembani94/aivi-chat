@@ -49,7 +49,6 @@ const personalDetailsFormat: slotInputItemType[] = [
         inputState: 'nameOnIdentificationCard',
         inputType: 'text',
         inputLabel: 'Name On Card',
-        inputClass: 'col-md-9',
     },
     {
         inputName: 'nationality',
@@ -174,13 +173,13 @@ const spouseDetailsFormat: slotInputItemType[] = [
     {
         inputName: 'spouseWorkStatus',
         inputState: 'spouseWorkStatus',
-        inputType: 'number',
+        inputType: 'text',
         inputLabel: 'Work Status',
     },
     {
         inputName: 'spouseCompanyName',
         inputState: 'spouseCompanyName',
-        inputType: 'number',
+        inputType: 'text',
         inputLabel: 'Company Name of Spouse',
     }
 ];
