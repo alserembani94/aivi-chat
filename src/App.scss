@@ -2060,7 +2060,7 @@ input[type=number] {
     font-weight: 300;
     // background: $brand-fill-test;
     padding: 11px 15px;
-    width: 40%;
+    flex-grow: 1;
   }
   &-Amount {
     border: 1px solid $text-light;

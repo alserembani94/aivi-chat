@@ -20,7 +20,7 @@ interface ChecklistBoxProps {
 
 interface MultiChecklistBoxProps {
     checklistList: ChecklistType;
-    updateChecklistList: (udpatedChecklistList : ChecklistType) => void;
+    updateChecklistList: (updatedChecklistList : ChecklistType) => void;
 };
 
 const ChecklistBox: FC<ChecklistBoxProps> = ({ checklistItem, updateChecklistItem}) => {
