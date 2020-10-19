@@ -67,4 +67,10 @@ export const Images = {
     arrow_right_white: require('../assets/images/Icon-Arrow.svg'),
 
     emoji_malaysia: require('../assets/images/malaysia-emoji.png'),
+
+    socialLogin_insta: require('../assets/images/SocialLogin-Insta.svg'),
+    socialLogin_fb: require('../assets/images/SocialLogin-Facebook.svg'),
+    socialLogin_googleplus: require('../assets/images/SocialLogin-GooglePlus.svg'),
+    socialLogin_linkedin: require('../assets/images/SocialLogin-Linkedin.svg'),
+
 }

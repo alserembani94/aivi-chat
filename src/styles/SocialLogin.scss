@@ -1,0 +1,125 @@
+@import '../App.scss';
+
+.SocialLogin {
+    &-Body {
+        flex-grow: 1;
+        display: flex;
+        flex-flow: column wrap;
+        align-items: center;
+        justify-content: center;
+    }
+    &-Avatar {
+        position: relative;
+        z-index: 5;
+        width: $avatar-dimension;
+        height: $avatar-dimension;
+        border-radius: 50%;
+        // background-color: #bbb;
+        #fb {
+            position: absolute;
+            left: -3.938rem;
+            top: 3.75rem;
+        }
+        #google {
+            position: absolute;
+            left: 6.563rem;
+            top: 3.75rem;
+        }
+        #insta {
+            position: absolute;
+            left: -8.313rem;
+        }
+        #linkedin {
+            position: absolute;
+            left: 11.563rem;
+        }
+    }
+    &-Wrapper {
+        background: $light-background;
+        box-shadow: 0px 4px 4px rgba(51, 51, 51, 0.04), 0px 4px 16px rgba(51, 51, 51, 0.08);
+        border-radius: 8px;
+        display: flex;
+        flex-flow: column wrap;
+        align-items: center;
+        width: clamp(300px, 100%, 500px);
+        height: fit-content;
+        min-height: 200px;
+        position: relative;
+        top: calc(-1 * #{$avatar-dimension} / 2);
+        align-items: stretch;
+        padding-top: calc(#{$avatar-dimension} / 2 + 20px);
+        padding-left: 12px;
+        padding-right: 12px;
+        border-radius: 5px;
+        & > div {
+            padding-left: 30px;
+            padding-right: 30px;
+            margin-bottom: 10px;
+            &:last-child {
+            margin-bottom: 0px;;
+            }
+        }
+    }
+    &-Title {
+        margin-top: 20px;
+        h1 {
+            font-style: normal;
+            font-weight: bold;
+            font-size: 16px;
+            line-height: 26px;
+            text-align: center;
+            text-transform: capitalize;
+            color: #707C97;
+        }
+    }
+    &-Subtitle {
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 26px;
+        text-align: center;
+        color: #707C97;
+    }
+    &-Action {
+        padding: 0 100px 26px 100px !important;
+        button {
+          background-color: $brand-fill;
+          width: 100%;
+          padding: 12px;
+          border-radius: 5px;
+          color: $light-background;
+          // flex-grow: 1;
+        }
+    }
+    &-Notice {
+        font-style: normal;
+        font-weight: bold;
+        font-size: 12px;
+        line-height: 18px;
+        text-align: center;
+        color: #707C97;
+    }
+    &-Manual {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        button {
+          background-color: transparent;
+          width: 276px;
+          padding: 12px;
+          border-radius: 5px;
+          border: 1px solid #707C97;
+          color: #707C97;
+          margin-bottom: 10px;
+          // flex-grow: 1;
+        }
+        p {
+            font-style: normal;
+            font-weight: normal;
+            font-size: 11px;
+            line-height: 26px;
+            text-align: center;
+            color: #707C97;
+        }
+    }
+}
