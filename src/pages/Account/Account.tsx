@@ -3,6 +3,8 @@ import {
     TabBar,
 } from '../../components/CustomComponent';
 import Profile from './Profile';
+import Notification from './Notification';
+import PersonalData from './PersonalData';
 import '../../styles/Account.scss';
 
 const Account: FC = () => {
@@ -15,14 +17,14 @@ const Account: FC = () => {
             content: <Profile />
         },
         {
-            label: 'Profile',
-            name: 'Profile',
-            content: <Profile />
+            label: 'Notification',
+            name: 'Notification',
+            content: <Notification />
         },
         {
-            label: 'Profile',
-            name: 'Profile',
-            content: <Profile />
+            label: 'Personal Data',
+            name: 'Personal Data',
+            content: <PersonalData />
         },
     ];
 
