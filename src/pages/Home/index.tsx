@@ -1,11 +1,13 @@
 import React from 'react';
 import { Images } from '../../utils/Images';
 import '../../styles/Home.scss';
+import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 
 const Landing: React.FC = () => {
     return(
       <React.Fragment>
+        <Header />
         <div className="Home-Body">
 
           {/* Headline */}
