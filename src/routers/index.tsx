@@ -23,6 +23,7 @@ import CreditCardApplication from '../components/Leftbox/CreditCardApplication/C
 import Legal from '../pages/Legal/index';
 import SocialLogin from '../pages/SocialLogin/index';
 import Account from '../pages/Account/Account';
+import Page404 from '../pages/404/Page404';
 
 // Importing Amplify for Authentication with Cognito
 import Amplify from 'aws-amplify';
@@ -156,6 +157,13 @@ const VentasRoute = [
         private: false,
         sidebar: () => <Sidebar />,
         main: () => <Account />,
+    },
+    {
+        path: '/404',
+        exact: true,
+        private: false,
+        sidebar: () => <Sidebar />,
+        main: () => <Page404 />,
     },
     {
         path: '*',
