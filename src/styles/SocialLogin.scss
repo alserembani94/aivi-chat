@@ -122,4 +122,134 @@
             color: #707C97;
         }
     }
+    &-Back {
+        width: 44px;
+        height: 44px;
+        position: absolute;
+        left: -12%;
+        top: 0px;
+        padding: 0 !important;
+        @media only screen and (max-width: 768px) {
+            left: 0;
+            top: -12%;
+        }
+        button {
+            width: 100%;
+            height: 100%;
+            background-color: transparent;
+            border: 1px solid #707C97;
+            border-radius: 50%;
+        }
+    }
+    &-Connect {
+        background: $light-background;
+        box-shadow: 0px 4px 4px rgba(51, 51, 51, 0.04), 0px 4px 16px rgba(51, 51, 51, 0.08);
+        border-radius: 8px;
+        display: flex;
+        flex-flow: column wrap;
+        align-items: center;
+        width: clamp(300px, 100%, 500px);
+        height: fit-content;
+        min-height: 200px;
+        position: relative;
+        // top: calc(-1 * #{$avatar-dimension} / 2);
+        align-items: stretch;
+        // padding-top: calc(#{$avatar-dimension} / 2 + 20px);
+        padding-left: 12px;
+        padding-right: 12px;
+        padding-bottom: 50px;
+        border-radius: 5px;
+        & > div {
+            padding-left: 30px;
+            padding-right: 30px;
+            margin-bottom: 10px;
+            &:last-child {
+            margin-bottom: 0px;;
+            }
+        }
+        &-Title {
+            margin-top: 20px;
+            h1 {
+                font-style: normal;
+                font-weight: bold;
+                font-size: 16px;
+                line-height: 26px;
+                text-transform: capitalize;
+                color: #707C97;
+            }
+        }
+        &-Subtitle {
+            font-style: normal;
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 26px;
+            color: #707C97;
+        }
+        &-Links {
+            font-style: normal;
+            font-weight: bold;
+            font-size: 16px;
+            line-height: 26px;
+            text-transform: capitalize;
+            color: #707C97;
+            & > div {
+                margin-bottom: 10px;
+            }
+        }
+        &-Icon {
+            width: 20px;
+            margin-right: 10px;
+            & > .Icon {
+                width: 100%;
+                height: 100%;
+            }
+        }
+        &-Name {
+            display: flex;
+            align-items: center;
+        }
+        &-Button {
+            button {
+                min-width: 101px;
+            }
+            .connect-button {
+                background-color: transparent;
+                width: 100%;
+                padding: 10px 20px;
+                border-radius: 5px;
+                border: 1px solid #707C97;
+                color: #707C97;
+            }
+            .linked-button {
+                background-color: $brand-fill;
+                width: 100%;
+                padding: 10px 20px;
+                border-radius: 5px;
+                color: $light-background;
+            }
+        }
+        &-Action {
+            button {
+              background-color: $brand-fill;
+              width: 100%;
+              padding: 12px;
+              border-radius: 5px;
+              color: $light-background;
+              // flex-grow: 1;
+            }
+        }
+    }
+    &-Manual-Form {
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 24px;
+        text-align: center;
+        color: #707C97;
+        margin-top: 10px;
+        cursor: pointer;
+        :hover {
+            text-decoration: underline;
+        }
+    }
 }

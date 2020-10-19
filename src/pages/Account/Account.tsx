@@ -7,14 +7,36 @@ import Notification from './Notification';
 import PersonalData from './PersonalData';
 import '../../styles/Account.scss';
 
+type ProfileDetailsType = {
+    username: string,
+    email: string,
+    password: string,
+    phone: string,
+}
+
 const Account: FC = () => {
+    // PROFILE DETAILS CONFIGURATION
+    const [profileDetails, setProfileDetails] = useState<ProfileDetailsType>({
+        username: '',
+        email: '',
+        password: '',
+        phone: '',
+    });
+
+    const updateProfileDetails = (updatedProfileDetails: ProfileDetailsType) => {
+        setProfileDetails(() => { return updatedProfileDetails });
+    }
+
     // TAB CONFIGURATION
     const [currentTab, setCurrentTab] = useState('Profile');
     const tabMenuList = [
         {
             label: 'Profile',
             name: 'Profile',
-            content: <Profile />
+            content: <Profile 
+                ProfileDetails={profileDetails}
+                handleProfileDetailsUpdate={updateProfileDetails}
+            />
         },
         {
             label: 'Notification',
