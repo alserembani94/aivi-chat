@@ -21,6 +21,7 @@ import Home from '../pages/Home';
 import PersonalLoanApplication from '../components/Leftbox/PersonalLoanApplication/PersonalLoanApplication';
 import CreditCardApplication from '../components/Leftbox/CreditCardApplication/CreditCardApplication';
 import Legal from '../pages/Legal/index'
+import SocialLogin from '../pages/SocialLogin/index'
 
 // Importing Amplify for Authentication with Cognito
 import Amplify from 'aws-amplify';
@@ -140,6 +141,13 @@ const VentasRoute = [
         private: false,
         sidebar: () => <Sidebar />,
         main: () => <Legal />,
+    },
+    {
+        path: '/social-login',
+        exact: true,
+        private: false,
+        sidebar: () => <Sidebar />,
+        main: () => <SocialLogin />,
     },
     {
         path: '*',
