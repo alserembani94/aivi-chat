@@ -1,0 +1,32 @@
+.Account {
+    &-Body {
+        width: calc(100% - 50px);
+        padding: 50px 0px 100px 0px;
+        background: white;
+        &-Content {
+            &-Header {
+                text-align: center;
+                font-style: normal;
+                font-weight: bold;
+                font-size: 48px;
+                color: #111111;
+            }
+            &-Tabs {
+                position: relative;
+                &-Bg {
+                    background-color: #FAFAFA;
+                    content: " ";
+                    height: 30%;
+                    width: 100%;
+                    display: block;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                }
+                .TabBar-Header {
+                    justify-content: center;
+                }
+            }
+        }
+    }
+}
