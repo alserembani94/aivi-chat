@@ -12,7 +12,7 @@ const lexApi = ({ dispatch }: { dispatch: any }) => (next: any) => async (action
 
     try {
         const response = await axios.request({
-            baseURL: 'https://ykieujb749.execute-api.us-east-1.amazonaws.com',
+            baseURL: 'http://node-express-env.eba-myp2sfmm.us-east-1.elasticbeanstalk.com',
             url,
             method,
             data,
