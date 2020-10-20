@@ -19,12 +19,13 @@ const MainMenu: FC<MainMenuProps> = () => {
         dispatch(converseWithLex(newMessage));
     };
 
-    // useEffect(() => {
-    //     (auth.user.attributes?.email || auth.tempData.email)
-    //     ? dispatch(initiateConversation('Hello'))
-    //     : history.push('/register');
-    // // eslint-disable-next-line react-hooks/exhaustive-deps
-    // }, []);
+    useEffect(() => {
+        dispatch(initiateConversation('Hello'));
+        // (auth.user.attributes?.email || auth.tempData.email)
+        // ? dispatch(initiateConversation('Hello'))
+        // : history.push('/register');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     useEffect(() => {
         [
