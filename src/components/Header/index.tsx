@@ -8,7 +8,7 @@ import {
     Images,
 } from '../../utils/Images';
 
-const HeaderPage = () => {
+const HeaderPage: FC = () => {
     
     const auth = useSelector((state: any) => state.auth)
     const history = useHistory();

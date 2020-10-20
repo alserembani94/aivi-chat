@@ -13,66 +13,66 @@ interface MenuProps {
     toggleVisibility: () => void;
 }
 
-const accountNav = [
-    {
-        path: '/',
-        label: 'Profile',
-    },
-    {
-        path: '/',
-        label: 'Notification',
-    },
-];
-const legalNav = [
-    {
-        path: '/',
-        label: 'Privacy',
-    },
-    {
-        path: '/',
-        label: 'Security',
-    },
-    {
-        path: '/',
-        label: 'Terms of Use',
-    },
-];
-const servicesNav = [
-    {
-        path: '/credit-card-application',
-        label: 'Credit Card',
-    },
-    {
-        path: '/personal-loan-application',
-        label: 'Personal Loans',
-    },
-    {
-        path: '/',
-        label: 'Balance Transfer',
-    },
-    {
-        path: '/',
-        label: 'Cash From Card',
-    },
-    {
-        path: '/',
-        label: 'Social Budget App',
-    },
-];
-const blogNav = [
-    {
-        path: '/site-blog-article',
-        label: 'Articles',
-    },
-    {
-        path: '/',
-        label: 'FAQ',
-    },
-    {
-        path: '/contact-us',
-        label: 'Contact Us',
-    },
-];
+// const accountNav = [
+//     {
+//         path: '/',
+//         label: 'Profile',
+//     },
+//     {
+//         path: '/',
+//         label: 'Notification',
+//     },
+// ];
+// const legalNav = [
+//     {
+//         path: '/',
+//         label: 'Privacy',
+//     },
+//     {
+//         path: '/',
+//         label: 'Security',
+//     },
+//     {
+//         path: '/',
+//         label: 'Terms of Use',
+//     },
+// ];
+// const servicesNav = [
+//     {
+//         path: '/credit-card-application',
+//         label: 'Credit Card',
+//     },
+//     {
+//         path: '/personal-loan-application',
+//         label: 'Personal Loans',
+//     },
+//     {
+//         path: '/',
+//         label: 'Balance Transfer',
+//     },
+//     {
+//         path: '/',
+//         label: 'Cash From Card',
+//     },
+//     {
+//         path: '/',
+//         label: 'Social Budget App',
+//     },
+// ];
+// const blogNav = [
+//     {
+//         path: '/site-blog-article',
+//         label: 'Articles',
+//     },
+//     {
+//         path: '/',
+//         label: 'FAQ',
+//     },
+//     {
+//         path: '/contact-us',
+//         label: 'Contact Us',
+//     },
+// ];
 
 const menuNav = [
     {

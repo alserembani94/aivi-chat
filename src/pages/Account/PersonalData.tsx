@@ -1,13 +1,12 @@
-import { Update } from '@reduxjs/toolkit';
 import React, { FC, useState } from 'react';
-import {
-    InputBox,
-} from '../../components/CustomComponent';
+// import {
+//     InputBox,
+// } from '../../components/CustomComponent';
 import Switch from 'react-switch';
 import {
     Images,
 } from '../../utils/Images';
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 
 
 type manageDataType = {
@@ -57,9 +56,9 @@ const PersonalData: FC = () => {
                             <div className="DownloadData">
                                 <h1>Personal Data</h1>
                                 <p>
-                                    Request access to your personal data on AIVI. You may download an <br/> archive at any time. <a href="#">Learn more</a>
+                                    Request access to your personal data on AIVI. You may download an <br/> archive at any time. <a href="#a">Learn more</a>
                                 </p>
-                                <h3>Download &nbsp; <img src={Images.arrow_right}/></h3>
+                                <h3>Download &nbsp; <img src={Images.arrow_right} alt=""/></h3>
                             </div>
                             <div className="ManageData">
                                 <h2>Manage Data</h2>

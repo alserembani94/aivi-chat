@@ -17,7 +17,8 @@ interface SocialLoginProps {
 
 const SocialLogin: FC<SocialLoginProps> = () => {
     const [showSocialLogin, setShowSocialLogin] = useState(false);
-    const [socialLoginStatus, setSocialLoginstatus] = useState({
+    // const [socialLoginStatus, setSocialLoginstatus] = useState({
+    const [socialLoginStatus] = useState({
         facebook: false,
         google: false,
         instagram: false,

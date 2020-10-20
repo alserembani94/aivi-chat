@@ -48,8 +48,8 @@ const Legal: FC = () => {
                             Legal
                         </div>
                         <div className="Legal-Body-Content-Tabs">
-                            {currentTab == 'Privacy' ? <div className="Legal-Body-Content-Tabs-Bg"></div> 
-                            : currentTab == 'Security' ? <div className="Legal-Body-Content-Tabs-Bg"></div> 
+                            {currentTab === 'Privacy' ? <div className="Legal-Body-Content-Tabs-Bg"></div> 
+                            : currentTab === 'Security' ? <div className="Legal-Body-Content-Tabs-Bg"></div> 
                             : <div></div> }
                             <TabBar 
                                 currentTab={currentTab}

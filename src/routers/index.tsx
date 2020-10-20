@@ -2,7 +2,7 @@ import React, { FC, useEffect, useRef } from 'react';
 import {
     Switch,
     Route,
-    Redirect,
+    // Redirect,
 } from 'react-router-dom';
 import {
     Sidebar,
@@ -28,9 +28,10 @@ import Page404 from '../pages/404/Page404';
 // Importing Amplify for Authentication with Cognito
 import Amplify from 'aws-amplify';
 import awsConfig from '../aws-exports';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+// import { useDispatch, useSelector } from 'react-redux';
 import ContactUs from '../pages/ContactUs';
-import { getCurrentAuthenticatedUser, getCurrentSession, getCurrentUserInfo } from '../store/reducers/auth';
+import { getCurrentSession, getCurrentUserInfo } from '../store/reducers/auth';
 // import {
 //     AuthState,
 //     onAuthUIStateChange,
@@ -178,7 +179,7 @@ const VentasRoute = [
 const RouterLayout: FC = () => {
     // const history = useHistory();
     const mainPage = useRef<HTMLElement>(null);
-    const auth = useSelector((state: any) => state.auth);
+    // const auth = useSelector((state: any) => state.auth);
     const dispatch = useDispatch();
 
     useEffect(() => {
