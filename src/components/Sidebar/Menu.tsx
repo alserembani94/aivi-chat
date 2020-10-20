@@ -80,18 +80,6 @@ const menuNav = [
         label: 'Home',
     },
     {
-        path: '/site-blog-list',
-        label: 'Site Blog List',
-    },
-    {
-        path: '/site-blog-article',
-        label: 'Site Blog Article',
-    },
-    {
-        path: '/contact-us',
-        label: 'Contact Us',
-    },
-    {
         path: '/main-menu',
         label: 'Main Menu',
     },
