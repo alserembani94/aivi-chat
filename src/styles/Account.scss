@@ -13,16 +13,6 @@
             }
             &-Tabs {
                 position: relative;
-                &-Bg {
-                    background-color: #FAFAFA;
-                    content: " ";
-                    height: 30%;
-                    width: 100%;
-                    display: block;
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                }
                 .TabBar-Header {
                     justify-content: center;
                 }
