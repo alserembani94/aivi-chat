@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Images } from '../../utils/Images';
 import '../../styles/SiteBlogList.scss';
+import Header from '../../components/Header';
+import Footer from '../../components/Footer';
 
 const SiteBlogList: React.FC = () => {
     var datas = [
@@ -120,8 +122,8 @@ const SiteBlogList: React.FC = () => {
                     ret.push(/* Row with 2 cards*/
                         <div className="container">
                             <div className="row">
-                                {generatecard(datas.shift(), "col-6","2")}
-                                {generatecard(datas.shift(), "col-6", "2")}
+                                {generatecard(datas.shift(), "col-12 col-md-6","2")}
+                                {generatecard(datas.shift(), "col-12 col-md-6", "2")}
                             </div>
                         </div>)
                 }
@@ -129,9 +131,9 @@ const SiteBlogList: React.FC = () => {
                     ret.push(/* Row with 2 cards*/
                         <div className="container">
                             <div className="row">
-                                {generatecard(datas.shift(), "col-4","3")}
-                                {generatecard(datas.shift(), "col-4", "3")}
-                                {generatecard(datas.shift(), "col-4", "3")}
+                                {generatecard(datas.shift(), "col-12 col-md-4","3")}
+                                {generatecard(datas.shift(), "col-12 col-md-4", "3")}
+                                {generatecard(datas.shift(), "col-12 col-md-4", "3")}
                             </div>
                         </div>)
                 }
@@ -139,8 +141,8 @@ const SiteBlogList: React.FC = () => {
                 ret.push(/* Row with 2 cards*/
                     <div className="container">
                         <div className="row">
-                            {generatecard(datas.shift(), "col-6","2")}
-                            {generatecard(datas.shift(), "col-6", "2")}
+                            {generatecard(datas.shift(), "col-12 col-md-6","2")}
+                            {generatecard(datas.shift(), "col-12 col-md-6", "2")}
                         </div>
                     </div>)
             } else {
@@ -161,7 +163,7 @@ const SiteBlogList: React.FC = () => {
     
     return (
         <React.Fragment>
-            
+            <Header />
             <main className="SiteBlogList-Body">
                 <section className="SiteBlogList-Body-Section">
                     <div className="SiteBlogList-Body-Content">
@@ -170,10 +172,11 @@ const SiteBlogList: React.FC = () => {
                     <div className="SiteBlogList-Body-Section-Button">
                         <button className="SiteBlogList-Body-Section-Button-RedButton" onClick={() => setCount(count + 2)}>Load More</button>
                     </div>
-
+                    
                 </section>
-                        
+                <Footer/>
             </main>
+             
         </React.Fragment>
     );
 };

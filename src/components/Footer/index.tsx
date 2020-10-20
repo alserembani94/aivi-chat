@@ -6,7 +6,7 @@ const FooterPage = () => {
       <div className="Footer-Wrapper">
           <div className="container-fluid">
             <div className="row">
-                <div className="col-7">
+                <div className="col-12 col-md-7">
                     <div className="Footer-Content1">
                         <p>Personal Capital Advisors Corporation (“PCAC”) is a registered investment adviser with 
                             the Securities and Exchange Commission (“SEC”). SEC registration does not imply a certain level 
@@ -19,7 +19,7 @@ const FooterPage = () => {
                             <a href="#"> Read full disclosures</a></p>
                     </div>
                 </div>
-                <div className="col-4">
+                <div className="col-12 col-md-4">
                     <div className="Footer-Content2">
                         <div className="container">
                             <div className="row">
