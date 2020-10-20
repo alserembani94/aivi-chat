@@ -39,6 +39,8 @@ import { getCurrentAuthenticatedUser, getCurrentSession, getCurrentUserInfo } fr
 Amplify.configure(awsConfig);
 
 const VentasRoute = [
+
+    // Auth Routes
     {
         path: '/sign-in',
         exact: true,
@@ -60,13 +62,8 @@ const VentasRoute = [
         sidebar: () => <Sidebar />,
         main: () => <ConfirmRegister />,
     },
-    {
-        path: '/',
-        exact: true,
-        private: false,
-        sidebar: () => <Sidebar />,
-        main: () => <Home />,
-    },
+
+    // Main route
     {
         path: '/main-menu',
         exact: true,
@@ -89,25 +86,25 @@ const VentasRoute = [
         main: () => <CreditCardResult />,
     },
     {
+        path: '/loan-result',
+        exact: false,
+        private: true,
+        sidebar: () => <Sidebar />,
+        main: () => <LoanResult />,
+    },
+    {
         path: '/personal-loan-application',
         exact: true,
-        private: false,
+        private: true,
         sidebar: () => <Sidebar />,
         main: () => <PersonalLoanApplication />,
     },
     {
         path: '/credit-card-application',
         exact: false,
-        private: false,
-        sidebar: () => <Sidebar />,
-        main: () => <CreditCardApplication />,
-    },
-    {
-        path: '/loan-result',
-        exact: false,
         private: true,
         sidebar: () => <Sidebar />,
-        main: () => <LoanResult />,
+        main: () => <CreditCardApplication />,
     },
     {
         path: '/card-details',
@@ -116,6 +113,8 @@ const VentasRoute = [
         sidebar: () => <Sidebar />,
         main: () => <CardDetails />,
     },
+
+    // Landing Page Routes
     {
         path: '/site-blog-list',
         exact: true,
@@ -159,18 +158,20 @@ const VentasRoute = [
         main: () => <Account />,
     },
     {
-        path: '/404',
+        path: '/',
         exact: true,
         private: false,
         sidebar: () => <Sidebar />,
-        main: () => <Page404 />,
+        main: () => <Home />,
     },
+
+    // 404 File Not Found
     {
         path: '*',
         exact: false,
         private: false,
         sidebar: () => <Sidebar />,
-        main: () => null,
+        main: () => <Page404 />,
     },
 ];
 
@@ -208,27 +209,33 @@ const RouterLayout: FC = () => {
                 <Switch>
                     {
                         VentasRoute.map((route, index) => (
-                            route.private
-                            // All private routes here - will be redirected to sign in page if not log in
-                            ? (<Route
-                                key={index}
-                                path={route.path}
-                                exact={route.exact}
-                                render={({ location }) => (auth.user.username)  // Auth check here
-                                    ? <route.main />
-                                    : <Redirect to={{
-                                        pathname: "/sign-in",
-                                        state: { from: location },
-                                    }} />
-                                }
-                            />)
-                            // All public routes here - all unauthenticated users can navigate
-                            : (<Route
+                            // route.private
+                            // // All private routes here - will be redirected to sign in page if not log in
+                            // ? (<Route
+                            //     key={index}
+                            //     path={route.path}
+                            //     exact={route.exact}
+                            //     render={({ location }) => (auth.user.username)  // Auth check here
+                            //         ? <route.main />
+                            //         : <Redirect to={{
+                            //             pathname: "/sign-in",
+                            //             state: { from: location },
+                            //         }} />
+                            //     }
+                            // />)
+                            // // All public routes here - all unauthenticated users can navigate
+                            // : (<Route
+                            //     key={index}
+                            //     path={route.path}
+                            //     exact={route.exact}
+                            //     children={<route.main />}
+                            // />)
+                            <Route
                                 key={index}
                                 path={route.path}
                                 exact={route.exact}
                                 children={<route.main />}
-                            />)
+                            />
                         ))
                     }
                 </Switch>

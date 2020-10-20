@@ -67,7 +67,7 @@ export const converseWithLex = (message: string) => async (dispatch: any, getSta
 
     const userMessage = {
         message,
-        userId: auth.user.attributes?.email.split('@')[0] || auth.tempData.email?.split('@')[0] || 'user',
+        userId: auth.user?.attributes?.email.split('@')[0] || auth.tempData?.email?.split('@')[0] || 'user',
         timestamp: Date.now(),
     }
 
@@ -90,7 +90,7 @@ export const initiateConversation = (message: string) => (dispatch: any, getStat
         method: 'post',
         data: {
             message,
-            userId: auth.user.attributes?.email.split('@')[0] || auth.tempData.email?.split('@')[0] || 'user',
+            userId: auth.user?.attributes?.email.split('@')[0] || auth.tempData?.email?.split('@')[0] || 'user',
         },
         onStart: conversationsRequested.type,
         onSuccess: conversationAdded.type,
