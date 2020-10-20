@@ -96,7 +96,7 @@ const Declaration: FC = () => {
                 </div>
                 <div className="row">
                         <div className="col-12 Declaration-button">
-                            <button className="Pages-Red-Button w-50">Yes, I understand <img src={Images.arrow_right_white} /></button>
+                            <button className="Pages-Red-Button w-50">Yes, I understand <img src={Images.arrow_right_white} alt="" /></button>
                         </div>
                 </div>
                 </div>

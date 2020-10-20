@@ -1,13 +1,12 @@
-import { Update } from '@reduxjs/toolkit';
 import React, { FC, useState } from 'react';
-import {
-    InputBox,
-} from '../../components/CustomComponent';
+// import {
+//     InputBox,
+// } from '../../components/CustomComponent';
 import Switch from 'react-switch';
-import {
-    Images,
-} from '../../utils/Images';
-import { useEffect } from 'react';
+// import {
+//     Images,
+// } from '../../utils/Images';
+// import { useEffect } from 'react';
 
 
 type emailType = {

@@ -22,7 +22,7 @@ const SiteBlogArticle: React.FC = () => {
                         </div>
                         <div className="SiteBlogArticle-Body-Content-Article1">
                             <div className="SiteBlogArticle-Body-Content-Article1-Card">
-                                <div className="SiteBlogArticle-Body-Content-Article1-Card-Img1"><img src={Images.image_article_img1}/></div>
+                                <div className="SiteBlogArticle-Body-Content-Article1-Card-Img1"><img src={Images.image_article_img1} alt=""/></div>
                                 <div className="SiteBlogArticle-Body-Content-Article1-Card-Text1">
                                     <div>Surveys repeatedly show that advisers risk being out of step, particulaerly with their millenial clients, whoc want to
                                         <br/>know more about socially responsible or environmental, social and governance investing.
@@ -38,7 +38,7 @@ const SiteBlogArticle: React.FC = () => {
                         </div>
                         <div className="SiteBlogArticle-Body-Content-Article2">
                             <div className="SiteBlogArticle-Body-Content-Article2-Card">
-                                <div className="SiteBlogArticle-Body-Content-Article2-Card-Img1"><img src={Images.image_article_img2}/></div>
+                                <div className="SiteBlogArticle-Body-Content-Article2-Card-Img1"><img src={Images.image_article_img2} alt=""/></div>
                                 <div className="SiteBlogArticle-Body-Content-Article2-Card-Text1">
                                     <div>Recent studies by Morgan Stanley have shown more than 70% of women, when asked, want socially responsible
                                         <br/>investments in their portfolios, and 85% of millenial survey respondents seek to achieve sustainability with their
@@ -61,8 +61,8 @@ const SiteBlogArticle: React.FC = () => {
                                     <span className="SiteBlogArticle-Body-Content-Author-Card-Post">&nbsp;staff reporter, AIVI</span></div>
                                 <div className="SiteBlogArticle-Body-Content-Author-Card-SocialMedia">
                                     <span className="SiteBlogArticle-Body-Content-Author-Card-SocialMedia-Shareon">Share on</span>
-                                    <span className="SiteBlogArticle-Body-Content-Author-Card-SocialMedia-Fb"><img src={Images.icon_fb_img}/></span>
-                                    <span className="SiteBlogArticle-Body-Content-Author-Card-SocialMedia-Google"><img src={Images.icon_google_img}/></span>
+                                    <span className="SiteBlogArticle-Body-Content-Author-Card-SocialMedia-Fb"><img src={Images.icon_fb_img} alt=""/></span>
+                                    <span className="SiteBlogArticle-Body-Content-Author-Card-SocialMedia-Google"><img src={Images.icon_google_img} alt=""/></span>
                                 </div>
                             </div>
                         </div>
@@ -71,38 +71,38 @@ const SiteBlogArticle: React.FC = () => {
                             <div className="SiteBlogArticle-Body-Content-Title">Related Articles</div>
                             <div className="SiteBlogArticle-Body-Content-RelatedArticles">
                                 <div className="SiteBlogArticle-Body-Content-RelatedArticles-Card1">
-                                    <div className="SiteBlogArticle-Body-Content-RelatedArticles-CardImage"><img src={Images.image_article_img3} /></div>
+                                    <div className="SiteBlogArticle-Body-Content-RelatedArticles-CardImage"><img src={Images.image_article_img3} alt="" /></div>
                                     <div className="SiteBlogArticle-Body-Content-CardDesc">
                                         <div className="SiteBlogArticle-Body-Content-CardDesc-Inner">
                                             <div className="SiteBlogArticle-Body-Content-CardDesc-Inner-Title">Charts are SkyRocketing</div>
                                             <div className="SiteBlogArticle-Body-Content-CardDesc-Inner-Desc">Explore and test different ideas, themes and styles instantly wheather you want<br/>
                                                     to experiment with your team in a design sprint.
                                             </div>
-                                            <div className="SiteBlogArticle-Body-Content-CardDesc-Inner-Arrow"><img src={Images.image_article_arrow_to_right}/></div>
+                                            <div className="SiteBlogArticle-Body-Content-CardDesc-Inner-Arrow"><img src={Images.image_article_arrow_to_right} alt=""/></div>
                                         </div>
                                     </div>
                                 </div>
                                 <div className="SiteBlogArticle-Body-Content-RelatedArticles-Card2">
-                                    <div className="SiteBlogArticle-Body-Content-RelatedArticles-CardImage"><img src={Images.image_article_img4} /></div>
+                                    <div className="SiteBlogArticle-Body-Content-RelatedArticles-CardImage"><img src={Images.image_article_img4} alt="" /></div>
                                     <div className="SiteBlogArticle-Body-Content-CardDesc">
                                         <div className="SiteBlogArticle-Body-Content-CardDesc-Inner">
                                             <div className="SiteBlogArticle-Body-Content-CardDesc-Inner-Title">Financial World with Aivi</div>
                                             <div className="SiteBlogArticle-Body-Content-CardDesc-Inner-Desc">Explore and test different ideas, themes and styles instantly wheather you want<br/>
                                                     to experiment with your team in a design sprint.
                                             </div>
-                                            <div className="SiteBlogArticle-Body-Content-CardDesc-Inner-Arrow"><img src={Images.image_article_arrow_to_right}/></div>
+                                            <div className="SiteBlogArticle-Body-Content-CardDesc-Inner-Arrow"><img src={Images.image_article_arrow_to_right} alt=""/></div>
                                         </div>
                                     </div>
                                 </div>
                                 <div className="SiteBlogArticle-Body-Content-RelatedArticles-Card3">
-                                    <div className="SiteBlogArticle-Body-Content-RelatedArticles-CardImage"><img src={Images.image_article_img5} /></div>
+                                    <div className="SiteBlogArticle-Body-Content-RelatedArticles-CardImage"><img src={Images.image_article_img5} alt="" /></div>
                                     <div className="SiteBlogArticle-Body-Content-CardDesc">
                                         <div className="SiteBlogArticle-Body-Content-CardDesc-Inner">
                                             <div className="SiteBlogArticle-Body-Content-CardDesc-Inner-Title">Analyst Confirm Breakthrough</div>
                                             <div className="SiteBlogArticle-Body-Content-CardDesc-Inner-Desc">Explore and test different ideas, themes and styles instantly wheather you want<br/>
                                                     to experiment with your team in a design sprint.
                                             </div>
-                                            <div className="SiteBlogArticle-Body-Content-CardDesc-Inner-Arrow"><img src={Images.image_article_arrow_to_right}/></div>
+                                            <div className="SiteBlogArticle-Body-Content-CardDesc-Inner-Arrow"><img src={Images.image_article_arrow_to_right} alt=""/></div>
                                         </div>
                                     </div>
                                 </div>
@@ -113,7 +113,7 @@ const SiteBlogArticle: React.FC = () => {
                     </div>
 
                 </section>
-                   <Footer/>     
+                <Footer/> 
             </main>
         </React.Fragment>
     );

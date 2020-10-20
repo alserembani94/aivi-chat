@@ -92,7 +92,7 @@ const Profile: FC<ProfileDetailsProps> = ({ ProfileDetails, handleProfileDetails
                             <div className="row Profile-Body-Content-Row">
                                 <div className="col-12">
                                     <div className="Profile-Body-Content-Row-Delete">
-                                        <a>Delete Account <img src={Images.arrow_right}></img></a>
+                                        <a href="#a" >Delete Account <img src={Images.arrow_right} alt=""></img></a>
                                     </div>
                                 </div>
                             </div>

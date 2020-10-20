@@ -99,17 +99,17 @@ type ChecklistType = ChecklistItemType[];
 
 
 const CreditCardApplication: FC = () => {
-    const [cardOwnership, setCardOwnership] = useState<boolean>(false);
-    const [selectedBanks, setSelectedBanks] = useState<string[]>([]);
-    const banksLimit = 3;
+    // const [cardOwnership, setCardOwnership] = useState<boolean>(false);
+    // const [selectedBanks, setSelectedBanks] = useState<string[]>([]);
+    // const banksLimit = 3;
 
-    const handleSelectedBanks = (selected: string[]) => {
-        setSelectedBanks(() => { return selected; });
-    };
+    // const handleSelectedBanks = (selected: string[]) => {
+    //     setSelectedBanks(() => { return selected; });
+    // };
 
-    const toggleExistingCard = (status: boolean) => {
-        setCardOwnership(() => status);
-    };
+    // const toggleExistingCard = (status: boolean) => {
+    //     setCardOwnership(() => status);
+    // };
 
     // PERSONAL DETAILS CONFIGURATION
     const [personalDetails, setPersonalDetails] = useState<PersonalDetailsType>({

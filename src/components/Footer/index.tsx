@@ -16,7 +16,8 @@ const FooterPage = () => {
                             Featured individuals are actors and not clients of PCAC. Advisory services are offered for a 
                             fee by PCAC, a wholly owned subsidiary of Personal Capital Corporation, an Empower company. 
                             Personal Capital Corporation is a wholly owned subsidiary of Empower Holdings, LLC. 
-                            <a href="#"> Read full disclosures</a></p>
+                            {/* <a href="#"> Read full disclosures</a> */}
+                        </p>
                     </div>
                 </div>
                 <div className="col-12 col-md-4">
@@ -24,35 +25,35 @@ const FooterPage = () => {
                         <div className="container">
                             <div className="row">
                                 <div className="col-12">
-                                    <img className="logo" src={Images.logo_AIVI_white}/>
+                                    <img className="logo" src={Images.logo_AIVI_white} alt=""/>
                                 </div>
                             </div>
                             <div className="row">
                                 <div className="col-6">
-                                    <button><img className="download" src={Images.button_apple_download_white}/></button>
+                                    <button><img className="download" src={Images.button_apple_download_white} alt=""/></button>
                                 </div>
                                 <div className="col-6">
-                                    <button ><img className="download" src={Images.button_android_download_white}/></button>
+                                    <button ><img className="download" src={Images.button_android_download_white} alt=""/></button>
                                 </div>
                             </div>
                             <div className="row">
                                 <div className="col-2">
-                                    <button><img src={Images.icon_facebook_footer}/></button>
+                                    <button><img src={Images.icon_facebook_footer} alt=""/></button>
                                 </div>
                                 <div className="col-2">
-                                    <button><img src={Images.icon_messanger_footer}/></button>
+                                    <button><img src={Images.icon_messanger_footer} alt=""/></button>
                                 </div>
                                 <div className="col-2">
-                                    <button><img src={Images.icon_youtube_footer}/></button>
+                                    <button><img src={Images.icon_youtube_footer} alt=""/></button>
                                 </div>
                                 <div className="col-2">
-                                    <button><img src={Images.icon_google_footer}/></button>
+                                    <button><img src={Images.icon_google_footer} alt=""/></button>
                                 </div>
                                 <div className="col-2">
-                                    <button><img src={Images.icon_insta_footer}/></button>
+                                    <button><img src={Images.icon_insta_footer} alt=""/></button>
                                 </div>
                                 <div className="col-2">
-                                    <button><img src={Images.icon_linkedin_footer}/></button>
+                                    <button><img src={Images.icon_linkedin_footer} alt=""/></button>
                                 </div>
                             </div>
                         </div>

@@ -97,8 +97,8 @@ const SiteBlogList: React.FC = () => {
         return <div className= {cardclass}>
             <div className= {subCardClass}>
                 <div className={subCardClass2}>
-                    <img src={data.img} />
-                    {data.feature != 0?
+                    <img src={data.img} alt=""/>
+                    {data.feature !== 0?
                         <div className="SiteBlogList-Body-Content-ImageContainer-Description"><div>{data.feature}</div></div>
                     :""}
                     <div className="SiteBlogList-Body-Content-CardDesc">
@@ -118,7 +118,7 @@ const SiteBlogList: React.FC = () => {
         let ret = [];
         while(datas.length>0){
             if(datas.length>= 3){
-                if(ret.length % 2 == 0){
+                if(ret.length % 2 === 0){
                     ret.push(/* Row with 2 cards*/
                         <div className="container">
                             <div className="row">
