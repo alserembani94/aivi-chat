@@ -2507,10 +2507,10 @@ input[type=number] {
 
   .AIVI {
     &-Sidebar {
-      height: $sidebar-width;
+      height: 50px;
       border-radius: 50%;
       overflow: hidden;
-      position: absolute;
+      // position: absolute;
       top: $mobile-menu-button-translation;
       left: $mobile-menu-button-translation;
       z-index: 20;
