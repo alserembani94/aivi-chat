@@ -3,14 +3,14 @@ import {
     // Modal,
     TabBar,
 } from '../../CustomComponent';
-import PersonalDetails from '../CreditCardApplication/PersonalDetails';
-import FinancialReference from '../CreditCardApplication/FinancialReference';
+import PersonalDetails from './PersonalDetails';
+import FinancialReference from './FinancialReference';
 import ResidentalContactDetails from '../PersonalLoanApplication/ResidentialContact';
-import WorkDetails from '../CreditCardApplication/WorkDetails'
-import Others from '../CreditCardApplication/Others';
+import WorkDetails from './WorkDetails'
+import Others from './Others';
 import EmergencyContactDetails from '../PersonalLoanApplication/EmergencyContactDetails';
-import Declaration from '../CreditCardApplication/Declaration';
-import Checklist from '../CreditCardApplication/Checklist';
+import Declaration from './Declaration';
+import Checklist from './Checklist';
 import { Images } from '../../../utils/Images';
 import '../../../styles/CreditCardApplication.scss';
 
