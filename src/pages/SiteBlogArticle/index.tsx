@@ -1,12 +1,14 @@
 import React from 'react';
 import { Images } from '../../utils/Images';
 import '../../styles/SiteBlogArticle.scss';
+import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 
 const SiteBlogArticle: React.FC = () => {
 
     return (
         <React.Fragment>
+            <Header />
             <main className="SiteBlogArticle-Body">
                 <section className="SiteBlogArticle-Body-Section">
               

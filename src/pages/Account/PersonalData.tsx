@@ -50,7 +50,7 @@ const PersonalData: FC = () => {
     return (
         <React.Fragment>
             <div className="container">
-                <div className="PersonalData-Content">
+                <div className="Account-Content">
                     <div className="row ">
                         <div className="col-12">
                             <div className="DownloadData">
@@ -70,7 +70,7 @@ const PersonalData: FC = () => {
                                                 <h4>{manageDataItems.title}</h4>
                                                 <p>{manageDataItems.description}</p>
                                             </div>
-                                            <div className="col-3 PersonalData-Switch">
+                                            <div className="col-3 Switch">
                                                 <label htmlFor="reward-switch" >
                                                     <Switch 
                                                     checked={toggle[manageDataItems.key]}

@@ -2,8 +2,8 @@
 .SiteBlogList {
 	
 	&-Body {
-		width: 90%;
-
+		width: calc(100% - 50px);
+		margin-top: 150px;
 		&-Section {
 
 			&-Button {
@@ -78,6 +78,11 @@
 					object-fit: cover;
 					border-top-left-radius: 10px;
 					border-top-right-radius: 10px;
+					
+					@media only screen and (max-width: 768px) {
+						height: 196px;
+						width: 354px;
+					}
 				}
 
 
@@ -109,6 +114,11 @@
 					object-fit: cover;
 					border-top-left-radius: 10px;
 					border-top-right-radius: 10px;
+					
+					@media only screen and (max-width: 768px) {
+						height: 196px;
+						width: 354px;
+					}
 				}
 
 
@@ -140,7 +150,7 @@
 					border-top-left-radius: 10px;
 					border-top-right-radius: 10px;
 				}
-
+				
 				&-Card {
 					width: 354px;
 				}

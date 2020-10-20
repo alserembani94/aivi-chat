@@ -66,59 +66,73 @@ const Notification: FC = () => {
 
     return (
         <React.Fragment>
-            <div className="Account-Content container">
-                <div className="row ">
-                    <div className="col-12">
-                        <div className="Email">
-                            <h4>Email</h4>
-                            <div className="container">
-                            { 
-                                email.map((emailItems, index) =>(
-                                    <div className="row">
-                                        <div className="col-9">
-                                            <h4>{emailItems.title}</h4>
-                                            <p>{emailItems.description}</p>
+            <div className="container">
+                <div className="Account-Content">
+                    <div className="row ">
+                        <div className="col-12">
+                            <div className="Email">
+                                <h4>Email</h4>
+                                <div className="container">
+                                { 
+                                    email.map((emailItems, index) =>(
+                                        <div className="row">
+                                            <div className="col-9">
+                                                <h4>{emailItems.title}</h4>
+                                                <p>{emailItems.description}</p>
+                                            </div>
+                                            <div className="col-3 Switch">
+                                                <label htmlFor="reward-switch" >
+                                                    <Switch 
+                                                    checked={toggle[emailItems.key]}
+                                                    onChange={(toggleBoolean) => handleToggle(toggleBoolean, emailItems.key)}
+                                                    name={emailItems.title}
+                                                    checkedIcon={false}
+                                                    uncheckedIcon={false}
+                                                    onHandleColor={"#D83445"}
+                                                    offHandleColor={"#D83445"}
+                                                    onColor={"#FFFFFF"}
+                                                    offColor={"#FFFFFF"}
+                                                    />
+                                                </label>    
+                                            </div>
                                         </div>
-                                        <div className="col-3">
-                                            <label htmlFor="reward-switch" >
-                                                <Switch 
-                                                checked={toggle[emailItems.key]}
-                                                onChange={(toggleBoolean) => handleToggle(toggleBoolean, emailItems.key)}
-                                                name={emailItems.title}
-                                                />
-                                            </label>    
-                                        </div>
-                                    </div>
-                                ))
-                            }
+                                    ))
+                                }
+                                </div>
                             </div>
-                        </div>
-                        <div className="Budget">
-                            <div className="container">
-                            { 
-                                budget.map((budgetItems, index) =>(
-                                    <div className="row">
-                                        <div className="col-9">
-                                            <h4>{budgetItems.title}</h4>
-                                            <p>{budgetItems.description}</p>
+                            <div className="Budget">
+                                <div className="container">
+                                { 
+                                    budget.map((budgetItems, index) =>(
+                                        <div className="row">
+                                            <div className="col-9">
+                                                <h4>{budgetItems.title}</h4>
+                                                <p>{budgetItems.description}</p>
+                                            </div>
+                                            <div className="col-3 Switch">
+                                                <label htmlFor="reward-switch" >
+                                                    <Switch 
+                                                    checked={toggle[budgetItems.key]}
+                                                    onChange={(toggleBoolean) => handleToggle(toggleBoolean, budgetItems.key)}
+                                                    name={budgetItems.title}
+                                                    checkedIcon={false}
+                                                    uncheckedIcon={false}
+                                                    onHandleColor={"#D83445"}
+                                                    offHandleColor={"#D83445"}
+                                                    onColor={"#FFFFFF"}
+                                                    offColor={"#FFFFFF"}
+                                                    />
+                                                </label>    
+                                            </div>
                                         </div>
-                                        <div className="col-3">
-                                            <label htmlFor="reward-switch" >
-                                                <Switch 
-                                                checked={toggle[budgetItems.key]}
-                                                onChange={(toggleBoolean) => handleToggle(toggleBoolean, budgetItems.key)}
-                                                name={budgetItems.title}
-                                                />
-                                            </label>    
-                                        </div>
-                                    </div>
-                                ))
-                            }
+                                    ))
+                                }
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
+                </div>
             </div>
         </React.Fragment>
     );
