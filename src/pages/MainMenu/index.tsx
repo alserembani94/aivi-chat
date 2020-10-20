@@ -13,18 +13,18 @@ const MainMenu: FC<MainMenuProps> = () => {
     const history = useHistory();
 
     const conversations = useSelector((state: any) => state.conversations);
-    const auth = useSelector((state: any) => state.auth);
+    // const auth = useSelector((state: any) => state.auth);
     const dispatch = useDispatch();
     const updateConversation = (newMessage: string) => {
         dispatch(converseWithLex(newMessage));
     };
 
-    useEffect(() => {
-        (auth.user.attributes?.email || auth.tempData.email)
-        ? dispatch(initiateConversation('Hello'))
-        : history.push('/register');
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    // useEffect(() => {
+    //     (auth.user.attributes?.email || auth.tempData.email)
+    //     ? dispatch(initiateConversation('Hello'))
+    //     : history.push('/register');
+    // // eslint-disable-next-line react-hooks/exhaustive-deps
+    // }, []);
 
     useEffect(() => {
         [

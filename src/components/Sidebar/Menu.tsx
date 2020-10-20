@@ -80,25 +80,41 @@ const menuNav = [
         label: 'Home',
     },
     {
+        path: '/site-blog-list',
+        label: 'Site Blog List',
+    },
+    {
+        path: '/site-blog-article',
+        label: 'Site Blog Article',
+    },
+    {
+        path: '/contact-us',
+        label: 'Contact Us',
+    },
+    {
         path: '/main-menu',
         label: 'Main Menu',
+    },
+    {
+        path: '/smart-assistant',
+        label: 'Smart Assistant',
+    },
+    {
+        path: '/credit-card-result',
+        label: 'Credit Card Result',
+    },
+    {
+        path: '/loan-result',
+        label: 'Loan Result',
+    },
+    {
+        path: '/credit-card-application',
+        label: 'Credit Card Application',
     },
     {
         path: '/personal-loan-application',
         label: 'Personal Loan Application',
     },
-    // {
-    //     path: '/smart-assistant',
-    //     label: 'Smart Assistant',
-    // },
-    // {
-    //     path: '/credit-card-result',
-    //     label: 'Credit Card Result',
-    // },
-    // {
-    //     path: '/loan-result',
-    //     label: 'Loan Result',
-    // },
     {
         path: '/card-details',
         label: 'Card Details',
@@ -110,6 +126,18 @@ const menuNav = [
     {
         path: '/site-blog-article',
         label: 'Site Blog Article',
+    },
+    {
+        path: '/legal',
+        label: 'Legal',
+    },
+    {
+        path: '/social-login',
+        label: 'Social Login',
+    },
+    {
+        path: '/account',
+        label: 'Account',
     },
     {
         path: '/contact-us',
@@ -182,7 +210,7 @@ const Menu: FC<MenuProps> = ({ visible, toggleVisibility }) => {
                         }
                     </div>
                 </div>
-                <div className="container">
+                {/* <div className="container">
                     <div className="Menu-Nav-Row row">
                         <div className="Menu-Nav-ColNoBorder col-4 border-right">
                             <h1 className="Menu-Nav-Title">Account</h1>
@@ -239,11 +267,8 @@ const Menu: FC<MenuProps> = ({ visible, toggleVisibility }) => {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> */}
                 <div className="Menu-Drawer">
-                    {/* <button className="Menu-Button">
-                        Hello
-                    </button> */}
                     {
                         menuNav.map((menuItem, index) => (
                             <button
