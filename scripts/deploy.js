@@ -1,4 +1,4 @@
-const fs = require('fs');
+// const fs = require('fs');
 const rimraf = require("rimraf").sync;
 const execSync = require('child_process').execSync;
 

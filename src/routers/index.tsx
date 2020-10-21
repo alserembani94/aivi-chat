@@ -2,7 +2,7 @@ import React, { FC, useEffect, useRef } from 'react';
 import {
     Switch,
     Route,
-    // Redirect,
+    Redirect,
 } from 'react-router-dom';
 import {
     Sidebar,
@@ -28,15 +28,10 @@ import Page404 from '../pages/404/Page404';
 // Importing Amplify for Authentication with Cognito
 import Amplify from 'aws-amplify';
 import awsConfig from '../aws-exports';
-import { useDispatch } from 'react-redux';
-// import { useDispatch, useSelector } from 'react-redux';
+// import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import ContactUs from '../pages/ContactUs';
 import { getCurrentSession, getCurrentUserInfo } from '../store/reducers/auth';
-// import {
-//     AuthState,
-//     onAuthUIStateChange,
-// } from '@aws-amplify/ui-components';
-
 Amplify.configure(awsConfig);
 
 const VentasRoute = [
@@ -82,28 +77,28 @@ const VentasRoute = [
     {
         path: '/credit-card-result',
         exact: false,
-        private: true,
+        private: false,
         sidebar: () => <Sidebar />,
         main: () => <CreditCardResult />,
     },
     {
         path: '/loan-result',
         exact: false,
-        private: true,
+        private: false,
         sidebar: () => <Sidebar />,
         main: () => <LoanResult />,
     },
     {
         path: '/personal-loan-application',
         exact: true,
-        private: true,
+        private: false,
         sidebar: () => <Sidebar />,
         main: () => <PersonalLoanApplication />,
     },
     {
         path: '/credit-card-application',
         exact: false,
-        private: true,
+        private: false,
         sidebar: () => <Sidebar />,
         main: () => <CreditCardApplication />,
     },
@@ -177,13 +172,11 @@ const VentasRoute = [
 ];
 
 const RouterLayout: FC = () => {
-    // const history = useHistory();
     const mainPage = useRef<HTMLElement>(null);
-    // const auth = useSelector((state: any) => state.auth);
+    const auth = useSelector((state: any) => state.auth);
     const dispatch = useDispatch();
 
     useEffect(() => {
-        // dispatch(getCurrentAuthenticatedUser());
         dispatch(getCurrentSession());
         dispatch(getCurrentUserInfo());
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -193,50 +186,32 @@ const RouterLayout: FC = () => {
         <React.Fragment>
             <main className="AIVI-Page" ref={mainPage}>
                 {/* Sidebar Rendering */}
-                {/* <Switch>
-                    {
-                        VentasRoute.map((route, index) => (
-                            <Route
-                                key={index}
-                                path={route.path}
-                                exact={route.exact}
-                                children={<route.sidebar />}
-                            />
-                        ))
-                    }
-                </Switch> */}
                 <Sidebar />
                 {/* Page Rendering */}
                 <Switch>
                     {
                         VentasRoute.map((route, index) => (
-                            // route.private
-                            // // All private routes here - will be redirected to sign in page if not log in
-                            // ? (<Route
-                            //     key={index}
-                            //     path={route.path}
-                            //     exact={route.exact}
-                            //     render={({ location }) => (auth.user.username)  // Auth check here
-                            //         ? <route.main />
-                            //         : <Redirect to={{
-                            //             pathname: "/sign-in",
-                            //             state: { from: location },
-                            //         }} />
-                            //     }
-                            // />)
-                            // // All public routes here - all unauthenticated users can navigate
-                            // : (<Route
-                            //     key={index}
-                            //     path={route.path}
-                            //     exact={route.exact}
-                            //     children={<route.main />}
-                            // />)
-                            <Route
+                            route.private
+                            // All private routes here - will be redirected to sign in page if not log in
+                            ? (<Route
+                                key={index}
+                                path={route.path}
+                                exact={route.exact}
+                                render={({ location }) => (auth.user.username)  // Auth check here
+                                    ? <route.main />
+                                    : <Redirect to={{
+                                        pathname: "/sign-in",
+                                        state: { from: location },
+                                    }} />
+                                }
+                            />)
+                            // All public routes here - all unauthenticated users can navigate
+                            : (<Route
                                 key={index}
                                 path={route.path}
                                 exact={route.exact}
                                 children={<route.main />}
-                            />
+                            />)
                         ))
                     }
                 </Switch>
