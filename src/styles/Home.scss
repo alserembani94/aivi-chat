@@ -1,7 +1,19 @@
+@import "./global";
+
 .Home{
-    &-Body{ 
-        width: calc(100% - 50px);
-        margin-top: 150px;
+    &-Screen {
+        display: flex;
+        flex-flow: row wrap;
+        width: 100%;
+        height: 100%;
+        overflow-x: auto;
+    }
+    &-Body {
+        flex: 1 0;
+        // margin-top: 5rem;
+        display: flex;
+        flex-flow: column wrap;
+        align-items: center;
         &-Blog{
             width: calc(100% - 50px);
             padding-left: 30px;
@@ -58,12 +70,31 @@
 			}
         }
     }
+    &-Section {
+        width: clamp(320px, 100%, 1200px);
+        padding: 50px 0px;
+        display: flex;
+        &-Product {
+            background: $light-background;
+            margin-top: 10rem;
+            .container {
+                position: relative;
+                top: -7.5rem;
+            }
+        }
+    }
     &-Headline{
+        display: flex;
+        position: relative;
+        width: 100%;
+        &-Image {
+            position: absolute;
+            right: 50px;
+        }
         
-        
-        .content{
+        &-Content{
             padding: 10px 50px;
-            // position: absolute;
+            max-width: 55ch;
             
             h1{
                 font-size: 2em;
@@ -74,10 +105,10 @@
                 font-size: 1em;
                 font-weight: 700;
             }
-            button{
-                font-size: small;
-                padding: 5px 30px;
-            }
+            // button{
+            //     font-size: 1rem;
+            //     padding: 10px 30px;
+            // }
         }
 
         &-Image{
@@ -96,15 +127,8 @@
 
     &-Content{
         
-        margin-top: 50px;
-        .box{
-            margin-bottom: 20px ;
-            background: #ffffff;
-            padding: 35px;
-            /* Card Shadow */
-            box-shadow: 0px 4px 4px rgba(51, 51, 51, 0.04), 
-                        0px 4px 16px rgba(51, 51, 51, 0.08); 
-        }
+        padding: 50px 0px;
+        width: 100%;
         h5{
             font-weight: 600;
             font-size: 23px;
@@ -131,10 +155,10 @@
                 h1{
                     font-weight: 600;
                 }
-                button{
-                    font-size: small;
-                    padding: 5px 30px;
-                }
+                // button{
+                //     font-size: small;
+                //     padding: 5px 30px;
+                // }
                 @media only screen and (max-width: 768px) {
                     text-align: center;
                 }
@@ -142,12 +166,7 @@
         }
 
         &-Download{
-            margin-top: 100px;
-            height: 740px;
             
-            @media only screen and (max-width: 768px) {
-                height: 440px;
-            }
             // background-color: aqua;
             &-Title{
                 text-align: center;
@@ -236,6 +255,88 @@
                 }
             }
         }
+        &-Product {
+            display: flex;
+            flex-flow: row wrap;
+            width: clamp(320px, 100%, 1280px);
+            height: fit-content;
+            margin: auto;
+            .box {
+                margin: 10px;
+                flex: 1 0 280px;
+                background-color: $light-background;
+                padding: 35px;
+                /* Card Shadow */
+                box-shadow: 0px 4px 4px rgba(51, 51, 51, 0.04), 
+                            0px 4px 16px rgba(51, 51, 51, 0.08);
+            }
+        }
         
+    }
+    &-Download {
+        background-color: $light-background;
+        display: flex;
+        flex-flow: column wrap;
+        align-items: center;
+        &-Container {
+            width: clamp(320px, 100%, 1200px);
+            padding-top: 5rem;
+        }
+        &-Title {
+            text-align: center;
+            display: flex;
+            flex-flow: column wrap;
+            align-items: center;
+            h1 {
+                font-weight: 600;
+                font-size: 3rem;
+            }
+            p {
+                width: clamp(10ch, 100%, 40ch);
+            }
+        }
+        &-Store {
+            background: $brand-gradient;
+            border-radius: 20px;
+            padding: 7rem 50px;
+            display: flex;
+            flex-flow: row wrap;
+            position: relative;
+            margin: 5rem 30px 0px;
+            &-Content {
+                width: clamp(20ch, 100%, 40ch);
+                color: $light-background;
+                h1 {
+                    font-weight: 00;
+                }
+                img {
+                    margin: 10px;
+                    &:first-child {
+                        margin-left: 0px;
+                    }
+                }
+            }
+            &-Image {
+                width: clamp(320px, 100%, 750px);
+                position: absolute;
+                right: 0px;
+                bottom: 0px;
+                img {
+                    width: 100%;
+                    height: auto;
+                    object-fit: contain;
+                }
+            }
+            @media screen and (max-width: 1000px) {
+                align-items: center;
+                flex-flow: column-reverse;
+                &-Content {
+                    text-align: center;
+                }
+                &-Image {
+                    position: relative;
+                }
+            }
+        }
     }
 }

@@ -1,58 +1,5 @@
-// Dimension adjustment
-$sidebar-width: 50px;
-$button-area-height: 65px;
-$icon-button-dimension: 40px;
-$dialog-input-height: 65px;
-$avatar-dimension: 90px;
-$layout-sidebar-adjustment: 0px;
-$mobile-menu-button-translation: 20px;
-$mobile-chatbox-button: 50px;
-$mobile-chatbox-button-translation: 20px;
-$checkbox-indicator-dimension: 30px;
-$imageselect-image-dimension: 5ch;
-$tabbar-proceed-dimension: 40px;
-$menu-padding: 1rem 3rem;
-$result-bottomContent: 5rem;
+@import './styles/global';
 
-// Theme color adjustment
-$brand-fill: #D53A4C;
-$brand-fill-test: #D53A4C66;
-$brand-gradient: linear-gradient(90.54deg, #F25767 0%, #D83445 100%);
-$light-background: #FFFFFF;
-$base-background: #E5E5E5;
-$text-dark: #707C97;
-$text-light: rgba(112, 124, 151, 0.7);
-$shadow: rgba(32, 32, 32, 0.08);
-$breakline: rgba(112, 124, 151, 0.15);
-$icon-light: white;
-$icon-dark: rgba(112, 124, 151, 0.5);
-$input-label: rgba(17, 17, 17, 0.48);
-$chat-bubble-bot: $brand-gradient;
-$chat-bubble-bot-tail: #F15666;
-$chat-bubble-user: white;
-$chat-bubble-user-border: rgba(112, 124, 151, 0.25);
-$chat-bubble-user-tail: $chat-bubble-user-border;
-$dropdown-hover: #F1F1F1;
-$inactive: $input-label;
-$imageselect-background: #F7F7FA;
-$slider-track: $base-background;
-$slider-thumb: #CF1A2D;
-$slider-track-between: #F25767;
-$darken-background: rgba(0, 0, 0, 0.3);
-
-// Theme standardisation
-$box-shadow: 0 4px 10px $shadow;
-$selected-box-shadow: 0 0 10px $brand-fill-test;
-$dropdown-shadow: 0px 4px 4px rgba(51, 51, 51, 0.15);
-$imageselect-border: 2px dashed rgba(112, 124, 151, 0.25);
-$imageselect-shadow: 10px 10px 25px rgba(112, 124, 151, 0.05);
-$imageselect-border-active: 2px solid $brand-fill;
-
-// Default root setting
-:root {
-  // Root measurement adjustment
-  font-size: 16px;
-}
 
 * {
   box-sizing: border-box;
@@ -435,28 +382,35 @@ input[type=number] {
 // Adjustment for main layout
 .AIVI {
   &-Page {
-    width: 100vw;
-    min-height: 100vh;
     background-color: $base-background;
     display: flex;
     flex-flow: row wrap;
+    align-items: stretch;
+    width: 100vw;
+    height: 100vh;
   }
   
   &-Sidebar {
-    min-height: 100%;
-    width: $sidebar-width;
+    // min-height: 100%;
+    // width: $sidebar-width;
+    width: 50px;
     background-color: $brand-fill;
     position: sticky;
     z-index: 1001;
+    display: flex;
   }
 
   &-Body {
-    width: calc(100% - #{$sidebar-width});
-    height: 100%;
+    // width: calc(100% - #{$sidebar-width});
+    // height: 100%;
+    // display: flex;
+    // flex-flow: row wrap;
+    // flex-grow: 1;
+    // position: relative;
     display: flex;
-    flex-flow: row wrap;
-    flex-grow: 1;
-    position: relative;
+    flex: 1 0;
+    height: 100%;
+    // overflow: scroll;
   }
 
   &-Chatbox {
@@ -491,17 +445,20 @@ input[type=number] {
     left: 30px;
   }
 }
+
 .Header {
-  position: absolute;
-  width: calc(97% - 50px);
   display: flex;
-  align-items: center;
-  margin: 15px 75px;
+  padding: 30px 50px;
+  width: 100%;
+  position: sticky;
+  top: 0px;
+  background: $light-background;
+  z-index: 100;
   &-Logo {
-    width: auto;
     height: 3rem;
+    width: auto;
     margin-right: 50px;
-    display: flex;
+    // display: flex;
     img {
       width: 100%;
       height: 100%;
@@ -512,6 +469,7 @@ input[type=number] {
   &-Auth {
     // width: fit-content;
     // min-width: 300px;
+    flex: 1 0;
     display: flex;
     justify-content: flex-end;
   }
@@ -1481,8 +1439,9 @@ input[type=number] {
 .Pages-Red-Button {
   background: #D43A4C;
   border-radius: 4px;
-  padding: 10px;
+  padding: 10px 30px;
   color: #FFFFFF;
+  font-size: 1rem;
 }
 
 .CardResult {
@@ -2477,37 +2436,6 @@ input[type=number] {
 }
 
 @media  (max-width: 900px) {
-  // Dimension adjustment
-  $sidebar-width: 40px;
-  $button-area-height: 65px;
-  $icon-button-dimension: 40px;
-  $dialog-input-height: 65px;
-  $avatar-dimension: 90px;
-  $layout-sidebar-adjustment: 50px;
-  $mobile-menu-button-translation: 15px;
-
-  // Theme color adjustment
-  $brand-fill: #D53A4C;
-  $brand-fill-test: #D53A4C66;
-  $brand-gradient: linear-gradient(90.54deg, #F25767 0%, #D83445 100%);
-  $light-background: #FFFFFF;
-  $base-background: #E5E5E5;
-  $text-dark: #707C97;
-  $text-light: rgba(112, 124, 151, 0.7);
-  $shadow: rgba(32, 32, 32, 0.08);
-  $breakline: rgba(112, 124, 151, 0.15);
-  $icon-light: white;
-  $icon-dark: rgba(112, 124, 151, 0.5);
-  $input-label: rgba(17, 17, 17, 0.48);
-
-  // Theme standardisation
-  $box-shadow: 0 4px 10px $shadow;
-  $selected-box-shadow: 0 0 10px $brand-fill-test;
-
-  :root {
-    // Root measurement adjustment
-    font-size: 14px;
-  }
 
   .AIVI {
     &-Sidebar {

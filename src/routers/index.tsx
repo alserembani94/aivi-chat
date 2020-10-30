@@ -188,33 +188,35 @@ const RouterLayout: FC = () => {
                 {/* Sidebar Rendering */}
                 <Sidebar />
                 {/* Page Rendering */}
-                <Switch>
-                    {
-                        VentasRoute.map((route, index) => (
-                            route.private
-                            // All private routes here - will be redirected to sign in page if not log in
-                            ? (<Route
-                                key={index}
-                                path={route.path}
-                                exact={route.exact}
-                                render={({ location }) => (auth.user.username)  // Auth check here
-                                    ? <route.main />
-                                    : <Redirect to={{
-                                        pathname: "/sign-in",
-                                        state: { from: location },
-                                    }} />
-                                }
-                            />)
-                            // All public routes here - all unauthenticated users can navigate
-                            : (<Route
-                                key={index}
-                                path={route.path}
-                                exact={route.exact}
-                                children={<route.main />}
-                            />)
-                        ))
-                    }
-                </Switch>
+                <section className="AIVI-Body">
+                    <Switch>
+                        {
+                            VentasRoute.map((route, index) => (
+                                route.private
+                                // All private routes here - will be redirected to sign in page if not log in
+                                ? (<Route
+                                    key={index}
+                                    path={route.path}
+                                    exact={route.exact}
+                                    render={({ location }) => (auth.user.username)  // Auth check here
+                                        ? <route.main />
+                                        : <Redirect to={{
+                                            pathname: "/sign-in",
+                                            state: { from: location },
+                                        }} />
+                                    }
+                                />)
+                                // All public routes here - all unauthenticated users can navigate
+                                : (<Route
+                                    key={index}
+                                    path={route.path}
+                                    exact={route.exact}
+                                    children={<route.main />}
+                                />)
+                            ))
+                        }
+                    </Switch>
+                </section>
             </main>
         </React.Fragment>
     );
