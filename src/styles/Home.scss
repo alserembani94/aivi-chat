@@ -144,7 +144,7 @@
             }
         }
         &-Video{
-            width: 440px;
+            width: clamp(200px, 100%, 440px);
             height: 240px;
             margin: 15px;
             background-color: #C4C4C4;

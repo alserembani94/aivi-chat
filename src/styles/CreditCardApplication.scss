@@ -1,4 +1,15 @@
+@import './global';
+
 .CreditCardApplication {
+    &-Content {
+        width: 100%;
+        overflow: auto;
+        height: 100%;
+        // height: calc(100% - #{$button-area-height});
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: stretch;
+    }
     &-Body { 
         &-Content {
             width: 100%;
@@ -14,5 +25,35 @@
                 padding-top: 20px;
             }
         }
+    }
+    &-Header {
+        // background-color: burlywood;
+        // flex-basis: 100px;
+        display: flex;
+        // justify-content: space-between;
+        align-items: center;
+        padding-bottom: 30px;
+        border-bottom: 1px solid $base-background;
+        img {
+            height: 80px;
+            width: auto;
+        }
+        p {
+            max-width: 25ch;
+            flex-grow: 1;
+            color: $text-light;
+        }
+        button {
+            flex-basis: 320px;
+            margin-top: 0px;
+        }
+        * {
+            margin-right: 20px;
+        }
+    }
+    &-Tab {
+        flex-grow: 1;
+        overflow: hidden;
+        padding-top: 30px;
     }
 }

@@ -23,7 +23,7 @@ interface TabBarProps {
 const TabBar: FC<TabBarProps> = ({currentTab, updateTab, optionList, progressStrict = false, updateStrictTab, enabledTab}) => {
     const handleTabChange = (selectedTab: string) => {
         const tabBody = document.getElementById(selectedTab);
-        tabBody && tabBody.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'start'});
+        tabBody && tabBody.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'});
         updateTab(selectedTab);
     }
 

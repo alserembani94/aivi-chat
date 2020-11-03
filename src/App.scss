@@ -1,15 +1,22 @@
 @import './styles/global';
 
 
+
+
 * {
   box-sizing: border-box;
   font-size: 16px;
   margin: 0;
   padding: 0;
   font-family: Proxima Nova, Helvetica, sans-serif;
-  scrollbar-width: 5px;
+  scrollbar-width: thin;
   scrollbar-color: transparent transparent;
   transition: all 0.1s ease-in-out;
+  div {
+    p {
+      margin: 0px;
+    }
+  }
   &::-webkit-scrollbar {
     width: 6px;
     height: 6px;
@@ -197,13 +204,14 @@ button:focus {
     &-Container {
       background-color: $light-background;
       box-shadow: $box-shadow;
-      margin-bottom: 20px;
       padding: calc(10px + 1rem) 15px 10px;
       display: flex;
       flex-direction: column;
       transition: box-shadow 0.3s ease-in-out;
       border-radius: 4px;
       position: relative;
+      width: 100%;
+      margin: 0px 0px 20px;
       // &:last-child {
       //   margin-bottom: 0;
       // }
@@ -374,6 +382,8 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
+// @import '~bootstrap/dist/css/bootstrap.min.css';
+
 /* Firefox */
 input[type=number] {
   -moz-appearance: textfield;
@@ -388,12 +398,14 @@ input[type=number] {
     align-items: stretch;
     width: 100vw;
     height: 100vh;
+    overflow: hidden;
   }
   
   &-Sidebar {
     // min-height: 100%;
     // width: $sidebar-width;
-    width: 50px;
+    // width: 50px;
+    flex: 0 0 #{$sidebar-width};
     background-color: $brand-fill;
     position: sticky;
     z-index: 1001;
@@ -408,7 +420,9 @@ input[type=number] {
     // flex-grow: 1;
     // position: relative;
     display: flex;
-    flex: 1 0;
+    flex-grow: 1;
+    flex-shrink: 1;
+    width: calc(100% - #{$sidebar-width});
     height: 100%;
     // overflow: scroll;
   }
@@ -419,6 +433,7 @@ input[type=number] {
     padding: 35px;
     display: flex;
     justify-content: center;
+    position: relative;
     &-Mobile {
       &-Model {
         display: none;
@@ -454,6 +469,7 @@ input[type=number] {
   top: 0px;
   background: $light-background;
   z-index: 100;
+  box-shadow: $box-shadow;
   &-Logo {
     height: 3rem;
     width: auto;
@@ -1412,6 +1428,9 @@ input[type=number] {
       font-size: 0.8rem;
       text-align: right;
     }
+    & > div {
+      flex: 0;
+    }
   }
   &-Action {
     padding: 30px;
@@ -1442,6 +1461,7 @@ input[type=number] {
   padding: 10px 30px;
   color: #FFFFFF;
   font-size: 1rem;
+  margin-top: 1rem;
 }
 
 .CardResult {
@@ -1769,7 +1789,8 @@ input[type=number] {
 
 .MainMenu {
   &-Screen {
-    width: calc(100% - #{$sidebar-width});
+    // width: calc(100% - #{$sidebar-width});
+    flex: 1 1 100%;
     padding: 50px;
     display: flex;
     justify-content: center;
@@ -1777,19 +1798,21 @@ input[type=number] {
 }
 
 .TabBar {
+  &-Container {
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+  }
   &-Header {
     display: flex;
     flex-flow: row nowrap;
-    height: fit-content;
     list-style: none;
     align-items: center;
     margin-bottom: 40px;
-    width: 100%;
     overflow: auto;
     scrollbar-color: transparent transparent !important;
-    position: sticky;
-    top: 0px;
-    z-index: 500;
+    scrollbar-width: none;
     background-color: $light-background;
     &::-webkit-scrollbar {
       display: none;
@@ -1802,7 +1825,7 @@ input[type=number] {
       margin-right: 10px;
       padding: 15px 5px;
       font-size: 0.9rem;
-      width: 15ch;
+      min-width: 15ch;
       cursor: pointer;
       height: fit-content;
       color: $inactive;
@@ -1828,6 +1851,7 @@ input[type=number] {
     width: 100%;
     position: relative;
     overflow: hidden;
+    flex: 1 0;
     &-Item {
       width: 100%;
       flex-shrink: 0;
@@ -1958,15 +1982,16 @@ input[type=number] {
     font-size: 0.85rem;
     color: $text-dark;
     width: 14ch;
-    height: 120px;
+    height: 15ch;
     background: $light-background;
     border: $imageselect-border;
     border-radius: 10px;
     box-shadow: $imageselect-shadow;
     padding: 10px;
     cursor: pointer;
-    margin-right: 20px;
-    margin-bottom: 20px;
+    // margin-right: 20px;
+    // margin-bottom: 20px;
+    margin: 10px;
     // &:nth-child(3n) {
     //   margin-right: 0;
     // }
@@ -2040,7 +2065,8 @@ input[type=number] {
         box-shadow: none;
       }
       &[data-active=true] {
-        color: $brand-fill;
+        background-color: $brand-fill;
+        color: $light-background;
         font-weight: 500;
       }
       &[data-active=false] {

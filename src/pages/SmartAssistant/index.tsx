@@ -30,21 +30,20 @@ const SmartAssistant = () => {
     const [renderModel, setRenderModel] = useState(false);
     const sections = ['Cash From Card', 'Credit Card', 'Balance Transfer', 'Personal Loan'];
 
-
     const handleChatboxModal = () => {
         setShowChatInMobile(prevState => { return !prevState });
-    }
+    };
 
     // FOR DEBUG PURPOSE ONLY
     // START
     const handleSectionsMenu = () => {
         setRenderModel(prevState => { return !prevState });
-    }
+    };
 
     const handleChangeSection = (section: string) => {
         setRenderSection(() => { return section })
         setRenderModel(prevState => { return !prevState });
-    }
+    };
     // END
 
     const handleSectionRendering = () => {
@@ -65,14 +64,14 @@ const SmartAssistant = () => {
             case 'Personal Loan': return '/loan-result';
             default: return '/';
         }
-    }
+    };
 
     const updateConversation = (newMessage: string) => {
         dispatch(converseWithLex(newMessage));
     };
     
     return (
-        <main className="AIVI-Body">
+        <React.Fragment>
             {/* <section className="AIVI-Body"> */}
                 <section className="AIVI-Chatbox">
                     <img src={Images.logo_AIVI} alt="logo-aivi" className="AIVI-Logo" />
@@ -124,8 +123,8 @@ const SmartAssistant = () => {
             <AuthModal
                 nextLocation={handleNextLocation()}
             />
-        </main>
-  );
+        </React.Fragment>
+    );
 }
 
 export default SmartAssistant;
