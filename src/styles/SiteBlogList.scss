@@ -1,9 +1,17 @@
+@import './global';
+
 //Janessa
 .SiteBlogList {
+	&-Page {
+		display: flex;
+		flex-flow: column nowrap;
+		align-items: center;
+		overflow: auto;
+	}
 	
 	&-Body {
-		width: calc(100% - 50px);
-		margin-top: 150px;
+		width: 100%;
+		margin-top: 50px;
 		&-Section {
 
 			&-Button {
@@ -26,8 +34,6 @@
 
 			&-CardDesc {
 				box-shadow: 0px 4px 4px rgba(51, 51, 51, 0.04), 0px 4px 16px rgba(51, 51, 51, 0.08);
-				border-bottom-left-radius: 10px;
-				border-bottom-right-radius: 10px;
 				background: #FFFFFF;
 				margin-top: -5px;
 
@@ -43,15 +49,13 @@
 					width: 124px;
 					height: 36px;
 					top: 0;
-					border-top-left-radius: 10px;
 					background: #F53945;
 					text-align: center;
-					vertical-align: middle;
-					div{ 
-						vertical-align: middle;
-						color: #FFF;
-						padding: 12px;
-					}
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					color: #FFF;
+					text-transform: uppercase;
 				}
 			}
 			
@@ -76,8 +80,6 @@
 					height: 196px;
 					width: 1114px;
 					object-fit: cover;
-					border-top-left-radius: 10px;
-					border-top-right-radius: 10px;
 					
 					@media only screen and (max-width: 768px) {
 						height: 196px;
@@ -88,6 +90,9 @@
 
 				&-Card {
 					width: 1114px;
+					border-radius: 6px;
+					overflow: hidden;
+					position: relative;
 				}
 			}
 
@@ -99,21 +104,15 @@
 				list-style: none;
 				
 				-ms-box-orient: horizontal;
-				display: -webkit-box;
-				display: -moz-box;
-				display: -ms-flexbox;
-				display: -moz-flex;
-				display: -webkit-flex;
 				display: flex;
 				margin-bottom: 40px;
+				box-shadow: $box-shadow;
 
 
 				img {
 					height: 196px;
 					width: 548px;
 					object-fit: cover;
-					border-top-left-radius: 10px;
-					border-top-right-radius: 10px;
 					
 					@media only screen and (max-width: 768px) {
 						height: 196px;
@@ -124,6 +123,9 @@
 
 				&-Card {
 					width: 548px;
+					border-radius: 6px;
+					overflow: hidden;
+					position: relative;
 				}
 			}
 
@@ -147,13 +149,32 @@
 					height: 196px;
 					width: 354px;
 					object-fit: cover;
-					border-top-left-radius: 10px;
-					border-top-right-radius: 10px;
 				}
 				
 				&-Card {
 					width: 354px;
+					border-radius: 6px;
+					overflow: hidden;
+					position: relative;
 				}
+			}
+
+			&-Topic {
+				font-size: 0.8rem;
+				text-transform: uppercase;
+				color: $brand-fill;
+			}
+			&-Title {
+				font-size: 1.3rem;
+				font-weight: 600;
+			}
+			&-Description {
+				font-size: 1rem;
+			}
+			&-Date {
+				margin-top: 20px;
+				font-size: 0.8rem;
+				color: $text-light;
 			}
 		}
 		

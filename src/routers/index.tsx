@@ -113,14 +113,14 @@ const VentasRoute = [
 
     // Landing Page Routes
     {
-        path: '/site-blog-list',
+        path: '/blog',
         exact: true,
         private: false,
         sidebar: () => <Sidebar />,
         main: () => <SiteBlogList />,
     },
     {
-        path: '/site-blog-article',
+        path: '/blog/:id',
         exact: true,
         private: false,
         sidebar: () => <Sidebar />,

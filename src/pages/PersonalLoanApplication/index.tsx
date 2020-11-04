@@ -440,8 +440,8 @@ const CreditCardApplication: FC = () => {
 
     // MOCK: Selected card data
     const mockCardData = {
-        name: 'Maybank Visa Platinum',
-        imageUrl: Images.icon_RHBCard,
+        name: 'Maybank Loan',
+        imageUrl: Images.icon_maybank,
     };
 
     return (

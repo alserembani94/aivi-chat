@@ -38,6 +38,10 @@
   &::placeholder {
     color: $text-light;
   }
+  &::selection {
+    background-color: $brand-fill;
+    color: $light-background;
+  }
 }
 
 input {
@@ -524,20 +528,25 @@ input[type=number] {
   }
   &-Container {
     display: flex;
-    flex-flow: column wrap;
+    flex-flow: column nowrap;
     background-color: $light-background;
     position: absolute;
     height: 100vh;
     width: fit-content;
     padding: $menu-padding;
     z-index: 1000;
+    overflow: scroll;
     &[data-visible=true] {
       left: $sidebar-width;
-      transition: left 0.7s ease-out;
+      opacity: 1;
+      transition: all 0.7s ease-out;
+      pointer-events: auto;
     }
     &[data-visible=false] {
       left: -150vw;
-      transition: left 0.7s ease-in;
+      opacity: 0;
+      transition: all 0.7s ease-in;
+      pointer-events: none;
     }
   }
   &-Logo {
@@ -592,8 +601,27 @@ input[type=number] {
   }
   &-Drawer {
     display: flex;
-    flex-flow: column wrap;
+    flex-flow: row wrap;
     padding: 20px 0px;
+    &-Column {
+      display: flex;
+      flex-flow: column wrap;
+      padding: 0px 40px;
+      border-right: 1px solid $base-background;
+      min-width: 35ch;
+      &:last-child {
+        border-right: 0px;
+      }
+    }
+    &-Section {
+      display: flex;
+      flex-flow: column wrap;
+      margin-bottom: 50px;
+      h1 {
+        font-weight: 600;
+        font-size: 3rem;
+      }
+    }
   }
   &-Button {
     font-size: 1.2rem;
@@ -605,23 +633,40 @@ input[type=number] {
     font-weight: 400;
     transition: left color font-weight 0.15s ease-in-out;
     padding: 10px 0px;
+    display: flex;
+    // justify-content: center;
+    align-items: center;
     &:hover {
       left: 5px;
       color: $brand-fill;
       font-weight: 700;
       transition: left font-weight 0.15s ease-in-out;
     }
+    &-Tag {
+      font-size: 0.6rem;
+      padding: 2px 10px;
+      background-color: $brand-fill;
+      color: $light-background;
+      // width: fit-content;
+      height: fit-content;
+      border-radius: 2rem;
+      margin-left: 5px;
+    }
   }
   &-Header {
     display: flex;
     align-items: center;
-    margin: 20px 0px;
+    padding: 20px 0px;
+    position: sticky;
+    top: 0px;
+    z-index: 500;
+    background-color:$light-background;
   }
   &-Auth {
     width: fit-content;
-    min-width: 300px;
     display: flex;
     justify-content: flex-end;
+    flex-grow: 1;
   }
   &-SignIn {
     color: $brand-fill;
@@ -2385,6 +2430,7 @@ input[type=number] {
   &-Wrapper{ 
     background-color: #1A2127;
     width: 100%;
+    margin-top: 50px;
   }
   &-Content1{
     margin: 40px;

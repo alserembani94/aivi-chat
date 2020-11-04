@@ -13,119 +13,76 @@ interface MenuProps {
     toggleVisibility: () => void;
 }
 
-// const accountNav = [
-//     {
-//         path: '/',
-//         label: 'Profile',
-//     },
-//     {
-//         path: '/',
-//         label: 'Notification',
-//     },
-// ];
-// const legalNav = [
-//     {
-//         path: '/',
-//         label: 'Privacy',
-//     },
-//     {
-//         path: '/',
-//         label: 'Security',
-//     },
-//     {
-//         path: '/',
-//         label: 'Terms of Use',
-//     },
-// ];
-// const servicesNav = [
-//     {
-//         path: '/credit-card-application',
-//         label: 'Credit Card',
-//     },
-//     {
-//         path: '/personal-loan-application',
-//         label: 'Personal Loans',
-//     },
-//     {
-//         path: '/',
-//         label: 'Balance Transfer',
-//     },
-//     {
-//         path: '/',
-//         label: 'Cash From Card',
-//     },
-//     {
-//         path: '/',
-//         label: 'Social Budget App',
-//     },
-// ];
-// const blogNav = [
-//     {
-//         path: '/site-blog-article',
-//         label: 'Articles',
-//     },
-//     {
-//         path: '/',
-//         label: 'FAQ',
-//     },
-//     {
-//         path: '/contact-us',
-//         label: 'Contact Us',
-//     },
-// ];
+type navButton = {
+    path: string,
+    label: string,
+    tag?: string,
+};
 
-const menuNav = [
+const accountNav: navButton[] = [
     {
-        path: '/',
-        label: 'Home',
+        path: '/profile',
+        label: 'Profile',
+        tag: 'In Progress',
     },
     {
-        path: '/main-menu',
-        label: 'Main Menu',
+        path: '/notification',
+        label: 'Notification',
+        tag: 'In Progress',
+    },
+];
+const legalNav: navButton[] = [
+    {
+        path: '/privacy',
+        label: 'Privacy',
+        tag: 'In Progress',
+    },
+    {
+        path: '/security',
+        label: 'Security',
+        tag: 'In Progress',
+    },
+    {
+        path: '/terms',
+        label: 'Terms of Use',
+        tag: 'In Progress',
+    },
+];
+const servicesNav: navButton[] = [
+    {
+        path: '/smart-assistant',
+        label: 'Credit Card',
+        tag: 'New',
     },
     {
         path: '/smart-assistant',
-        label: 'Smart Assistant',
+        label: 'Personal Loans',
+        tag: 'New',
     },
     {
-        path: '/credit-card-result',
-        label: 'Credit Card Result',
+        path: '/',
+        label: 'Balance Transfer',
+        tag: 'New',
     },
     {
-        path: '/loan-result',
-        label: 'Loan Result',
+        path: '/',
+        label: 'Cash From Card',
+        tag: 'New',
     },
     {
-        path: '/credit-card-application',
-        label: 'Credit Card Application',
+        path: '!',
+        label: 'Social Budget App',
+        tag: 'Coming Soon',
+    },
+];
+const blogNav: navButton[] = [
+    {
+        path: '/blog',
+        label: 'Articles',
     },
     {
-        path: '/personal-loan-application',
-        label: 'Personal Loan Application',
-    },
-    {
-        path: '/card-details',
-        label: 'Card Details',
-    },
-    {
-        path: '/site-blog-list',
-        label: 'Site Blog List',
-    },
-    {
-        path: '/site-blog-article',
-        label: 'Site Blog Article',
-    },
-    {
-        path: '/legal',
-        label: 'Legal',
-    },
-    {
-        path: '/social-login',
-        label: 'Social Login',
-    },
-    {
-        path: '/account',
-        label: 'Account',
+        path: '/faq',
+        label: 'FAQ',
     },
     {
         path: '/contact-us',
@@ -133,14 +90,75 @@ const menuNav = [
     },
 ];
 
+// const oldMenuNav = [
+//     {
+//         path: '/',
+//         label: 'Home',
+//     },
+//     {
+//         path: '/main-menu',
+//         label: 'Main Menu',
+//     },
+//     {
+//         path: '/smart-assistant',
+//         label: 'Smart Assistant',
+//     },
+//     {
+//         path: '/credit-card-result',
+//         label: 'Credit Card Result',
+//     },
+//     {
+//         path: '/loan-result',
+//         label: 'Loan Result',
+//     },
+//     {
+//         path: '/credit-card-application',
+//         label: 'Credit Card Application',
+//     },
+//     {
+//         path: '/personal-loan-application',
+//         label: 'Personal Loan Application',
+//     },
+//     {
+//         path: '/card-details',
+//         label: 'Card Details',
+//     },
+//     {
+//         path: '/site-blog-list',
+//         label: 'Site Blog List',
+//     },
+//     {
+//         path: '/site-blog-article',
+//         label: 'Site Blog Article',
+//     },
+//     {
+//         path: '/legal',
+//         label: 'Legal',
+//     },
+//     {
+//         path: '/social-login',
+//         label: 'Social Login',
+//     },
+//     {
+//         path: '/account',
+//         label: 'Account',
+//     },
+//     {
+//         path: '/contact-us',
+//         label: 'Contact Us',
+//     },
+// ];
+
 const Menu: FC<MenuProps> = ({ visible, toggleVisibility }) => {
     const auth = useSelector((state: any) => state.auth)
     const history = useHistory();
     const dispatch = useDispatch();
 
     const handleNavigation = (route: string) => {
-        history.push(route);
-        toggleVisibility();
+        if (route !== '!') {
+            history.push(route);
+            toggleVisibility();
+        }
     };
 
     const handleSignOut = () => {
@@ -198,74 +216,97 @@ const Menu: FC<MenuProps> = ({ visible, toggleVisibility }) => {
                         }
                     </div>
                 </div>
-                {/* <div className="container">
-                    <div className="Menu-Nav-Row row">
-                        <div className="Menu-Nav-ColNoBorder col-4 border-right">
-                            <h1 className="Menu-Nav-Title">Account</h1>
-                            <div className="Menu-Nav-Drawer">
-                                {
-                                    accountNav.map((accountItem, index) => (
-                                        <button
-                                            key={index}
-                                            className="Menu-Nav-Button"
-                                            onClick={() => handleNavigation(accountItem.path)}
-                                        >{accountItem.label}</button>
-                                    ))
-                                }
-                            </div>
-                            <h1 className="Menu-Nav-Title">Legal</h1>
-                            <div className="Menu-Nav-Drawer">
+                <div className="Menu-Drawer">
+                    <div className="Menu-Drawer-Column">
+                        <div className="Menu-Drawer-Section">
+                            <h1>Account</h1>
                             {
-                                legalNav.map((legalItem, index) => (
+                                accountNav.map((navItem, index) => (
                                     <button
                                         key={index}
-                                        className="Menu-Nav-Button"
-                                        onClick={() => handleNavigation(legalItem.path)}
-                                    >{legalItem.label}</button>
+                                        className="Menu-Button"
+                                        onClick={() => handleNavigation(navItem.path)}
+                                    >
+                                        {navItem.label}
+                                        {
+                                            navItem.tag && (
+                                                <div className="Menu-Button-Tag">
+                                                    {navItem.tag}
+                                                </div>
+                                            )
+                                        }
+                                    </button>
                                 ))
                             }
-                            </div>
                         </div>
-                        <div className="Menu-Nav-ColBorder col-4 border-right">
-                            <h1 className="Menu-Nav-Title">Services</h1>
-                            <div className="Menu-Nav-Drawer">
+                        <div className="Menu-Drawer-Section">
+                            <h1>Legal</h1>
                             {
-                                servicesNav.map((servicesItem, index) => (
+                                legalNav.map((navItem, index) => (
                                     <button
                                         key={index}
-                                        className="Menu-Nav-Button"
-                                        onClick={() => handleNavigation(servicesItem.path)}
-                                    >{servicesItem.label}</button>
+                                        className="Menu-Button"
+                                        onClick={() => handleNavigation(navItem.path)}
+                                    >
+                                        {navItem.label}
+                                        {
+                                            navItem.tag && (
+                                                <div className="Menu-Button-Tag">
+                                                    {navItem.tag}
+                                                </div>
+                                            )
+                                        }
+                                    </button>
                                 ))
                             }
-                            </div>
-                        </div>
-                        <div className="Menu-Nav-ColBorder col-4">
-                            <h1 className="Menu-Nav-Title">Blog</h1>
-                            <div className="Menu-Nav-Drawer">
-                            {
-                                blogNav.map((blogItem, index) => (
-                                    <button
-                                        key={index}
-                                        className="Menu-Nav-Button"
-                                        onClick={() => handleNavigation(blogItem.path)}
-                                    >{blogItem.label}</button>
-                                ))
-                            }
-                            </div>
                         </div>
                     </div>
-                </div> */}
-                <div className="Menu-Drawer">
-                    {
-                        menuNav.map((menuItem, index) => (
-                            <button
-                                key={index}
-                                className="Menu-Button"
-                                onClick={() => handleNavigation(menuItem.path)}
-                            >{menuItem.label}</button>
-                        ))
-                    }
+                    <div className="Menu-Drawer-Column">
+                        <div className="Menu-Drawer-Section">
+                            <h1>Services</h1>
+                            {
+                                servicesNav.map((navItem, index) => (
+                                    <button
+                                        key={index}
+                                        className="Menu-Button"
+                                        onClick={() => handleNavigation(navItem.path)}
+                                    >
+                                        {navItem.label}
+                                        {
+                                            navItem.tag && (
+                                                <div className="Menu-Button-Tag">
+                                                    {navItem.tag}
+                                                </div>
+                                            )
+                                        }
+                                    </button>
+                                ))
+                            }
+                        </div>
+                    </div>
+                    <div className="Menu-Drawer-Column">
+                        <div className="Menu-Drawer-Section">
+                            <h1>Blog</h1>
+                            {
+                                blogNav.map((navItem, index) => (
+                                    <button
+                                        key={index}
+                                        className="Menu-Button"
+                                        onClick={() => handleNavigation(navItem.path)}
+                                    >
+                                        {navItem.label}
+                                        {
+                                            navItem.tag && (
+                                                <div className="Menu-Button-Tag">
+                                                    {navItem.tag}
+                                                </div>
+                                            )
+                                        }
+                                    </button>
+                                ))
+                            }
+                        </div>
+                    </div>
                 </div>
             </section>
         </React.Fragment>

@@ -45,13 +45,13 @@ const HeaderPage: FC = () => {
                         <>
                             <button
                                 className="Header-SubLink"
-                                onClick={() => handleNavigation('/site-blog-list')}
+                                onClick={() => handleNavigation('/blog')}
                             >
                                 Blog
                             </button>
                             <button
                                 className="Header-SubLink"
-                                onClick={() => handleNavigation('/')}
+                                onClick={() => handleNavigation('/faq')}
                             >
                                 FAQ
                             </button>

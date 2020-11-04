@@ -9,7 +9,8 @@ import {
 // } from 'react-icons/ri';
 import { IconContext } from 'react-icons/lib';
 import { Images } from '../../utils/Images';
-import moment from 'moment';
+// import moment from 'moment';
+import { DateTime } from 'luxon';
 
 export type conversationState = {
     user: string,
@@ -111,7 +112,7 @@ const Chatbox: FC<ChatboxProps> = ({ conversation, updateConversation, disableIn
                                     >
                                         <div className="Dialog-Bubble">
                                             <p>{conversationItem.message}</p>
-                                            <p className="Dialog-Timestamp">{moment(conversationItem.timestamp).format('HH:mm')}</p>
+                                            <p className="Dialog-Timestamp">{DateTime.fromISO(conversationItem.timestamp).toFormat('HH:mm')}</p>
                                         </div>
                                         {
                                             ((conversation.length - 1) === index && conversationItem.actions) && (
