@@ -1,5 +1,8 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Prompt, useHistory } from 'react-router-dom';
 import {
+    CardDetails,
     CashbackItem,
     ResetExpenseModal,
     ReselectBankModal,
@@ -8,6 +11,7 @@ import {
 import {
     Modal,
 } from '../../components/CustomComponent';
+import { cardRecommenderReset } from '../../store/reducers/cardRecommender';
 import { Images } from '../../utils/Images';
 // import { csv } from 'd3';
 // import { CSVFiles } from '../../utils/DataSample';
@@ -31,6 +35,9 @@ type ExpenseDetails = {
 const CreditCardResult: FC = () => {
     // EXPAND / COLLAPSE CONFIGURATION
     const [allExpanded, setAllExpanded] = useState(false);
+    const dispatch = useDispatch();
+    const history = useHistory();
+    const cards = useSelector((state: any) => state.cardRecommender)
 
     const toggleAllExpanded = () => {
         setAllExpanded(prevState => !prevState);
@@ -90,6 +97,23 @@ const CreditCardResult: FC = () => {
     // CONFIGURATION FOR MODALS
     const [resetModal, setResetModal] = useState(false);
     const [searchModal, setSearchModal] = useState(false);
+    const [cardDetailsModal, setCardDetailsModal] = useState(false);
+    const [cardDetails, setCardDetails] = useState<any>({});
+    const handleCardDetailsModal = (modalName: string = 'cardDetailsModal', cardName: string = '') => {
+        console.table({modalName})
+        if (cardDetailsModal) {
+            // Close if modal is open, and purge cardDetails state
+            setTimeout(() => setCardDetails(() => {}), 500);
+            handleModalClose(modalName);
+        } else {
+            // Open if modal is close, and load cardDetails data to state - API
+            setCardDetails(() => ({
+                name: cardName,
+            }));
+            handleModalOpen(modalName);
+        }
+    };
+
     const handleModalOpen = (modalName: string) => {
         switch (modalName) {
             case 'resetModal':
@@ -97,6 +121,9 @@ const CreditCardResult: FC = () => {
                 break;
             case 'searchModal':
                 setSearchModal(() => true);
+                break;
+            case 'cardDetailsModal':
+                setCardDetailsModal(() => true);
                 break;
             default:
                 return;
@@ -110,13 +137,45 @@ const CreditCardResult: FC = () => {
             case 'searchModal':
                 setSearchModal(() => false);
                 break;
+            case 'cardDetailsModal':
+                setCardDetailsModal(() => false);
+                break;
             default:
                 return;
         }
     }
 
+    // useEffect(() => {
+    //     return history.listen(location => {
+    //         switch (history.action) {
+    //             case 'PUSH':
+    //             case 'POP':
+    //                 dispatch(cardRecommenderReset({}));
+    //         }
+    //     });
+    // // eslint-disable-next-line react-hooks/exhaustive-deps
+    // }, [history]);
+
+    const clearCardRecommender = () => {
+        dispatch(cardRecommenderReset({}));
+    };
+
+    useEffect(() => {
+        window.addEventListener('unload', clearCardRecommender);
+        return () => {
+            window.removeEventListener('unload', clearCardRecommender);
+            clearCardRecommender();
+        }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [history]);
+
     return (
         <React.Fragment>
+            <Prompt
+                message={(location, action) => {
+                    return 'Are you sure you want to leave this page?\n\nYour card recommendation data will be lost once you leave this page.';
+                }}
+            />
             <main className="ResultPage-Body">
                 <section className="ResultPage-TopContent">
                     <div className="ResultPage-TopBar">
@@ -140,12 +199,27 @@ const CreditCardResult: FC = () => {
                     <div className="ResultPage-Content">
                         <div className="ResultPage-Content-Column">
                             <p className="ResultPage-Content-Title">Rewards</p>
-                            <RewardItem
+                            {
+                                cards.estimatedPoints && cards.estimatedPoints.map(({ cardName, cardInfo }: any) => (
+                                    <RewardItem
+                                        cardName={cardName}
+                                        cardInfo={cardInfo}
+                                        selectedCard={selectedCard}
+                                        updateSelectedCard={handleCardChange}
+                                        expandAll={allExpanded}
+                                        toggleExpandAll={toggleAllExpanded}
+                                        toggleDetail={handleCardDetailsModal}
+                                        key={cardName}
+                                    />
+                                ))
+                            }
+                            {/* <RewardItem
                                 cardName="CardOne"
                                 selectedCard={selectedCard}
                                 updateSelectedCard={handleCardChange}
                                 expandAll={allExpanded}
                                 toggleExpandAll={toggleAllExpanded}
+                                toggleDetail={handleCardDetailsModal}
                             />
                             <RewardItem
                                 cardName="CardTwo"
@@ -153,7 +227,8 @@ const CreditCardResult: FC = () => {
                                 updateSelectedCard={handleCardChange}
                                 expandAll={allExpanded}
                                 toggleExpandAll={toggleAllExpanded}
-                            />
+                                toggleDetail={handleCardDetailsModal}
+                            /> */}
                         </div>
                         <div className="ResultPage-Content-Seperator" />
                         <div className="ResultPage-Content-Column">
@@ -164,6 +239,7 @@ const CreditCardResult: FC = () => {
                                 updateSelectedCard={handleCardChange}
                                 expandAll={allExpanded}
                                 toggleExpandAll={toggleAllExpanded}
+                                toggleDetail={handleCardDetailsModal}
                             />
                             <CashbackItem
                                 cardName="CardFour"
@@ -171,6 +247,7 @@ const CreditCardResult: FC = () => {
                                 updateSelectedCard={handleCardChange}
                                 expandAll={allExpanded}
                                 toggleExpandAll={toggleAllExpanded}
+                                toggleDetail={handleCardDetailsModal}
                             />
                             <CashbackItem
                                 cardName="CardFive"
@@ -178,6 +255,7 @@ const CreditCardResult: FC = () => {
                                 updateSelectedCard={handleCardChange}
                                 expandAll={allExpanded}
                                 toggleExpandAll={toggleAllExpanded}
+                                toggleDetail={handleCardDetailsModal}
                             />
                         </div>
                     </div>
@@ -219,6 +297,15 @@ const CreditCardResult: FC = () => {
                         updateSelectedOptions={handleSelectedBanks}
                         closeModal={handleModalClose}
                     />
+                </Modal>
+                <Modal
+                    modalName='cardDetailsModal'
+                    visible={cardDetailsModal}
+                    closeModal={handleCardDetailsModal}
+                >
+                    <CardDetails
+                        cardDetails={cardDetails}
+                    />                    
                 </Modal>
                         
             </main>

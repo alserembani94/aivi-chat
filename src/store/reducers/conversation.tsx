@@ -1,5 +1,27 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { lexApiCallBegan } from '../api';
+import { createSlice, ThunkDispatch, ThunkAction, Action } from '@reduxjs/toolkit';
+import { apiCallBegan } from '../api';
+
+type CustomAction = ThunkAction<any, any, any, Action>;
+type CustomDispatch = ThunkDispatch<any, any, Action>;
+
+
+export type SectionName =
+    "balance-transfer" |
+    "cash-from-card" |
+    "credit-card" |
+    "personal-loan" |
+    "credit-card-application" |
+    "personal-loan-application" |
+    "introduction";
+
+type IntentName = () =>
+    "AIVIBalanceTrasfer" |
+    "AIVICashFromCard" |
+    "AIVIRequestCard" |
+    "AIVIRequestLoan" |
+    "AIVICardApplication" |
+    "AIVIApplyLoan" |
+    "AIVIBotIntro";
 
 const slice = createSlice({
     name: 'conversations',
@@ -21,7 +43,6 @@ const slice = createSlice({
                 actions,
                 intentName,
             } = action.payload;
-
             conversations.list.push({
                 message,
                 user: userId || 'bot',
@@ -54,14 +75,14 @@ const {
 } = slice.actions;
 export default slice.reducer;
 
-export const loadConversations = () => (dispatch: any, getState: any) => {
+export const loadConversations = () => (dispatch: CustomDispatch, getState: any) => {
     // const { lastFetch } = getState().conversations;
     // const { username } = getState().auth.user;
 
     // dispatch to load from database
 };
 
-export const converseWithLex = (message: string) => async (dispatch: any, getState: any) => {
+export const converseWithLex = (message: string) => async (dispatch: CustomDispatch, getState: any) => {
     const auth = getState().auth;
     const { sessionAttributes } = getState().conversations;
 
@@ -73,7 +94,8 @@ export const converseWithLex = (message: string) => async (dispatch: any, getSta
 
     await dispatch(conversationAdded(userMessage));
 
-    dispatch(lexApiCallBegan({
+    dispatch(apiCallBegan({
+        apiName: 'lex',
         url: '/lex',
         method: 'post',
         data: { ...userMessage, sessionAttributes },
@@ -83,15 +105,37 @@ export const converseWithLex = (message: string) => async (dispatch: any, getSta
     }));
 };
 
-export const initiateConversation = (message: string) => (dispatch: any, getState: any) => {
+export const initiateConversation = (message: string) => (dispatch: CustomDispatch, getState: any) => {
     const auth = getState().auth;
-    dispatch(lexApiCallBegan({
+    dispatch(apiCallBegan({
+        apiName: 'lex',
         url: '/lex',
         method: 'post',
         data: {
             message,
             userId: auth.user?.attributes?.email.split('@')[0] || auth.tempData?.email?.split('@')[0] || 'user',
         },
+        onStart: conversationsRequested.type,
+        onSuccess: conversationAdded.type,
+        onError: conversationsRequestFailed.type,
+    }));
+};
+
+export const initiateIntent = (sectionName: SectionName) => (dispatch: CustomDispatch, getState: any) => {
+    const intentName = () => {
+        if (sectionName === "balance-transfer") return "AIVIBalanceTransfer";
+        if (sectionName === "cash-from-card") return "AIVICashFromCard";
+        if (sectionName === "credit-card") return "AIVIRequestCard";
+        if (sectionName === "personal-loan") return "AIVIRequestLoan";
+        if (sectionName === "credit-card-application") return "AIVICardApplication";
+        if (sectionName === "personal-loan-application") return "AIVIApplyLoan";
+        return "AIVIBotIntro";
+    };
+
+    dispatch(apiCallBegan({
+        apiName: 'lex',
+        url: `/lex/intent/${intentName()}`,
+        method: 'get',
         onStart: conversationsRequested.type,
         onSuccess: conversationAdded.type,
         onError: conversationsRequestFailed.type,

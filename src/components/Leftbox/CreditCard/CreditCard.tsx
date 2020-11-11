@@ -170,7 +170,7 @@ const CreditCard: FC = () => {
     const history = useHistory();
 
     const handleSubmit = () => {
-        auth.user.username ? history.push('/credit-card-result') : dispatch(showAuthModal());
+        auth.user?.username ? history.push('/loading') : dispatch(showAuthModal());
     };
 
     

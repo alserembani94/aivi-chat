@@ -1,4 +1,5 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import {
     TabBar,
 } from '../../components/CustomComponent';
@@ -6,6 +7,8 @@ import Profile from './Profile';
 import Notification from './Notification';
 import PersonalData from './PersonalData';
 import '../../styles/Account.scss';
+import Header from '../../components/Header';
+import Footer from '../../components/Footer';
 
 type ProfileDetailsType = {
     username: string,
@@ -15,6 +18,8 @@ type ProfileDetailsType = {
 }
 
 const Account: FC = () => {
+    const { section } = useParams<any>();
+    
     // PROFILE DETAILS CONFIGURATION
     const [profileDetails, setProfileDetails] = useState<ProfileDetailsType>({
         username: '',
@@ -28,11 +33,11 @@ const Account: FC = () => {
     }
 
     // TAB CONFIGURATION
-    const [currentTab, setCurrentTab] = useState('Profile');
+    const [currentTab, setCurrentTab] = useState(section || 'profile');
     const tabMenuList = [
         {
             label: 'Profile',
-            name: 'Profile',
+            name: 'profile',
             content: <Profile 
                 ProfileDetails={profileDetails}
                 handleProfileDetailsUpdate={updateProfileDetails}
@@ -40,15 +45,17 @@ const Account: FC = () => {
         },
         {
             label: 'Notification',
-            name: 'Notification',
+            name: 'notification',
             content: <Notification />
         },
         {
             label: 'Personal Data',
-            name: 'Personal Data',
+            name: 'personal-data',
             content: <PersonalData />
         },
     ];
+
+    useEffect(() => setCurrentTab(() => section), [section]);
 
     const handleChangeTab = (selectedTab: string) => {
         setCurrentTab(() => { return selectedTab });
@@ -57,20 +64,21 @@ const Account: FC = () => {
     return (
         <React.Fragment>
             <main className="Account-Body">
-                <section className="Account-Body-Section">
-                    <div className="Account-Body-Content">
-                        <div className="Account-Body-Content-Header">
-                            Account
-                        </div>
-                        <div className="Account-Body-Content-Tabs">
-                        <TabBar 
-                                currentTab={currentTab}
-                                updateTab={handleChangeTab}
-                                optionList={tabMenuList}
-                            />
-                        </div>
+                <Header />
+                <div className="Account-Body-Content">
+                    <div className="Account-Body-Content-Header">
+                        Account
                     </div>
-                </section>
+                    <div className="Account-Body-Content-Tabs">
+                        <TabBar 
+                            currentTab={currentTab}
+                            updateTab={handleChangeTab}
+                            optionList={tabMenuList}
+                            enableScroll={false}
+                        />
+                    </div>
+                </div>
+                <Footer />
             </main>
         </React.Fragment>
     );

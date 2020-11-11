@@ -31,6 +31,8 @@ const MainMenu: FC<MainMenuProps> = () => {
         [
             'AIVIRequestCard',
             'AIVIRequestLoan',
+            'AIVICashFromCard',
+            'AIVIBalanceTransfer',
         ].some(currentIntent => currentIntent === conversations.currentIntent) && history.push('/smart-assistant');
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [conversations]);

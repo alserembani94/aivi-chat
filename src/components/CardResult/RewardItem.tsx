@@ -14,9 +14,11 @@ interface RewardItemProps {
     updateSelectedCard: (cardName: string) => void;
     expandAll?: boolean;
     toggleExpandAll?: () => void;
+    toggleDetail: (modalName: string, cardName: string) => void;
+    cardInfo: any;
 }
 
-const RewardItem: FC<RewardItemProps> = ({ cardName, selectedCard, updateSelectedCard, expandAll, toggleExpandAll }) => {
+const RewardItem: FC<RewardItemProps> = ({ cardName, selectedCard, updateSelectedCard, expandAll, toggleExpandAll, toggleDetail, cardInfo }) => {
     const [isExpanded, setExpanded] = useState(false);
 
     const toggleExpanded = () => {
@@ -39,7 +41,7 @@ const RewardItem: FC<RewardItemProps> = ({ cardName, selectedCard, updateSelecte
                             <IoIosCheckmark />
                         </IconContext.Provider>
                     </div>
-                    <p className="CardResult-Card-Name">Card Name Here</p>
+                    <p className="CardResult-Card-Name">{cardName}</p>
                 </div>
                 <div className="CardResult-Details">
                     <div className="CardResult-Details-TotalCollection">
@@ -117,7 +119,7 @@ const RewardItem: FC<RewardItemProps> = ({ cardName, selectedCard, updateSelecte
                 </div>
             </div>
             <div className="CardResult-CardAction">
-                <button className="CardResult-CardAction-ViewDetails">
+                <button className="CardResult-CardAction-ViewDetails" onClick={() => toggleDetail('cardDetailsModal', cardName)}>
                     View Details
                     <IconContext.Provider value={{ className: 'Icon Icon-Black Icon-Details-Forward' }} >
                         <IoIosArrowRoundForward />

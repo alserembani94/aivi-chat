@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, Dispatch } from '@reduxjs/toolkit';
 import { authenticationBegan } from '../authAction';
 
 const slice = createSlice({
@@ -120,7 +120,7 @@ const {
 // export const { signUpInitiated } =  slice.actions;
 export default slice.reducer;
 
-export const userSignIn = (userInfo: { email: string, password: string }) => async (dispatch: any, getState: any) => {
+export const userSignIn = (userInfo: { email: string, password: string }) => async (dispatch: Dispatch, getState: any) => {
     await dispatch(authenticationBegan({
         data: userInfo,
         operation: 'sign_in',
@@ -136,7 +136,7 @@ export const userSignIn = (userInfo: { email: string, password: string }) => asy
     }));
 };
 
-export const userNewPassword = ({ email, newPassword }: { email: string, newPassword: string }) => async (dispatch: any, getState: any) => {
+export const userNewPassword = ({ email, newPassword }: { email: string, newPassword: string }) => async (dispatch: Dispatch, getState: any) => {
     const { requiredAttributes } = getState().auth.data;
     await dispatch(authenticationBegan({
         data: {
@@ -151,7 +151,7 @@ export const userNewPassword = ({ email, newPassword }: { email: string, newPass
     }));
 };
 
-export const userSignUp = (userInfo: { email: string, password: string, name: string, phoneNo: string }) => async (dispatch: any, getState: any) => {
+export const userSignUp = (userInfo: { email: string, password: string, name: string, phoneNo: string }) => async (dispatch: Dispatch, getState: any) => {
     await dispatch(authenticationBegan({
         data: userInfo,
         operation: 'sign_up',
@@ -180,7 +180,7 @@ export const userSignUpConfirm = ({ email, code }: { email: string, code: string
 
     const proxy = getState().auth.tempData;
 
-    await dispatch(userSignIn({
+    dispatch(userSignIn({
         email: proxy.email,
         password: proxy.password,
     }));
@@ -222,7 +222,7 @@ export const checkIfUserExist = () => authenticationBegan({
     onError: userRequestFailed.type,
 });
 
-export const initiateRegistration = ({email, name}: { email?: string, name?: string }) => (dispatch: any, getState: any) => {
+export const initiateRegistration = ({email, name}: { email?: string, name?: string }) => (dispatch: Dispatch, getState: any) => {
     const data = {
         email,
         name,

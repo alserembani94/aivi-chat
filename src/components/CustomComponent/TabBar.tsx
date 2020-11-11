@@ -18,12 +18,18 @@ interface TabBarProps {
     progressStrict?: boolean;
     updateStrictTab?: (enabledTab: boolean[] | undefined, nextActiveTab: string) => void;
     enabledTab?: boolean[];
+    enableScroll?: boolean;
 }
 
-const TabBar: FC<TabBarProps> = ({currentTab, updateTab, optionList, progressStrict = false, updateStrictTab, enabledTab}) => {
+const TabBar: FC<TabBarProps> = ({currentTab, updateTab, optionList, progressStrict = false, updateStrictTab, enabledTab, enableScroll = true}) => {
     const handleTabChange = (selectedTab: string) => {
         const tabBody = document.getElementById(selectedTab);
-        tabBody && tabBody.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'});
+        // tabBody && (
+        //     enableScroll
+        //     ? tabBody.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'})
+        //     : tabBody.scrollIntoView({behavior: 'smooth', inline: 'start',})
+        // )
+        tabBody && tabBody.scrollIntoView({behavior: 'smooth'});
         updateTab(selectedTab);
     }
 

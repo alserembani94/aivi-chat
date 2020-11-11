@@ -1,8 +1,9 @@
 .Legal {
     &-Body {
-        width: calc(100% - 50px);
-        padding: 50px 0px 100px 0px;
+        width: 100%;
+        // padding: 50px 0px 100px 0px;
         background: white;
+        overflow: scroll;
         &-Content {
             &-Header {
                 text-align: center;

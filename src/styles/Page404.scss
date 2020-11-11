@@ -1,20 +1,19 @@
-$brand-fill: #D53A4C;
-$light-background: #FFFFFF;
+// $brand-fill: #D53A4C;
+// $light-background: #FFFFFF;
+@import './global';
 
 .Page404 {
     &-Body {
         background-color: #E5E5E5;
+        display: flex;
+        flex-flow: column wrap;
+        width: 100%;
         &-Content {
             display: flex; 
             align-items: center; 
             justify-content: center; 
             text-align: center; 
-            margin: auto;
-            position: absolute;
-            top: 0; 
-            left: 0; 
-            bottom: 0; 
-            right: 0;
+            flex-grow: 1;
             &-Header {
                 font-size: 100px;
                 font-weight: 600;

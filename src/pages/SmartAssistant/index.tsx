@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 
 import {
     Chatbox,
@@ -9,41 +10,58 @@ import {
     PersonalLoan,
     AuthModal,
 } from '../../components';
-import { converseWithLex } from '../../store/reducers/conversation';
+import { converseWithLex, initiateIntent } from '../../store/reducers/conversation';
 import { Images } from '../../utils/Images';
 
 const SmartAssistant = () => {
+    const { section_path } = useParams<any>();
     
     const conversations = useSelector((state: any) => state.conversations);
     const dispatch = useDispatch();
     
     const selectedSection = () => {
+        if (section_path) {
+            switch (section_path) {
+                case 'credit-card': return 'Credit Card';
+                case 'personal-loan': return 'Personal Loan';
+                case 'cash-from-card': return 'Cash From Card';
+                case 'balance-transfer': return 'Balance Transfer';
+            }
+        }
         switch (conversations.currentIntent) {
             case 'AIVIRequestCard': return 'Credit Card';
             case 'AIVIRequestLoan': return 'Personal Loan';
+            case 'AIVICashFromCard': return 'Cash From Card';
+            case 'AIVIBalanceTransfer': return 'Balance Transer';
             default: return 'Cash From Card';
         }
     }
 
     const [showChatInMobile, setShowChatInMobile] = useState(false);
     const [renderSection, setRenderSection] = useState(selectedSection);
-    const [renderModel, setRenderModel] = useState(false);
-    const sections = ['Cash From Card', 'Credit Card', 'Balance Transfer', 'Personal Loan'];
+    // const [renderModel, setRenderModel] = useState(false);
+    // const sections = ['Cash From Card', 'Credit Card', 'Balance Transfer', 'Personal Loan'];
 
     const handleChatboxModal = () => {
         setShowChatInMobile(prevState => { return !prevState });
     };
 
+    useEffect(() => {
+        dispatch(initiateIntent(section_path || ""));
+        setRenderSection(prevState => selectedSection());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [section_path]);
+
     // FOR DEBUG PURPOSE ONLY
     // START
-    const handleSectionsMenu = () => {
-        setRenderModel(prevState => { return !prevState });
-    };
+    // const handleSectionsMenu =  () => {
+    //     setRenderModel(prevState => { return !prevState });
+    // };
 
-    const handleChangeSection = (section: string) => {
-        setRenderSection(() => { return section })
-        setRenderModel(prevState => { return !prevState });
-    };
+    // const handleChangeSection = (section: string) => {
+    //     setRenderSection(() => { return section })
+    //     setRenderModel(prevState => { return !prevState });
+    // };
     // END
 
     const handleSectionRendering = () => {
@@ -108,7 +126,7 @@ const SmartAssistant = () => {
 
             {/* FOR DEBUG PURPOSE ONLY */}
             {/* START */}
-            <button className="Temporary-ChangeRender" onClick={handleSectionsMenu}>
+            {/* <button className="Temporary-ChangeRender" onClick={handleSectionsMenu}>
                 Change Section
             </button>
             <div className="Temporary-Sections" data-visible={renderModel.toString()}>
@@ -117,7 +135,7 @@ const SmartAssistant = () => {
                         sections.map((section, index) => <li onClick={() => handleChangeSection(section)} key={index}>{section}</li>)
                     }
                 </ul>
-            </div>
+            </div> */}
             {/* END */}
 
             <AuthModal

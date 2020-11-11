@@ -1047,6 +1047,9 @@ input[type=number] {
     flex: 1 0 calc(100% - #{$sidebar-width});
     flex-flow: column wrap;
     height: 100vh;
+    .Modal-Wrapper {
+      max-width: 1600px;
+    }
   }
   &-TopContent {
     display: flex;
@@ -2259,7 +2262,9 @@ input[type=number] {
     border-radius: 0.5rem;
     box-shadow: $box-shadow;
     padding: 3rem 2.5rem 1.5rem;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-height: 90%;
 
     // To access specific modal styling, just use [data-modal=modalName]
     &[data-modal="Authentication"] {
@@ -2458,6 +2463,17 @@ input[type=number] {
     @media only screen and (max-width: 768px) {
       margin: auto;
     }
+  }
+}
+
+.CardRecommenderLoading {
+  &-Screen {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
   }
 }
 

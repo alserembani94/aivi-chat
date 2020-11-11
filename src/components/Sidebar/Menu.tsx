@@ -7,150 +7,20 @@ import { userSignOut } from '../../store/reducers/auth';
 import {
     Images,
 } from '../../utils/Images';
+import {
+    accountNav,
+    legalNav,
+    servicesNav,
+    blogNav,
+} from '../../PageContent/RouteList';
 
 interface MenuProps {
     visible: boolean;
     toggleVisibility: () => void;
 }
 
-type navButton = {
-    path: string,
-    label: string,
-    tag?: string,
-};
-
-const accountNav: navButton[] = [
-    {
-        path: '/profile',
-        label: 'Profile',
-        tag: 'In Progress',
-    },
-    {
-        path: '/notification',
-        label: 'Notification',
-        tag: 'In Progress',
-    },
-];
-const legalNav: navButton[] = [
-    {
-        path: '/privacy',
-        label: 'Privacy',
-        tag: 'In Progress',
-    },
-    {
-        path: '/security',
-        label: 'Security',
-        tag: 'In Progress',
-    },
-    {
-        path: '/terms',
-        label: 'Terms of Use',
-        tag: 'In Progress',
-    },
-];
-const servicesNav: navButton[] = [
-    {
-        path: '/smart-assistant',
-        label: 'Credit Card',
-        tag: 'New',
-    },
-    {
-        path: '/smart-assistant',
-        label: 'Personal Loans',
-        tag: 'New',
-    },
-    {
-        path: '/',
-        label: 'Balance Transfer',
-        tag: 'New',
-    },
-    {
-        path: '/',
-        label: 'Cash From Card',
-        tag: 'New',
-    },
-    {
-        path: '!',
-        label: 'Social Budget App',
-        tag: 'Coming Soon',
-    },
-];
-const blogNav: navButton[] = [
-    {
-        path: '/blog',
-        label: 'Articles',
-    },
-    {
-        path: '/faq',
-        label: 'FAQ',
-    },
-    {
-        path: '/contact-us',
-        label: 'Contact Us',
-    },
-];
-
-// const oldMenuNav = [
-//     {
-//         path: '/',
-//         label: 'Home',
-//     },
-//     {
-//         path: '/main-menu',
-//         label: 'Main Menu',
-//     },
-//     {
-//         path: '/smart-assistant',
-//         label: 'Smart Assistant',
-//     },
-//     {
-//         path: '/credit-card-result',
-//         label: 'Credit Card Result',
-//     },
-//     {
-//         path: '/loan-result',
-//         label: 'Loan Result',
-//     },
-//     {
-//         path: '/credit-card-application',
-//         label: 'Credit Card Application',
-//     },
-//     {
-//         path: '/personal-loan-application',
-//         label: 'Personal Loan Application',
-//     },
-//     {
-//         path: '/card-details',
-//         label: 'Card Details',
-//     },
-//     {
-//         path: '/site-blog-list',
-//         label: 'Site Blog List',
-//     },
-//     {
-//         path: '/site-blog-article',
-//         label: 'Site Blog Article',
-//     },
-//     {
-//         path: '/legal',
-//         label: 'Legal',
-//     },
-//     {
-//         path: '/social-login',
-//         label: 'Social Login',
-//     },
-//     {
-//         path: '/account',
-//         label: 'Account',
-//     },
-//     {
-//         path: '/contact-us',
-//         label: 'Contact Us',
-//     },
-// ];
-
 const Menu: FC<MenuProps> = ({ visible, toggleVisibility }) => {
-    const auth = useSelector((state: any) => state.auth)
+    const auth = useSelector((state: any) => state.auth);
     const history = useHistory();
     const dispatch = useDispatch();
 
@@ -165,6 +35,10 @@ const Menu: FC<MenuProps> = ({ visible, toggleVisibility }) => {
         dispatch(userSignOut());
         history.push('/');
     };
+
+    // useEffect(() => {
+        
+    // }, []);
 
     return (
         <React.Fragment>
@@ -305,6 +179,50 @@ const Menu: FC<MenuProps> = ({ visible, toggleVisibility }) => {
                                     </button>
                                 ))
                             }
+                            {/* ! Test Button Only */}
+                            {/* <button
+                                onClick={() => dispatch(estimatePoints({
+                                    selectedBanks: ["alliance_bank"],
+                                    selectedCategories: {
+                                        "education": [100, 300],
+                                        "utilities": [100, 300],
+                                        "dinning": [100, 300],
+                                    },
+                                    months_to_estimate: 12,
+                            }))}>
+                                Calculate Points
+                            </button>
+                            <button
+                                onClick={() => dispatch(estimateCashback({
+                                    selectedBanks: ["alliance_bank"],
+                                    selectedCategories: {
+                                        "education": [100, 300],
+                                        "utilities": [100, 300],
+                                        "dinning": [100, 300],
+                                    },
+                                    months_to_estimate: 12,
+                            }))}>
+                                Calculate cashback
+                            </button>
+                            {
+                                cards.estimatedPoints && <button
+                                    onClick={() => dispatch(findPotentialRewards( cards.estimatedPoints[0] ))}>
+                                Potential Rewards
+                                </button>
+                            }
+                            {
+                                cards.estimatedPoints && <button
+                                    onClick={() => dispatch(findPotentialRewards( {
+                                        cardName: "rhb_premier_visa_infinite",
+                                        cardInfo: {
+                                            "card_metadata": ["url", "rhb"], 
+                                            "minmax_points": [19200, 57600],
+                                        },
+                                    } ))}>
+                                Default Potential Rewards
+                                </button>
+                            }
+                            <p>{cards.error || ''}</p> */}
                         </div>
                     </div>
                 </div>

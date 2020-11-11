@@ -1,4 +1,5 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import {
     TabBar,
 } from '../../components/CustomComponent';
@@ -7,33 +8,38 @@ import Security from './Security';
 import Terms from './Terms';
 import Disclaimer from './Disclaimer';
 import '../../styles/Legal.scss';
+import Header from '../../components/Header';
+import Footer from '../../components/Footer';
 
 const Legal: FC = () => {
+    const { section } = useParams<any>();
 
     // TAB CONFIGURATION
-    const [currentTab, setCurrentTab] = useState('Privacy');
+    const [currentTab, setCurrentTab] = useState(section || 'privacy');
     const tabMenuList = [
         {
             label: 'Privacy',
-            name: 'Privacy',
+            name: 'privacy',
             content: <Privacy />,
         },
         {
             label: 'Security',
-            name: 'Security',
+            name: 'security',
             content: <Security />,
         },
         {
             label: 'Terms of Use',
-            name: 'Terms of Use',
+            name: 'terms',
             content: <Terms />,
         },
         {
             label: 'Disclaimer',
-            name: 'Disclaimer',
+            name: 'disclaimer',
             content: <Disclaimer />,
         },
     ];
+
+    useEffect(() => setCurrentTab(() => section), [section]);
 
     const handleChangeTab = (selectedTab: string) => {
         setCurrentTab(() => { return selectedTab });
@@ -42,15 +48,13 @@ const Legal: FC = () => {
     return (
         <React.Fragment>
             <main className="Legal-Body">
+                <Header />
                 <section className="Legal-Body-Section">
                     <div className="Legal-Body-Content">
                         <div className="Legal-Body-Content-Header">
                             Legal
                         </div>
                         <div className="Legal-Body-Content-Tabs">
-                            {currentTab === 'Privacy' ? <div className="Legal-Body-Content-Tabs-Bg"></div> 
-                            : currentTab === 'Security' ? <div className="Legal-Body-Content-Tabs-Bg"></div> 
-                            : <div></div> }
                             <TabBar 
                                 currentTab={currentTab}
                                 updateTab={handleChangeTab}
@@ -58,7 +62,8 @@ const Legal: FC = () => {
                             />
                         </div>
                     </div>
-                </section> 
+                </section>
+                <Footer />
             </main>
         </React.Fragment>
     );

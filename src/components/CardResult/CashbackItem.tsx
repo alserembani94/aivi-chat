@@ -13,9 +13,10 @@ interface CashbackItemProps {
     updateSelectedCard: (cardName: string) => void;
     expandAll?: boolean;
     toggleExpandAll?: () => void;
+    toggleDetail: (modalName: string, cardName: string) => void;
 }
 
-const CashbackItem: FC<CashbackItemProps> = ({ cardName, selectedCard, updateSelectedCard, expandAll, toggleExpandAll }) => {
+const CashbackItem: FC<CashbackItemProps> = ({ cardName, selectedCard, updateSelectedCard, expandAll, toggleExpandAll, toggleDetail }) => {
     const [isExpanded, setExpanded] = useState(false);
 
     const toggleExpanded = () => {
@@ -102,7 +103,7 @@ const CashbackItem: FC<CashbackItemProps> = ({ cardName, selectedCard, updateSel
                 </div>
             </div>
             <div className="CardResult-CardAction">
-                <button className="CardResult-CardAction-ViewDetails">
+                <button className="CardResult-CardAction-ViewDetails" onClick={() => toggleDetail('cardDetailsModal', cardName)}>
                     View Details
                     <IconContext.Provider value={{ className: 'Icon Icon-Black Icon-Details-Forward' }} >
                         <IoIosArrowRoundForward />
