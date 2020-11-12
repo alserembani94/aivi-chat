@@ -32,6 +32,8 @@ type ExpenseDetails = {
     expenseRange?: number[],
 }[];
 
+const normaliseName = (cardName: string) => cardName.replaceAll(/_/g, ' ');
+
 const CreditCardResult: FC = () => {
     // EXPAND / COLLAPSE CONFIGURATION
     const [allExpanded, setAllExpanded] = useState(false);
@@ -145,17 +147,6 @@ const CreditCardResult: FC = () => {
         }
     }
 
-    // useEffect(() => {
-    //     return history.listen(location => {
-    //         switch (history.action) {
-    //             case 'PUSH':
-    //             case 'POP':
-    //                 dispatch(cardRecommenderReset({}));
-    //         }
-    //     });
-    // // eslint-disable-next-line react-hooks/exhaustive-deps
-    // }, [history]);
-
     const clearCardRecommender = () => {
         dispatch(cardRecommenderReset({}));
     };
@@ -202,7 +193,7 @@ const CreditCardResult: FC = () => {
                             {
                                 cards.estimatedPoints && cards.estimatedPoints.map(({ cardName, cardInfo }: any) => (
                                     <RewardItem
-                                        cardName={cardName}
+                                        cardName={normaliseName(cardName)}
                                         cardInfo={cardInfo}
                                         selectedCard={selectedCard}
                                         updateSelectedCard={handleCardChange}
@@ -213,50 +204,24 @@ const CreditCardResult: FC = () => {
                                     />
                                 ))
                             }
-                            {/* <RewardItem
-                                cardName="CardOne"
-                                selectedCard={selectedCard}
-                                updateSelectedCard={handleCardChange}
-                                expandAll={allExpanded}
-                                toggleExpandAll={toggleAllExpanded}
-                                toggleDetail={handleCardDetailsModal}
-                            />
-                            <RewardItem
-                                cardName="CardTwo"
-                                selectedCard={selectedCard}
-                                updateSelectedCard={handleCardChange}
-                                expandAll={allExpanded}
-                                toggleExpandAll={toggleAllExpanded}
-                                toggleDetail={handleCardDetailsModal}
-                            /> */}
                         </div>
                         <div className="ResultPage-Content-Seperator" />
                         <div className="ResultPage-Content-Column">
                             <p className="ResultPage-Content-Title">Cashbacks</p>
-                            <CashbackItem
-                                cardName="CardThree"
-                                selectedCard={selectedCard}
-                                updateSelectedCard={handleCardChange}
-                                expandAll={allExpanded}
-                                toggleExpandAll={toggleAllExpanded}
-                                toggleDetail={handleCardDetailsModal}
-                            />
-                            <CashbackItem
-                                cardName="CardFour"
-                                selectedCard={selectedCard}
-                                updateSelectedCard={handleCardChange}
-                                expandAll={allExpanded}
-                                toggleExpandAll={toggleAllExpanded}
-                                toggleDetail={handleCardDetailsModal}
-                            />
-                            <CashbackItem
-                                cardName="CardFive"
-                                selectedCard={selectedCard}
-                                updateSelectedCard={handleCardChange}
-                                expandAll={allExpanded}
-                                toggleExpandAll={toggleAllExpanded}
-                                toggleDetail={handleCardDetailsModal}
-                            />
+                            {
+                                cards.estimatedCashback && cards.estimatedCashback.map(({ cardName, cardInfo }: any) => (
+                                    <CashbackItem
+                                        cardName={normaliseName(cardName)}
+                                        cardInfo={cardInfo}
+                                        selectedCard={selectedCard}
+                                        updateSelectedCard={handleCardChange}
+                                        expandAll={allExpanded}
+                                        toggleExpandAll={toggleAllExpanded}
+                                        toggleDetail={handleCardDetailsModal}
+                                        key={cardName}
+                                    />
+                                ))
+                            }
                         </div>
                     </div>
                 </section>
@@ -268,7 +233,7 @@ const CreditCardResult: FC = () => {
                         <p className="ResultPage-BottomContent-Description-Title">Ready To Apply?</p>
                         {/* <p className="ResultPage-BottomContent-Description-Subtitle">You Selected: {selectedCard}</p> */}
                     </div>
-                    <button className="ResultPage-BottomContent-Apply" disabled>
+                    <button className="ResultPage-BottomContent-Apply" disabled={!selectedCard}>
                         Apply Now
                     </button>
                 </section>

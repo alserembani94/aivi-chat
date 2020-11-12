@@ -1574,9 +1574,16 @@ input[type=number] {
       background: #EEE;
       transition: transform 0.5s ease-in-out;
       position: relative;
+      img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+        border-radius: 5px;
+      }
     }
     &-Name {
       font-size: 0.9rem;
+      text-transform: capitalize;
     }
     &-Selected {
       width: 165px;
