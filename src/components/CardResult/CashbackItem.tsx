@@ -31,7 +31,7 @@ const CashbackItem: FC<CashbackItemProps> = ({ cardName, cardInfo, selectedCard,
     const generateExpenseReturns = () => {
         
         return Object.entries(cardInfo).filter(([category, key]: any[]) => {
-            return !['card_metadata', 'minmax_points', 'minmax_cashback'].includes(category);
+            return !['card_metadata', 'minmax_points', 'minmax_cashback'].includes(category.toLowerCase());
         })
         .map(([category, data]: any[]) => {
             const adjustedCategory: () => string = () => {

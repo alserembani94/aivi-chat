@@ -2530,6 +2530,45 @@ input[type=number] {
   }
 }
 
+.CardRecommenderLoading {
+  &-Screen {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+  }
+  &-Logo {
+    width: clamp(250px, 60%, 5rem);
+    height: auto;
+    margin: 35px;
+  }
+  &-Arte {
+    width: clamp(250px, 100%, 1000px);
+    height: auto;
+    margin: 35px;
+  }
+  &-Message {
+    font-weight: 700;
+    font-size: 1.5rem;
+  }
+  &-Tips {
+    background-color: $text-light;
+    color: $light-background;
+    padding: 20px 30px;
+    width: clamp(250px, 100%, 500px);
+    height: fit-content;
+    min-height: 15ch;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    margin: 20px;
+    h6 {
+      font-weight: 700;
+    }
+  }
+}
+
 @media  (max-width: 900px) {
 
   .AIVI {

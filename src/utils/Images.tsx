@@ -63,6 +63,7 @@ export const Images = {
 
     logo_AIVI: require('../assets/images/Logo-AIVI.svg'),
     logo_AIVI_white: require('../assets/images/Logo-AIVI-White.svg'),
+    card_recommender_loading: require('../assets/images/card_loading.svg'),
 
     arrow_right: require('../assets/images/arrow-right.svg'),
     arrow_right_white: require('../assets/images/Icon-Arrow.svg'),
