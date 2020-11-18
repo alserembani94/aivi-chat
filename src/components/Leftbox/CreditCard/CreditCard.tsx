@@ -1,7 +1,8 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { showAuthModal } from '../../../store/reducers/authModal';
+import { addForm } from '../../../store/reducers/form';
 import {
     // Modal,
     TabBar,
@@ -42,6 +43,7 @@ interface CreditCardProps {
 
 const CreditCard: FC = () => {
     // const authModal = useSelector((state: any) => state.authModal);
+    const { slots } = useSelector((state: any) => state.conversations);
     const dispatch = useDispatch();
 
     // AVAILABLE BANKS CONFIGURATION
@@ -170,9 +172,53 @@ const CreditCard: FC = () => {
     const history = useHistory();
 
     const handleSubmit = () => {
+        dispatch(addForm('credit-card', {
+            selectedBanks,
+            expenseObject,
+            incomeSource,
+        }));
         auth.user?.username ? history.push('/loading') : dispatch(showAuthModal());
     };
 
+    // ! CUSTOMIZING CHAT FLOW HERE
+    useEffect(() => {
+        const {
+            existing_cardholder,
+            existing_issuer,
+            card_expense_one,
+            card_expense_two,
+            card_expense_three,
+            card_income,
+        } = slots;
+
+        // 1. Asking if user has existing cards
+        if (existing_cardholder === 'yes') {
+            setCardOwnership(() => true);
+            // TabBar.defaultProps?.updateStrictTab;
+        }
+        else if (existing_cardholder === 'no') {
+            setCardOwnership(() => false);
+            setEnabledTab(prevState => prevState.map((tabStatus, index) => {
+                if (prevState[index-1]) return true;
+                else return tabStatus;
+            }));
+            setCurrentTab(() => 'Expenses');
+        }
+        else setCardOwnership(prevState => prevState);
+
+        // 2. If yes for (1), need to give lists of banks
+
+        // 3. Asking what expenses do user interests in
+        
+        // if (card_expense_one !== null) setSelectedExpenses(());
+
+        // 4. User need to set range for each expenses
+
+        // 5. Add income info
+        
+
+        console.log(slots);
+    }, [slots])
     
     return (
         <React.Fragment>

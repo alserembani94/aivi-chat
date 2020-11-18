@@ -5,7 +5,7 @@ const slice = createSlice({
     name: 'userAuth',
     initialState: {
         data: {},
-        user: {},
+        user: undefined,
         loading: false,
         lastFetch: null,
         error: undefined,

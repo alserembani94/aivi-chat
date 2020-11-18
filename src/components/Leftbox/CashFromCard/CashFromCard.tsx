@@ -1,6 +1,7 @@
 import React, { FC, useEffect, useState } from 'react';
 import CashFromCardForm from './CashFromCardForm';
 import SubmittedView from '../SubmittedView';
+import { useSelector } from 'react-redux';
 // import { CashFromCardType } from '../../../store/reducers/cashFromCard';
 // import { submitForRecommendation } from '../../../store/reducers/recommendCreditCard';
 
@@ -12,6 +13,7 @@ type slotInputType = {
 };
 
 const CashFromCard: FC = () => {
+    const { slots } = useSelector((state: any) => state.conversations);
     const [userSlot, setUserSlot] = useState({
         transferFrom: '',
         name: '',
@@ -21,17 +23,19 @@ const CashFromCard: FC = () => {
     });
 
     useEffect(() => {
-        // dispatch(submitForRecommendation());
-        // console.log(props);
-        // setUserSlot(() => ({
-        //     transferFrom,
-        //     name,
-        //     phone,
-        //     email,
-        //     amount,
-        // }));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+        const {
+            cfc_applicant_name,
+            cfc_bank,
+            cfc_applicant_email,
+            cfc_amount,
+        } = slots;
+
+        if (cfc_applicant_name !== null) setUserSlot(prevState => ({ ...prevState, name: cfc_applicant_name }));
+        if (cfc_bank !== null) setUserSlot(prevState => ({ ...prevState, transferFrom: cfc_bank }));
+        if (cfc_applicant_email !== null) setUserSlot(prevState => ({ ...prevState, email: cfc_applicant_email }));
+        if (cfc_amount !== null) setUserSlot(prevState => ({ ...prevState, amount: parseInt(cfc_amount) }));
+
+    }, [slots]);
     
     const [submitted, setSubmitted] = useState(false);
 

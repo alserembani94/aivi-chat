@@ -27,6 +27,7 @@ const slice = createSlice({
     name: 'conversations',
     initialState: {
         list: [],
+        slots: {},
         loading: false,
         lastFetch: null,
         currentIntent: null,
@@ -42,6 +43,7 @@ const slice = createSlice({
                 sessionAttributes,
                 actions,
                 intentName,
+                slots,
             } = action.payload;
             conversations.list.push({
                 message,
@@ -51,6 +53,7 @@ const slice = createSlice({
             });
             if (sessionAttributes) conversations.sessionAttributes = sessionAttributes;
             if (intentName) conversations.currentIntent = intentName;
+            if (slots) conversations.slots = slots;
         },
         conversationsRequested: (conversations: any, action: any) => {
             conversations.loading = true;
@@ -122,20 +125,23 @@ export const initiateConversation = (message: string) => (dispatch: CustomDispat
 };
 
 export const initiateIntent = (sectionName: SectionName) => (dispatch: CustomDispatch, getState: any) => {
-    const intentName = () => {
-        if (sectionName === "balance-transfer") return "AIVIBalanceTransfer";
-        if (sectionName === "cash-from-card") return "AIVICashFromCard";
-        if (sectionName === "credit-card") return "AIVIRequestCard";
-        if (sectionName === "personal-loan") return "AIVIRequestLoan";
-        if (sectionName === "credit-card-application") return "AIVICardApplication";
-        if (sectionName === "personal-loan-application") return "AIVIApplyLoan";
-        return "AIVIBotIntro";
-    };
+    const auth = getState().auth;
+    const intentName = 
+        (sectionName === "balance-transfer") ? "AIVIBalanceTransfer"
+        : (sectionName === "cash-from-card") ? "AIVICashFromCard"
+        : (sectionName === "credit-card") ? "AIVIRequestCard"
+        : (sectionName === "personal-loan") ? "AIVIRequestLoan"
+        : (sectionName === "credit-card-application") ? "AIVICardApplication"
+        : (sectionName === "personal-loan-application") ? "AIVIApplyLoan"
+        : "AIVIBotIntro";
+
+    const userId = auth.user?.attributes?.email.split('@')[0] || auth.tempData?.email?.split('@')[0] || 'user';
 
     dispatch(apiCallBegan({
         apiName: 'lex',
-        url: `/lex/intent/${intentName()}`,
-        method: 'get',
+        url: `/lex/intent`,
+        method: 'post',
+        data: { userId, intentName },
         onStart: conversationsRequested.type,
         onSuccess: conversationAdded.type,
         onError: conversationsRequestFailed.type,

@@ -5,19 +5,35 @@ import { estimateCashback, estimatePoints, findPotentialRewards } from '../../st
 import { Images } from '../../utils/Images';
 
 const LoadingScreen = () => {
+    const form = useSelector((state: any) => state.form);
     const [loadingMessage, setLoadingMessage] = useState('');
     const history = useHistory();
     const cards = useSelector((state: any) => state.cardRecommender);
     const dispatch = useDispatch();
 
     const getCards = async () => {
-        const selectedBanks = ["cimb_bank", "maybank"];
-        const selectedCategories = {
-            shopping: [200, 1000],
-            shopping_online: [800, 2000],
-            education: [200, 800],
-            dinning: [100, 400],
-        };
+        // const selectedBanks = ["cimb_bank", "maybank"];
+        // const selectedCategories = {
+        //     shopping: [200, 1000],
+        //     shopping_online: [800, 2000],
+        //     education: [200, 800],
+        //     dinning: [100, 400],
+        // };
+
+        const selectedBanks = form.formContent.selectedBanks;
+        // const mappedCategories = form.formContent.expenseObject.map((expenses: any) => ({ [expenses.category]: expenses.expenseRange }));
+        // const selectedCategories = {};
+        // mappedCategories.forEach(ctgr => {
+        //     selectedCategories
+        // });
+        // console.log(form.formContent.expenseObject);
+        const selectedCategories: any = form.formContent.expenseObject.reduce((map: any, obj: any) => {
+            map[obj.category.toLowerCase()] = obj.expenseRange;
+            return map;
+        }, {});
+
+        // console.log(selectedCategories);
+
         const months_to_estimate = 12;
 
         await dispatch(estimatePoints({ selectedBanks, selectedCategories, months_to_estimate }))
@@ -87,6 +103,7 @@ const LoadingScreen = () => {
             <main className="CardRecommenderLoading-Screen">
                 <img className="CardRecommenderLoading-Logo" src={Images.logo_AIVI} alt="AIVI-Logo" />
                 <p className="CardRecommenderLoading-Message" >{loadingMessage}</p>
+                { cards.error && <p>Return to home</p> }
                 <img className="CardRecommenderLoading-Arte" src={Images.card_recommender_loading} alt="Card Loading" />
                 <div className="CardRecommenderLoading-Tips">
                     <h6>Tips from AIVI:</h6>

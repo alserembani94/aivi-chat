@@ -14,6 +14,7 @@ import { converseWithLex, initiateIntent } from '../../store/reducers/conversati
 import { Images } from '../../utils/Images';
 
 const SmartAssistant = () => {
+    const auth = useSelector((state: any) => state.auth);
     const { section_path } = useParams<any>();
     
     const conversations = useSelector((state: any) => state.conversations);
@@ -47,10 +48,10 @@ const SmartAssistant = () => {
     };
 
     useEffect(() => {
-        dispatch(initiateIntent(section_path || ""));
+        auth.user && dispatch(initiateIntent(section_path || ""));
         setRenderSection(prevState => selectedSection());
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [section_path]);
+    }, [section_path, auth]);
 
     // FOR DEBUG PURPOSE ONLY
     // START
