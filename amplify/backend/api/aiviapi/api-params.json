@@ -1,0 +1,53 @@
+{
+    "paths": [
+        {
+            "name": "/lex",
+            "lambdaFunction": "lexapi",
+            "privacy": {
+                "open": true
+            }
+        },
+        {
+            "name": "/aividb",
+            "lambdaFunction": "aividb",
+            "privacy": {
+                "open": true
+            }
+        }
+    ],
+    "resourceName": "aiviapi",
+    "apiName": "aiviapi",
+    "functionArns": [
+        {
+            "lambdaFunction": "lexapi"
+        },
+        {
+            "lambdaFunction": "aividb"
+        }
+    ],
+    "privacy": {
+        "auth": 0,
+        "unauth": 0,
+        "authRoleName": "amplify-aivichat-dev-222855-authRole",
+        "unAuthRoleName": "amplify-aivichat-dev-222855-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "lexapi",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        },
+        {
+            "category": "function",
+            "resourceName": "aividb",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ],
+    "uuid": "3daf69b8"
+}

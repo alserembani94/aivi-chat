@@ -32,8 +32,8 @@ const api: Middleware = ({ dispatch }) => next => async (action) => {
             data,
             headers: {
                 'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': '*',
-                'Access-Control-Allow-Methods': 'ANY',
+                // 'Access-Control-Allow-Origin': '*',
+                // 'Access-Control-Allow-Methods': 'ANY',
             },
         });
 

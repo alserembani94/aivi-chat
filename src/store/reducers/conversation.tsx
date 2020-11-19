@@ -99,7 +99,7 @@ export const converseWithLex = (message: string) => async (dispatch: CustomDispa
 
     dispatch(apiCallBegan({
         apiName: 'lex',
-        url: '/lex',
+        url: '/lex/converse',
         method: 'post',
         data: { ...userMessage, sessionAttributes },
         onStart: conversationsRequested.type,
@@ -112,7 +112,7 @@ export const initiateConversation = (message: string) => (dispatch: CustomDispat
     const auth = getState().auth;
     dispatch(apiCallBegan({
         apiName: 'lex',
-        url: '/lex',
+        url: '/lex/converse',
         method: 'post',
         data: {
             message,
@@ -139,7 +139,7 @@ export const initiateIntent = (sectionName: SectionName) => (dispatch: CustomDis
 
     dispatch(apiCallBegan({
         apiName: 'lex',
-        url: `/lex/intent`,
+        url: `/lex/redirect-intent`,
         method: 'post',
         data: { userId, intentName },
         onStart: conversationsRequested.type,
