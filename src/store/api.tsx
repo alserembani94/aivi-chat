@@ -6,7 +6,7 @@ type baseURLType = (apiPoint: ApiPoint) => string;
 
 export const getBaseURL: baseURLType = apiPoint => {
     switch (apiPoint) {
-        case 'lex': return 'https://a4v3zg84ka.execute-api.us-east-1.amazonaws.com/dev';
+        case 'lex': return 'https://hnf6wj2epk.execute-api.us-east-1.amazonaws.com/dev';
         case 'card-recommender': return 'https://aivi.backend.qijang.com';
         default: return '';
     }

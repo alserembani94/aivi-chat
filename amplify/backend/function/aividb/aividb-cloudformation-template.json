@@ -68,8 +68,8 @@
         "Layers": [],
         "Timeout": "25",
         "Code": {
-          "S3Bucket": "amplify-aivichat-dev-222855-deployment",
-          "S3Key": "amplify-builds/aividb-5351595971344c4e534e-build.zip"
+          "S3Bucket": "amplify-aivichat-dev-125707-deployment",
+          "S3Key": "amplify-builds/aividb-43565853646172714b63-build.zip"
         }
       }
     },
@@ -79,12 +79,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "aivichatLambdaRole43da5fda",
+            "aivichatLambdaRoled29d0c96",
             {
               "Fn::Join": [
                 "",
                 [
-                  "aivichatLambdaRole43da5fda",
+                  "aivichatLambdaRoled29d0c96",
                   "-",
                   {
                     "Ref": "env"

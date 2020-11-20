@@ -1,6 +1,6 @@
 {
   "auth": {
-    "aivichatdc3b4618": {
+    "aivichat4159591c": {
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
       "dependsOn": [],
@@ -8,7 +8,7 @@
     }
   },
   "function": {
-    "lexapi": {
+    "aivilex": {
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda",
@@ -28,7 +28,7 @@
       "dependsOn": [
         {
           "category": "function",
-          "resourceName": "lexapi",
+          "resourceName": "aivilex",
           "attributes": [
             "Name",
             "Arn"

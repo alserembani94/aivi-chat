@@ -14,15 +14,15 @@
         },
     
     
-          "functionlexapiName": {
+          "functionaivilexName": {
             "Type": "String",
-            "Default": "functionlexapiName"
+            "Default": "functionaivilexName"
           },
         
           
-          "functionlexapiArn": {
+          "functionaivilexArn": {
             "Type": "String",
-            "Default": "functionlexapiArn"
+            "Default": "functionaivilexArn"
           },
         
           
@@ -192,7 +192,7 @@
                             
                             {
                                 
-                                "Ref": "functionlexapiArn"
+                                "Ref": "functionaivilexArn"
                             },
                             
                             "/invocations"
@@ -291,7 +291,7 @@
                           
                           {
                             
-                            "Ref": "functionlexapiArn"
+                            "Ref": "functionaivilexArn"
                           },
                           
                           "/invocations"
@@ -547,12 +547,12 @@
                   
         
         
-        "functionlexapiPermissionaiviapi": {
+        "functionaivilexPermissionaiviapi": {
             "Type": "AWS::Lambda::Permission",
             "Properties": {
                 "FunctionName": 
                     {
-                        "Ref":  "functionlexapiName"
+                        "Ref":  "functionaivilexName"
                     },
                     
                     "Action": "lambda:InvokeFunction",
@@ -616,7 +616,7 @@
         
         
         
-      "DeploymentAPIGWaiviapi3daf69b8": {
+      "DeploymentAPIGWaiviapi653f57ec": {
         "Type": "AWS::ApiGateway::Deployment",
         "Properties": {
           "Description": "The Development stage deployment of your API.",

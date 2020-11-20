@@ -2,7 +2,7 @@
     "paths": [
         {
             "name": "/lex",
-            "lambdaFunction": "lexapi",
+            "lambdaFunction": "aivilex",
             "privacy": {
                 "open": true
             }
@@ -19,7 +19,7 @@
     "apiName": "aiviapi",
     "functionArns": [
         {
-            "lambdaFunction": "lexapi"
+            "lambdaFunction": "aivilex"
         },
         {
             "lambdaFunction": "aividb"
@@ -28,13 +28,13 @@
     "privacy": {
         "auth": 0,
         "unauth": 0,
-        "authRoleName": "amplify-aivichat-dev-222855-authRole",
-        "unAuthRoleName": "amplify-aivichat-dev-222855-unauthRole"
+        "authRoleName": "amplify-aivichat-dev-125707-authRole",
+        "unAuthRoleName": "amplify-aivichat-dev-125707-unauthRole"
     },
     "dependsOn": [
         {
             "category": "function",
-            "resourceName": "lexapi",
+            "resourceName": "aivilex",
             "attributes": [
                 "Name",
                 "Arn"
@@ -49,5 +49,5 @@
             ]
         }
     ],
-    "uuid": "3daf69b8"
+    "uuid": "653f57ec"
 }

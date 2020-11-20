@@ -13,8 +13,6 @@ var express = require('express')
 var bodyParser = require('body-parser')
 var awsServerlessExpressMiddleware = require('aws-serverless-express/middleware')
 
-const conversation_controller = require('./controllers/conversationController')
-
 // declare a new express app
 var app = express()
 app.use(bodyParser.json())
@@ -27,31 +25,62 @@ app.use(function(req, res, next) {
   next()
 });
 
+
 /**********************
- * Index Route *
+ * Example get method *
  **********************/
 
-app.get('/aividb', (req, res) => {
-  res.json({ message: "Hello again!" });
+app.get('/item', function(req, res) {
+  // Add your code here
+  res.json({success: 'get call succeed!', url: req.url});
 });
 
-/**********************
- * Conversation Route *
- **********************/
+app.get('/item/*', function(req, res) {
+  // Add your code here
+  res.json({success: 'get call succeed!', url: req.url});
+});
 
-app.get('/conversation/', conversation_controller.conversation_index);
-app.get('/conversation/all', conversation_controller.conversation_list);
-app.get('/conversation/create', conversation_controller.conversation_create_get);
-app.post('/conversation/create', conversation_controller.conversation_create_post);
-app.get('/conversation/:id', conversation_controller.conversation_detail);
-app.get('/conversation/:id/update', conversation_controller.conversation_update_get);
-app.post('/conversation/:id/update', conversation_controller.conversation_update_post);
-app.get('/conversation/:id/delete', conversation_controller.conversation_delete_get);
-app.post('/conversation/:id/delete', conversation_controller.conversation_delete_post);
+/****************************
+* Example post method *
+****************************/
 
-/**********************
- * Listeners *
- **********************/
+app.post('/item', function(req, res) {
+  // Add your code here
+  res.json({success: 'post call succeed!', url: req.url, body: req.body})
+});
+
+app.post('/item/*', function(req, res) {
+  // Add your code here
+  res.json({success: 'post call succeed!', url: req.url, body: req.body})
+});
+
+/****************************
+* Example put method *
+****************************/
+
+app.put('/item', function(req, res) {
+  // Add your code here
+  res.json({success: 'put call succeed!', url: req.url, body: req.body})
+});
+
+app.put('/item/*', function(req, res) {
+  // Add your code here
+  res.json({success: 'put call succeed!', url: req.url, body: req.body})
+});
+
+/****************************
+* Example delete method *
+****************************/
+
+app.delete('/item', function(req, res) {
+  // Add your code here
+  res.json({success: 'delete call succeed!', url: req.url});
+});
+
+app.delete('/item/*', function(req, res) {
+  // Add your code here
+  res.json({success: 'delete call succeed!', url: req.url});
+});
 
 app.listen(3000, function() {
     console.log("App started")

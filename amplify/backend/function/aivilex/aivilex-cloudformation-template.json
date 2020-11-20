@@ -33,12 +33,12 @@
         "FunctionName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "lexapi",
+            "aivilex",
             {
               "Fn::Join": [
                 "",
                 [
-                  "lexapi",
+                  "aivilex",
                   "-",
                   {
                     "Ref": "env"
@@ -68,8 +68,8 @@
         "Layers": [],
         "Timeout": "25",
         "Code": {
-          "S3Bucket": "amplify-aivichat-dev-222855-deployment",
-          "S3Key": "amplify-builds/lexapi-4b466f325a687a544749-build.zip"
+          "S3Bucket": "amplify-aivichat-dev-125707-deployment",
+          "S3Key": "amplify-builds/aivilex-72367a68774e2b664842-build.zip"
         }
       }
     },
@@ -79,12 +79,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "aivichatLambdaRole2d0d1370",
+            "aivichatLambdaRole45ef0f70",
             {
               "Fn::Join": [
                 "",
                 [
-                  "aivichatLambdaRole2d0d1370",
+                  "aivichatLambdaRole45ef0f70",
                   "-",
                   {
                     "Ref": "env"
