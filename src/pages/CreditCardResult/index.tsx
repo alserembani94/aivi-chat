@@ -39,7 +39,8 @@ const CreditCardResult: FC = () => {
     const [allExpanded, setAllExpanded] = useState(false);
     const dispatch = useDispatch();
     const history = useHistory();
-    const cards = useSelector((state: any) => state.cardRecommender)
+    const cards = useSelector((state: any) => state.cardRecommender);
+    const form = useSelector((state: any) => state.form);
 
     const toggleAllExpanded = () => {
         setAllExpanded(prevState => !prevState);
@@ -50,29 +51,7 @@ const CreditCardResult: FC = () => {
     const handlePeriodChange = (value: number) => setPeriod(() => value);
 
     // Temporary Expense Details
-    const [expenseDetails, setExpenseDetails] = useState<ExpenseDetails>([
-        {
-            category: 'Shopping',
-            subcategory: [
-                {
-                    name: 'Online',
-                    expenseRange: [2200, 8800],
-                },
-                {
-                    name: 'Traditional',
-                    expenseRange: [3000, 7000],
-                },
-            ],
-        },
-        {
-            category: 'Dining',
-            expenseRange: [3000, 7000],
-        },
-        {
-            category: 'Health & Insurance',
-            expenseRange: [3000, 7000],
-        },
-    ]);
+    const [expenseDetails, setExpenseDetails] = useState<ExpenseDetails>(form.formContent?.expenseObject || []);
     
 
     const handleExpenseDetailsUpdate = (expenseDetails: ExpenseDetails) => {
@@ -80,7 +59,7 @@ const CreditCardResult: FC = () => {
     }
 
     // CONFIGURATION FOR BANKS
-    const [selectedBanks, setSelectedBanks] = useState<string[]>([]);
+    const [selectedBanks, setSelectedBanks] = useState<string[]>(form.formContent?.selectedBanks || []);
 
     const handleSelectedBanks = (selected: string[]) => {
         setSelectedBanks(() => { return selected; });

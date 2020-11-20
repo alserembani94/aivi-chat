@@ -91,7 +91,7 @@ const CreditCard: FC = () => {
                 optionDetail = {
                     category: option,
                     expenseRange: [200, 700],
-                };  
+                };
             }
             return optionDetail;
         });
