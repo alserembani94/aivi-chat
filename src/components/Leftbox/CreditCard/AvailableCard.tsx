@@ -15,69 +15,69 @@ interface AvailableCardProps {
 const AvailableCard: FC<AvailableCardProps> = ({cardOwnership, updateCardOwnership, selectedOptions, updateSelectedOptions, optionLimit}) => {
     const optionList = [
         {
-            name: 'CIMB Bank',
+            name: 'cimb_bank',
             label: 'CIMB Bank',
         },
         {
-            name: 'Alliance Bank',
+            name: 'alliance_bank',
             label: 'Alliance Bank',
         },
         {
-            name: 'Maybank',
+            name: 'maybank',
             label: 'Maybank',
         },
         {
-            name: 'OCBC',
+            name: 'ocbc',
             label: 'OCBC',
         },
         {
-            name: 'RHB Bank',
+            name: 'rhb_bank',
             label: 'RHB Bank',
         },
         {
-            name: 'Public Bank',
+            name: 'public_bank',
             label: 'Public Bank',
         },
         {
-            name: 'BSN',
+            name: 'bsn',
             label: 'BSN',
         },
         {
-            name: 'Bank Rakyat',
+            name: 'bank_rakyat',
             label: 'Bank Rakyat',
         },
         {
-            name: 'Affin Bank',
+            name: 'affin_bank',
             label: 'Affin Bank',
         },
         {
-            name: 'Standard Chartered',
+            name: 'standard_chartered',
             label: 'Standard Chartered',
         },
         {
-            name: 'Citibank',
+            name: 'citibank',
             label: 'Citibank',
         },
         {
-            name: 'UOB Malaysia',
+            name: 'uob_malaysia',
             label: 'UOB Malaysia',
         },
         {
-            name: 'Hong Leong Bank',
+            name: 'hong_leong_bank',
             label: 'Hong Leong Bank',
         },
+        // {
+        //     name: 'AEON Credit Service',
+        //     label: 'AEON Credit Service',
+        // },
         {
-            name: 'AEON Credit Service',
-            label: 'AEON Credit Service',
-        },
-        {
-            name: 'HSBC',
+            name: 'hsbc',
             label: 'HSBC',
         },
-        {
-            name: 'Paydee',
-            label: 'Paydee',
-        },
+        // {
+        //     name: 'Paydee',
+        //     label: 'Paydee',
+        // },
     ];
     const tempRef = React.useRef<HTMLDivElement>(null);
     const [rowSpan, setRowSpan] = useState(2);
@@ -96,7 +96,7 @@ const AvailableCard: FC<AvailableCardProps> = ({cardOwnership, updateCardOwnersh
         });
     }, [tempRef]);
 
-    const cardOwnershipOptions = ['This is my first card', 'I have existing card(s)'];
+    const cardOwnershipOptions = ['Yes', 'No'];
     const handleCardOwnershipToggle = (value: string) => {
         updateCardOwnership && updateCardOwnership(value === cardOwnershipOptions[0] ? false : true);
         value === cardOwnershipOptions[0] && updateSelectedOptions([]);
@@ -108,6 +108,7 @@ const AvailableCard: FC<AvailableCardProps> = ({cardOwnership, updateCardOwnersh
                 {
                     (cardOwnership !== undefined) &&
                     <ToggleText
+                        label="Is this your first card?"
                         optionList={cardOwnershipOptions}
                         selected={cardOwnership ? cardOwnershipOptions[1] : cardOwnershipOptions[0]}
                         handleToggleUpdate={(value: string) => handleCardOwnershipToggle(value)}

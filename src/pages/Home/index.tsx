@@ -6,16 +6,17 @@ import Footer from '../../components/Footer';
 import * as Content from '../../PageContent/Home';
 
 const Headline: FC = () => (
-    <div className="Home-Section">
+    <div className="Home-Section container">
         <div className="Home-Headline">
-            <div className="Home-Headline-Image">
+            {/* <div className="Home-Headline-Image">
                 <img src={Images.logo_AIVI} alt=""/>
-            </div>
+            </div> */}
             <div className="Home-Headline-Content">
                 { Content.Headline.title }
                 { Content.Headline.description }
                 <button className="Pages-Red-Button">{Content.Headline.button}</button>
             </div>
+            <div className="Home-Headline-Image" />
         </div>
     </div>
 );

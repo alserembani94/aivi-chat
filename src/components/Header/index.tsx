@@ -22,49 +22,52 @@ const HeaderPage: FC = () => {
     };
     return (
         <div className="Header">
-            <div className="Header-Home">
-                <button className="Header-Logo">
-                    <img
-                        src={Images.logo_AIVI}
-                        alt="AIVI"
-                    />
-                </button>
-            </div>
-            <div className="Header-Auth">
-                {
-                    auth.user?.username
-                    ? (
-                        <>
-                            <button
-                                className="Header-Register"
-                                onClick={handleSignOut}
-                            >Sign Out</button>
-                        </>
-                    )
-                    : (
-                        <>
-                            <button
-                                className="Header-SubLink"
-                                onClick={() => handleNavigation('/blog')}
-                            >
-                                Blog
-                            </button>
-                            <button
-                                className="Header-SubLink"
-                                onClick={() => handleNavigation('/faq')}
-                            >
-                                FAQ
-                            </button>
-                            <button
-                                className="Header-SignIn"
-                                onClick={() => handleNavigation('/sign-in')}
-                            >
-                                Sign In
-                            </button>
-                            
-                        </>
-                    )
-                }
+            <div className="Header-Wrapper container" style={{ display: 'flex' }}>
+                <div className="Header-Home">
+                    <button className="Header-Logo">
+                        <img
+                            src={Images.logo_AIVI}
+                            alt="AIVI"
+                        />
+                    </button>
+                </div>
+                <div className="Header-Auth">
+                    {
+                        auth.user?.username
+                        ? (
+                            <>
+                                <button
+                                    className="Header-Register"
+                                    onClick={handleSignOut}
+                                >Sign Out</button>
+                            </>
+                        )
+                        : (
+                            <>
+                                <button
+                                    className="Header-SubLink"
+                                    onClick={() => handleNavigation('/blog')}
+                                >
+                                    Blog
+                                </button>
+                                <button
+                                    className="Header-SubLink"
+                                    onClick={() => handleNavigation('/faq')}
+                                    style={{ letterSpacing: 0.5 }}
+                                >
+                                    FAQ
+                                </button>
+                                <button
+                                    className="Header-SignIn"
+                                    onClick={() => handleNavigation('/sign-in')}
+                                >
+                                    Sign In
+                                </button>
+                                
+                            </>
+                        )
+                    }
+                </div>
             </div>
         </div>
     );

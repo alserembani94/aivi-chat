@@ -115,7 +115,7 @@ type recommendCardProps = {
 
 export const recommendCard = ({ selectedBanks, selectedCategories }: recommendCardProps) => apiCallBegan({
     apiName: baseUrl,
-    url: '/card_recommender/v1/recommend_cards',
+    url: '/recommender/v1/recommend_cards',
     method: 'post',
     data: {
         multiselected_bank: selectedBanks,
@@ -142,7 +142,7 @@ type FindPotentialRewards = {
 
 export const estimatePoints = ({ selectedBanks, selectedCategories, months_to_estimate, preferred_bank = false }: EstimatePointsProps) => apiCallBegan({
     apiName: baseUrl,
-    url: '/card_recommender/v1/estimate_points',
+    url: '/recommender/v1/estimate_points',
     method: 'post',
     data: {
         multiselected_bank: selectedBanks,
@@ -157,7 +157,7 @@ export const estimatePoints = ({ selectedBanks, selectedCategories, months_to_es
 
 export const estimateCashback = ({ selectedBanks, selectedCategories, months_to_estimate, preferred_bank = false }: EstimatePointsProps) => apiCallBegan({
     apiName: baseUrl,
-    url: '/card_recommender/v1/estimate_cashback',
+    url: '/recommender/v1/estimate_cashback',
     method: 'post',
     data: {
         
@@ -204,7 +204,7 @@ export const findPotentialRewards = () => async (dispatch: Dispatch<any>, getSta
     mappedCardRequest.forEach(async (card: any) => {
         await dispatch(apiCallBegan({
             apiName: baseUrl,
-            url: '/card_recommender/v1/potential_rewards',
+            url: '/recommender/v1/potential_rewards',
             method: 'post',
             data: card,
             onStart: recommendationRequested.type,

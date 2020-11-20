@@ -5,7 +5,7 @@
 
 * {
   box-sizing: border-box;
-  font-size: 16px;
+  font-size: 18px;
   margin: 0;
   padding: 0;
   font-family: Proxima Nova, Helvetica, sans-serif;
@@ -119,6 +119,7 @@ button:focus {
     background-color: inherit;
     width: $sidebar-width;
     height: $sidebar-width;
+    margin-top: 20px;
   }
   // &-Send {
   //   &:hover {
@@ -146,48 +147,48 @@ button:focus {
     color: $brand-fill;
   }
   &-Hamburger {
-    width: 45%;
-    height: 45%;
+    width: 55%;
+    height: auto;
   }
   &-Add, &-Audible, &-Smiley {
     width: 70%;
-    height: 70%;
+    height: auto;
   }
   &-Down {
     width: 80%;
-    height: 80%;
+    height: auto;
   }
   &-Close {
     width: 95%;
-    height: 95%;
+    height: auto;
   }
   &-Check {
     width: 100%;
-    height: 100%;
+    height: auto;
   }
   &-AddIncome {
     width: 90%;
-    height: 90%;
+    height: auto;
   }
   &-Proceed {
     width: 60%;
-    height: 60%;
+    height: auto;
   }
   &-TransferTo {
     width: 70%;
-    height: 70%;
+    height: auto;
     color: $brand-fill !important;
   }
   &-Details {
     &-Forward {
       width: 1.5rem;
-      height: 1.5rem;
+      height: auto;
       color: $brand-fill;
       margin-left: 5px;
     }
     &-Down {
       width: 1.2rem;
-      height: 1.2rem;
+      height: auto;
     }
     &-Next, &-Previous {
       width: auto;
@@ -197,7 +198,7 @@ button:focus {
   &-Result {
     &-Check {
       width: 90%;
-      height: 90%;
+      height: auto;
     }
   }
 }
@@ -452,9 +453,9 @@ input[type=number] {
     height: 100%;
     width: 45%;
     background-color: $light-background;
-    padding: 50px 35px;
+    padding: 35px 35px;
     display: flex;
-    flex-flow: column wrap;
+    flex-flow: column nowrap;
     align-items: stretch;
     overflow: hidden;
   }
@@ -467,13 +468,13 @@ input[type=number] {
 
 .Header {
   display: flex;
-  padding: 30px 50px;
+  padding: 25px 50px;
   width: 100%;
   position: sticky;
   top: 0px;
   background: $light-background;
   z-index: 100;
-  box-shadow: $box-shadow;
+  // box-shadow: $box-shadow;
   &-Logo {
     height: 3rem;
     width: auto;
@@ -495,8 +496,8 @@ input[type=number] {
   }
   &-SubLink {
     // color: $brand-fill;
-    font-weight: 700;
-    padding: 10px 20px;
+    font-weight: 600;
+    padding: 10px 30px;
     margin-right: 10px;
   }
   &-SignIn {
@@ -504,6 +505,7 @@ input[type=number] {
     background-color: $brand-fill;
     padding: 10px 20px;
     border-radius: 4px;
+    margin-left: 20px;
   }
 }
 
@@ -840,10 +842,18 @@ input[type=number] {
 }
 
 .CreditCard {
+  &-Title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
   &-Content {
     overflow: auto;
-    height: calc(100% - #{$button-area-height});
+    flex-grow: 1;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
   }
   &-Button {
     height: $button-area-height;
@@ -943,6 +953,14 @@ input[type=number] {
   }
   &-Container {
     margin-bottom: 40px;
+    .col-12 {
+      padding: 0;
+    }
+    .ToggleText {
+      &-Container {
+        margin-bottom: 20px;
+      }
+    }
   }
   &-SectionHeader {
     display: flex;
@@ -950,6 +968,14 @@ input[type=number] {
     align-items: center;
     justify-content: space-between;
     padding-bottom: 15px;
+    .ToggleText {
+      &-Label {
+        margin: 0;
+      }
+      &-Container {
+        margin-bottom: 20px;
+      }
+    }
   }
   &-SectionTitle {
     font-size: 0.85rem;
@@ -988,14 +1014,15 @@ input[type=number] {
     }
   }
   &-RemoveIncome {
-    background-color: $slider-thumb;
-    border: none;
-    color: $light-background;
+    // background-color: $slider-thumb;
+    border: 1px solid $brand-fill;
+    color: $brand-fill;
     outline: none;
     padding: 5px 25px;
     border-radius: 1rem;
     cursor: pointer;
     font-size: 0.8rem;
+    font-weight: 700;
     &:hover {
       filter: brightness(1.1);
     }
@@ -1855,7 +1882,8 @@ input[type=number] {
 .TabBar {
   &-Container {
     overflow: hidden;
-    height: 100%;
+    // height: 100%;
+    flex-grow: 1;
     display: flex;
     flex-flow: column nowrap;
   }
@@ -1869,6 +1897,7 @@ input[type=number] {
     scrollbar-color: transparent transparent !important;
     scrollbar-width: none;
     background-color: $light-background;
+    box-shadow: inset 0px -4px 2px -2px #00000011;
     &::-webkit-scrollbar {
       display: none;
     }
@@ -1910,7 +1939,7 @@ input[type=number] {
     &-Item {
       width: 100%;
       flex-shrink: 0;
-      padding: 5px;
+      padding: 5px 20px;
       overflow: auto;
       margin-right: 100px;
     }
@@ -1975,6 +2004,9 @@ input[type=number] {
       color: $brand-fill;
       text-decoration: none;
     }
+    p {
+      flex: 1 0;
+    }
   }
   &-Indicator {
     width: $checkbox-indicator-dimension;
@@ -2037,7 +2069,7 @@ input[type=number] {
     font-size: 0.85rem;
     color: $text-dark;
     width: 14ch;
-    height: 15ch;
+    height: 16ch;
     background: $light-background;
     border: $imageselect-border;
     border-radius: 10px;
@@ -2097,13 +2129,13 @@ input[type=number] {
 
 .ToggleText {
   &-Container {
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     ul {
       list-style: none;
       display: flex;
       flex-flow: row wrap;
       overflow: hidden;
-      border-radius: 5px;
+      border-radius: 10px;
       height: 3rem;
       background-color: $light-background;
       box-shadow: $box-shadow;
@@ -2129,6 +2161,11 @@ input[type=number] {
         font-weight: 500;
       }
     }
+  }
+  &-Label {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
   }
 }
 

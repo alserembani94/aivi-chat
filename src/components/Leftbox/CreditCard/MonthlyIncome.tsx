@@ -133,7 +133,7 @@ const MonthlyIncomeItem: FC<IncomeSourceItemProps> = ({incomeSource, incomeNo, h
     return (
         <div className="MonthlyIncome-Container">
             <div className="MonthlyIncome-SectionHeader">
-                <p className="MonthlyIncome-SectionTitle">Income {incomeNo}</p>
+                <p className="ToggleText-Label">Income {incomeNo}</p>
                 {incomeNo > 1 && <button className="MonthlyIncome-RemoveIncome">Remove</button>}
             </div>
             <ToggleText

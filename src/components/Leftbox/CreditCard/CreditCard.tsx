@@ -119,11 +119,11 @@ const CreditCard: FC = () => {
     }
     
     // TAB CONFIGURATION
-    const [currentTab, setCurrentTab] = useState('Available Card');
+    const [currentTab, setCurrentTab] = useState('Existing Card');
     const tabMenuList = [
         {
-            label: 'Available Card',
-            name: 'Available Card',
+            label: 'Existing Card',
+            name: 'Existing Card',
             content: <AvailableCard
                         cardOwnership={cardOwnership}
                         updateCardOwnership={toggleExistingCard}
@@ -223,6 +223,7 @@ const CreditCard: FC = () => {
     return (
         <React.Fragment>
             <div className="CreditCard-Content">
+                <p className="CreditCard-Title">Section: Recommend Credit Card</p>
                 <TabBar
                     currentTab={currentTab}
                     updateTab={handleChangeTab}

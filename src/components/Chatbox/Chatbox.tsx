@@ -96,7 +96,8 @@ const Chatbox: FC<ChatboxProps> = ({ conversation, updateConversation, disableIn
             <div className="Chatbox-Container">
                     <div className="Chatbox-Avatar Button">
                         <img
-                            src="https://i.imgur.com/gqSZQbW.png"
+                            src="/images/Avatar-AIVI.png"
+                            // src="https://i.imgur.com/gqSZQbW.png"
                             alt="AIVI Avatar"
                         />
                     </div>

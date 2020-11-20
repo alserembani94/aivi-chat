@@ -27,10 +27,32 @@ const LoadingScreen = () => {
         //     selectedCategories
         // });
         // console.log(form.formContent.expenseObject);
-        const selectedCategories: any = form.formContent.expenseObject.reduce((map: any, obj: any) => {
-            map[obj.category.toLowerCase()] = obj.expenseRange;
-            return map;
-        }, {});
+        // const selectedCategories: any = form.formContent.expenseObject.reduce((map: any, obj: any) => {
+        //     if (obj.subcategory)
+        //     map[obj.category.toLowerCase()] = obj.expenseRange;
+        //     return map;
+        // }, {});
+
+        let selectedCategories: any = {};
+        form.formContent.expenseObject.forEach((item: any) => {
+            if (item.subcategory) {
+                item.subcategory.forEach((subItem: any) => {
+                    if (subItem.name.toLowerCase() === 'online') {
+                        selectedCategories[`${item.category.toLowerCase()}_${subItem.name.toLowerCase()}`] = subItem.expenseRange;
+                    }
+                    else {
+                        selectedCategories[`${item.category.toLowerCase()}`] = subItem.expenseRange;
+                    }
+                })
+            }
+            else if (item.category.toLowerCase() === "health & insurance") {
+                selectedCategories['health_insurance'] = item.expenseRange;
+            }
+            else {
+                selectedCategories[item.category.toLowerCase()] = item.expenseRange;
+            }
+        });
+
 
         // console.log(selectedCategories);
 

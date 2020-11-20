@@ -76,7 +76,7 @@
         display: flex;
         &-Product {
             background: $light-background;
-            margin-top: 10rem;
+            margin-top: 5rem;
             .container {
                 position: relative;
                 top: -7.5rem;
@@ -87,9 +87,13 @@
         display: flex;
         position: relative;
         width: 100%;
+        justify-content: space-between;
+        align-items: center;
         &-Image {
-            position: absolute;
-            right: 50px;
+            background-color: gray;
+            width: 500px;
+            height: 600px;
+            object-fit: contain;
         }
         
         &-Content{
@@ -97,7 +101,7 @@
             max-width: 55ch;
             
             h1{
-                font-size: 2em;
+                font-size: 3em;
                 font-weight: 700;
             }
             .red{
@@ -141,6 +145,8 @@
             // }
             h1{
                 font-weight: 600;
+                font-size: 3rem;
+                
             }
         }
         &-Video{
