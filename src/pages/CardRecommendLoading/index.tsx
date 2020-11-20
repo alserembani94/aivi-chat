@@ -12,26 +12,8 @@ const LoadingScreen = () => {
     const dispatch = useDispatch();
 
     const getCards = async () => {
-        // const selectedBanks = ["cimb_bank", "maybank"];
-        // const selectedCategories = {
-        //     shopping: [200, 1000],
-        //     shopping_online: [800, 2000],
-        //     education: [200, 800],
-        //     dinning: [100, 400],
-        // };
 
         const selectedBanks = form.formContent.selectedBanks;
-        // const mappedCategories = form.formContent.expenseObject.map((expenses: any) => ({ [expenses.category]: expenses.expenseRange }));
-        // const selectedCategories = {};
-        // mappedCategories.forEach(ctgr => {
-        //     selectedCategories
-        // });
-        // console.log(form.formContent.expenseObject);
-        // const selectedCategories: any = form.formContent.expenseObject.reduce((map: any, obj: any) => {
-        //     if (obj.subcategory)
-        //     map[obj.category.toLowerCase()] = obj.expenseRange;
-        //     return map;
-        // }, {});
 
         let selectedCategories: any = {};
         form.formContent.expenseObject.forEach((item: any) => {

@@ -72,17 +72,17 @@ const CreditCard: FC = () => {
     const generateExpenseObject = () => {
         const generatedExpenseObject = selectedExpenses.map(option => {
             let optionDetail = {};
-            if (['Shopping', 'Groceries', 'Travel'].includes(option)) {
+            if (['Shopping', 'Groceries'].includes(option)) {
                 optionDetail = {
                     category: option,
                     subcategory: [
                         {
                             name: 'Online',
-                            expenseRange: [2200, 8800],
+                            expenseRange: [200, 700],
                         },
                         {
                             name: 'Traditional',
-                            expenseRange: [3000, 7000],
+                            expenseRange: [200, 700],
                         },
                     ],
                 };                    
@@ -90,7 +90,7 @@ const CreditCard: FC = () => {
             else {
                 optionDetail = {
                     category: option,
-                    expenseRange: [1000, 8100],
+                    expenseRange: [200, 700],
                 };  
             }
             return optionDetail;
