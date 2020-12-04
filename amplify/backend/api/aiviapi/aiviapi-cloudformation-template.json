@@ -305,7 +305,7 @@
                 }
               },   
               
-              "/aividb": {
+              "/aivi": {
                 "options": {
                   "consumes": [
                     "application/json"
@@ -404,7 +404,7 @@
                   }
                 }
               },
-              "/aividb/{proxy+}": {
+              "/aivi/{proxy+}": {
                 "options": {
                   "consumes": [
                     "application/json"
@@ -616,7 +616,7 @@
         
         
         
-      "DeploymentAPIGWaiviapi653f57ec": {
+      "DeploymentAPIGWaiviapica234ec0": {
         "Type": "AWS::ApiGateway::Deployment",
         "Properties": {
           "Description": "The Development stage deployment of your API.",

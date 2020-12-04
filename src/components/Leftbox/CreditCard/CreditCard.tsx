@@ -223,7 +223,10 @@ const CreditCard: FC = () => {
     return (
         <React.Fragment>
             <div className="CreditCard-Content">
-                <p className="CreditCard-Title">Section: Recommend Credit Card</p>
+                <div className="SmartAssist-SectionInfo">
+                    <p className="SmartAssist-Title">Section: Recommend Credit Card</p>
+                    <p className="SmartAssist-Description">Please fill up the form and make sure all your input is accurate before submitting the form</p>
+                </div>
                 <TabBar
                     currentTab={currentTab}
                     updateTab={handleChangeTab}

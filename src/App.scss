@@ -1,7 +1,8 @@
 @import './styles/global';
 
-
-
+// --------------------------------------------- //
+// --------------------------------------------- //
+// --------------------------------------------- //
 
 * {
   box-sizing: border-box;
@@ -841,12 +842,21 @@ input[type=number] {
   }
 }
 
-.CreditCard {
+.SmartAssist {
+  &-SectionInfo {
+    margin-bottom: 10px;
+  }
   &-Title {
     font-size: 1.4rem;
     font-weight: 600;
-    margin-bottom: 10px;
   }
+  &-Description {
+    font-size: 0.8rem;
+    color: $text-light;
+  }
+}
+
+.CreditCard {
   &-Content {
     overflow: auto;
     flex-grow: 1;
@@ -1610,7 +1620,10 @@ input[type=number] {
     }
     &-Name {
       font-size: 0.9rem;
-      text-transform: capitalize;
+      text-transform: uppercase;
+      font-weight: 600;
+      max-width: 20ch;
+      line-height: 1rem;
     }
     &-Selected {
       width: 165px;

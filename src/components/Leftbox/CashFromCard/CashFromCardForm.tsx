@@ -93,9 +93,13 @@ const CashFromCardForm: FC<CashFromCardProps> = ({slot, updateSubmitted, handleI
     return (
         <React.Fragment>
             <section className="AIVIForm-Content">
-                <p className="AIVIForm-Title">
+                {/* <p className="AIVIForm-Title">
                     Application Status: In Progress
-                </p>
+                </p> */}
+                <div className="SmartAssist-SectionInfo">
+                    <p className="SmartAssist-Title">Section: Cash From Card</p>
+                    <p className="SmartAssist-Description">Please fill up the form and make sure all your input is accurate before submitting the form</p>
+                </div>
                 {/* <p className="AIVIForm-Description">
                     You can view your progress so far here. Feel free to edit the information by clicking on the field.
                 </p> */}

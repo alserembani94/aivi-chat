@@ -31,8 +31,10 @@ const slice = createSlice({
         loading: false,
         lastFetch: null,
         currentIntent: null,
+        lexSessionID: undefined,
         sessionAttributes: undefined,
         error: undefined,
+        lastConversationID: undefined,
     },
     reducers: {
         conversationAdded: (conversations: any, action: any) => {
@@ -44,6 +46,7 @@ const slice = createSlice({
                 actions,
                 intentName,
                 slots,
+                sessionId,
             } = action.payload;
             conversations.list.push({
                 message,
@@ -54,6 +57,16 @@ const slice = createSlice({
             if (sessionAttributes) conversations.sessionAttributes = sessionAttributes;
             if (intentName) conversations.currentIntent = intentName;
             if (slots) conversations.slots = slots;
+            if (sessionId) conversations.lexSessionID = sessionId;
+        },
+        conversationSaved: (conversations: any, action: any) => {
+            conversations.list = [];
+            conversations.slot = {};
+            conversations.loading = false;
+            conversations.currentIntent = null;
+            conversations.lexSessionID = undefined;
+            conversations.sessionAttributes = undefined;
+            conversations.lastConversationID = action.payload._id;
         },
         conversationsRequested: (conversations: any, action: any) => {
             conversations.loading = true;
@@ -75,6 +88,7 @@ const {
     conversationsRequested,
     // conversationsReceived,
     conversationsRequestFailed,
+    conversationSaved,
 } = slice.actions;
 export default slice.reducer;
 
@@ -147,3 +161,22 @@ export const initiateIntent = (sectionName: SectionName) => (dispatch: CustomDis
         onError: conversationsRequestFailed.type,
     }));
 };
+
+export const saveConversation = () =>  (dispatch: CustomDispatch, getState: any) => {
+    const conv = getState().conversations;
+    const auth = getState().auth;
+    dispatch(apiCallBegan({
+        apiName: 'lex',
+        url: '/aivi/conversation/register',
+        method: 'post',
+        data: {
+            user: auth.user.attributes.name || auth.tempData.name || 'user',
+            lexSessionID: conv.lexSessionID || null,
+            conversation_list: conv.list,
+        },
+        onStart: conversationsRequested.type,
+        onSuccess: conversationSaved.type,
+        onError: conversationsRequestFailed.type,
+
+    }));
+}

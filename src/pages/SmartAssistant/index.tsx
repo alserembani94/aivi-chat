@@ -10,7 +10,7 @@ import {
     PersonalLoan,
     AuthModal,
 } from '../../components';
-import { converseWithLex, initiateIntent } from '../../store/reducers/conversation';
+import { converseWithLex, initiateIntent, saveConversation } from '../../store/reducers/conversation';
 import { Images } from '../../utils/Images';
 
 const SmartAssistant = () => {
@@ -48,8 +48,12 @@ const SmartAssistant = () => {
     };
 
     useEffect(() => {
+        conversations.list.length !== 0 && dispatch(saveConversation());
         auth.user && dispatch(initiateIntent(section_path || ""));
-        setRenderSection(prevState => selectedSection());
+        // setRenderSection(prevState => selectedSection());
+        setTimeout(() => {
+            setRenderSection(prevState => selectedSection());
+        }, 5000);
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [section_path, auth]);
 

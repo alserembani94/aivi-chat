@@ -133,14 +133,14 @@ const MonthlyIncomeItem: FC<IncomeSourceItemProps> = ({incomeSource, incomeNo, h
     return (
         <div className="MonthlyIncome-Container">
             <div className="MonthlyIncome-SectionHeader">
-                <p className="ToggleText-Label">Income {incomeNo}</p>
+                <p className="ToggleText-Label">Income {incomeNo} {incomeNo === 1 && `(Primary)`}</p>
                 {incomeNo > 1 && <button className="MonthlyIncome-RemoveIncome">Remove</button>}
             </div>
-            <ToggleText
+            {/* <ToggleText
                 optionList={categoryToggleOptions}
                 selected={incomeSource.category}
                 handleToggleUpdate={(value: string) => handleInputChange(value, 'category')}
-            />
+            /> */}
             {
                 incomeSourceFormat.map((incomeSourceItem, index) => (
                     incomeSourceItem.inputType === 'dropdown'

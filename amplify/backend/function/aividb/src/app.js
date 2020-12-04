@@ -12,6 +12,29 @@ See the License for the specific language governing permissions and limitations 
 var express = require('express')
 var bodyParser = require('body-parser')
 var awsServerlessExpressMiddleware = require('aws-serverless-express/middleware')
+var mongoose = require('mongoose')
+
+var indexRouter = require('./main')
+
+// === === === === === //
+//   MONGOOSE CONFIG   //
+// === === === === === //
+
+const mongodb_url = process.env.MONGODB_URL;
+const mongodb_db = process.env.MONGODB_DB;
+const mongodb_conn = `${mongodb_url}/${mongodb_db}?retryWrites=true&w=majority`;
+const mongodb_config = {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+}
+
+mongoose.connect(mongodb_conn, mongodb_config);
+
+// === === === === === === === //
+// === END MONGOOSE CONFIG === //
+// === === === === === === === //
+
+// var indexRouter = require('./main');
 
 // declare a new express app
 var app = express()
@@ -25,62 +48,63 @@ app.use(function(req, res, next) {
   next()
 });
 
+app.use('/aivi', indexRouter)
 
 /**********************
  * Example get method *
  **********************/
 
-app.get('/item', function(req, res) {
-  // Add your code here
-  res.json({success: 'get call succeed!', url: req.url});
-});
+// app.get('/item', function(req, res) {
+//   // Add your code here
+//   res.json({success: 'get call succeed!', url: req.url});
+// });
 
-app.get('/item/*', function(req, res) {
-  // Add your code here
-  res.json({success: 'get call succeed!', url: req.url});
-});
+// app.get('/item/*', function(req, res) {
+//   // Add your code here
+//   res.json({success: 'get call succeed!', url: req.url});
+// });
 
-/****************************
-* Example post method *
-****************************/
+// /****************************
+// * Example post method *
+// ****************************/
 
-app.post('/item', function(req, res) {
-  // Add your code here
-  res.json({success: 'post call succeed!', url: req.url, body: req.body})
-});
+// app.post('/item', function(req, res) {
+//   // Add your code here
+//   res.json({success: 'post call succeed!', url: req.url, body: req.body})
+// });
 
-app.post('/item/*', function(req, res) {
-  // Add your code here
-  res.json({success: 'post call succeed!', url: req.url, body: req.body})
-});
+// app.post('/item/*', function(req, res) {
+//   // Add your code here
+//   res.json({success: 'post call succeed!', url: req.url, body: req.body})
+// });
 
-/****************************
-* Example put method *
-****************************/
+// /****************************
+// * Example put method *
+// ****************************/
 
-app.put('/item', function(req, res) {
-  // Add your code here
-  res.json({success: 'put call succeed!', url: req.url, body: req.body})
-});
+// app.put('/item', function(req, res) {
+//   // Add your code here
+//   res.json({success: 'put call succeed!', url: req.url, body: req.body})
+// });
 
-app.put('/item/*', function(req, res) {
-  // Add your code here
-  res.json({success: 'put call succeed!', url: req.url, body: req.body})
-});
+// app.put('/item/*', function(req, res) {
+//   // Add your code here
+//   res.json({success: 'put call succeed!', url: req.url, body: req.body})
+// });
 
-/****************************
-* Example delete method *
-****************************/
+// /****************************
+// * Example delete method *
+// ****************************/
 
-app.delete('/item', function(req, res) {
-  // Add your code here
-  res.json({success: 'delete call succeed!', url: req.url});
-});
+// app.delete('/item', function(req, res) {
+//   // Add your code here
+//   res.json({success: 'delete call succeed!', url: req.url});
+// });
 
-app.delete('/item/*', function(req, res) {
-  // Add your code here
-  res.json({success: 'delete call succeed!', url: req.url});
-});
+// app.delete('/item/*', function(req, res) {
+//   // Add your code here
+//   res.json({success: 'delete call succeed!', url: req.url});
+// });
 
 app.listen(3000, function() {
     console.log("App started")

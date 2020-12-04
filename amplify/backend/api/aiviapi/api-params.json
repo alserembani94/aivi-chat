@@ -8,7 +8,7 @@
             }
         },
         {
-            "name": "/aividb",
+            "name": "/aivi",
             "lambdaFunction": "aividb",
             "privacy": {
                 "open": true
@@ -49,5 +49,5 @@
             ]
         }
     ],
-    "uuid": "653f57ec"
+    "uuid": "ca234ec0"
 }
