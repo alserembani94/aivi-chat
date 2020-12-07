@@ -6,21 +6,25 @@ interface LoanItemProps {
     logoUrl: string;
     loanName: string;
     loanTenure: number;
-    loanRate: number;
+    loanRate: number[];
+    loanPayment: number[];
     loanAmount: number;
     selectedLoan: string;
     updateSelectedLoan: (loanName: string) => void;
     openLoanDetail: (loanName: string) => void;
 }
 
-const LoanItem: FC<LoanItemProps> = ({ logoUrl, loanName, loanTenure, loanRate, loanAmount, selectedLoan, updateSelectedLoan, openLoanDetail }) => {
+const normaliseName = (cardName: string) => cardName.replaceAll(/_/g, ' ');
+const normaliseCash = (amount: number) => amount.toFixed(2).toLocaleString();
+
+const LoanItem: FC<LoanItemProps> = ({ logoUrl, loanName, loanTenure, loanRate, loanAmount, loanPayment, selectedLoan, updateSelectedLoan, openLoanDetail }) => {
     return (
         <React.Fragment>
             <div className="LoanItem-Wrapper" data-selected={selectedLoan === loanName}>
                 <div className="LoanItem-Content" onClick={() => updateSelectedLoan(loanName)}>
                     <div className="LoanItem-Bank">
                         <img src={logoUrl} alt="Bank Logo" />
-                        <p>{loanName}</p>
+                        <p>{normaliseName(loanName)}</p>
                     </div>
                     <div className="LoanItem-Detail">
                         <div className="LoanItem-Detail-Item">
@@ -28,7 +32,7 @@ const LoanItem: FC<LoanItemProps> = ({ logoUrl, loanName, loanTenure, loanRate, 
                                 Loan Amount
                             </p>
                             <p className="LoanItem-Detail-Item-Content">
-                                RM {loanAmount}
+                                RM {loanAmount.toLocaleString()}
                             </p>
                         </div>
                         <div className="LoanItem-Detail-Item">
@@ -36,7 +40,7 @@ const LoanItem: FC<LoanItemProps> = ({ logoUrl, loanName, loanTenure, loanRate, 
                                 Tenure
                             </p>
                             <p className="LoanItem-Detail-Item-Content">
-                                {loanTenure} years
+                                {loanTenure} months
                             </p>
                         </div>
                         <div className="LoanItem-Detail-Item">
@@ -44,7 +48,8 @@ const LoanItem: FC<LoanItemProps> = ({ logoUrl, loanName, loanTenure, loanRate, 
                                 Monthly Payment
                             </p>
                             <p className="LoanItem-Detail-Item-Content">
-                                RM {calculateMonthlyLoanPayment(loanAmount, loanRate, loanTenure)}
+                                {/* RM {calculateMonthlyLoanPayment(loanAmount, loanRate, loanTenure)} */}
+                                {loanPayment[0] === loanPayment[1] ? `RM${normaliseCash(loanPayment[0])}` : `RM${normaliseCash(loanPayment[0])} - RM ${normaliseCash(loanPayment[1])}`}
                             </p>
                         </div>
                         <div className="LoanItem-Detail-Item">
@@ -52,7 +57,7 @@ const LoanItem: FC<LoanItemProps> = ({ logoUrl, loanName, loanTenure, loanRate, 
                                 Interest Rate
                             </p>
                             <p className="LoanItem-Detail-Item-Content">
-                                from {loanRate}% p.a.
+                                from {loanRate[0] === loanRate[1] ? loanRate[0] : `${loanRate[0]} - ${loanRate[1]}`}% p.a.
                             </p>
                         </div>
                     </div>

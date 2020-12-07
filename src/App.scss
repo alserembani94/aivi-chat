@@ -1223,7 +1223,7 @@ input[type=number] {
 .LoanItem {
   &-Wrapper {
     background: $light-background;
-    flex-grow: 1;
+    // flex-grow: 1;
     margin-bottom: 20px;
     padding: 40px 40px 20px;
     box-shadow: $box-shadow;
@@ -1264,14 +1264,15 @@ input[type=number] {
     margin-right: 50px;
     margin-bottom: 20px;
     img {
-      width: 100%;
+      width: 50%;
       height: auto;
       object-fit: contain;
       margin-bottom: 10px;
     }
     p {
-      font-size: 1.2rem;
+      font-size: 1rem;
       font-weight: 600;
+      text-transform: uppercase;
     }
   }
   &-Detail {

@@ -17,7 +17,8 @@ import SocialLogin from '../pages/SocialLogin/index';
 import Account from '../pages/Account/Account';
 import Page404 from '../pages/404/Page404';
 import ContactUs from '../pages/ContactUs';
-import Loading from '../pages/CardRecommendLoading';
+import CardLoading from '../pages/CardRecommendLoading';
+import LoanLoading from '../pages/LoanRecommendLoading';
 import {
     Sidebar,
 } from '../components';
@@ -31,11 +32,18 @@ import {
 
 export default [
     {
-        path: '/loading',
+        path: '/loading-card',
         exact: true,
         private: false,
         sidebar: () => <Sidebar />,
-        main: () => <Loading />,
+        main: () => <CardLoading />,
+    },
+    {
+        path: '/loading-loan',
+        exact: true,
+        private: false,
+        sidebar: () => <Sidebar />,
+        main: () => <LoanLoading />,
     },
     // SECTION: Auth Routes
     {

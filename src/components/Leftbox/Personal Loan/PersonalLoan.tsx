@@ -7,6 +7,10 @@ import MonthlyIncome from '../CreditCard/MonthlyIncome';
 import LoanDetails from './LoanDetails';
 import LoanCommitment from './LoanCommitment';
 import MaritalStatus from './MaritalStatus';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import { addForm } from '../../../store/reducers/form';
+import { showAuthModal } from '../../../store/reducers/authModal';
 
 type IncomeSourceType = {
     category: string,
@@ -37,6 +41,9 @@ type MaritalInfoType = {
 type ChecklistType = ChecklistItemType[];
 
 const PersonalLoan: FC = () => {
+    const { slots } = useSelector((state: any) => state.conversations);
+    const dispatch = useDispatch();
+    
     // AVAILABLE BANKS CONFIGURATION
     const [cardOwnership, setCardOwnership] = useState<boolean>(false);
     const [selectedBanks, setSelectedBanks] = useState<string[]>([]);
@@ -168,6 +175,20 @@ const PersonalLoan: FC = () => {
         setCurrentTab(() => { return selectedTab });
     }
 
+    const auth = useSelector((state: any) => state.auth);
+    const history = useHistory();
+
+    const handleSubmit = () => {
+        dispatch(addForm('personal-loan', {
+            selectedBanks,
+            incomeSource,
+            loanCommitments,
+            maritalInfo,
+            loanDetails,
+        }));
+        auth.user?.username ? history.push('/loading-loan') : dispatch(showAuthModal());
+    };
+
     return (
         <React.Fragment>
             <div className="CreditCard-Content">
@@ -184,6 +205,7 @@ const PersonalLoan: FC = () => {
             <div className="CreditCard-Button">
                 <button
                     className="Button Button-Full"
+                    onClick={handleSubmit}
                 >
                     Submit Application
                 </button>

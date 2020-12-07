@@ -177,7 +177,7 @@ const CreditCard: FC = () => {
             expenseObject,
             incomeSource,
         }));
-        auth.user?.username ? history.push('/loading') : dispatch(showAuthModal());
+        auth.user?.username ? history.push('/loading-card') : dispatch(showAuthModal());
     };
 
     // ! CUSTOMIZING CHAT FLOW HERE

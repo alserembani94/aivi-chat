@@ -11,6 +11,7 @@ import {
     Modal,
 } from '../../components/CustomComponent';
 import { Images } from '../../utils/Images';
+import { useSelector } from 'react-redux';
 // import { csv } from 'd3';
 // import { CSVFiles } from '../../utils/DataSample';
 
@@ -21,50 +22,50 @@ import { Images } from '../../utils/Images';
 //     period: '12 months',
 // };
 
-const LoanMock = [
-    {
-        loanName: 'Maybank Loan 1',
-        logoUrl: 'https://i.imgur.com/IvkIBSl.png',
-        loanAmount: 20000,
-        loanTenure: 10,
-        loanRate: 6,
-    },
-    {
-        loanName: 'Maybank Loan 2',
-        logoUrl: 'https://i.imgur.com/IvkIBSl.png',
-        loanAmount: 30000,
-        loanTenure: 7,
-        loanRate: 3,
-    },
-    {
-        loanName: 'Maybank Loan 3',
-        logoUrl: 'https://i.imgur.com/IvkIBSl.png',
-        loanAmount: 20000,
-        loanTenure: 10,
-        loanRate: 6,
-    },
-    {
-        loanName: 'Maybank Loan 4',
-        logoUrl: 'https://i.imgur.com/IvkIBSl.png',
-        loanAmount: 30000,
-        loanTenure: 7,
-        loanRate: 3,
-    },
-    {
-        loanName: 'Maybank Loan 5',
-        logoUrl: 'https://i.imgur.com/IvkIBSl.png',
-        loanAmount: 20000,
-        loanTenure: 10,
-        loanRate: 6,
-    },
-    {
-        loanName: 'Maybank Loan 6',
-        logoUrl: 'https://i.imgur.com/IvkIBSl.png',
-        loanAmount: 30000,
-        loanTenure: 7,
-        loanRate: 3,
-    },
-];
+// const LoanMock = [
+//     {
+//         loanName: 'Maybank Loan 1',
+//         logoUrl: 'https://i.imgur.com/IvkIBSl.png',
+//         loanAmount: 20000,
+//         loanTenure: 10,
+//         loanRate: 6,
+//     },
+//     {
+//         loanName: 'Maybank Loan 2',
+//         logoUrl: 'https://i.imgur.com/IvkIBSl.png',
+//         loanAmount: 30000,
+//         loanTenure: 7,
+//         loanRate: 3,
+//     },
+//     {
+//         loanName: 'Maybank Loan 3',
+//         logoUrl: 'https://i.imgur.com/IvkIBSl.png',
+//         loanAmount: 20000,
+//         loanTenure: 10,
+//         loanRate: 6,
+//     },
+//     {
+//         loanName: 'Maybank Loan 4',
+//         logoUrl: 'https://i.imgur.com/IvkIBSl.png',
+//         loanAmount: 30000,
+//         loanTenure: 7,
+//         loanRate: 3,
+//     },
+//     {
+//         loanName: 'Maybank Loan 5',
+//         logoUrl: 'https://i.imgur.com/IvkIBSl.png',
+//         loanAmount: 20000,
+//         loanTenure: 10,
+//         loanRate: 6,
+//     },
+//     {
+//         loanName: 'Maybank Loan 6',
+//         logoUrl: 'https://i.imgur.com/IvkIBSl.png',
+//         loanAmount: 30000,
+//         loanTenure: 7,
+//         loanRate: 3,
+//     },
+// ];
 
 
 type ExpenseDetails = {
@@ -77,13 +78,15 @@ type ExpenseDetails = {
 }[];
 
 const LoanResult: FC = () => {
+    const loans = useSelector((state: any) => state.loanRecommender);
+    const { formContent } = useSelector((state: any) => state.form);
 
     // Temporary Period Details
     // const [period, setPeriod] = useState(6);
     // const handlePeriodChange = (value: number) => setPeriod(() => value);
 
     // CONFIGURATION FOR BANKS
-    const [selectedBanks, setSelectedBanks] = useState<string[]>([]);
+    const [selectedBanks, setSelectedBanks] = useState<string[]>(formContent.selectedBanks || []);
     const handleSelectedBanks = (selected: string[]) => {
         setSelectedBanks(() => { return selected; });
     };
@@ -138,7 +141,7 @@ const LoanResult: FC = () => {
     }
 
     const [loanTenure, setLoanTenure] = useState(6);
-    const [loanAmount, setLoanAmount] = useState(20000);
+    const [loanAmount, setLoanAmount] = useState(formContent.loanDetails?.loanAmount || 2000);
     const handleLoanTenureUpdate = (tenure: number) => setLoanTenure(() => tenure);
     const handleLoanAmountUpdate = (amount: number) => setLoanAmount(() => amount);
 
@@ -166,14 +169,15 @@ const LoanResult: FC = () => {
                     </div>
                     <div className="ResultPage-Content-Col">
                         {
-                            LoanMock.map((loan, index) => (
+                            loans.loan && Object.entries(loans.loan).map(([loanName, loanDetails]: any, index: number) => (
                                 <LoanItem
                                     key={index}
-                                    logoUrl={loan.logoUrl}
-                                    loanName={loan.loanName}
-                                    loanTenure={loan.loanTenure}
-                                    loanRate={loan.loanRate}
-                                    loanAmount={loan.loanAmount}
+                                    logoUrl={loanDetails.loan_metadata[0]}
+                                    loanName={loanName}
+                                    loanTenure={loanDetails.month_length}
+                                    loanRate={loanDetails.minmax_annual_int_rate}
+                                    loanAmount={loanDetails.loan_amount}
+                                    loanPayment={loanDetails.minmax_monthly_payment}
                                     selectedLoan={selectedLoan}
                                     updateSelectedLoan={handleLoanChange}
                                     openLoanDetail={handleLoanDetail}

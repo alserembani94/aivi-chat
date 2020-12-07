@@ -82,7 +82,7 @@ const SmartAssistant = () => {
     const handleNextLocation = () => {
         switch (renderSection) {
             case 'Cash From Card': return '/';
-            case 'Credit Card': return '/loading';
+            case 'Credit Card': return '/loading-card';
             case 'Balance Transfer': return '/';
             case 'Personal Loan': return '/loan-result';
             default: return '/';
